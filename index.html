@@ -761,8 +761,8 @@ async function onChangeListClick(e){
 function render(snapshot,baseDate,changes){
   CURVIEW={slug:(curEtf?curEtf.slug:null), snap:snapshot};
   $("#ctx").innerHTML=baseDate
-    ? `<b>${fmtDate(snapshot.date)}</b> 구성 <span class="vs">·</span> <b>${fmtDate(baseDate)}</b> 대비 매매`
-    : `<b>${fmtDate(snapshot.date)}</b> 구성 <span class="vs">· 비교 대상일 없음</span>`;
+    ? `<b>수량·비중</b>은 <b>${fmtDate(snapshot.date)}</b>(기준일) 기준 <span class="vs">·</span> <b>변화</b>는 <b>${fmtDate(baseDate)}</b>(비교 대상일) 대비`
+    : `<b>${fmtDate(snapshot.date)}</b> 기준 구성 <span class="vs">· 비교 대상일 없음</span>`;
   renderBand(changes); renderChangeLists(changes); renderTable(snapshot.holdings,changes);
 }
 
