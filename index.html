@@ -99,8 +99,10 @@
   .clist h3{margin:0 0 10px;font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:7px}
   .clist h3 .tag{font-size:11px;padding:1px 7px;border-radius:20px;font-weight:800}
   .tag.in{background:var(--in-dim);color:var(--in)} .tag.out{background:var(--out-dim);color:var(--out)}
-  .clist ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
-  .clist li{display:grid;grid-template-columns:42px minmax(80px,1fr) 96px 82px 148px;align-items:baseline;column-gap:10px;font-size:13px}
+  .clist ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px}
+  .clist li{display:grid;grid-template-columns:34px minmax(50px,1fr) 64px 64px 132px;align-items:baseline;column-gap:8px;font-size:13px;padding:4px;border-radius:8px}
+  .clist li[data-key]{cursor:pointer}
+  .clist li[data-key]:hover{background:var(--panel2)}
   .clist li .tk{font-size:11px;font-weight:800;color:var(--faint)}
   .clist li .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .clist li i{font-style:normal;color:var(--faint);font-weight:700;font-size:9.5px;margin-right:3px;letter-spacing:.01em}
@@ -293,13 +295,13 @@ function computeDiff(cur,prev){
   const cmap=new Map(stock(cur).map(h=>[keyOf(h),h]));
   const added=[],removed=[],bought=[],sold=[];
   for(const [k,h] of cmap){
-    if(!pmap.has(k)){ added.push({name:h.name,ticker:h.ticker,weight:h.weight,shares:h.shares}); continue; }
+    if(!pmap.has(k)){ added.push({key:k,name:h.name,ticker:h.ticker,weight:h.weight,shares:h.shares}); continue; }
     const cs=h.shares||0, ps=pmap.get(k).shares||0, ds=+(cs-ps).toFixed(4);
     if(ds===0) continue;
-    const rec={name:h.name,ticker:h.ticker,shares:cs,prev_shares:ps,share_delta:ds,weight:h.weight};
+    const rec={key:k,name:h.name,ticker:h.ticker,shares:cs,prev_shares:ps,share_delta:ds,weight:h.weight};
     (ds>0?bought:sold).push(rec);
   }
-  for(const [k,h] of pmap) if(!cmap.has(k)) removed.push({name:h.name,ticker:h.ticker,weight:h.weight,shares:h.shares});
+  for(const [k,h] of pmap) if(!cmap.has(k)) removed.push({key:k,name:h.name,ticker:h.ticker,weight:h.weight,shares:h.shares});
   added.sort((a,b)=>(b.weight||0)-(a.weight||0));
   removed.sort((a,b)=>(b.weight||0)-(a.weight||0));
   bought.sort((a,b)=>b.share_delta-a.share_delta);
@@ -325,7 +327,7 @@ function renderBand(c){
 
 function liEntry(x){
   const tk=`<span class="tk">${x.ticker||""}</span>`;
-  return `<li>${tk}<span class="nm">${x.name}</span>`+
+  return `<li data-key="${x.key}" data-ticker="${x.ticker||""}" data-name="${x.name}">${tk}<span class="nm">${x.name}</span>`+
     `<span class="qty num"><i>수량</i>${qty(x.shares)}</span>`+
     `<span class="wt num"><i>비중</i>${pct(x.weight)}</span></li>`;
 }
@@ -334,7 +336,7 @@ function liTrade(x){
   const cls=x.share_delta>0?"pos":"neg";
   const rate=(x.prev_shares?x.share_delta/x.prev_shares*100:null);
   const rateTxt=rate==null?"":` (${(rate>0?"+":"")}${rate.toFixed(1)}%)`;
-  return `<li>${tk}<span class="nm">${x.name}</span>`+
+  return `<li data-key="${x.key}" data-ticker="${x.ticker||""}" data-name="${x.name}">${tk}<span class="nm">${x.name}</span>`+
     `<span class="qty num"><i>수량</i>${qty(x.shares)}</span>`+
     `<span class="wt num"><i>비중</i>${pct(x.weight)}</span>`+
     `<span class="d ${cls} num"><i>변화</i>${sQty(x.share_delta)}${rateTxt}</span></li>`;
@@ -602,7 +604,7 @@ function comboChartSVG(pts,mode){
 }
 
 let STOCKMODE="month", CURDETAIL=null;
-function detailInner(view,mode){
+function detailInner(view,mode,heldNow){
   const {ticker,name}=CURDETAIL;
   const basis = mode==="week"?"매주 마지막 거래일":mode==="year"?"매년 마지막 거래일":"매월 마지막 거래일";
   const modeKr = mode==="week"?"주별":mode==="year"?"연도별":"월별";
@@ -614,11 +616,14 @@ function detailInner(view,mode){
   const legend=`<div class="clegend">`+
     `<span class="lg"><i style="background:#6366F1"></i>비중(%) · 왼쪽축</span>`+
     `<span class="lg"><i class="ln"></i>주식수 변화율(%) · 오른쪽축</span></div>`;
+  const heldNote = heldNow===false
+    ? `<div class="detail-note" style="color:var(--out);font-weight:700">현재는 편출되어 보유하고 있지 않은 기업이에요 · 과거 추이만 표시됩니다.</div>` : "";
   const note=view.length<2
     ? `<div class="detail-note">아직 한 시점뿐이에요. 데이터가 쌓이면 추이가 그려져요.</div>`
     : `<div class="detail-note">막대에 커서를 올리면 그 시점의 비중·변화율 수치가 표시됩니다. 주황 선 = 직전 ${prevKr} 마지막 거래일 대비 <b>주식수 변화율</b>. <b style="color:var(--in)">편입</b>(직전 구간 미보유→보유)은 0%에서 시작, <b style="color:var(--out)">편출</b>(전량 매도)은 -100%로 표시됩니다.</div>`;
   return `<div class="detail-inner">
     <div class="detail-head"><span class="dh-tk">${ticker||""}</span><span class="dh-nm">${name||""}</span><span class="dh-sub">${modeKr} · ${basis}</span>${seg}</div>
+    ${heldNote}
     ${legend}
     <div class="combo"><div class="cttip" hidden></div><div class="combo-scroll">${comboChartSVG(view,mode)}</div></div>
     ${note}</div>`;
@@ -662,13 +667,33 @@ function wireTooltip(det,view,mode){
   svg.addEventListener("touchend",()=>{ tip.hidden=true; });
 }
 
-async function renderDetail(det,key){
+async function renderDetail(det,key,heldNow){
   det.innerHTML=`<div class="detail-load">불러오는 중…</div>`;
   try{
     const view=await buildSeries(key,STOCKMODE);
-    det.innerHTML=detailInner(view,STOCKMODE);
+    det.innerHTML=detailInner(view,STOCKMODE,heldNow);
     wireTooltip(det,view,STOCKMODE);
   }catch(err){ det.innerHTML=`<div class="detail-load">데이터를 불러오지 못했어요.</div>`; }
+}
+
+// 테이블 행 클릭이든 변동내역 클릭이든 공통으로 상세 차트를 여는 함수.
+// 테이블에 해당 기업 행이 있으면 그 행 아래에, 이미 편출돼 행이 없으면 테이블 맨 위에 연다.
+async function openDetailFor(key,ticker,name){
+  document.querySelectorAll(".detail").forEach(d=>d.remove());
+  document.querySelectorAll(".row.active").forEach(r=>r.classList.remove("active"));
+  const row=document.querySelector(`#table .row[data-key="${CSS.escape(key)}"]`);
+  const det=document.createElement("div");
+  det.className="detail";
+  let heldNow=true;
+  if(row){ row.classList.add("active"); row.after(det); }
+  else{
+    heldNow=false;
+    const head=document.querySelector("#table .row.head");
+    if(head) head.after(det); else $("#table").prepend(det);
+  }
+  CURDETAIL={ticker,name,key};
+  await renderDetail(det,key,heldNow);
+  det.scrollIntoView({behavior:"smooth",block:"center"});
 }
 
 async function onRowClick(e){
@@ -676,20 +701,24 @@ async function onRowClick(e){
   if(segBtn){
     STOCKMODE=segBtn.getAttribute("data-m");
     const det=document.querySelector(".detail");
-    if(det && CURDETAIL && CURDETAIL.key) await renderDetail(det,CURDETAIL.key);
+    if(det && CURDETAIL && CURDETAIL.key){
+      const stillRow=document.querySelector(`#table .row[data-key="${CSS.escape(CURDETAIL.key)}"]`);
+      await renderDetail(det,CURDETAIL.key,!!stillRow);
+    }
     return;
   }
   const row=e.target.closest(".row[data-key]");
   if(!row) return;
   const next=row.nextElementSibling;
   if(next && next.classList.contains("detail")){ next.remove(); row.classList.remove("active"); return; }
-  document.querySelectorAll(".detail").forEach(d=>d.remove());
-  document.querySelectorAll(".row.active").forEach(r=>r.classList.remove("active"));
-  row.classList.add("active");
-  const det=document.createElement("div");
-  det.className="detail"; row.after(det);
-  CURDETAIL={ticker:row.getAttribute("data-ticker"),name:row.getAttribute("data-name"),key:row.getAttribute("data-key")};
-  await renderDetail(det,CURDETAIL.key);
+  await openDetailFor(row.getAttribute("data-key"),row.getAttribute("data-ticker"),row.getAttribute("data-name"));
+}
+
+// 구성기업 변동내역에서 기업을 클릭하면 아래 "전체 구성기업"으로 이동해 같은 상세 차트를 연다.
+async function onChangeListClick(e){
+  const li=e.target.closest("li[data-key]");
+  if(!li) return;
+  await openDetailFor(li.getAttribute("data-key"),li.getAttribute("data-ticker"),li.getAttribute("data-name"));
 }
 
 function render(snapshot,baseDate,changes){
@@ -869,6 +898,7 @@ function loadDemo(){
 }
 
 $("#table").addEventListener("click",onRowClick);
+$("#changeLists").addEventListener("click",onChangeListClick);
 $("#perf").addEventListener("click",function(e){
   var b=e.target.closest(".seg button"); if(!b) return;
   PERFMODE=b.getAttribute("data-m"); renderPerf();
