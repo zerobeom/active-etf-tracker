@@ -99,15 +99,14 @@
   .clist h3{margin:0 0 10px;font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:7px}
   .clist h3 .tag{font-size:11px;padding:1px 7px;border-radius:20px;font-weight:800}
   .tag.in{background:var(--in-dim);color:var(--in)} .tag.out{background:var(--out-dim);color:var(--out)}
-  .clist ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
-  .clist li{display:flex;align-items:baseline;gap:6px 9px;font-size:13px;flex-wrap:wrap}
-  .clist li .tk{font-size:11px;font-weight:800;color:var(--faint);min-width:44px;flex-shrink:0}
-  .clist li .nm{flex:1 1 120px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .clist li .meta{display:flex;align-items:baseline;gap:5px 12px;flex-wrap:nowrap;margin-left:auto}
-  .clist li .meta i{font-style:normal;color:var(--faint);font-weight:700;font-size:9.5px;margin-right:3px;letter-spacing:.01em}
-  .clist li .qty{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap}
-  .clist li .wt{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap}
-  .clist li .d{font-weight:800;font-size:13px;white-space:nowrap}
+  .clist ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px}
+  .clist li{display:grid;grid-template-columns:42px minmax(80px,1fr) 96px 82px 148px;align-items:baseline;column-gap:10px;font-size:13px}
+  .clist li .tk{font-size:11px;font-weight:800;color:var(--faint)}
+  .clist li .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .clist li i{font-style:normal;color:var(--faint);font-weight:700;font-size:9.5px;margin-right:3px;letter-spacing:.01em}
+  .clist li .qty{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap;text-align:right}
+  .clist li .wt{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap;text-align:right}
+  .clist li .d{font-weight:800;font-size:13px;white-space:nowrap;text-align:right}
   .d.pos{color:var(--in)} .d.neg{color:var(--out)}
   .empty{color:var(--faint);font-size:13px}
 
@@ -326,21 +325,19 @@ function renderBand(c){
 
 function liEntry(x){
   const tk=`<span class="tk">${x.ticker||""}</span>`;
-  return `<li>${tk}<span class="nm">${x.name}</span><span class="meta">`+
+  return `<li>${tk}<span class="nm">${x.name}</span>`+
     `<span class="qty num"><i>수량</i>${qty(x.shares)}</span>`+
-    `<span class="wt num"><i>비중</i>${pct(x.weight)}</span>`+
-    `</span></li>`;
+    `<span class="wt num"><i>비중</i>${pct(x.weight)}</span></li>`;
 }
 function liTrade(x){
   const tk=`<span class="tk">${x.ticker||""}</span>`;
   const cls=x.share_delta>0?"pos":"neg";
   const rate=(x.prev_shares?x.share_delta/x.prev_shares*100:null);
   const rateTxt=rate==null?"":` (${(rate>0?"+":"")}${rate.toFixed(1)}%)`;
-  return `<li>${tk}<span class="nm">${x.name}</span><span class="meta">`+
+  return `<li>${tk}<span class="nm">${x.name}</span>`+
     `<span class="qty num"><i>수량</i>${qty(x.shares)}</span>`+
     `<span class="wt num"><i>비중</i>${pct(x.weight)}</span>`+
-    `<span class="d ${cls} num"><i>변화</i>${sQty(x.share_delta)}${rateTxt}</span>`+
-    `</span></li>`;
+    `<span class="d ${cls} num"><i>변화</i>${sQty(x.share_delta)}${rateTxt}</span></li>`;
 }
 function clist(title,tagcls,items,fn){
   const body=items.length?`<ul>${items.map(fn).join("")}</ul>`:`<div class="empty">변동 없음</div>`;
