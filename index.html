@@ -94,20 +94,20 @@
   .stat.sell .v{color:var(--out)} .stat.sell .dot{background:var(--out)}
   .stat .sub{font-size:11px;color:var(--faint);margin-top:2px}
 
-  .changes{margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:start}
+  .changes{margin-top:14px;display:grid;grid-template-columns:1fr;gap:10px;align-items:start}
   .clist{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
   .clist h3{margin:0 0 10px;font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:7px}
   .clist h3 .tag{font-size:11px;padding:1px 7px;border-radius:20px;font-weight:800}
   .tag.in{background:var(--in-dim);color:var(--in)} .tag.out{background:var(--out-dim);color:var(--out)}
   .clist ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px}
-  .clist li{display:grid;grid-template-columns:34px minmax(50px,1fr) 64px 64px 132px;align-items:baseline;column-gap:8px;font-size:13px;padding:4px;border-radius:8px}
+  .clist li{display:grid;grid-template-columns:42px minmax(60px,1fr) 78px 84px 170px;align-items:baseline;column-gap:10px;font-size:13px;padding:5px;border-radius:8px}
   .clist li[data-key]{cursor:pointer}
   .clist li[data-key]:hover{background:var(--panel2)}
-  .clist li .tk{font-size:11px;font-weight:800;color:var(--faint)}
+  .clist li .tk{font-size:13px;font-weight:800;color:var(--faint);overflow:hidden;text-overflow:clip;white-space:nowrap}
   .clist li .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .clist li i{font-style:normal;color:var(--faint);font-weight:700;font-size:9.5px;margin-right:3px;letter-spacing:.01em}
-  .clist li .qty{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap;text-align:right}
-  .clist li .wt{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap;text-align:right}
+  .clist li i{font-style:normal;color:var(--faint);font-weight:700;font-size:13px;margin-right:4px;letter-spacing:.01em}
+  .clist li .qty{color:var(--muted);font-weight:600;font-size:13px;white-space:nowrap;text-align:right}
+  .clist li .wt{color:var(--muted);font-weight:600;font-size:13px;white-space:nowrap;text-align:right}
   .clist li .d{font-weight:800;font-size:13px;white-space:nowrap;text-align:right}
   .d.pos{color:var(--in)} .d.neg{color:var(--out)}
   .empty{color:var(--faint);font-size:13px}
@@ -306,6 +306,13 @@ const fmtDate=(iso)=>{ if(!iso) return "—"; const [y,m,d]=iso.split("-"); retu
 const pct=(v)=> v==null?"—":v.toFixed(2)+"%";
 const qty=(v)=> v==null?"—":Math.round(v).toLocaleString("en-US")+"주";
 const sQty=(v)=> (v>0?"+":"")+Math.round(v).toLocaleString("en-US")+"주";
+// 변화율: 정수로 반올림. 단 0이 아니면서 절대값이 1% 미만이면 ±1%로 올림 처리(0%로 뭉개지지 않게)
+const fmtRate=(v)=>{
+  if(v==null||!isFinite(v)) return null;
+  let r=Math.round(v);
+  if(v!==0 && Math.abs(v)<1) r=v>0?1:-1;
+  return (r>0?"+":"")+r+"%";
+};
 const won=(v)=> v==null?"—":Math.round(v).toLocaleString("en-US")+"원";
 const usd=(v)=> "$"+v.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
 const priceCell=(h)=> h.price!=null?won(h.price):(h.price_usd!=null?usd(h.price_usd):"—");
@@ -359,7 +366,7 @@ function liTrade(x){
   const tk=`<span class="tk">${x.ticker||""}</span>`;
   const cls=x.share_delta>0?"pos":"neg";
   const rate=(x.prev_shares?x.share_delta/x.prev_shares*100:null);
-  const rateTxt=rate==null?"":` (${(rate>0?"+":"")}${rate.toFixed(1)}%)`;
+  const rateTxt=rate==null?"":` (${fmtRate(rate)})`;
   return `<li data-key="${x.key}" data-ticker="${x.ticker||""}" data-name="${x.name}">${tk}<span class="nm">${x.name}</span>`+
     `<span class="qty num"><i>수량</i>${qty(x.shares)}</span>`+
     `<span class="wt num"><i>비중</i>${pct(x.weight)}</span>`+
@@ -560,24 +567,26 @@ async function buildSeries(key,mode){
   return pts;
 }
 
-// 축 상한을 깔끔한 값으로 올림 (0·2·4·6·8 / 0·15·30·45·60 처럼)
+// 축 상한을 촘촘한 "깔끔한" 값으로 올림 — 실제 최댓값에 더 가깝게 붙여서 위쪽 여백을 줄임
 function niceCeil(max){
   if(!(max>0)) return 1;
   const mag=Math.pow(10,Math.floor(Math.log10(max)));
   const n=max/mag;
-  const c=[1,1.5,2,2.5,3,4,5,6,8,10].find(x=>x>=n-1e-9)||10;
+  const steps=[1,1.1,1.2,1.3,1.4,1.5,1.6,1.8,2,2.2,2.5,2.8,3,3.5,4,4.5,5,5.5,6,7,8,9,10];
+  const c=steps.find(x=>x>=n-1e-9)||10;
   return Math.round(c*mag*1e6)/1e6;
 }
 const fmtAxisPct=v=> (Number.isInteger(v)?v:(+v.toFixed(2)))+"%";
 
-// 비중(막대·왼쪽축) + 주식수 변화율(선·오른쪽축) 두 값만 보여주는 차트
+// 비중(막대·왼쪽축) + 보유수량(막대·참고용, 축 라벨 없음) + 주식수 변화율(선·오른쪽축)
 function comboChartSVG(pts,mode){
-  const n=pts.length||1, SEG=4;
+  const n=pts.length||1, SEG=5;
   const slotW=Math.max(34,Math.min(64,560/n));
-  const padL=48, padR=52, padT=26, padB=34;
-  const W=Math.max(360, Math.round(n*slotW)+padL+padR), H=250;
+  const padL=48, padR=52, padT=22, padB=30;
+  const W=Math.max(360, Math.round(n*slotW)+padL+padR), H=240;
   const plotW=W-padL-padR, innerH=H-padT-padB, yB=padT+innerH;
   const wTop=niceCeil(Math.max(0,...pts.map(p=>p.weight)));
+  const qTop=niceCeil(Math.max(0,...pts.map(p=>p.shares)));
   const rs=pts.map(p=>p.rate).filter(v=>v!=null&&isFinite(v));
   const hasRate=rs.length>0;
   const anyNeg=rs.some(v=>v<0), anyPos=rs.some(v=>v>0);
@@ -587,26 +596,28 @@ function comboChartSVG(pts,mode){
   if(rMin===rMax){ rMin-=1; rMax+=1; }
   const slot=plotW/n, cx=i=> padL + i*slot + slot/2;
   const yW=v=> yB-(v/wTop)*innerH;
+  const yQ=v=> yB-(qTop?v/qTop:0)*innerH;
   const yR=v=> padT+(1-(v-rMin)/(rMax-rMin))*innerH;
-  const bw=Math.max(8,Math.min(22,slot*0.5));
+  const bw=Math.max(6,Math.min(15,slot*0.27));
   const lblEvery=n>16?Math.ceil(n/12):1;
   let g="";
   // 가로 눈금선 + 좌(비중%)·우(변화율%) 축 라벨 — 같은 높이에 각자 값 표기
   for(let s=0;s<=SEG;s++){
     const y=yB-(s/SEG)*innerH;
     const rVal=rMin+(s/SEG)*(rMax-rMin);
-    const rTxt=(rVal>0?"+":"")+(Number.isInteger(rVal)?rVal:+rVal.toFixed(1))+"%";
+    const rTxt=(rVal>0?"+":"")+Math.round(rVal)+"%";
     g+=`<line x1="${padL}" y1="${y.toFixed(1)}" x2="${W-padR}" y2="${y.toFixed(1)}" class="${s===0?'axis':'grid'}"/>`;
     g+=`<text x="${padL-7}" y="${(y+3).toFixed(1)}" text-anchor="end" class="ay aw">${fmtAxisPct(wTop*s/SEG)}</text>`;
     g+=`<text x="${W-padR+7}" y="${(y+3).toFixed(1)}" text-anchor="start" class="ay ar">${rTxt}</text>`;
   }
   // 변화율 0 기준선 (음수 구간이 있을 때만)
   if(hasRate && rMin<0){ const zy=yR(0); g+=`<line x1="${padL}" y1="${zy.toFixed(1)}" x2="${W-padR}" y2="${zy.toFixed(1)}" class="zeroR"/>`; }
-  // 막대: 비중만
+  // 막대: 비중(보라, 왼쪽 절반) + 보유수량(초록, 오른쪽 절반 · 참고용, 축 라벨 없음)
   pts.forEach((p,i)=>{
     const c=cx(i), last=i===n-1;
-    const wy=yW(p.weight);
-    g+=`<rect x="${(c-bw/2).toFixed(1)}" y="${wy.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,yB-wy).toFixed(1)}" rx="2.5" fill="${last?'#3730A3':'#6366F1'}"/>`;
+    const wy=yW(p.weight), qy=yQ(p.shares);
+    g+=`<rect x="${(c-bw-1).toFixed(1)}" y="${wy.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,yB-wy).toFixed(1)}" rx="2.5" fill="${last?'#3730A3':'#6366F1'}"/>`;
+    g+=`<rect x="${(c+1).toFixed(1)}" y="${qy.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,yB-qy).toFixed(1)}" rx="2.5" fill="${last?'#0A7150':'#0E9E6E'}"/>`;
     if(p.isEntry||p.isExit){
       const lbl=p.isEntry?"편입":"편출", col=p.isEntry?"var(--in)":"var(--out)";
       g+=`<line x1="${c.toFixed(1)}" y1="${(padT+13).toFixed(1)}" x2="${c.toFixed(1)}" y2="${yB}" class="evguide"/>`;
@@ -621,7 +632,7 @@ function comboChartSVG(pts,mode){
     pts.forEach((p,i)=>{ if(p.rate==null||!isFinite(p.rate)) return; const x=cx(i),y=yR(p.rate);
       g+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.6" fill="#F59E0B"/>`; });
   }
-  pts.forEach((p,i)=>{ if(i%lblEvery===0||i===n-1) g+=`<text x="${cx(i).toFixed(1)}" y="${H-10}" text-anchor="middle" class="bx">${lblOf(p.date,mode)}</text>`; });
+  pts.forEach((p,i)=>{ if(i%lblEvery===0||i===n-1) g+=`<text x="${cx(i).toFixed(1)}" y="${H-9}" text-anchor="middle" class="bx">${lblOf(p.date,mode)}</text>`; });
   // 호버 존(투명) — 맨 위에 올려 커서 이벤트 캡처
   pts.forEach((p,i)=>{ const xs=padL+i*slot; g+=`<rect class="hz" data-i="${i}" x="${xs.toFixed(1)}" y="${padT}" width="${slot.toFixed(1)}" height="${innerH}" fill="transparent"/>`; });
   return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" class="barsvg combosvg" style="width:${W}px;height:auto" preserveAspectRatio="xMidYMid meet">${g}</svg>`;
@@ -639,12 +650,13 @@ function detailInner(view,mode,heldNow){
     `<button class="${mode==='year'?'on':''}" data-m="year">연도별</button></div>`;
   const legend=`<div class="clegend">`+
     `<span class="lg"><i style="background:#6366F1"></i>비중(%) · 왼쪽축</span>`+
+    `<span class="lg"><i style="background:#0E9E6E"></i>보유수량(주) · 참고용 막대</span>`+
     `<span class="lg"><i class="ln"></i>주식수 변화율(%) · 오른쪽축</span></div>`;
   const heldNote = heldNow===false
     ? `<div class="detail-note" style="color:var(--out);font-weight:700">현재는 편출되어 보유하고 있지 않은 기업이에요 · 과거 추이만 표시됩니다.</div>` : "";
   const note=view.length<2
     ? `<div class="detail-note">아직 한 시점뿐이에요. 데이터가 쌓이면 추이가 그려져요.</div>`
-    : `<div class="detail-note">막대에 커서를 올리면 그 시점의 비중·변화율 수치가 표시됩니다. 주황 선 = 직전 ${prevKr} 마지막 거래일 대비 <b>주식수 변화율</b>. <b style="color:var(--in)">편입</b>(직전 구간 미보유→보유)은 0%에서 시작, <b style="color:var(--out)">편출</b>(전량 매도)은 -100%로 표시됩니다.</div>`;
+    : `<div class="detail-note">막대에 커서를 올리면 그 시점의 비중·보유수량·변화율 수치가 표시됩니다. 초록 막대(보유수량)는 참고용이라 별도 눈금은 없어요 — 정확한 값은 커서로 확인하세요. 주황 선 = 직전 ${prevKr} 마지막 거래일 대비 <b>주식수 변화율</b>. <b style="color:var(--in)">편입</b>(직전 구간 미보유→보유)은 0%에서 시작, <b style="color:var(--out)">편출</b>(전량 매도)은 -100%로 표시됩니다.</div>`;
   return `<div class="detail-inner">
     <div class="detail-head"><span class="dh-tk">${ticker||""}</span><span class="dh-nm">${name||""}</span><span class="dh-sub">${modeKr} · ${basis}</span>${seg}</div>
     ${heldNote}
@@ -659,12 +671,13 @@ function detTooltip(p,mode){
     : mode==="month" ? fmtDate(p.date)+" · 월 마지막 거래일"
     : fmtDate(p.date)+" · 주 마지막 거래일";
   let r;
-  if(p.isEntry) r="0% (편입)";
-  else if(p.isExit) r="-100% (편출)";
+  if(p.isEntry) r=fmtRate(0)+" (편입)";
+  else if(p.isExit) r=fmtRate(-100)+" (편출)";
   else if(p.rate==null||!isFinite(p.rate)) r="—";
-  else r=(p.rate>0?"+":"")+p.rate.toFixed(1)+"%";
+  else r=fmtRate(p.rate);
   return `<div class="tt-d">${dlbl}</div>`+
     `<div class="tt-r"><i style="background:#6366F1"></i>비중 ${(p.weight||0).toFixed(2)}%</div>`+
+    `<div class="tt-r"><i style="background:#0E9E6E"></i>보유수량 ${Math.round(p.shares||0).toLocaleString("en-US")}주</div>`+
     `<div class="tt-r"><i style="background:#F59E0B"></i>변화율 ${r}</div>`;
 }
 
