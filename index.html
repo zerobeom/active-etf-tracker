@@ -216,6 +216,21 @@
   .demo-banner.show{display:block}
   .demo-banner b{color:#8A1A12}
 
+  .authgate{position:fixed;inset:0;z-index:999;background:#fff;display:flex;align-items:center;justify-content:center;padding:20px}
+  .authcard{width:100%;max-width:300px;display:flex;flex-direction:column;align-items:center;text-align:center}
+  .authtitle{font-size:17px;font-weight:800;letter-spacing:-.01em}
+  .authsub{margin-top:6px;font-size:13px;color:var(--muted)}
+  .authcard input{margin-top:20px;width:100%;text-align:center;letter-spacing:.3em;font:inherit;font-size:16px;font-weight:700;
+    border:1px solid var(--line);border-radius:10px;padding:11px 12px;color:var(--text);background:#fff}
+  .authcard input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .authcard button{margin-top:10px;width:100%;appearance:none;border:0;background:var(--accent);color:#fff;
+    font:inherit;font-size:14px;font-weight:700;padding:11px 12px;border-radius:10px;cursor:pointer}
+  .authcard button:hover{opacity:.9}
+  .autherr{margin-top:10px;font-size:12px;color:var(--out);display:none}
+  .autherr.show{display:block}
+  @keyframes authshake{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
+  .authcard.shake{animation:authshake .4s}
+
   @media (max-width:720px){
     .band{grid-template-columns:1fr 1fr}
     .changes{grid-template-columns:1fr}
@@ -228,6 +243,15 @@
 </style>
 </head>
 <body>
+<div class="authgate" id="authGate">
+  <form class="authcard" id="authForm" autocomplete="off">
+    <div class="authtitle">KoAct ETF Tracker</div>
+    <div class="authsub">비밀번호를 입력해주세요</div>
+    <input type="password" id="authPw" inputmode="numeric" autocomplete="off" autofocus />
+    <button type="submit">입장</button>
+    <div class="autherr" id="authErr">비밀번호가 올바르지 않아요</div>
+  </form>
+</div>
 <div class="wrap">
   <header>
     <div class="brand">
@@ -927,7 +951,30 @@ $("#perf").addEventListener("click",function(e){
     else { document.getElementById("updHint").textContent="GitHub 저장소 Actions 탭에서 ‘Run workflow’를 실행하세요."; }
   };
 })();
-init();
+// ── 간단 비밀번호 게이트 ── 원문은 저장하지 않고 SHA-256 해시만 비교합니다.
+(function(){
+  var AUTH_HASH="3b2cbc8be13f3bad7d9049caf98fd558b191bc3ff2107638cf773eefbc4df512";
+  var AUTH_KEY="koact_auth";
+  var gate=document.getElementById("authGate");
+  function isAuthed(){ try{ return localStorage.getItem(AUTH_KEY)==="1"; }catch(e){ return false; } }
+  function setAuthed(){ try{ localStorage.setItem(AUTH_KEY,"1"); }catch(e){} }
+  async function sha256Hex(str){
+    var buf=await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,"0"); }).join("");
+  }
+  function boot(){ if(gate) gate.remove(); document.body.style.overflow=""; init(); }
+  if(isAuthed()){ boot(); return; }
+  document.body.style.overflow="hidden";
+  var form=document.getElementById("authForm"), input=document.getElementById("authPw"), err=document.getElementById("authErr");
+  if(!form){ boot(); return; }   // 혹시 게이트 마크업이 없으면 그냥 통과
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    var h=await sha256Hex(input.value||"");
+    if(h===AUTH_HASH){ setAuthed(); boot(); }
+    else{ err.classList.add("show"); input.value=""; input.focus();
+      form.classList.remove("shake"); void form.offsetWidth; form.classList.add("shake"); }
+  });
+})();
 </script>
 </body>
 </html>
