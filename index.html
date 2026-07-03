@@ -100,11 +100,14 @@
   .clist h3 .tag{font-size:11px;padding:1px 7px;border-radius:20px;font-weight:800}
   .tag.in{background:var(--in-dim);color:var(--in)} .tag.out{background:var(--out-dim);color:var(--out)}
   .clist ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
-  .clist li{display:flex;align-items:baseline;gap:9px;font-size:13px}
+  .clist li{display:flex;align-items:baseline;gap:6px 9px;font-size:13px;flex-wrap:wrap}
   .clist li .tk{font-size:11px;font-weight:800;color:var(--faint);min-width:44px;flex-shrink:0}
-  .clist li .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .clist li .qty{color:var(--muted);font-weight:600;font-size:12px}
-  .clist li .d{font-weight:800;font-size:13px;min-width:62px;text-align:right}
+  .clist li .nm{flex:1 1 120px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .clist li .meta{display:flex;align-items:baseline;gap:5px 12px;flex-wrap:nowrap;margin-left:auto}
+  .clist li .meta i{font-style:normal;color:var(--faint);font-weight:700;font-size:9.5px;margin-right:3px;letter-spacing:.01em}
+  .clist li .qty{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap}
+  .clist li .wt{color:var(--muted);font-weight:600;font-size:12px;white-space:nowrap}
+  .clist li .d{font-weight:800;font-size:13px;white-space:nowrap}
   .d.pos{color:var(--in)} .d.neg{color:var(--out)}
   .empty{color:var(--faint);font-size:13px}
 
@@ -159,7 +162,7 @@
   .barsvg .grid{stroke:var(--line);stroke-width:1;opacity:.55}
   .barsvg .ay{font-size:10px;font-weight:700}
   .barsvg .aw{fill:#6366F1}
-  .barsvg .aq{fill:#0E9E6E}
+  .barsvg .ar{fill:#B97400}
   .barsvg .zeroR{stroke:#F4B73E;stroke-width:1;stroke-dasharray:3 3;opacity:.7}
   .barsvg .rlbl{font-size:9px;fill:#B97400;font-weight:700}
   .barsvg .evtag{font-size:9.5px;font-weight:800}
@@ -227,7 +230,7 @@
 <div class="wrap">
   <header>
     <div class="brand">
-      <span class="eyebrow">KoAct · 일별 구성종목 추적</span>
+      <span class="eyebrow">KoAct · 일별 구성기업 추적</span>
       <h1 id="etfTitle">미국나스닥성장기업액티브<span class="code num">0015B0</span></h1>
       <div class="updwrap" id="updWrap"><button id="updateBtn" class="upd" type="button">🔄 데이터 업데이트</button><span id="updHint" class="updhint"></span></div>
       <div class="updnote" id="updNote">자동 갱신: 매 영업일(월–금) 06:00 · 18:00(KST) · 버튼 수동 실행 시 데이터 반영까지 1~2분 정도 걸려요</div>
@@ -246,10 +249,10 @@
   </header>
 
   <div class="demo-banner" id="demoBanner">
-    <b>데모 데이터입니다.</b> 실제 데이터가 아직 없어요 — 저장소에서 <b>Actions → Run workflow</b>를 한 번 실행하면 진짜 구성종목으로 채워집니다.
+    <b>데모 데이터입니다.</b> 실제 데이터가 아직 없어요 — 저장소에서 <b>Actions → Run workflow</b>를 한 번 실행하면 진짜 구성기업으로 채워집니다.
   </div>
 
-  <div class="tablehead"><h2>구성종목 변동 내역</h2></div>
+  <div class="tablehead"><h2>구성기업 변동 내역</h2></div>
   <p class="ctx" id="ctx"></p>
   <p class="note">수량(주식 수)은 매니저가 실제로 매매해야만 바뀝니다. <b>비중</b>은 주가 등락만으로도 변할 수 있어 보조 지표로 표시합니다.</p>
 
@@ -257,7 +260,7 @@
   <section class="changes" id="changeLists"></section>
 
   <div class="tablehead">
-    <h2>전체 구성종목</h2>
+    <h2>전체 구성기업</h2>
     <span class="count num" id="count"></span>
   </div>
   <div class="table" id="table"></div>
@@ -323,12 +326,21 @@ function renderBand(c){
 
 function liEntry(x){
   const tk=`<span class="tk">${x.ticker||""}</span>`;
-  return `<li>${tk}<span class="nm">${x.name}</span><span class="qty num">${qty(x.shares)}</span></li>`;
+  return `<li>${tk}<span class="nm">${x.name}</span><span class="meta">`+
+    `<span class="qty num"><i>수량</i>${qty(x.shares)}</span>`+
+    `<span class="wt num"><i>비중</i>${pct(x.weight)}</span>`+
+    `</span></li>`;
 }
 function liTrade(x){
   const tk=`<span class="tk">${x.ticker||""}</span>`;
   const cls=x.share_delta>0?"pos":"neg";
-  return `<li>${tk}<span class="nm">${x.name}</span><span class="qty num">${qty(x.shares)}</span><span class="d ${cls} num">${sQty(x.share_delta)}</span></li>`;
+  const rate=(x.prev_shares?x.share_delta/x.prev_shares*100:null);
+  const rateTxt=rate==null?"":` (${(rate>0?"+":"")}${rate.toFixed(1)}%)`;
+  return `<li>${tk}<span class="nm">${x.name}</span><span class="meta">`+
+    `<span class="qty num"><i>수량</i>${qty(x.shares)}</span>`+
+    `<span class="wt num"><i>비중</i>${pct(x.weight)}</span>`+
+    `<span class="d ${cls} num"><i>변화</i>${sQty(x.share_delta)}${rateTxt}</span>`+
+    `</span></li>`;
 }
 function clist(title,tagcls,items,fn){
   const body=items.length?`<ul>${items.map(fn).join("")}</ul>`:`<div class="empty">변동 없음</div>`;
@@ -347,7 +359,7 @@ function renderTable(holdings,c){
   const cash=holdings.filter(h=>h.is_cash).sort((a,b)=>cashRank(a)-cashRank(b));
   const display=[...stocks,...cash];
   const max=Math.max(1,...stocks.map(h=>h.weight||0));
-  const head=`<div class="row head"><span>#</span><span>티커</span><span>종목명</span><span class="r-price">현재가</span><span class="r-qty">보유수량 / 금액</span><span class="r-w">비중</span><span class="r-bar"></span></div>`;
+  const head=`<div class="row head"><span>#</span><span>티커</span><span>기업명</span><span class="r-price">현재가</span><span class="r-qty">보유수량 / 금액</span><span class="r-w">비중</span><span class="r-bar"></span></div>`;
   let n=0;
   const rows=display.map((h)=>{
     if(h.is_cash){
@@ -377,7 +389,7 @@ function renderTable(holdings,c){
       <span class="r-bar"><i style="width:${Math.max(0,w).toFixed(1)}%"></i></span></div>`;
   }).join("");
   $("#table").innerHTML=head+rows;
-  $("#count").textContent=`${stocks.length}종목`;
+  $("#count").textContent=`${stocks.length}개 기업`;
 }
 
 // ── 벤치마크 수익률 비교 (선그래프) ──────────────────────────────────────
@@ -469,7 +481,7 @@ async function loadPerf(slug){
   renderPerf();
 }
 
-// ── 종목 클릭 시 추이 차트 (주별/월별/연도별 · 콤보) ───────────────────────
+// ── 기업 클릭 시 추이 차트 (주별/월별/연도별 · 콤보) ───────────────────────
 let CURVIEW={slug:null,snap:null};
 const SNAPCACHE=new Map();
 async function getHoldings(slug,iso){
@@ -534,17 +546,15 @@ function niceCeil(max){
   return Math.round(c*mag*1e6)/1e6;
 }
 const fmtAxisPct=v=> (Number.isInteger(v)?v:(+v.toFixed(2)))+"%";
-const fmtAxisQty=v=> Math.round(v).toLocaleString("en-US");
 
-// 비중(막대·왼쪽축) + 보유수량(막대·오른쪽축) + 변화율(선) 한 차트
+// 비중(막대·왼쪽축) + 주식수 변화율(선·오른쪽축) 두 값만 보여주는 차트
 function comboChartSVG(pts,mode){
   const n=pts.length||1, SEG=4;
   const slotW=Math.max(34,Math.min(64,560/n));
-  const padL=48, padR=58, padT=26, padB=34;
+  const padL=48, padR=52, padT=26, padB=34;
   const W=Math.max(360, Math.round(n*slotW)+padL+padR), H=250;
   const plotW=W-padL-padR, innerH=H-padT-padB, yB=padT+innerH;
   const wTop=niceCeil(Math.max(0,...pts.map(p=>p.weight)));
-  const qTop=niceCeil(Math.max(0,...pts.map(p=>p.shares)));
   const rs=pts.map(p=>p.rate).filter(v=>v!=null&&isFinite(v));
   const hasRate=rs.length>0;
   const anyNeg=rs.some(v=>v<0), anyPos=rs.some(v=>v>0);
@@ -554,33 +564,33 @@ function comboChartSVG(pts,mode){
   if(rMin===rMax){ rMin-=1; rMax+=1; }
   const slot=plotW/n, cx=i=> padL + i*slot + slot/2;
   const yW=v=> yB-(v/wTop)*innerH;
-  const yQ=v=> yB-(v/qTop)*innerH;
   const yR=v=> padT+(1-(v-rMin)/(rMax-rMin))*innerH;
-  const bw=Math.max(5,Math.min(15,slot*0.3));
+  const bw=Math.max(8,Math.min(22,slot*0.5));
   const lblEvery=n>16?Math.ceil(n/12):1;
   let g="";
-  // 가로 눈금선 + 좌(비중%)·우(보유수량) 축 라벨 — 둘 다 SEG등분이라 선이 정렬됨
+  // 가로 눈금선 + 좌(비중%)·우(변화율%) 축 라벨 — 같은 높이에 각자 값 표기
   for(let s=0;s<=SEG;s++){
     const y=yB-(s/SEG)*innerH;
+    const rVal=rMin+(s/SEG)*(rMax-rMin);
+    const rTxt=(rVal>0?"+":"")+(Number.isInteger(rVal)?rVal:+rVal.toFixed(1))+"%";
     g+=`<line x1="${padL}" y1="${y.toFixed(1)}" x2="${W-padR}" y2="${y.toFixed(1)}" class="${s===0?'axis':'grid'}"/>`;
     g+=`<text x="${padL-7}" y="${(y+3).toFixed(1)}" text-anchor="end" class="ay aw">${fmtAxisPct(wTop*s/SEG)}</text>`;
-    g+=`<text x="${W-padR+7}" y="${(y+3).toFixed(1)}" text-anchor="start" class="ay aq">${fmtAxisQty(qTop*s/SEG)}</text>`;
+    g+=`<text x="${W-padR+7}" y="${(y+3).toFixed(1)}" text-anchor="start" class="ay ar">${rTxt}</text>`;
   }
   // 변화율 0 기준선 (음수 구간이 있을 때만)
   if(hasRate && rMin<0){ const zy=yR(0); g+=`<line x1="${padL}" y1="${zy.toFixed(1)}" x2="${W-padR}" y2="${zy.toFixed(1)}" class="zeroR"/>`; }
-  // 막대 그룹
+  // 막대: 비중만
   pts.forEach((p,i)=>{
     const c=cx(i), last=i===n-1;
-    const wy=yW(p.weight), qy=yQ(p.shares);
-    g+=`<rect x="${(c-bw-1).toFixed(1)}" y="${wy.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,yB-wy).toFixed(1)}" rx="2.5" fill="${last?'#3730A3':'#6366F1'}"/>`;
-    g+=`<rect x="${(c+1).toFixed(1)}" y="${qy.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,yB-qy).toFixed(1)}" rx="2.5" fill="${last?'#0A7150':'#0E9E6E'}"/>`;
+    const wy=yW(p.weight);
+    g+=`<rect x="${(c-bw/2).toFixed(1)}" y="${wy.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(0,yB-wy).toFixed(1)}" rx="2.5" fill="${last?'#3730A3':'#6366F1'}"/>`;
     if(p.isEntry||p.isExit){
       const lbl=p.isEntry?"편입":"편출", col=p.isEntry?"var(--in)":"var(--out)";
       g+=`<line x1="${c.toFixed(1)}" y1="${(padT+13).toFixed(1)}" x2="${c.toFixed(1)}" y2="${yB}" class="evguide"/>`;
       g+=`<text x="${c.toFixed(1)}" y="${(padT+9).toFixed(1)}" text-anchor="middle" class="evtag" fill="${col}">${lbl}</text>`;
     }
   });
-  // 변화율 선 + 점
+  // 변화율 선 + 점 (오른쪽 축 기준)
   if(hasRate){
     let d="",on=false;
     pts.forEach((p,i)=>{ if(p.rate==null||!isFinite(p.rate)){ on=false; return; } const x=cx(i),y=yR(p.rate); d+=(on?"L":"M")+x.toFixed(1)+" "+y.toFixed(1)+" "; on=true; });
@@ -606,11 +616,10 @@ function detailInner(view,mode){
     `<button class="${mode==='year'?'on':''}" data-m="year">연도별</button></div>`;
   const legend=`<div class="clegend">`+
     `<span class="lg"><i style="background:#6366F1"></i>비중(%) · 왼쪽축</span>`+
-    `<span class="lg"><i style="background:#0E9E6E"></i>보유수량(주) · 오른쪽축</span>`+
-    `<span class="lg"><i class="ln"></i>주식수 변화율(%)</span></div>`;
+    `<span class="lg"><i class="ln"></i>주식수 변화율(%) · 오른쪽축</span></div>`;
   const note=view.length<2
     ? `<div class="detail-note">아직 한 시점뿐이에요. 데이터가 쌓이면 추이가 그려져요.</div>`
-    : `<div class="detail-note">막대에 커서를 올리면 그 시점의 비중·보유수량·변화율 수치가 표시됩니다. 주황 선 = 직전 ${prevKr} 마지막 거래일 대비 <b>주식수 변화율</b>. <b style="color:var(--in)">편입</b>(직전 구간 미보유→보유)은 0%에서 시작, <b style="color:var(--out)">편출</b>(전량 매도)은 -100%로 표시됩니다.</div>`;
+    : `<div class="detail-note">막대에 커서를 올리면 그 시점의 비중·변화율 수치가 표시됩니다. 주황 선 = 직전 ${prevKr} 마지막 거래일 대비 <b>주식수 변화율</b>. <b style="color:var(--in)">편입</b>(직전 구간 미보유→보유)은 0%에서 시작, <b style="color:var(--out)">편출</b>(전량 매도)은 -100%로 표시됩니다.</div>`;
   return `<div class="detail-inner">
     <div class="detail-head"><span class="dh-tk">${ticker||""}</span><span class="dh-nm">${name||""}</span><span class="dh-sub">${modeKr} · ${basis}</span>${seg}</div>
     ${legend}
@@ -630,7 +639,6 @@ function detTooltip(p,mode){
   else r=(p.rate>0?"+":"")+p.rate.toFixed(1)+"%";
   return `<div class="tt-d">${dlbl}</div>`+
     `<div class="tt-r"><i style="background:#6366F1"></i>비중 ${(p.weight||0).toFixed(2)}%</div>`+
-    `<div class="tt-r"><i style="background:#0E9E6E"></i>보유수량 ${Math.round(p.shares||0).toLocaleString("en-US")}주</div>`+
     `<div class="tt-r"><i style="background:#F59E0B"></i>변화율 ${r}</div>`;
 }
 
