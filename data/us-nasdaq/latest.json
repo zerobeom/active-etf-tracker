@@ -679,7 +679,7 @@
       "price": null,
       "is_cash": false,
       "key": "SG9999000020",
-      "price_usd": 136.85
+      "price_usd": 136.86
     },
     {
       "isin": "US7731211089",
@@ -1030,5 +1030,5 @@
       }
     ]
   },
-  "updated_at": "2026-07-03 12:00"
+  "updated_at": "2026-07-03 16:38"
 }
