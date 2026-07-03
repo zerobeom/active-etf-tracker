@@ -105,11 +105,13 @@
   .clist li[data-key]:hover{background:var(--panel2)}
   .clist li .tk{font-size:13px;font-weight:800;color:var(--faint);overflow:hidden;text-overflow:clip;white-space:nowrap}
   .clist li .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .clist li i{font-style:normal;color:var(--faint);font-weight:700;font-size:13px;margin-right:4px;letter-spacing:.01em}
-  .clist li .qty{color:var(--muted);font-weight:600;font-size:13px;white-space:nowrap;text-align:right}
-  .clist li .wt{color:var(--muted);font-weight:600;font-size:13px;white-space:nowrap;text-align:right}
-  .clist li .d{font-weight:800;font-size:13px;white-space:nowrap;text-align:right}
-  .d.pos{color:var(--in)} .d.neg{color:var(--out)}
+  .clist li .qty,.clist li .wt,.clist li .d{display:flex;justify-content:space-between;align-items:baseline;gap:6px;white-space:nowrap}
+  .clist li i{font-style:normal;color:var(--faint);font-weight:700;font-size:13px;letter-spacing:.01em;flex-shrink:0}
+  .clist li .qty,.clist li .wt{color:var(--muted);font-weight:600;font-size:13px}
+  .clist li .qty b,.clist li .wt b{font-weight:600}
+  .clist li .d{font-weight:800;font-size:13px}
+  .clist li .d b{font-weight:800}
+  .d.pos b{color:var(--in)} .d.neg b{color:var(--out)}
   .empty{color:var(--faint);font-size:13px}
 
   .tablehead{margin:30px 0 12px;display:flex;align-items:baseline;justify-content:space-between}
@@ -359,8 +361,8 @@ function renderBand(c){
 function liEntry(x){
   const tk=`<span class="tk">${x.ticker||""}</span>`;
   return `<li data-key="${x.key}" data-ticker="${x.ticker||""}" data-name="${x.name}">${tk}<span class="nm">${x.name}</span>`+
-    `<span class="qty num"><i>수량</i>${qty(x.shares)}</span>`+
-    `<span class="wt num"><i>비중</i>${pct(x.weight)}</span></li>`;
+    `<span class="qty num"><i>수량</i><b>${qty(x.shares)}</b></span>`+
+    `<span class="wt num"><i>비중</i><b>${pct(x.weight)}</b></span></li>`;
 }
 function liTrade(x){
   const tk=`<span class="tk">${x.ticker||""}</span>`;
@@ -368,9 +370,9 @@ function liTrade(x){
   const rate=(x.prev_shares?x.share_delta/x.prev_shares*100:null);
   const rateTxt=rate==null?"":` (${fmtRate(rate)})`;
   return `<li data-key="${x.key}" data-ticker="${x.ticker||""}" data-name="${x.name}">${tk}<span class="nm">${x.name}</span>`+
-    `<span class="qty num"><i>수량</i>${qty(x.shares)}</span>`+
-    `<span class="wt num"><i>비중</i>${pct(x.weight)}</span>`+
-    `<span class="d ${cls} num"><i>변화</i>${sQty(x.share_delta)}${rateTxt}</span></li>`;
+    `<span class="qty num"><i>수량</i><b>${qty(x.shares)}</b></span>`+
+    `<span class="wt num"><i>비중</i><b>${pct(x.weight)}</b></span>`+
+    `<span class="d ${cls} num"><i>변화</i><b>${sQty(x.share_delta)}${rateTxt}</b></span></li>`;
 }
 function clist(title,tagcls,items,fn){
   const body=items.length?`<ul>${items.map(fn).join("")}</ul>`:`<div class="empty">변동 없음</div>`;
