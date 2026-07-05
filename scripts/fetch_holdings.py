@@ -62,17 +62,17 @@ ETFS = [
      "benchmarks": [
          {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
      ]},
-    {"slug": "sol-megatech", "provider": "sol", "fid": "210940", "ticker": "444200",
-     "name": "SOL 코리아메가테크액티브", "start": "2022-10-18",
-     "benchmarks": [
-         {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
-     ]},
     {"slug": "sol-nexttech", "provider": "sol", "fid": "211099", "ticker": "0118S0",
      "name": "SOL 미국넥스트테크TOP10액티브", "start": "2025-10-28",
      "usd_price": True,
      "benchmarks": [
          {"k": "b1", "label": "나스닥종합", "sym": ["IXIC", "YAHOO:^IXIC"]},
          {"k": "b2", "label": "나스닥100", "sym": ["YAHOO:^NDX", "NDX"]},
+     ]},
+    {"slug": "sol-megatech", "provider": "sol", "fid": "210940", "ticker": "444200",
+     "name": "SOL 코리아메가테크액티브", "start": "2022-10-18",
+     "benchmarks": [
+         {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
      ]},
 ]
 
