@@ -289,6 +289,7 @@ def fetch_latest_available(start_yyyymmdd: str, fid: str, debug: bool = False):
 
 # ── 다운로드 + 파싱 (신한 SOL · 웹페이지 표) ─────────────────────────────
 _KRX_NAME_MAP = None
+_SEC_TICKER_MAP = None
 
 
 def krx_name_map():
@@ -313,6 +314,58 @@ def krx_name_map():
     except Exception as e:
         print(f"  [ticker] KRX 종목 목록 조회 실패: {e}")
     _KRX_NAME_MAP = m
+    return m
+
+
+def _norm_us_name(n: str) -> str:
+    """미국 종목명을 비교 가능하게 정규화. 'Sandisk Corp/DE' -> 'SANDISK'."""
+    n = (n or "").upper()
+    n = re.sub(r"/[A-Z]{2}$", "", n)                          # '/DE', '/MD' 같은 주(州) 표기 제거
+    n = re.sub(r"[.,]", "", n)
+    n = re.sub(r"\b(INC|CORP|CORPORATION|CO|COMPANY|LTD|LIMITED|"
+               r"PLC|PBC|LLC|HOLDINGS?|GROUP|TRUST)\b", "", n)
+    n = re.sub(r"\s+", " ", n).strip()
+    return n
+
+
+def koact_us_ticker_map():
+    """이미 수집해둔 KoAct 미국나스닥성장기업액티브 최신 스냅샷에서 종목명 -> 티커를 뽑아
+    SOL 미국 종목 매핑의 보조 소스로 쓴다(겹치는 종목이 있으면 공짜로 해결됨)."""
+    m = {}
+    try:
+        f = DATA / "us-nasdaq" / "latest.json"
+        if f.exists():
+            latest = json.loads(f.read_text(encoding="utf-8"))
+            for h in latest.get("holdings", []):
+                if h.get("ticker") and h.get("name"):
+                    m[_norm_us_name(h["name"])] = h["ticker"]
+    except Exception as e:
+        print(f"  [ticker] KoAct 나스닥 스냅샷 참조 실패: {e}")
+    return m
+
+
+def sec_us_ticker_map():
+    """SEC(미국 증권거래위원회)가 무료 공개하는 전체 상장기업 티커 목록으로
+    '정규화된 회사명 -> 티커' 맵을 만든다(런 1회, 캐시). 로그인/키 불필요."""
+    global _SEC_TICKER_MAP
+    if _SEC_TICKER_MAP is not None:
+        return _SEC_TICKER_MAP
+    m = {}
+    try:
+        import requests
+        r = requests.get(
+            "https://www.sec.gov/files/company_tickers.json",
+            timeout=30,
+            headers={"User-Agent": "koact-tracker research contact@example.com"},
+        )
+        r.raise_for_status()
+        for row in r.json().values():
+            title, ticker = row.get("title", ""), row.get("ticker", "")
+            if title and ticker:
+                m[_norm_us_name(title)] = ticker
+    except Exception as e:
+        print(f"  [ticker] SEC 티커 목록 조회 실패: {e}")
+    _SEC_TICKER_MAP = m
     return m
 
 
@@ -365,6 +418,8 @@ def normalize_sol(html: str, is_us: bool, debug: bool = False):
         return None, None
 
     name_map = None if is_us else krx_name_map()
+    koact_map = koact_us_ticker_map() if is_us else None
+    sec_map = sec_us_ticker_map() if is_us else None
     holdings = []
     for _, r in table.iterrows():
         name = clean(r.get(cN)) if cN else ""
@@ -375,8 +430,17 @@ def normalize_sol(html: str, is_us: bool, debug: bool = False):
         if not is_cash:
             if is_us:
                 ticker = SOL_US_TICKERS.get(name, "")
+                src = "수동매핑"
                 if not ticker:
-                    print(f"  [ticker] 매핑 안됨(SOL_US_TICKERS에 추가 필요): {name}")
+                    ticker = koact_map.get(_norm_us_name(name), "")
+                    src = "KoAct나스닥참조"
+                if not ticker:
+                    ticker = sec_map.get(_norm_us_name(name), "")
+                    src = "SEC목록"
+                if not ticker:
+                    print(f"  [ticker] 매핑 안됨(SOL_US_TICKERS에 추가 검토): {name}")
+                elif debug:
+                    print(f"  [ticker] {name} -> {ticker} ({src})")
             else:
                 ticker = (name_map or {}).get(name) or (name_map or {}).get(name.replace(" ", "")) or ""
                 if not ticker:
