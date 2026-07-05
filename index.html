@@ -982,8 +982,16 @@ $("#perf").addEventListener("click",function(e){
   };
 })();
 // ── Firebase Authentication 로그인 게이트 ──
+// ⚠️ 임시 비활성화 스위치: SOL 데이터 확인 끝나고 Firebase 설정 마치면 true로 바꾸세요.
+var AUTH_ENABLED = false;
 (function(){
   var gate=document.getElementById("authGate");
+  if(!AUTH_ENABLED){
+    if(gate) gate.remove();
+    document.body.style.overflow="";
+    init();
+    return;
+  }
   var form=document.getElementById("authForm"), emailEl=document.getElementById("authEmail"),
       pwEl=document.getElementById("authPw"), err=document.getElementById("authErr"),
       submitBtn=document.getElementById("authSubmit"), logoutBtn=document.getElementById("logoutBtn");
