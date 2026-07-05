@@ -27,6 +27,7 @@ Active ETF 일별 전체 구성종목 수집기 (다중 운용사·다중 ETF �
     data/{slug}/snapshots/YYYY-MM-DD.json
     data/{slug}/dates.json
     data/{slug}/latest.json
+    data/{slug}/perf.json                : 벤치마크 대비 누적수익률(월별, benchmarks 있는 ETF만)
 
 사용:
     python scripts/fetch_holdings.py            # 오늘(KST) 기준, 모든 ETF
@@ -63,12 +64,16 @@ ETFS = [
      ]},
     {"slug": "sol-megatech", "provider": "sol", "fid": "210940", "ticker": "444200",
      "name": "SOL 코리아메가테크액티브", "start": "2022-10-18",
-     "index_label": "KEDI 메가테크지수"},   # 추종지수 자체는 비공개지만, SOL 사이트가 매일
-                                            # '기초지수' 상장이후 누적수익률을 알려줘서 그걸로 추적
+     "benchmarks": [
+         {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
+     ]},
     {"slug": "sol-nexttech", "provider": "sol", "fid": "211099", "ticker": "0118S0",
      "name": "SOL 미국넥스트테크TOP10액티브", "start": "2025-10-28",
      "usd_price": True,
-     "index_label": "KEDI 미국넥스트테크TOP10"},
+     "benchmarks": [
+         {"k": "b1", "label": "나스닥종합", "sym": ["IXIC", "YAHOO:^IXIC"]},
+         {"k": "b2", "label": "나스닥100", "sym": ["YAHOO:^NDX", "NDX"]},
+     ]},
 ]
 
 PERF_START = "2025-01-01"   # 수익률 시계열 조회 시작(ETF 상장 이전)
@@ -405,92 +410,6 @@ def normalize_sol(html: str, is_us: bool, debug: bool = False):
     return base_date, holdings
 
 
-# ── SOL 수익률/기준가 탭: '상장이후 누적수익률'을 매일 캡처해서 우리 시계열로 쌓기 ─────
-# ⚠️ SOL도 홀딩스 탭처럼 과거 날짜 검색이 버튼/JS 기반이라, 여기서도 항상 "오늘 기준"
-# 상장이후 누적수익률만 받아온다. 그래서 과거는 소급이 안 되고, 이 스크립트를 실행한
-# 날짜부터 하루하루 데이터가 쌓여서 나중에 선그래프가 만들어지는 방식이다(홀딩스와 동일 제약).
-def download_sol_returns(internal_id: str) -> str:
-    import requests
-    r = requests.get(
-        SOL_URL.format(fid=internal_id),
-        params={"tabIndex": 2},
-        timeout=30,
-        headers={"User-Agent": "Mozilla/5.0",
-                 "Referer": "https://www.soletf.com/"},
-    )
-    r.raise_for_status()
-    return r.text
-
-
-def parse_sol_return_summary(html: str):
-    """'수익률' 표에서 기준가격(ETF)·기초지수 각각의 '상장이후' 누적수익률(%)을 뽑는다."""
-    import pandas as pd
-    try:
-        tables = pd.read_html(io.StringIO(html))
-    except Exception:
-        return None, None
-    for t in tables:
-        cols = [str(c) for c in t.columns]
-        if not any("구분" in c for c in cols):
-            continue
-        since_col = next((c for c in cols if "상장이후" in c), None)
-        if not since_col:
-            continue
-        first_col = cols[0]
-        etf_v = idx_v = None
-        for _, r in t.iterrows():
-            label = clean(r.get(first_col))
-            v = to_num(r.get(since_col))
-            if "기준가격" in label:
-                etf_v = v
-            elif "기초지수" in label and "대비" not in label:
-                idx_v = v
-        if etf_v is not None or idx_v is not None:
-            return etf_v, idx_v
-    return None, None
-
-
-def record_sol_perf(etf: dict, date_iso: str, debug: bool = False):
-    try:
-        html = download_sol_returns(etf["fid"])
-    except Exception as e:
-        print(f"  [perf] SOL 수익률 페이지 요청 실패: {e}")
-        return
-    etf_v, idx_v = parse_sol_return_summary(html)
-    if debug:
-        print(f"  [perf] 상장이후 누적: ETF={etf_v} 지수={idx_v}")
-    if etf_v is None and idx_v is None:
-        print("  [perf] 수익률 표를 못 찾음(건너뜀)")
-        return
-
-    edir = DATA / etf["slug"]
-    edir.mkdir(parents=True, exist_ok=True)
-    daily_f = edir / "perf_daily.json"
-    daily = json.loads(daily_f.read_text(encoding="utf-8")) if daily_f.exists() else []
-    daily = [d for d in daily if d["date"] != date_iso]   # 같은 날 재실행하면 덮어쓰기
-    daily.append({"date": date_iso, "etf": etf_v, "idx": idx_v})
-    daily.sort(key=lambda d: d["date"])
-    daily_f.write_text(json.dumps(daily, ensure_ascii=False, indent=2), encoding="utf-8")
-
-    # 월별로 그 달 마지막 값만 남겨서 기존 라인차트 포맷에 맞춤(월별/연도별 토글과 동일 규격)
-    by_month = {}
-    for d in daily:
-        by_month[d["date"][:7]] = {"month": d["date"][:7], "etf": d["etf"], "sidx": d["idx"]}
-    months = sorted(by_month.keys())
-    out_series = [by_month[m] for m in months]
-
-    idx_label = etf.get("index_label", "기초지수")
-    perf = {
-        "as_of": date_iso,
-        "base": etf.get("start", months[0] if months else date_iso),
-        "etf_label": strip_brand(etf["name"]),
-        "benchmarks": [{"k": "sidx", "label": idx_label}],
-        "series": out_series,
-    }
-    (edir / "perf.json").write_text(json.dumps(perf, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"  [perf] 누적 {len(daily)}일치 저장 (상장이후 기준: ETF {etf_v}% / {idx_label} {idx_v}%)")
-
-
 # ── 변동 계산 (수량 중심) ────────────────────────────────────────────────
 def diff(cur, prev):
     if not prev:
@@ -743,12 +662,9 @@ def process_etf(etf: dict, start: str, debug: bool = False):
           f"편입 {len(c['added'])} · 편출 {len(c['removed'])} · "
           f"추가매수 {len(c['bought'])} · 일부매도 {len(c['sold'])}")
 
-    # 벤치마크 수익률 (실패해도 보유종목 데이터에는 영향 없음)
+    # 벤치마크 수익률 (실패해도 보유종목 데이터에는 영향 없음. benchmarks가 없으면 자동 스킵)
     try:
-        if provider == "sol":
-            record_sol_perf(etf, date_iso, debug=debug)
-        else:
-            build_perf(etf, date_iso, debug=debug)
+        build_perf(etf, date_iso, debug=debug)
     except Exception as e:
         print(f"  [perf] 실패(건너뜀): {e}")
 

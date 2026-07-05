@@ -785,7 +785,7 @@ function render(snapshot,baseDate,changes){
 
 async function jget(url){ const r=await fetch(url,{cache:"no-store"}); if(!r.ok) throw new Error(url); return r.json(); }
 const snapshotOf=(slug,iso)=>jget(`./data/${slug}/snapshots/${iso}.json`);
-const stripBrand=(n)=>(n||"").replace(/^(KoAct|SOL)\s*/,"");
+const stripBrand=(n)=>(n||"");   // 이제 KoAct/SOL 접두어를 그대로 보여줌(안 뗌)
 
 let ETFS=[], curEtf=null, DATES=[], DATESET=new Set();
 let CURDATE=null, CURBASE="";
