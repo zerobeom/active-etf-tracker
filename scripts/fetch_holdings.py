@@ -1,9 +1,24 @@
 #!/usr/bin/env python3
 """
-KoAct ETF 일별 전체 구성종목 수집기 (다중 ETF 지원).
+Active ETF 일별 전체 구성종목 수집기 (다중 운용사·다중 ETF 지원).
 
-데이터 소스: 삼성액티브자산운용 '투자종목정보(PDF)' 엑셀 다운로드
-    https://www.samsungactive.co.kr/excel_pdf.do?fId={펀드ID}&gijunYMD=YYYYMMDD
+데이터 소스:
+    - 삼성액티브자산운용(KoAct) '투자종목정보(PDF)' 엑셀 다운로드
+        https://www.samsungactive.co.kr/excel_pdf.do?fId={펀드ID}&gijunYMD=YYYYMMDD
+      (provider: "samsung")
+    - 신한자산운용(SOL) 홈페이지 '구성종목(PDF)' 웹페이지 표
+        https://www.soletf.com/ko/fund/etf/{내부ID}?tabIndex=3
+      (provider: "sol")
+      ⚠️ SOL 페이지는 날짜를 파라미터로 요청해도 항상 "가장 최근" 데이터만 내려준다
+      (버튼 클릭 기반 검색이라 URL만으론 과거 날짜 조회 불가로 확인됨).
+      그래서 SOL 계열은 과거 기간 채우기(backfill)가 안 되고, 매일 그 시점의
+      "최신" 스냅샷만 쌓인다. 앞으로 도는 자동 수집에는 문제없음.
+      또한 SOL 표에는 티커/ISIN이 없고 종목명만 있어서, 종목명→티커 매핑이 필요하다.
+        · 한국 종목(SOL 코리아메가테크액티브): FinanceDataReader의 KRX 전종목 목록으로
+          종목명→코드를 그때그때 조회(별도 유지보수 불요).
+        · 미국 종목(SOL 미국넥스트테크TOP10액티브): 종목 수가 적어(20개 내외) 아래
+          SOL_US_TICKERS에 수동 매핑. 리밸런싱으로 새 종목이 들어오면 실행 로그의
+          "[ticker] 매핑 안됨" 항목을 보고 추가해주면 됨(그 전까진 티커 빈칸으로 저장).
 
 추적 대상은 아래 ETFS 목록에 추가만 하면 늘어납니다.
 
@@ -15,8 +30,8 @@ KoAct ETF 일별 전체 구성종목 수집기 (다중 ETF 지원).
 
 사용:
     python scripts/fetch_holdings.py            # 오늘(KST) 기준, 모든 ETF
-    python scripts/fetch_holdings.py 20260626   # 특정일 강제 수집(과거 채우기, 단일일)
-    python scripts/fetch_holdings.py 20250201:20260629   # 기간 채우기(영업일만 순회)
+    python scripts/fetch_holdings.py 20260626   # 특정일 강제 수집(과거 채우기, 단일일 · samsung 전용)
+    python scripts/fetch_holdings.py 20250201:20260629   # 기간 채우기(영업일만 순회 · samsung 전용)
     python scripts/fetch_holdings.py --debug     # 파싱 전 원본 표 출력
 """
 from __future__ import annotations
@@ -29,35 +44,80 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 # ── 추적할 ETF 목록 ──────────────────────────────────────────────────────
-# slug: 폴더/URL용 영문 식별자 / fid: 운용사 펀드ID / ticker: 거래소 단축코드(표시용)
+# slug: 폴더/URL용 영문 식별자
+# provider: "samsung"(삼성 KoAct, 엑셀) / "sol"(신한 SOL, 웹페이지 표)
+# fid: provider="samsung"이면 운용사 펀드ID / provider="sol"이면 soletf.com 내부 상품ID
+# ticker: 거래소 단축코드(표시용)
 ETFS = [
-    {"slug": "us-nasdaq", "fid": "2ETFQ1", "ticker": "0015B0",
+    {"slug": "us-nasdaq", "provider": "samsung", "fid": "2ETFQ1", "ticker": "0015B0",
      "name": "KoAct 미국나스닥성장기업액티브", "start": "2025-02-25",
      "usd_price": True,
      "benchmarks": [
          {"k": "b1", "label": "나스닥종합", "sym": ["IXIC", "YAHOO:^IXIC"]},
          {"k": "b2", "label": "나스닥100", "sym": ["YAHOO:^NDX", "NDX"]},
      ]},
-    {"slug": "kr-valueup", "fid": "2ETFP3", "ticker": "495230",
+    {"slug": "kr-valueup", "provider": "samsung", "fid": "2ETFP3", "ticker": "495230",
      "name": "KoAct 코리아밸류업액티브", "start": "2024-11-04",
      "benchmarks": [
          {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
      ]},
+    {"slug": "sol-megatech", "provider": "sol", "fid": "210940", "ticker": "444200",
+     "name": "SOL 코리아메가테크액티브", "start": "2022-10-18",
+     "index_label": "KEDI 메가테크지수"},   # 추종지수 자체는 비공개지만, SOL 사이트가 매일
+                                            # '기초지수' 상장이후 누적수익률을 알려줘서 그걸로 추적
+    {"slug": "sol-nexttech", "provider": "sol", "fid": "211099", "ticker": "0118S0",
+     "name": "SOL 미국넥스트테크TOP10액티브", "start": "2025-10-28",
+     "usd_price": True,
+     "index_label": "KEDI 미국넥스트테크TOP10"},
 ]
 
-PERF_START = "2025-01-01"   # 수익률 시계열 조회 시작(두 ETF 상장 이전)
+PERF_START = "2025-01-01"   # 수익률 시계열 조회 시작(ETF 상장 이전)
 
 URL = "https://www.samsungactive.co.kr/excel_pdf.do"
-LOOKBACK_DAYS = 7                       # 해당일 파일이 없으면 며칠 전까지 후퇴 탐색
+SOL_URL = "https://www.soletf.com/ko/fund/etf/{fid}"
+LOOKBACK_DAYS = 7                       # (samsung 전용) 해당일 파일이 없으면 며칠 전까지 후퇴 탐색
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 KST = timezone(timedelta(hours=9))
 
+# SOL 미국넥스트테크TOP10액티브(0118S0) 종목명 -> 티커 수동 매핑.
+# 리밸런싱으로 새 종목이 들어오면 실행 로그의 "[ticker] 매핑 안됨: ..." 항목을 보고
+# 여기 한 줄 추가해주면 됨(추가 전까지는 해당 종목 티커가 빈칸으로 저장됨).
+SOL_US_TICKERS = {
+    "Sandisk Corp/DE": "SNDK",
+    "Planet Labs PBC": "PL",
+    "Bloom Energy Corp": "BE",
+    "Rocket Lab Corp": "RKLB",
+    "Viasat Inc": "VSAT",
+    "IonQ Inc": "IONQ",
+    "D-Wave Quantum Inc": "QBTS",
+    "Oklo Inc": "OKLO",
+    "TTM Technologies Inc": "TTMI",
+    "Lumentum Holdings Inc": "LITE",
+    "Cloudflare Inc": "NET",
+    "Vertiv Holdings Co": "VRT",
+    "Cogent Biosciences Inc": "COGT",
+    "Vicor Corp": "VICR",
+    "Ondas Inc": "ONDS",
+    "Intuitive Machines Inc": "LUNR",
+    "USA Rare Earth Inc": "USAR",
+    "CoreWeave Inc": "CRWV",
+    "TARGA RESOURCES CORP": "TRGP",
+    "Aehr Test Systems": "AEHR",
+    "Roundhill Memory ETF": "DRAM",
+    "Marvell Technology Inc": "MRVL",
+    "Micron Technology Inc": "MU",
+}
+
 
 # ── 유틸 ────────────────────────────────────────────────────────────────
 def today_kst() -> str:
     return datetime.now(KST).strftime("%Y%m%d")
+
+
+def today_iso_kst() -> str:
+    return datetime.now(KST).strftime("%Y-%m-%d")
 
 
 def to_num(v):
@@ -85,7 +145,11 @@ def clean_ticker(code: str) -> str:
     return code.split()[0]
 
 
-# ── 다운로드 + 파싱 ─────────────────────────────────────────────────────
+def strip_brand(name: str) -> str:
+    return re.sub(r"^(KoAct|SOL)\s*", "", name or "")
+
+
+# ── 다운로드 + 파싱 (삼성 KoAct · 엑셀) ──────────────────────────────────
 def download(date_yyyymmdd: str, fid: str) -> bytes:
     import requests
     r = requests.get(
@@ -218,6 +282,215 @@ def fetch_latest_available(start_yyyymmdd: str, fid: str, debug: bool = False):
     return None, None
 
 
+# ── 다운로드 + 파싱 (신한 SOL · 웹페이지 표) ─────────────────────────────
+_KRX_NAME_MAP = None
+
+
+def krx_name_map():
+    """FinanceDataReader로 KRX 전종목 '종목명 -> 코드' 맵을 만든다(런 1회, 캐시)."""
+    global _KRX_NAME_MAP
+    if _KRX_NAME_MAP is not None:
+        return _KRX_NAME_MAP
+    m = {}
+    try:
+        import FinanceDataReader as fdr
+        df = fdr.StockListing("KRX")
+        name_col = next((c for c in ("Name", "종목명") if c in df.columns), None)
+        code_col = next((c for c in ("Code", "Symbol", "종목코드") if c in df.columns), None)
+        if name_col and code_col:
+            for _, row in df.iterrows():
+                nm, cd = str(row[name_col]).strip(), str(row[code_col]).strip()
+                if nm and cd:
+                    m[nm] = cd
+                    m[nm.replace(" ", "")] = cd
+        else:
+            print("  [ticker] KRX 목록 컬럼을 못 찾음(포맷 변경?)")
+    except Exception as e:
+        print(f"  [ticker] KRX 종목 목록 조회 실패: {e}")
+    _KRX_NAME_MAP = m
+    return m
+
+
+def download_sol(internal_id: str) -> str:
+    import requests
+    r = requests.get(
+        SOL_URL.format(fid=internal_id),
+        params={"tabIndex": 3},
+        timeout=30,
+        headers={"User-Agent": "Mozilla/5.0",
+                 "Referer": "https://www.soletf.com/"},
+    )
+    r.raise_for_status()
+    return r.text
+
+
+def parse_sol_table(html: str):
+    import pandas as pd
+    try:
+        tables = pd.read_html(io.StringIO(html))
+    except Exception:
+        return None
+    for t in tables:
+        cols = [str(c) for c in t.columns]
+        if any("종목명" in c for c in cols) and any("비중" in c for c in cols):
+            return t
+    return None
+
+
+def normalize_sol(html: str, is_us: bool, debug: bool = False):
+    table = parse_sol_table(html)
+    if debug and table is not None:
+        print(table.head(6).to_string())
+    if table is None or len(table) == 0:
+        return None, None
+    cols = [str(c) for c in table.columns]
+
+    def col(*names):
+        for n in names:
+            for c in cols:
+                if n in c:
+                    return c
+        return None
+
+    cN = col("종목명")
+    cQ = col("수량")
+    cA = col("평가금액")
+    cW = col("비중")
+    if not cN:
+        return None, None
+
+    name_map = None if is_us else krx_name_map()
+    holdings = []
+    for _, r in table.iterrows():
+        name = clean(r.get(cN)) if cN else ""
+        if not name or name in ("번호", "종목명"):
+            continue
+        is_cash = "현금" in name
+        ticker = ""
+        if not is_cash:
+            if is_us:
+                ticker = SOL_US_TICKERS.get(name, "")
+                if not ticker:
+                    print(f"  [ticker] 매핑 안됨(SOL_US_TICKERS에 추가 필요): {name}")
+            else:
+                ticker = (name_map or {}).get(name) or (name_map or {}).get(name.replace(" ", "")) or ""
+                if not ticker:
+                    print(f"  [ticker] KRX 매핑 안됨: {name}")
+        shares = to_num(r.get(cQ)) if cQ else None
+        amount = to_num(r.get(cA)) if cA else None
+        weight = to_num(r.get(cW)) if cW else None
+        price = None
+        if not is_cash and not is_us and shares:
+            price = int(round(amount / shares)) if amount else None
+        holdings.append({
+            "isin": "", "name": name, "code": ticker, "ticker": ticker,
+            "weight": weight, "shares": shares, "amount": amount,
+            "price": price, "is_cash": is_cash,
+            "key": ticker or name,
+        })
+
+    holdings = [h for h in holdings if h["key"]]
+    for h in holdings:
+        if h["weight"] is not None:
+            h["weight"] = round(h["weight"], 4)
+        if h["shares"] is not None:
+            h["shares"] = round(h["shares"], 2) if is_us else int(round(h["shares"]))
+
+    holdings.sort(key=lambda z: (z["weight"] or 0), reverse=True)
+
+    base_date = None
+    m = re.search(r'value="(\d{4}-\d{2}-\d{2})"', html)
+    if m:
+        base_date = m.group(1)
+    return base_date, holdings
+
+
+# ── SOL 수익률/기준가 탭: '상장이후 누적수익률'을 매일 캡처해서 우리 시계열로 쌓기 ─────
+# ⚠️ SOL도 홀딩스 탭처럼 과거 날짜 검색이 버튼/JS 기반이라, 여기서도 항상 "오늘 기준"
+# 상장이후 누적수익률만 받아온다. 그래서 과거는 소급이 안 되고, 이 스크립트를 실행한
+# 날짜부터 하루하루 데이터가 쌓여서 나중에 선그래프가 만들어지는 방식이다(홀딩스와 동일 제약).
+def download_sol_returns(internal_id: str) -> str:
+    import requests
+    r = requests.get(
+        SOL_URL.format(fid=internal_id),
+        params={"tabIndex": 2},
+        timeout=30,
+        headers={"User-Agent": "Mozilla/5.0",
+                 "Referer": "https://www.soletf.com/"},
+    )
+    r.raise_for_status()
+    return r.text
+
+
+def parse_sol_return_summary(html: str):
+    """'수익률' 표에서 기준가격(ETF)·기초지수 각각의 '상장이후' 누적수익률(%)을 뽑는다."""
+    import pandas as pd
+    try:
+        tables = pd.read_html(io.StringIO(html))
+    except Exception:
+        return None, None
+    for t in tables:
+        cols = [str(c) for c in t.columns]
+        if not any("구분" in c for c in cols):
+            continue
+        since_col = next((c for c in cols if "상장이후" in c), None)
+        if not since_col:
+            continue
+        first_col = cols[0]
+        etf_v = idx_v = None
+        for _, r in t.iterrows():
+            label = clean(r.get(first_col))
+            v = to_num(r.get(since_col))
+            if "기준가격" in label:
+                etf_v = v
+            elif "기초지수" in label and "대비" not in label:
+                idx_v = v
+        if etf_v is not None or idx_v is not None:
+            return etf_v, idx_v
+    return None, None
+
+
+def record_sol_perf(etf: dict, date_iso: str, debug: bool = False):
+    try:
+        html = download_sol_returns(etf["fid"])
+    except Exception as e:
+        print(f"  [perf] SOL 수익률 페이지 요청 실패: {e}")
+        return
+    etf_v, idx_v = parse_sol_return_summary(html)
+    if debug:
+        print(f"  [perf] 상장이후 누적: ETF={etf_v} 지수={idx_v}")
+    if etf_v is None and idx_v is None:
+        print("  [perf] 수익률 표를 못 찾음(건너뜀)")
+        return
+
+    edir = DATA / etf["slug"]
+    edir.mkdir(parents=True, exist_ok=True)
+    daily_f = edir / "perf_daily.json"
+    daily = json.loads(daily_f.read_text(encoding="utf-8")) if daily_f.exists() else []
+    daily = [d for d in daily if d["date"] != date_iso]   # 같은 날 재실행하면 덮어쓰기
+    daily.append({"date": date_iso, "etf": etf_v, "idx": idx_v})
+    daily.sort(key=lambda d: d["date"])
+    daily_f.write_text(json.dumps(daily, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # 월별로 그 달 마지막 값만 남겨서 기존 라인차트 포맷에 맞춤(월별/연도별 토글과 동일 규격)
+    by_month = {}
+    for d in daily:
+        by_month[d["date"][:7]] = {"month": d["date"][:7], "etf": d["etf"], "sidx": d["idx"]}
+    months = sorted(by_month.keys())
+    out_series = [by_month[m] for m in months]
+
+    idx_label = etf.get("index_label", "기초지수")
+    perf = {
+        "as_of": date_iso,
+        "base": etf.get("start", months[0] if months else date_iso),
+        "etf_label": strip_brand(etf["name"]),
+        "benchmarks": [{"k": "sidx", "label": idx_label}],
+        "series": out_series,
+    }
+    (edir / "perf.json").write_text(json.dumps(perf, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"  [perf] 누적 {len(daily)}일치 저장 (상장이후 기준: ETF {etf_v}% / {idx_label} {idx_v}%)")
+
+
 # ── 변동 계산 (수량 중심) ────────────────────────────────────────────────
 def diff(cur, prev):
     if not prev:
@@ -253,8 +526,8 @@ def diff(cur, prev):
 
     added.sort(key=lambda z: z["weight"] or 0, reverse=True)
     removed.sort(key=lambda z: z["weight"] or 0, reverse=True)
-    bought.sort(key=lambda z: z["share_delta"], reverse=True)
-    sold.sort(key=lambda z: z["share_delta"])
+    bought.sort(key=lambda z: z["weight"] or 0, reverse=True)
+    sold.sort(key=lambda z: z["weight"] or 0, reverse=True)
     return {"added": added, "removed": removed, "bought": bought, "sold": sold}
 
 
@@ -370,7 +643,7 @@ def build_perf(etf: dict, end_iso: str, debug: bool = False):
         series.append(row)
 
     perf = {"as_of": end_iso, "base": base,
-            "etf_label": etf["name"].replace("KoAct ", ""),
+            "etf_label": strip_brand(etf["name"]),
             "benchmarks": labels, "series": series}
     (DATA / etf["slug"] / "perf.json").write_text(
         json.dumps(perf, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -403,7 +676,8 @@ def prune_before_start(snap_dir: Path, start_iso: str):
 
 
 def process_etf(etf: dict, start: str, debug: bool = False):
-    slug, fid = etf["slug"], etf["fid"]
+    slug = etf["slug"]
+    provider = etf.get("provider", "samsung")
     edir = DATA / slug
     snap_dir = edir / "snapshots"
     snap_dir.mkdir(parents=True, exist_ok=True)
@@ -413,13 +687,25 @@ def process_etf(etf: dict, start: str, debug: bool = False):
     if pruned:
         print(f"  [prune] 상장일({etf.get('start')}) 이전 {len(pruned)}건 삭제: {', '.join(pruned)}")
 
-    print(f"[{slug}] {etf['name']} ({etf['ticker']}) — 요청 기준일 {start}")
-    date_iso, holdings = fetch_latest_available(start, fid, debug=debug)
+    print(f"[{slug}] {etf['name']} ({etf['ticker']}) — provider={provider}, 요청 기준일 {start}")
+
+    if provider == "sol":
+        try:
+            html = download_sol(etf["fid"])
+            date_iso, holdings = normalize_sol(html, is_us=bool(etf.get("usd_price")), debug=debug)
+        except Exception as e:
+            print(f"  [skip] SOL 페이지 요청/파싱 실패: {e}")
+            return
+        if holdings and not date_iso:
+            date_iso = today_iso_kst()
+    else:
+        date_iso, holdings = fetch_latest_available(start, etf["fid"], debug=debug)
+
     if not holdings:
         print(f"  [skip] 최근 영업일 데이터를 찾지 못함.")
         return
 
-    # 미국 종목 현재가(달러) — 엑셀에 현재가가 없는 종목만
+    # 미국 종목 현재가(달러) — 표에 현재가가 없는 종목만
     if etf.get("usd_price"):
         try:
             tks = [h["ticker"] for h in holdings
@@ -436,7 +722,7 @@ def process_etf(etf: dict, start: str, debug: bool = False):
     prev_date = prev_dates[-1] if prev_dates else None
     prev = load_snapshot(snap_dir, prev_date) if prev_date else None
 
-    snap = {"date": date_iso, "ticker": etf["ticker"], "fund_id": fid,
+    snap = {"date": date_iso, "ticker": etf["ticker"], "fund_id": etf["fid"],
             "name": etf["name"],
             "count": sum(1 for h in holdings if not h["is_cash"]),
             "holdings": holdings}
@@ -459,7 +745,10 @@ def process_etf(etf: dict, start: str, debug: bool = False):
 
     # 벤치마크 수익률 (실패해도 보유종목 데이터에는 영향 없음)
     try:
-        build_perf(etf, date_iso, debug=debug)
+        if provider == "sol":
+            record_sol_perf(etf, date_iso, debug=debug)
+        else:
+            build_perf(etf, date_iso, debug=debug)
     except Exception as e:
         print(f"  [perf] 실패(건너뜀): {e}")
 
@@ -487,12 +776,18 @@ def main():
 
     if args and ":" in args[0]:
         # 기간 채우기: "20250201:20260629" — 영업일만, 과거→최근 순서로 처리
+        # SOL 계열(provider="sol")은 항상 "현재" 스냅샷만 제공해 기간 채우기가 불가능 → 스킵
         start_s, end_s = args[0].split(":", 1)
         days = list(business_days(start_s, end_s))
         print(f"[backfill] {start_s} ~ {end_s} · 영업일 {len(days)}일 처리 시작")
+        sol_slugs = [e["slug"] for e in ETFS if e.get("provider") == "sol"]
+        if sol_slugs:
+            print(f"[backfill] SOL 계열({', '.join(sol_slugs)})은 과거 조회가 안 돼 이 모드에서 제외됩니다.")
         for i, ds in enumerate(days, 1):
             print(f"\n--- ({i}/{len(days)}) {ds} ---")
             for etf in ETFS:
+                if etf.get("provider") == "sol":
+                    continue
                 etf_start = etf.get("start", "1900-01-01").replace("-", "")
                 if ds < etf_start:
                     continue  # 상장 전 날짜는 건너뜀
