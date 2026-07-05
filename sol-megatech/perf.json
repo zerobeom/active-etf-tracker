@@ -1,0 +1,243 @@
+{
+  "as_of": "2026-07-03",
+  "base": "2022-10-18",
+  "etf_label": "코리아메가테크액티브",
+  "benchmarks": [
+    {
+      "k": "sidx",
+      "label": "KEDI 메가테크지수"
+    }
+  ],
+  "series": [
+    {
+      "month": "2022-10",
+      "etf": 2.73,
+      "sidx": null
+    },
+    {
+      "month": "2022-11",
+      "etf": 10.84,
+      "sidx": null
+    },
+    {
+      "month": "2022-12",
+      "etf": 1.94,
+      "sidx": null
+    },
+    {
+      "month": "2023-01",
+      "etf": 14.07,
+      "sidx": null
+    },
+    {
+      "month": "2023-02",
+      "etf": 17.21,
+      "sidx": null
+    },
+    {
+      "month": "2023-03",
+      "etf": 24.2,
+      "sidx": null
+    },
+    {
+      "month": "2023-04",
+      "etf": 21.64,
+      "sidx": null
+    },
+    {
+      "month": "2023-05",
+      "etf": 27.16,
+      "sidx": null
+    },
+    {
+      "month": "2023-06",
+      "etf": 27.34,
+      "sidx": null
+    },
+    {
+      "month": "2023-07",
+      "etf": 31.57,
+      "sidx": null
+    },
+    {
+      "month": "2023-08",
+      "etf": 27.42,
+      "sidx": null
+    },
+    {
+      "month": "2023-09",
+      "etf": 18.52,
+      "sidx": null
+    },
+    {
+      "month": "2023-10",
+      "etf": 4.55,
+      "sidx": null
+    },
+    {
+      "month": "2023-11",
+      "etf": 21.95,
+      "sidx": null
+    },
+    {
+      "month": "2023-12",
+      "etf": 27.44,
+      "sidx": null
+    },
+    {
+      "month": "2024-01",
+      "etf": 13.31,
+      "sidx": null
+    },
+    {
+      "month": "2024-02",
+      "etf": 28.32,
+      "sidx": null
+    },
+    {
+      "month": "2024-03",
+      "etf": 39.64,
+      "sidx": null
+    },
+    {
+      "month": "2024-04",
+      "etf": 44.18,
+      "sidx": null
+    },
+    {
+      "month": "2024-05",
+      "etf": 49.03,
+      "sidx": null
+    },
+    {
+      "month": "2024-06",
+      "etf": 57.5,
+      "sidx": null
+    },
+    {
+      "month": "2024-07",
+      "etf": 50.69,
+      "sidx": null
+    },
+    {
+      "month": "2024-08",
+      "etf": 48.8,
+      "sidx": null
+    },
+    {
+      "month": "2024-09",
+      "etf": 45.74,
+      "sidx": null
+    },
+    {
+      "month": "2024-10",
+      "etf": 49.56,
+      "sidx": null
+    },
+    {
+      "month": "2024-11",
+      "etf": 38.83,
+      "sidx": null
+    },
+    {
+      "month": "2024-12",
+      "etf": 40.09,
+      "sidx": null
+    },
+    {
+      "month": "2025-01",
+      "etf": 56.87,
+      "sidx": null
+    },
+    {
+      "month": "2025-02",
+      "etf": 63.02,
+      "sidx": null
+    },
+    {
+      "month": "2025-03",
+      "etf": 56.98,
+      "sidx": null
+    },
+    {
+      "month": "2025-04",
+      "etf": 68.83,
+      "sidx": null
+    },
+    {
+      "month": "2025-05",
+      "etf": 84.68,
+      "sidx": null
+    },
+    {
+      "month": "2025-06",
+      "etf": 123.71,
+      "sidx": null
+    },
+    {
+      "month": "2025-07",
+      "etf": 138.15,
+      "sidx": null
+    },
+    {
+      "month": "2025-08",
+      "etf": 131.81,
+      "sidx": null
+    },
+    {
+      "month": "2025-09",
+      "etf": 152.18,
+      "sidx": null
+    },
+    {
+      "month": "2025-10",
+      "etf": 212.59,
+      "sidx": null
+    },
+    {
+      "month": "2025-11",
+      "etf": 198.54,
+      "sidx": null
+    },
+    {
+      "month": "2025-12",
+      "etf": 214.02,
+      "sidx": null
+    },
+    {
+      "month": "2026-01",
+      "etf": 305.53,
+      "sidx": null
+    },
+    {
+      "month": "2026-02",
+      "etf": 371.93,
+      "sidx": null
+    },
+    {
+      "month": "2026-03",
+      "etf": 290.27,
+      "sidx": null
+    },
+    {
+      "month": "2026-04",
+      "etf": 403.79,
+      "sidx": null
+    },
+    {
+      "month": "2026-05",
+      "etf": 503.19,
+      "sidx": null
+    },
+    {
+      "month": "2026-06",
+      "etf": 466.54,
+      "sidx": null
+    },
+    {
+      "month": "2026-07",
+      "etf": 445.46,
+      "sidx": null
+    }
+  ]
+}
