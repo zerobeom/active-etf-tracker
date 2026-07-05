@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KoAct ETF Tracker</title>
+<title>Active ETF Tracker</title>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" />
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
 <style>
@@ -222,12 +222,14 @@
   .authcard{width:100%;max-width:300px;display:flex;flex-direction:column;align-items:center;text-align:center}
   .authtitle{font-size:17px;font-weight:800;letter-spacing:-.01em}
   .authsub{margin-top:6px;font-size:13px;color:var(--muted)}
-  .authcard input{margin-top:20px;width:100%;text-align:center;letter-spacing:.3em;font:inherit;font-size:16px;font-weight:700;
+  .authcard input{margin-top:12px;width:100%;text-align:left;font:inherit;font-size:15px;font-weight:600;
     border:1px solid var(--line);border-radius:10px;padding:11px 12px;color:var(--text);background:#fff}
+  .authcard input:first-of-type{margin-top:20px}
   .authcard input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-  .authcard button{margin-top:10px;width:100%;appearance:none;border:0;background:var(--accent);color:#fff;
+  .authcard button{margin-top:14px;width:100%;appearance:none;border:0;background:var(--accent);color:#fff;
     font:inherit;font-size:14px;font-weight:700;padding:11px 12px;border-radius:10px;cursor:pointer}
   .authcard button:hover{opacity:.9}
+  .authcard button:disabled{opacity:.6;cursor:default}
   .autherr{margin-top:10px;font-size:12px;color:var(--out);display:none}
   .autherr.show{display:block}
   @keyframes authshake{10%,90%{transform:translateX(-1px)}20%,80%{transform:translateX(2px)}30%,50%,70%{transform:translateX(-4px)}40%,60%{transform:translateX(4px)}}
@@ -247,21 +249,23 @@
 <body>
 <div class="authgate" id="authGate">
   <form class="authcard" id="authForm" autocomplete="off">
-    <div class="authtitle">KoAct ETF Tracker</div>
-    <div class="authsub">비밀번호를 입력해주세요</div>
-    <input type="password" id="authPw" inputmode="numeric" autocomplete="off" autofocus />
-    <button type="submit">입장</button>
-    <div class="autherr" id="authErr">비밀번호가 올바르지 않아요</div>
+    <div class="authtitle">Active ETF Tracker</div>
+    <div class="authsub">로그인 후 이용해주세요</div>
+    <input type="email" id="authEmail" placeholder="이메일" autocomplete="username" />
+    <input type="password" id="authPw" placeholder="비밀번호" autocomplete="current-password" />
+    <button type="submit" id="authSubmit">로그인</button>
+    <div class="autherr" id="authErr"></div>
   </form>
 </div>
 <div class="wrap">
   <header>
     <div class="brand">
-      <span class="eyebrow">KoAct · 일별 구성기업 추적</span>
+      <span class="eyebrow">Active ETF · 일별 구성기업 추적</span>
       <h1 id="etfTitle">미국나스닥성장기업액티브<span class="code num">0015B0</span></h1>
       <div class="updwrap" id="updWrap"><button id="updateBtn" class="upd" type="button">🔄 데이터 업데이트</button><span id="updHint" class="updhint"></span></div>
       <div class="updnote" id="updNote">자동 갱신: 매 영업일(월–금) 06:00 · 18:00(KST) · 버튼 수동 실행 시 데이터 반영까지 1~2분 정도 걸려요</div>
       <div class="updstamp" id="lastUpd"></div>
+      <button id="logoutBtn" type="button" class="upd" style="display:none;margin-top:8px">로그아웃</button>
     </div>
     <div class="datepick">
       <div class="pick"><label for="etf">ETF</label>
@@ -300,6 +304,19 @@
   </footer>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-auth-compat.js"></script>
+<script>
+// ⚠️ 아래 firebaseConfig를 Firebase 콘솔에서 복사한 본인 프로젝트 설정으로 교체하세요.
+// (프로젝트 설정 → 일반 → 내 앱 → SDK 설정 및 구성 → config 객체 그대로 복사)
+var firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  appId: "YOUR_APP_ID"
+};
+firebase.initializeApp(firebaseConfig);
+</script>
 <script>
 const $=(s)=>document.querySelector(s);
 const keyOf=(h)=>h.key||h.isin||h.code||h.name;
@@ -768,7 +785,7 @@ function render(snapshot,baseDate,changes){
 
 async function jget(url){ const r=await fetch(url,{cache:"no-store"}); if(!r.ok) throw new Error(url); return r.json(); }
 const snapshotOf=(slug,iso)=>jget(`./data/${slug}/snapshots/${iso}.json`);
-const stripKoact=(n)=>(n||"").replace(/^KoAct\s*/,"");
+const stripBrand=(n)=>(n||"").replace(/^(KoAct|SOL)\s*/,"");
 
 let ETFS=[], curEtf=null, DATES=[], DATESET=new Set();
 let CURDATE=null, CURBASE="";
@@ -842,13 +859,13 @@ document.addEventListener("click",(e)=>{ if(!e.target.closest(".datefield")) clo
 document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") closeCalAll(); });
 
 function setTitle(etf){
-  $("#etfTitle").innerHTML=`${stripKoact(etf.name)}<span class="code num">${etf.ticker}</span>`;
+  $("#etfTitle").innerHTML=`${stripBrand(etf.name)}<span class="code num">${etf.ticker}</span>`;
 }
 
 function showEmpty(){
   DATESET=new Set(); CURDATE=null; CURBASE=""; closeCalAll();
   $("#dateBtn").textContent="—"; $("#baseBtn").textContent="—"; $("#baseBtn").classList.add("empty");
-  $("#ctx").innerHTML=`<b>${stripKoact(curEtf.name)}</b> <span class="vs">· 아직 수집된 데이터가 없어요</span>`;
+  $("#ctx").innerHTML=`<b>${stripBrand(curEtf.name)}</b> <span class="vs">· 아직 수집된 데이터가 없어요</span>`;
   $("#band").innerHTML=""; $("#changeLists").innerHTML="";
   const pb=$("#perf"); pb.style.display="none"; pb.innerHTML="";
   $("#lastUpd").textContent="";
@@ -894,7 +911,7 @@ async function init(){
   try{
     ETFS=await jget("./data/etfs.json");
     if(!ETFS.length) throw new Error("empty");
-    $("#etf").innerHTML=ETFS.map(e=>`<option value="${e.slug}">${stripKoact(e.name)}</option>`).join("");
+    $("#etf").innerHTML=ETFS.map(e=>`<option value="${e.slug}">${stripBrand(e.name)}</option>`).join("");
     $("#etf").onchange=()=>selectEtf($("#etf").value);
     await selectEtf(ETFS[0].slug);
   }catch(e){ loadDemo(); }
@@ -964,29 +981,46 @@ $("#perf").addEventListener("click",function(e){
     else { document.getElementById("updHint").textContent="GitHub 저장소 Actions 탭에서 ‘Run workflow’를 실행하세요."; }
   };
 })();
-// ── 간단 비밀번호 게이트 ── 원문은 저장하지 않고 SHA-256 해시만 비교합니다.
+// ── Firebase Authentication 로그인 게이트 ──
 (function(){
-  var AUTH_HASH="3b2cbc8be13f3bad7d9049caf98fd558b191bc3ff2107638cf773eefbc4df512";
-  var AUTH_KEY="koact_auth";
   var gate=document.getElementById("authGate");
-  function isAuthed(){ try{ return localStorage.getItem(AUTH_KEY)==="1"; }catch(e){ return false; } }
-  function setAuthed(){ try{ localStorage.setItem(AUTH_KEY,"1"); }catch(e){} }
-  async function sha256Hex(str){
-    var buf=await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
-    return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,"0"); }).join("");
+  var form=document.getElementById("authForm"), emailEl=document.getElementById("authEmail"),
+      pwEl=document.getElementById("authPw"), err=document.getElementById("authErr"),
+      submitBtn=document.getElementById("authSubmit"), logoutBtn=document.getElementById("logoutBtn");
+  var booted=false;
+  function boot(){
+    if(booted) return; booted=true;
+    if(gate) gate.remove();
+    document.body.style.overflow="";
+    if(logoutBtn) logoutBtn.style.display="inline-block";
+    init();
   }
-  function boot(){ if(gate) gate.remove(); document.body.style.overflow=""; init(); }
-  if(isAuthed()){ boot(); return; }
-  document.body.style.overflow="hidden";
-  var form=document.getElementById("authForm"), input=document.getElementById("authPw"), err=document.getElementById("authErr");
-  if(!form){ boot(); return; }   // 혹시 게이트 마크업이 없으면 그냥 통과
-  form.addEventListener("submit", async function(e){
-    e.preventDefault();
-    var h=await sha256Hex(input.value||"");
-    if(h===AUTH_HASH){ setAuthed(); boot(); }
-    else{ err.classList.add("show"); input.value=""; input.focus();
-      form.classList.remove("shake"); void form.offsetWidth; form.classList.add("shake"); }
+  function showGate(){ document.body.style.overflow="hidden"; }
+  function authErrText(code){
+    if(code==="auth/invalid-email"||code==="auth/invalid-credential"||code==="auth/wrong-password"||code==="auth/user-not-found")
+      return "이메일 또는 비밀번호가 올바르지 않아요";
+    if(code==="auth/too-many-requests") return "시도가 너무 많아요. 잠시 후 다시 시도해주세요";
+    return "로그인에 실패했어요 (" + code + ")";
+  }
+  firebase.auth().onAuthStateChanged(function(user){
+    if(user) boot(); else showGate();
   });
+  if(form){
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+      err.classList.remove("show");
+      submitBtn.disabled=true; submitBtn.textContent="로그인 중…";
+      firebase.auth().signInWithEmailAndPassword(emailEl.value.trim(), pwEl.value)
+        .catch(function(e2){
+          err.textContent=authErrText(e2.code);
+          err.classList.add("show");
+          pwEl.value=""; pwEl.focus();
+          form.classList.remove("shake"); void form.offsetWidth; form.classList.add("shake");
+        })
+        .finally(function(){ submitBtn.disabled=false; submitBtn.textContent="로그인"; });
+    });
+  }
+  if(logoutBtn) logoutBtn.addEventListener("click", function(){ firebase.auth().signOut(); location.reload(); });
 })();
 </script>
 </body>
