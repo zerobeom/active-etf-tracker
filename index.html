@@ -297,7 +297,6 @@
   <footer>
     데이터 출처: 삼성액티브자산운용 투자종목정보(PDF) · 매 영업일 자동 갱신.<br>
     수량은 PDF(설정·환매 기준 1CU 바스켓) 기준이라 펀드 설정/환매가 아닌 매니저의 리밸런싱을 반영합니다. 실제 보유내역과 다를 수 있습니다.
-    본 페이지는 정보 제공용이며 투자 권유가 아닙니다.
   </footer>
 </div>
 
@@ -337,8 +336,8 @@ function computeDiff(cur,prev){
   for(const [k,h] of pmap) if(!cmap.has(k)) removed.push({key:k,name:h.name,ticker:h.ticker,weight:h.weight,shares:h.shares});
   added.sort((a,b)=>(b.weight||0)-(a.weight||0));
   removed.sort((a,b)=>(b.weight||0)-(a.weight||0));
-  bought.sort((a,b)=>b.share_delta-a.share_delta);
-  sold.sort((a,b)=>a.share_delta-b.share_delta);
+  bought.sort((a,b)=>(b.weight||0)-(a.weight||0));
+  sold.sort((a,b)=>(b.weight||0)-(a.weight||0));
   const changeOf=new Map();
   added.forEach(x=>changeOf.set(x.ticker||x.name,{type:"new"}));
   bought.forEach(x=>changeOf.set(x.ticker||x.name,{type:"buy",ds:x.share_delta}));
@@ -391,7 +390,7 @@ function renderTable(holdings,c){
   const cash=holdings.filter(h=>h.is_cash).sort((a,b)=>cashRank(a)-cashRank(b));
   const display=[...stocks,...cash];
   const max=Math.max(1,...stocks.map(h=>h.weight||0));
-  const head=`<div class="row head"><span>#</span><span>티커</span><span>기업명</span><span class="r-price">현재가</span><span class="r-qty">보유수량</span><span class="r-w">비중</span><span class="r-bar"></span></div>`;
+  const head=`<div class="row head"><span>#</span><span>티커</span><span>기업명</span><span class="r-price">현재가</span><span class="r-qty">보유수량 / 금액</span><span class="r-w">비중</span><span class="r-bar"></span></div>`;
   let n=0;
   const rows=display.map((h)=>{
     if(h.is_cash){
@@ -502,7 +501,7 @@ function renderPerf(){
     `<div class="legend">${perfLegend(perf)}</div>`+
     `<div class="perf-cap">이름 옆 숫자는 상장일 이후 <b>누적수익률</b>, 괄호는 ETF가 해당 지수보다 앞선 폭인 <b>초과수익</b>(ETF 수익률 − 지수 수익률, %p)입니다.</div>`+
     `${body}`+
-    `<div class="perf-foot">${fx}${PERFMODE==='year'?'매년 마지막':'매월 마지막'} 거래일 종가 기준. 정보 제공용이며 투자 권유가 아닙니다.</div>`;
+    `<div class="perf-foot">${fx}${PERFMODE==='year'?'매년 마지막':'매월 마지막'} 거래일 종가 기준.</div>`;
   box.style.display="block";
 }
 
@@ -645,20 +644,19 @@ function detailInner(view,mode,heldNow){
   const {ticker,name}=CURDETAIL;
   const basis = mode==="week"?"매주 마지막 거래일":mode==="year"?"매년 마지막 거래일":"매월 마지막 거래일";
   const modeKr = mode==="week"?"주별":mode==="year"?"연도별":"월별";
-  const prevKr = mode==="week"?"주":mode==="year"?"해":"달";
   const seg=`<div class="seg sseg">`+
     `<button class="${mode==='week'?'on':''}" data-m="week">주별</button>`+
     `<button class="${mode==='month'?'on':''}" data-m="month">월별</button>`+
     `<button class="${mode==='year'?'on':''}" data-m="year">연도별</button></div>`;
   const legend=`<div class="clegend">`+
     `<span class="lg"><i style="background:#6366F1"></i>비중(%) · 왼쪽축</span>`+
-    `<span class="lg"><i style="background:#0E9E6E"></i>보유수량(주) · 참고용 막대</span>`+
-    `<span class="lg"><i class="ln"></i>주식수 변화율(%) · 오른쪽축</span></div>`;
+    `<span class="lg"><i class="ln"></i>주식수 변화율(%) · 오른쪽축</span>`+
+    `<span class="lg"><i style="background:#0E9E6E"></i>보유수량(주)</span></div>`;
   const heldNote = heldNow===false
     ? `<div class="detail-note" style="color:var(--out);font-weight:700">현재는 편출되어 보유하고 있지 않은 기업이에요 · 과거 추이만 표시됩니다.</div>` : "";
   const note=view.length<2
     ? `<div class="detail-note">아직 한 시점뿐이에요. 데이터가 쌓이면 추이가 그려져요.</div>`
-    : `<div class="detail-note">막대에 커서를 올리면 그 시점의 비중·보유수량·변화율 수치가 표시됩니다. 초록 막대(보유수량)는 참고용이라 별도 눈금은 없어요 — 정확한 값은 커서로 확인하세요. 주황 선 = 직전 ${prevKr} 마지막 거래일 대비 <b>주식수 변화율</b>. <b style="color:var(--in)">편입</b>(직전 구간 미보유→보유)은 0%에서 시작, <b style="color:var(--out)">편출</b>(전량 매도)은 -100%로 표시됩니다.</div>`;
+    : `<div class="detail-note">막대에 커서를 올리면 그 시점의 비중·보유수량·변화율 수치가 표시됩니다.</div>`;
   return `<div class="detail-inner">
     <div class="detail-head"><span class="dh-tk">${ticker||""}</span><span class="dh-nm">${name||""}</span><span class="dh-sub">${modeKr} · ${basis}</span>${seg}</div>
     ${heldNote}
