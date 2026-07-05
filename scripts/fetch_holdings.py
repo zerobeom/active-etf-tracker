@@ -290,6 +290,7 @@ def fetch_latest_available(start_yyyymmdd: str, fid: str, debug: bool = False):
 # ── 다운로드 + 파싱 (신한 SOL · 웹페이지 표) ─────────────────────────────
 _KRX_NAME_MAP = None
 _SEC_TICKER_MAP = None
+_NASDAQ_TICKER_MAP = None
 
 
 def krx_name_map():
@@ -346,7 +347,9 @@ def koact_us_ticker_map():
 
 def sec_us_ticker_map():
     """SEC(미국 증권거래위원회)가 무료 공개하는 전체 상장기업 티커 목록으로
-    '정규화된 회사명 -> 티커' 맵을 만든다(런 1회, 캐시). 로그인/키 불필요."""
+    '정규화된 회사명 -> 티커' 맵을 만든다(런 1회, 캐시). 로그인/키 불필요.
+    ⚠️ SEC가 클라우드/데이터센터 IP 요청을 종종 403으로 막아서, 이 함수는
+    실패해도 조용히 빈 맵을 돌려주고 다음 소스(나스닥 심볼 디렉터리)로 넘어간다."""
     global _SEC_TICKER_MAP
     if _SEC_TICKER_MAP is not None:
         return _SEC_TICKER_MAP
@@ -364,8 +367,45 @@ def sec_us_ticker_map():
             if title and ticker:
                 m[_norm_us_name(title)] = ticker
     except Exception as e:
-        print(f"  [ticker] SEC 티커 목록 조회 실패: {e}")
+        print(f"  [ticker] SEC 티커 목록 조회 실패(건너뜀): {e}")
     _SEC_TICKER_MAP = m
+    return m
+
+
+def nasdaq_us_ticker_map():
+    """나스닥거래소가 공개하는 상장기업 심볼 디렉터리(HTTP, 로그인/키 불필요)로
+    '정규화된 회사명 -> 티커' 맵을 만든다(런 1회, 캐시). SEC보다 차단 이슈가 적어
+    실전에서 더 안정적인 편."""
+    global _NASDAQ_TICKER_MAP
+    if _NASDAQ_TICKER_MAP is not None:
+        return _NASDAQ_TICKER_MAP
+    m = {}
+    try:
+        import requests
+        for url in ("https://www.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt",
+                    "https://www.nasdaqtrader.com/dynamic/SymDir/otherlisted.txt"):
+            r = requests.get(url, timeout=30, headers={"User-Agent": "Mozilla/5.0"})
+            r.raise_for_status()
+            lines = r.text.splitlines()
+            if not lines:
+                continue
+            header = lines[0].split("|")
+            sym_i = header.index("Symbol") if "Symbol" in header else 0
+            name_i = next((i for i, h in enumerate(header) if "Name" in h), 1)
+            for line in lines[1:]:
+                parts = line.split("|")
+                if len(parts) <= max(sym_i, name_i) or "File Creation Time" in line:
+                    continue
+                sym, name = parts[sym_i].strip(), parts[name_i].strip()
+                if not sym or not name:
+                    continue
+                # 'ATA Creativity Global - American Depositary Shares...'처럼 뒤에
+                # 주식 종류 설명이 붙는 경우가 많아 첫 ' - ' 앞부분만 회사명으로 씀
+                base_name = name.split(" - ")[0]
+                m[_norm_us_name(base_name)] = sym
+    except Exception as e:
+        print(f"  [ticker] 나스닥 심볼 목록 조회 실패(건너뜀): {e}")
+    _NASDAQ_TICKER_MAP = m
     return m
 
 
@@ -419,6 +459,7 @@ def normalize_sol(html: str, is_us: bool, debug: bool = False):
 
     name_map = None if is_us else krx_name_map()
     koact_map = koact_us_ticker_map() if is_us else None
+    nasdaq_map = nasdaq_us_ticker_map() if is_us else None
     sec_map = sec_us_ticker_map() if is_us else None
     holdings = []
     for _, r in table.iterrows():
@@ -434,6 +475,9 @@ def normalize_sol(html: str, is_us: bool, debug: bool = False):
                 if not ticker:
                     ticker = koact_map.get(_norm_us_name(name), "")
                     src = "KoAct나스닥참조"
+                if not ticker:
+                    ticker = nasdaq_map.get(_norm_us_name(name), "")
+                    src = "나스닥목록"
                 if not ticker:
                     ticker = sec_map.get(_norm_us_name(name), "")
                     src = "SEC목록"
