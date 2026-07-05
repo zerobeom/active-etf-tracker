@@ -391,7 +391,7 @@ function renderTable(holdings,c){
   const cash=holdings.filter(h=>h.is_cash).sort((a,b)=>cashRank(a)-cashRank(b));
   const display=[...stocks,...cash];
   const max=Math.max(1,...stocks.map(h=>h.weight||0));
-  const head=`<div class="row head"><span>#</span><span>티커</span><span>기업명</span><span class="r-price">현재가</span><span class="r-qty">보유수량 / 금액</span><span class="r-w">비중</span><span class="r-bar"></span></div>`;
+  const head=`<div class="row head"><span>#</span><span>티커</span><span>기업명</span><span class="r-price">현재가</span><span class="r-qty">보유수량</span><span class="r-w">비중</span><span class="r-bar"></span></div>`;
   let n=0;
   const rows=display.map((h)=>{
     if(h.is_cash){
