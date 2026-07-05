@@ -125,50 +125,54 @@
     {
       "isin": "",
       "name": "Rocket Lab USA Inc",
-      "code": "",
-      "ticker": "",
+      "code": "RKLB",
+      "ticker": "RKLB",
       "weight": 5.84,
       "shares": 269.88,
       "amount": 42017321.0,
       "price": null,
       "is_cash": false,
-      "key": "Rocket Lab USA Inc"
+      "key": "RKLB",
+      "price_usd": 100.46
     },
     {
       "isin": "",
       "name": "Crowdstrike Holdings Inc",
-      "code": "",
-      "ticker": "",
+      "code": "CRWD",
+      "ticker": "CRWD",
       "weight": 4.43,
       "shares": 106.04,
       "amount": 31871087.0,
       "price": null,
       "is_cash": false,
-      "key": "Crowdstrike Holdings Inc"
+      "key": "CRWD",
+      "price_usd": 193.98
     },
     {
       "isin": "",
       "name": "Coherent Corp",
-      "code": "",
-      "ticker": "",
+      "code": "COHR",
+      "ticker": "COHR",
       "weight": 4.28,
       "shares": 53.67,
       "amount": 30782196.0,
       "price": null,
       "is_cash": false,
-      "key": "Coherent Corp"
+      "key": "COHR",
+      "price_usd": 333.36
     },
     {
       "isin": "",
       "name": "LAM RESEARCH CORP",
-      "code": "",
-      "ticker": "",
+      "code": "LRCX",
+      "ticker": "LRCX",
       "weight": 4.16,
       "shares": 49.15,
       "amount": 29918701.0,
       "price": null,
       "is_cash": false,
-      "key": "LAM RESEARCH CORP"
+      "key": "LRCX",
+      "price_usd": 351.41
     },
     {
       "isin": "",
@@ -199,26 +203,28 @@
     {
       "isin": "",
       "name": "GE Vernova Inc",
-      "code": "",
-      "ticker": "",
+      "code": "GEV",
+      "ticker": "GEV",
       "weight": 3.54,
       "shares": 14.43,
       "amount": 25466377.0,
       "price": null,
       "is_cash": false,
-      "key": "GE Vernova Inc"
+      "key": "GEV",
+      "price_usd": 1113.11
     },
     {
       "isin": "",
       "name": "Space Exploration Technologies Corp",
-      "code": "",
-      "ticker": "",
+      "code": "SPCX",
+      "ticker": "SPCX",
       "weight": 3.31,
       "shares": 97.15,
       "amount": 23811536.0,
       "price": null,
       "is_cash": false,
-      "key": "Space Exploration Technologies Corp"
+      "key": "SPCX",
+      "price_usd": 162.0
     },
     {
       "isin": "",
