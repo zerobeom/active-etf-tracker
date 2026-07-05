@@ -797,16 +797,6 @@
     ],
     "bought": [
       {
-        "name": "INTEL Corp",
-        "ticker": "INTC",
-        "shares": 414,
-        "prev_shares": 360,
-        "share_delta": 54,
-        "weight": 6.7007,
-        "prev_weight": 6.0768,
-        "weight_delta": 0.6239
-      },
-      {
         "name": "ADVANCED MICRO DEVICES",
         "ticker": "AMD",
         "shares": 109,
@@ -817,34 +807,14 @@
         "weight_delta": 0.7147
       },
       {
-        "name": "BLOOM ENERGY CORPORATION",
-        "ticker": "BE",
-        "shares": 111,
-        "prev_shares": 98,
-        "share_delta": 13,
-        "weight": 4.0922,
-        "prev_weight": 3.5773,
-        "weight_delta": 0.5149
-      },
-      {
-        "name": "CROWDSTRIKE HOLDINGS INC - A",
-        "ticker": "CRWD",
-        "shares": 18,
-        "prev_shares": 5,
-        "share_delta": 13,
-        "weight": 0.4548,
-        "prev_weight": 0.4299,
-        "weight_delta": 0.0249
-      },
-      {
-        "name": "MARVELL TECHNOLOGY INC",
-        "ticker": "MRVL",
-        "shares": 93,
-        "prev_shares": 81,
-        "share_delta": 12,
-        "weight": 3.2297,
-        "prev_weight": 2.9111,
-        "weight_delta": 0.3186
+        "name": "INTEL Corp",
+        "ticker": "INTC",
+        "shares": 414,
+        "prev_shares": 360,
+        "share_delta": 54,
+        "weight": 6.7007,
+        "prev_weight": 6.0768,
+        "weight_delta": 0.6239
       },
       {
         "name": "Sandisk Corp/DE",
@@ -857,6 +827,26 @@
         "weight_delta": 0.3699
       },
       {
+        "name": "BLOOM ENERGY CORPORATION",
+        "ticker": "BE",
+        "shares": 111,
+        "prev_shares": 98,
+        "share_delta": 13,
+        "weight": 4.0922,
+        "prev_weight": 3.5773,
+        "weight_delta": 0.5149
+      },
+      {
+        "name": "MARVELL TECHNOLOGY INC",
+        "ticker": "MRVL",
+        "shares": 93,
+        "prev_shares": 81,
+        "share_delta": 12,
+        "weight": 3.2297,
+        "prev_weight": 2.9111,
+        "weight_delta": 0.3186
+      },
+      {
         "name": "DATADOG INC - CLASS A",
         "ticker": "DDOG",
         "shares": 74,
@@ -865,28 +855,28 @@
         "weight": 2.4919,
         "prev_weight": 2.2516,
         "weight_delta": 0.2403
+      },
+      {
+        "name": "CROWDSTRIKE HOLDINGS INC - A",
+        "ticker": "CRWD",
+        "shares": 18,
+        "prev_shares": 5,
+        "share_delta": 13,
+        "weight": 0.4548,
+        "prev_weight": 0.4299,
+        "weight_delta": 0.0249
       }
     ],
     "sold": [
       {
-        "name": "BIOGEN",
-        "ticker": "BIIB",
-        "shares": 38,
-        "prev_shares": 91,
-        "share_delta": -53,
-        "weight": 1.0148,
-        "prev_weight": 2.3695,
-        "weight_delta": -1.3547
-      },
-      {
-        "name": "ELI LILLY & CO",
-        "ticker": "LLY",
-        "shares": 6,
-        "prev_shares": 16,
-        "share_delta": -10,
-        "weight": 0.9838,
-        "prev_weight": 2.2636,
-        "weight_delta": -1.2798
+        "name": "ALPHABET INC-CL A",
+        "ticker": "GOOGL",
+        "shares": 89,
+        "prev_shares": 90,
+        "share_delta": -1,
+        "weight": 4.111,
+        "prev_weight": 3.8911,
+        "weight_delta": 0.2199
       },
       {
         "name": "NVIDIA Corp",
@@ -897,16 +887,6 @@
         "weight": 4.0833,
         "prev_weight": 3.9559,
         "weight_delta": 0.1274
-      },
-      {
-        "name": "ALPHABET INC-CL A",
-        "ticker": "GOOGL",
-        "shares": 89,
-        "prev_shares": 90,
-        "share_delta": -1,
-        "weight": 4.111,
-        "prev_weight": 3.8911,
-        "weight_delta": 0.2199
       },
       {
         "name": "Snowflake Inc   - CL A",
@@ -1009,6 +989,26 @@
         "weight_delta": 0.1287
       },
       {
+        "name": "BIOGEN",
+        "ticker": "BIIB",
+        "shares": 38,
+        "prev_shares": 91,
+        "share_delta": -53,
+        "weight": 1.0148,
+        "prev_weight": 2.3695,
+        "weight_delta": -1.3547
+      },
+      {
+        "name": "ELI LILLY & CO",
+        "ticker": "LLY",
+        "shares": 6,
+        "prev_shares": 16,
+        "share_delta": -10,
+        "weight": 0.9838,
+        "prev_weight": 2.2636,
+        "weight_delta": -1.2798
+      },
+      {
         "name": "CISCO SYSTEMS INC",
         "ticker": "CSCO",
         "shares": 58,
@@ -1030,5 +1030,5 @@
       }
     ]
   },
-  "updated_at": "2026-07-05 16:35"
+  "updated_at": "2026-07-05 16:46"
 }

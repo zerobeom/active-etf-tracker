@@ -708,16 +708,6 @@
     "removed": [],
     "bought": [
       {
-        "name": "신한지주",
-        "ticker": "055550",
-        "shares": 457,
-        "prev_shares": 365,
-        "share_delta": 92,
-        "weight": 2.6184,
-        "prev_weight": 1.8053,
-        "weight_delta": 0.8131
-      },
-      {
         "name": "KB금융",
         "ticker": "105560",
         "shares": 418,
@@ -728,14 +718,14 @@
         "weight_delta": 0.9228
       },
       {
-        "name": "F&F",
-        "ticker": "383220",
-        "shares": 109,
-        "prev_shares": 63,
-        "share_delta": 46,
-        "weight": 0.4883,
-        "prev_weight": 0.2502,
-        "weight_delta": 0.2381
+        "name": "신한지주",
+        "ticker": "055550",
+        "shares": 457,
+        "prev_shares": 365,
+        "share_delta": 92,
+        "weight": 2.6184,
+        "prev_weight": 1.8053,
+        "weight_delta": 0.8131
       },
       {
         "name": "한화에어로스페이스",
@@ -746,6 +736,16 @@
         "weight": 2.2524,
         "prev_weight": 1.7912,
         "weight_delta": 0.4612
+      },
+      {
+        "name": "F&F",
+        "ticker": "383220",
+        "shares": 109,
+        "prev_shares": 63,
+        "share_delta": 46,
+        "weight": 0.4883,
+        "prev_weight": 0.2502,
+        "weight_delta": 0.2381
       }
     ],
     "sold": [
@@ -771,5 +771,5 @@
       }
     ]
   },
-  "updated_at": "2026-07-05 16:35"
+  "updated_at": "2026-07-05 16:46"
 }

@@ -10,5 +10,17 @@
     "name": "KoAct 코리아밸류업액티브",
     "ticker": "495230",
     "fid": "2ETFP3"
+  },
+  {
+    "slug": "sol-megatech",
+    "name": "SOL 코리아메가테크액티브",
+    "ticker": "444200",
+    "fid": "210940"
+  },
+  {
+    "slug": "sol-nexttech",
+    "name": "SOL 미국넥스트테크TOP10액티브",
+    "ticker": "0118S0",
+    "fid": "211099"
   }
 ]
