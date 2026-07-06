@@ -866,7 +866,7 @@ function showEmpty(){
   DATESET=new Set(); CURDATE=null; CURBASE=""; closeCalAll();
   $("#dateBtn").textContent="—"; $("#baseBtn").textContent="—"; $("#baseBtn").classList.add("empty");
   $("#ctx").innerHTML=`<b>${stripBrand(curEtf.name)}</b> <span class="vs">· 아직 수집된 데이터가 없어요</span>`;
-  $("#band").innerHTML=""; $("#changeLists").innerHTML="";
+  $("#band").innerHTML=""; $("#changeLists").innerHTML=""; $("#count").textContent="";
   const pb=$("#perf"); pb.style.display="none"; pb.innerHTML="";
   $("#lastUpd").textContent="";
   $("#table").innerHTML=`<div style="padding:26px 16px;color:var(--muted);text-align:center;font-size:13px;line-height:1.7">이 ETF는 아직 데이터가 없습니다.<br>GitHub 저장소의 <b>Actions → Run workflow</b>를 한 번 실행하면 채워집니다.</div>`;
