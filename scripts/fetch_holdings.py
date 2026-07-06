@@ -527,11 +527,16 @@ def normalize_sol(html: str, is_us: bool, debug: bool = False):
 
 
 # ── 다운로드 + 파싱 (타임폴리오 TIME · xlsx 직접 다운로드) ───────────────
-def download_time(internal_id: str) -> bytes:
+def download_time(internal_id: str, pdf_date: str = None) -> bytes:
+    """pdf_date('YYYY-MM-DD')를 주면 그 날짜의 구성종목을, 안 주면 최신을 받는다.
+    TIME은 SOL과 달리 실제로 과거 날짜 조회가 되는 걸 확인함(pdfDate 파라미터)."""
     import requests
+    params = {"idx": internal_id, "cate": ""}
+    if pdf_date:
+        params["pdfDate"] = pdf_date
     r = requests.get(
         TIME_URL,
-        params={"idx": internal_id},
+        params=params,
         timeout=30,
         headers={"User-Agent": "Mozilla/5.0", "Referer": "https://timeetf.co.kr/"},
     )
@@ -841,14 +846,15 @@ def process_etf(etf: dict, start: str, debug: bool = False):
         if holdings and not date_iso:
             date_iso = today_iso_kst()
     elif provider == "time":
+        pdf_date = f"{start[:4]}-{start[4:6]}-{start[6:]}"
         try:
-            content = download_time(etf["fid"])
+            content = download_time(etf["fid"], pdf_date=pdf_date)
             date_iso, holdings = normalize_time(read_time_table(content), debug=debug)
         except Exception as e:
             print(f"  [skip] TIME 엑셀 요청/파싱 실패: {e}")
             return
         if holdings and not date_iso:
-            date_iso = today_iso_kst()
+            date_iso = pdf_date
     else:
         date_iso, holdings = fetch_latest_available(start, etf["fid"], debug=debug)
 
@@ -924,7 +930,8 @@ def main():
 
     if args and ":" in args[0]:
         # 기간 채우기: "20250201:20260629" — 영업일만, 과거→최근 순서로 처리
-        # SOL 계열(provider="sol")은 항상 "현재" 스냅샷만 제공해 기간 채우기가 불가능 → 스킵
+        # SOL 계열(provider="sol")만 항상 "현재" 스냅샷만 제공해 기간 채우기가 불가능 → 스킵.
+        # TIME(provider="time")은 pdfDate 파라미터로 실제 과거 날짜 조회가 되므로 정상 백필됨.
         start_s, end_s = args[0].split(":", 1)
         days = list(business_days(start_s, end_s))
         print(f"[backfill] {start_s} ~ {end_s} · 영업일 {len(days)}일 처리 시작")
