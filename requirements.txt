@@ -4,3 +4,4 @@ xlrd>=2.0.1
 lxml>=4.9
 finance-datareader>=0.9.96
 yfinance>=0.2.40
+openpyxl
