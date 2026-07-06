@@ -74,12 +74,20 @@ ETFS = [
      "benchmarks": [
          {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
      ]},
+    {"slug": "time-nasdaq100", "provider": "time", "fid": "2", "ticker": "426030",
+     "name": "TIME 미국나스닥100액티브", "start": "2022-05-11",
+     "usd_price": True,
+     "benchmarks": [
+         {"k": "b1", "label": "나스닥종합", "sym": ["IXIC", "YAHOO:^IXIC"]},
+         {"k": "b2", "label": "나스닥100", "sym": ["YAHOO:^NDX", "NDX"]},
+     ]},
 ]
 
 PERF_START = "2025-01-01"   # 수익률 시계열 조회 시작(ETF 상장 이전)
 
 URL = "https://www.samsungactive.co.kr/excel_pdf.do"
 SOL_URL = "https://www.soletf.com/ko/fund/etf/{fid}"
+TIME_URL = "https://timeetf.co.kr/pdf_excel.php"
 LOOKBACK_DAYS = 7                       # (samsung 전용) 해당일 파일이 없으면 며칠 전까지 후퇴 탐색
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -518,6 +526,113 @@ def normalize_sol(html: str, is_us: bool, debug: bool = False):
     return base_date, holdings
 
 
+# ── 다운로드 + 파싱 (타임폴리오 TIME · xlsx 직접 다운로드) ───────────────
+def download_time(internal_id: str) -> bytes:
+    import requests
+    r = requests.get(
+        TIME_URL,
+        params={"idx": internal_id},
+        timeout=30,
+        headers={"User-Agent": "Mozilla/5.0", "Referer": "https://timeetf.co.kr/"},
+    )
+    r.raise_for_status()
+    return r.content
+
+
+def read_time_table(content: bytes):
+    """TIME은 진짜 최신 .xlsx라 openpyxl로 바로 읽힌다(엑셀/HTML 폴백도 대비)."""
+    import pandas as pd
+    try:
+        return pd.read_excel(io.BytesIO(content), header=None, dtype=str, engine="openpyxl")
+    except Exception:
+        pass
+    try:
+        return pd.read_excel(io.BytesIO(content), header=None, dtype=str, engine="xlrd")
+    except Exception:
+        pass
+    try:
+        tables = pd.read_html(io.BytesIO(content))
+        if tables:
+            return max(tables, key=len)
+    except Exception:
+        pass
+    return None
+
+
+def normalize_time(raw, debug: bool = False):
+    """TIME 엑셀 -> (기준일, holdings). 컬럼 구조가 삼성 포맷과 비슷해서
+    (종목코드/종목명/수량/평가금액/비중) 같은 방식으로 표를 찾아 판다."""
+    if raw is None or len(raw) == 0:
+        return None, None
+    raw = raw.reset_index(drop=True)
+    if debug:
+        print(raw.head(6).to_string())
+
+    hdr = None
+    for i in range(min(12, len(raw))):
+        cells = [str(x).strip() for x in raw.iloc[i].tolist()]
+        if "종목명" in cells and any("종목코드" in c or "비중" in c for c in cells):
+            hdr = i
+            break
+    if hdr is None:
+        return None, None
+
+    cols = [str(x).strip() for x in raw.iloc[hdr].tolist()]
+    body = raw.iloc[hdr + 1:].reset_index(drop=True)
+    body.columns = cols
+
+    base_date = None
+    for i in range(hdr):
+        for x in raw.iloc[i].tolist():
+            m = re.match(r"(\d{4})[/.\-](\d{2})[/.\-](\d{2})", str(x).strip())
+            if m:
+                base_date = f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+                break
+        if base_date:
+            break
+
+    def col(*names):
+        for n in names:
+            for c in cols:
+                if n in c:
+                    return c
+        return None
+
+    cN = col("종목명")
+    cC = col("종목코드", "코드")
+    cQ = col("수량")
+    cW = col("비중")
+    cA = col("평가금액", "평가")
+
+    holdings = []
+    for _, r in body.iterrows():
+        name = clean(r.get(cN)) if cN else ""
+        if not name or name in ("번호", "종목명"):
+            continue
+        code = clean(r.get(cC)) if cC else ""
+        is_cash = "현금" in name or (cC and not code)
+        holdings.append({
+            "isin": "", "name": name, "code": code,
+            "ticker": clean_ticker(code),
+            "weight": to_num(r.get(cW)) if cW else None,
+            "shares": to_num(r.get(cQ)) if cQ else None,
+            "amount": to_num(r.get(cA)) if cA else None,
+            "price": None,
+            "is_cash": is_cash,
+            "key": code or name,
+        })
+
+    holdings = [h for h in holdings if h["key"]]
+    for h in holdings:
+        if h["weight"] is not None:
+            h["weight"] = round(h["weight"], 4)
+        if h["shares"] is not None:
+            h["shares"] = round(h["shares"], 4)
+
+    holdings.sort(key=lambda z: (z["weight"] or 0), reverse=True)
+    return base_date, holdings
+
+
 # ── 변동 계산 (수량 중심) ────────────────────────────────────────────────
 def diff(cur, prev):
     if not prev:
@@ -722,6 +837,15 @@ def process_etf(etf: dict, start: str, debug: bool = False):
             date_iso, holdings = normalize_sol(html, is_us=bool(etf.get("usd_price")), debug=debug)
         except Exception as e:
             print(f"  [skip] SOL 페이지 요청/파싱 실패: {e}")
+            return
+        if holdings and not date_iso:
+            date_iso = today_iso_kst()
+    elif provider == "time":
+        try:
+            content = download_time(etf["fid"])
+            date_iso, holdings = normalize_time(read_time_table(content), debug=debug)
+        except Exception as e:
+            print(f"  [skip] TIME 엑셀 요청/파싱 실패: {e}")
             return
         if holdings and not date_iso:
             date_iso = today_iso_kst()
