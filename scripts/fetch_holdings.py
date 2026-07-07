@@ -119,6 +119,16 @@ SOL_US_TICKERS = {
     "TARGA RESOURCES CORP": "TRGP",
     "Aehr Test Systems": "AEHR",
     "Roundhill Memory ETF": "DRAM",
+    "Rocket Lab USA Inc": "RKLB",     # 'Rocket Lab Corp'와 같은 회사의 다른 표기(날짜별로 표기가 바뀜)
+    "Crowdstrike Holdings Inc": "CRWD",
+    "DELL TECHNOLOGIES - C": "DELL",
+    "LAM RESEARCH CORP": "LRCX",
+    "Navitas Semiconductor Corp": "NVTS",
+    "Nokia Oyj": "NOK",
+    "STMicroelectronics NV": "STM",
+    "Coherent Corp": "COHR",
+    "GE Vernova Inc": "GEV",
+    "Space Exploration Technologies Corp": "SPCX",
     "Marvell Technology Inc": "MRVL",
     "Micron Technology Inc": "MU",
 }
