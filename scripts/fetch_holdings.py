@@ -5,22 +5,24 @@ Active ETF 일별 전체 구성종목 수집기 (다중 운용사·다중 ETF �
 데이터 소스:
     - 삼성액티브자산운용(KoAct) '투자종목정보(PDF)' 엑셀 다운로드
         https://www.samsungactive.co.kr/excel_pdf.do?fId={펀드ID}&gijunYMD=YYYYMMDD
-      (provider: "samsung")
-    - 신한자산운용(SOL) 홈페이지 '구성종목(PDF)' 웹페이지 표
-        https://www.soletf.com/ko/fund/etf/{내부ID}?tabIndex=3
-      (provider: "sol")
-      ⚠️ SOL 페이지는 날짜를 파라미터로 요청해도 항상 "가장 최근" 데이터만 내려준다
-      (버튼 클릭 기반 검색이라 URL만으론 과거 날짜 조회 불가로 확인됨).
-      그래서 SOL 계열은 과거 기간 채우기(backfill)가 안 되고, 매일 그 시점의
-      "최신" 스냅샷만 쌓인다. 앞으로 도는 자동 수집에는 문제없음.
-      또한 SOL 표에는 티커/ISIN이 없고 종목명만 있어서, 종목명→티커 매핑이 필요하다.
-        · 한국 종목(SOL 코리아메가테크액티브): FinanceDataReader의 KRX 전종목 목록으로
-          종목명→코드를 그때그때 조회(별도 유지보수 불요).
-        · 미국 종목(SOL 미국넥스트테크TOP10액티브): 종목 수가 적어(20개 내외) 아래
-          SOL_US_TICKERS에 수동 매핑. 리밸런싱으로 새 종목이 들어오면 실행 로그의
-          "[ticker] 매핑 안됨" 항목을 보고 추가해주면 됨(그 전까진 티커 빈칸으로 저장).
+      (provider: "samsung"). 날짜 파라미터 실제로 작동 → 과거 기간 채우기 됨.
+    - 신한자산운용(SOL) 공식 JSON API
+        https://www.soletf.com/api/fund/pdfList?fund_cd={내부ID}&work_dt=YYYYMMDD
+      (provider: "sol"). `work_dt` 파라미터 실제로 작동 확인됨(과거 날짜 그대로 반환) →
+      과거 기간 채우기 됨. 응답에 종목명(SEC_NM)·수량(QTY)·평가금액(PRICE)·비중(WT_DISP)·
+      종목코드(STOCK_CODE)가 옴.
+        · 한국 종목(SOL 코리아메가테크액티브): STOCK_CODE가 이미 KRX 6자리 코드라 그대로 티커로 씀.
+        · 미국 종목(SOL 미국넥스트테크TOP10액티브): STOCK_CODE가 ISIN이라(티커 아님), 실제 거래
+          티커는 이름 매칭으로 찾음 — SOL_US_TICKERS 수동 매핑 → KoAct 나스닥 참조 → 나스닥
+          심볼 목록 → SEC 티커 목록 순. 리밸런싱으로 새 종목이 들어오면 실행 로그의
+          "[ticker] 매핑 안됨" 항목을 보고 SOL_US_TICKERS에 추가해주면 됨.
+    - 타임폴리오자산운용(TIME) 엑셀(.xlsx) 다운로드
+        https://timeetf.co.kr/pdf_excel.php?idx={내부ID}&cate=&pdfDate=YYYY-MM-DD
+      (provider: "time"). `pdfDate` 파라미터 실제로 작동 → 과거 기간 채우기 됨. 종목코드가
+      이미 'SNDK US EQUITY'식으로 와서 티커 매핑 불필요.
 
-추적 대상은 아래 ETFS 목록에 추가만 하면 늘어납니다.
+추적 대상은 아래 ETFS 목록에 추가만 하면 늘어납니다. 세 provider(samsung/sol/time) 모두
+날짜 파라미터가 실제로 작동해 과거 기간 채우기(backfill)가 정상적으로 됩니다.
 
 산출물(ETF별로 분리):
     data/etfs.json                      : 사이트가 읽는 ETF 목록
@@ -86,7 +88,6 @@ ETFS = [
 PERF_START = "2025-01-01"   # 수익률 시계열 조회 시작(ETF 상장 이전)
 
 URL = "https://www.samsungactive.co.kr/excel_pdf.do"
-SOL_URL = "https://www.soletf.com/ko/fund/etf/{fid}"
 TIME_URL = "https://timeetf.co.kr/pdf_excel.php"
 LOOKBACK_DAYS = 7                       # (samsung 전용) 해당일 파일이 없으면 며칠 전까지 후퇴 탐색
 
@@ -305,35 +306,10 @@ def fetch_latest_available(start_yyyymmdd: str, fid: str, debug: bool = False):
     return None, None
 
 
-# ── 다운로드 + 파싱 (신한 SOL · 웹페이지 표) ─────────────────────────────
-_KRX_NAME_MAP = None
+# ── 다운로드 + 파싱 (신한 SOL · JSON API, 과거 날짜 조회 가능) ───────────
 _SEC_TICKER_MAP = None
 _NASDAQ_TICKER_MAP = None
-
-
-def krx_name_map():
-    """FinanceDataReader로 KRX 전종목 '종목명 -> 코드' 맵을 만든다(런 1회, 캐시)."""
-    global _KRX_NAME_MAP
-    if _KRX_NAME_MAP is not None:
-        return _KRX_NAME_MAP
-    m = {}
-    try:
-        import FinanceDataReader as fdr
-        df = fdr.StockListing("KRX")
-        name_col = next((c for c in ("Name", "종목명") if c in df.columns), None)
-        code_col = next((c for c in ("Code", "Symbol", "종목코드") if c in df.columns), None)
-        if name_col and code_col:
-            for _, row in df.iterrows():
-                nm, cd = str(row[name_col]).strip(), str(row[code_col]).strip()
-                if nm and cd:
-                    m[nm] = cd
-                    m[nm.replace(" ", "")] = cd
-        else:
-            print("  [ticker] KRX 목록 컬럼을 못 찾음(포맷 변경?)")
-    except Exception as e:
-        print(f"  [ticker] KRX 종목 목록 조회 실패: {e}")
-    _KRX_NAME_MAP = m
-    return m
+SOL_API_URL = "https://www.soletf.com/api/fund/pdfList"
 
 
 def _norm_us_name(n: str) -> str:
@@ -427,94 +403,72 @@ def nasdaq_us_ticker_map():
     return m
 
 
-def download_sol(internal_id: str) -> str:
+def download_sol(internal_id: str, work_dt: str) -> list:
+    """work_dt('YYYYMMDD')는 실제로 그 날짜의 데이터를 준다(확인됨) — 과거 조회 가능."""
     import requests
     r = requests.get(
-        SOL_URL.format(fid=internal_id),
-        params={"tabIndex": 3},
+        SOL_API_URL,
+        params={"fund_cd": internal_id, "work_dt": work_dt},
         timeout=30,
-        headers={"User-Agent": "Mozilla/5.0",
-                 "Referer": "https://www.soletf.com/"},
+        headers={"User-Agent": "Mozilla/5.0", "Referer": "https://www.soletf.com/"},
     )
     r.raise_for_status()
-    return r.text
+    return r.json()
 
 
-def parse_sol_table(html: str):
-    import pandas as pd
-    try:
-        tables = pd.read_html(io.StringIO(html))
-    except Exception:
-        return None
-    for t in tables:
-        cols = [str(c) for c in t.columns]
-        if any("종목명" in c for c in cols) and any("비중" in c for c in cols):
-            return t
-    return None
-
-
-def normalize_sol(html: str, is_us: bool, debug: bool = False):
-    table = parse_sol_table(html)
-    if debug and table is not None:
-        print(table.head(6).to_string())
-    if table is None or len(table) == 0:
+def normalize_sol(rows: list, is_us: bool, work_dt: str, debug: bool = False):
+    """API 응답(JSON 리스트) -> (기준일, holdings).
+    한국 종목은 STOCK_CODE가 이미 KRX 6자리 코드라 그대로 티커로 씀(이름 매칭 불필요).
+    미국 종목은 STOCK_CODE가 ISIN이라, 실제 거래 티커는 여전히 이름 매칭으로 찾아야 함."""
+    if not rows:
         return None, None
-    cols = [str(c) for c in table.columns]
+    if debug:
+        print(rows[:3])
 
-    def col(*names):
-        for n in names:
-            for c in cols:
-                if n in c:
-                    return c
-        return None
-
-    cN = col("종목명")
-    cQ = col("수량")
-    cA = col("평가금액")
-    cW = col("비중")
-    if not cN:
-        return None, None
-
-    name_map = None if is_us else krx_name_map()
     koact_map = koact_us_ticker_map() if is_us else None
     nasdaq_map = nasdaq_us_ticker_map() if is_us else None
     sec_map = sec_us_ticker_map() if is_us else None
+
     holdings = []
-    for _, r in table.iterrows():
-        name = clean(r.get(cN)) if cN else ""
-        if not name or name in ("번호", "종목명"):
+    for row in rows:
+        name = clean(row.get("SEC_NM"))
+        if not name:
             continue
-        is_cash = "현금" in name
-        ticker = ""
-        if not is_cash:
-            if is_us:
-                ticker = SOL_US_TICKERS.get(name, "")
-                src = "수동매핑"
-                if not ticker:
-                    ticker = koact_map.get(_norm_us_name(name), "")
-                    src = "KoAct나스닥참조"
-                if not ticker:
-                    ticker = nasdaq_map.get(_norm_us_name(name), "")
-                    src = "나스닥목록"
-                if not ticker:
-                    ticker = sec_map.get(_norm_us_name(name), "")
-                    src = "SEC목록"
-                if not ticker:
-                    print(f"  [ticker] 매핑 안됨(SOL_US_TICKERS에 추가 검토): {name}")
-                elif debug:
-                    print(f"  [ticker] {name} -> {ticker} ({src})")
-            else:
-                ticker = (name_map or {}).get(name) or (name_map or {}).get(name.replace(" ", "")) or ""
-                if not ticker:
-                    print(f"  [ticker] KRX 매핑 안됨: {name}")
-        shares = to_num(r.get(cQ)) if cQ else None
-        amount = to_num(r.get(cA)) if cA else None
-        weight = to_num(r.get(cW)) if cW else None
+        code = clean(row.get("STOCK_CODE"))
+        is_cash = "현금" in name or code.startswith(("CASH", "KRD", "KRW"))
+        isin, ticker = "", ""
+        if is_cash:
+            pass
+        elif is_us:
+            isin = code   # 미국은 STOCK_CODE 자리에 ISIN이 옴
+            ticker = SOL_US_TICKERS.get(name, "")
+            src = "수동매핑"
+            if not ticker:
+                ticker = koact_map.get(_norm_us_name(name), "")
+                src = "KoAct나스닥참조"
+            if not ticker:
+                ticker = nasdaq_map.get(_norm_us_name(name), "")
+                src = "나스닥목록"
+            if not ticker:
+                ticker = sec_map.get(_norm_us_name(name), "")
+                src = "SEC목록"
+            if not ticker:
+                print(f"  [ticker] 매핑 안됨(SOL_US_TICKERS에 추가 검토): {name}")
+            elif debug:
+                print(f"  [ticker] {name} -> {ticker} ({src})")
+        else:
+            ticker = code   # 한국은 STOCK_CODE가 곧 KRX 코드
+
+        weight_raw = clean(row.get("WT_DISP")).replace("%", "").strip()
+        weight = to_num(weight_raw) if weight_raw else None
+        shares = to_num(row.get("QTY"))
+        amount = to_num(row.get("PRICE"))   # 필드명은 PRICE지만 실제로는 평가금액(원)
         price = None
         if not is_cash and not is_us and shares:
             price = int(round(amount / shares)) if amount else None
+
         holdings.append({
-            "isin": "", "name": name, "code": ticker, "ticker": ticker,
+            "isin": isin, "name": name, "code": ticker, "ticker": ticker,
             "weight": weight, "shares": shares, "amount": amount,
             "price": price, "is_cash": is_cash,
             "key": ticker or name,
@@ -528,11 +482,7 @@ def normalize_sol(html: str, is_us: bool, debug: bool = False):
             h["shares"] = round(h["shares"], 2) if is_us else int(round(h["shares"]))
 
     holdings.sort(key=lambda z: (z["weight"] or 0), reverse=True)
-
-    base_date = None
-    m = re.search(r'value="(\d{4}-\d{2}-\d{2})"', html)
-    if m:
-        base_date = m.group(1)
+    base_date = f"{work_dt[:4]}-{work_dt[4:6]}-{work_dt[6:]}"
     return base_date, holdings
 
 
@@ -848,13 +798,11 @@ def process_etf(etf: dict, start: str, debug: bool = False):
 
     if provider == "sol":
         try:
-            html = download_sol(etf["fid"])
-            date_iso, holdings = normalize_sol(html, is_us=bool(etf.get("usd_price")), debug=debug)
+            rows = download_sol(etf["fid"], work_dt=start)
+            date_iso, holdings = normalize_sol(rows, is_us=bool(etf.get("usd_price")), work_dt=start, debug=debug)
         except Exception as e:
-            print(f"  [skip] SOL 페이지 요청/파싱 실패: {e}")
+            print(f"  [skip] SOL API 요청/파싱 실패: {e}")
             return
-        if holdings and not date_iso:
-            date_iso = today_iso_kst()
     elif provider == "time":
         pdf_date = f"{start[:4]}-{start[4:6]}-{start[6:]}"
         try:
@@ -940,19 +888,13 @@ def main():
 
     if args and ":" in args[0]:
         # 기간 채우기: "20250201:20260629" — 영업일만, 과거→최근 순서로 처리
-        # SOL 계열(provider="sol")만 항상 "현재" 스냅샷만 제공해 기간 채우기가 불가능 → 스킵.
-        # TIME(provider="time")은 pdfDate 파라미터로 실제 과거 날짜 조회가 되므로 정상 백필됨.
+        # samsung/sol/time 전부 실제 과거 날짜 조회가 되므로 세 provider 다 정상 백필됨.
         start_s, end_s = args[0].split(":", 1)
         days = list(business_days(start_s, end_s))
         print(f"[backfill] {start_s} ~ {end_s} · 영업일 {len(days)}일 처리 시작")
-        sol_slugs = [e["slug"] for e in ETFS if e.get("provider") == "sol"]
-        if sol_slugs:
-            print(f"[backfill] SOL 계열({', '.join(sol_slugs)})은 과거 조회가 안 돼 이 모드에서 제외됩니다.")
         for i, ds in enumerate(days, 1):
             print(f"\n--- ({i}/{len(days)}) {ds} ---")
             for etf in ETFS:
-                if etf.get("provider") == "sol":
-                    continue
                 etf_start = etf.get("start", "1900-01-01").replace("-", "")
                 if ds < etf_start:
                     continue  # 상장 전 날짜는 건너뜀
