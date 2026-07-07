@@ -6,7 +6,7 @@
   "count": 18,
   "holdings": [
     {
-      "isin": "",
+      "isin": "US92552V1008",
       "name": "Viasat Inc",
       "code": "VSAT",
       "ticker": "VSAT",
@@ -19,7 +19,7 @@
       "price_usd": 83.8
     },
     {
-      "isin": "",
+      "isin": "US26740W1099",
       "name": "D-Wave Quantum Inc",
       "code": "QBTS",
       "ticker": "QBTS",
@@ -32,7 +32,7 @@
       "price_usd": 22.56
     },
     {
-      "isin": "",
+      "isin": "US0937121079",
       "name": "Bloom Energy Corp",
       "code": "BE",
       "ticker": "BE",
@@ -45,7 +45,7 @@
       "price_usd": 295.05
     },
     {
-      "isin": "",
+      "isin": "US80004C2008",
       "name": "Sandisk Corp/DE",
       "code": "SNDK",
       "ticker": "SNDK",
@@ -58,7 +58,7 @@
       "price_usd": 1744.43
     },
     {
-      "isin": "",
+      "isin": "US46222L1089",
       "name": "IonQ Inc",
       "code": "IONQ",
       "ticker": "IONQ",
@@ -71,7 +71,7 @@
       "price_usd": 48.87
     },
     {
-      "isin": "",
+      "isin": "US5951121038",
       "name": "Micron Technology Inc",
       "code": "MU",
       "ticker": "MU",
@@ -84,7 +84,7 @@
       "price_usd": 984.75
     },
     {
-      "isin": "",
+      "isin": "US72703X1063",
       "name": "Planet Labs PBC",
       "code": "PL",
       "ticker": "PL",
@@ -97,7 +97,7 @@
       "price_usd": 30.86
     },
     {
-      "isin": "",
+      "isin": "US7731211089",
       "name": "Rocket Lab USA Inc",
       "code": "RKLB",
       "ticker": "RKLB",
@@ -110,7 +110,7 @@
       "price_usd": 93.09
     },
     {
-      "isin": "",
+      "isin": "US5738741041",
       "name": "Marvell Technology Inc",
       "code": "MRVL",
       "ticker": "MRVL",
@@ -123,7 +123,7 @@
       "price_usd": 249.27
     },
     {
-      "isin": "",
+      "isin": "US77926X3200",
       "name": "Roundhill Memory ETF",
       "code": "DRAM",
       "ticker": "DRAM",
@@ -136,7 +136,7 @@
       "price_usd": 64.76
     },
     {
-      "isin": "",
+      "isin": "US22788C1053",
       "name": "Crowdstrike Holdings Inc",
       "code": "CRWD",
       "ticker": "CRWD",
@@ -149,7 +149,7 @@
       "price_usd": 199.38
     },
     {
-      "isin": "",
+      "isin": "US19247G1076",
       "name": "Coherent Corp",
       "code": "COHR",
       "ticker": "COHR",
@@ -162,7 +162,7 @@
       "price_usd": 335.7
     },
     {
-      "isin": "",
+      "isin": "US19240Q2012",
       "name": "Cogent Biosciences Inc",
       "code": "COGT",
       "ticker": "COGT",
@@ -175,7 +175,7 @@
       "price_usd": 39.44
     },
     {
-      "isin": "",
+      "isin": "US5128073062",
       "name": "LAM RESEARCH CORP",
       "code": "LRCX",
       "ticker": "LRCX",
@@ -188,7 +188,7 @@
       "price_usd": 350.2
     },
     {
-      "isin": "",
+      "isin": "US02156V1098",
       "name": "Oklo Inc",
       "code": "OKLO",
       "ticker": "OKLO",
@@ -201,7 +201,7 @@
       "price_usd": 51.84
     },
     {
-      "isin": "",
+      "isin": "US36828A1016",
       "name": "GE Vernova Inc",
       "code": "GEV",
       "ticker": "GEV",
@@ -214,7 +214,7 @@
       "price_usd": 1152.04
     },
     {
-      "isin": "",
+      "isin": "US84615Q1031",
       "name": "Space Exploration Technologies Corp",
       "code": "SPCX",
       "ticker": "SPCX",
@@ -227,7 +227,7 @@
       "price_usd": 160.42
     },
     {
-      "isin": "",
+      "isin": "US68236H2040",
       "name": "Ondas Inc",
       "code": "ONDS",
       "ticker": "ONDS",
@@ -271,5 +271,5 @@
     "bought": [],
     "sold": []
   },
-  "updated_at": "2026-07-07 22:02"
+  "updated_at": "2026-07-07 22:23"
 }
