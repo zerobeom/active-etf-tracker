@@ -15,7 +15,8 @@
       "amount": 60493921.0,
       "price": null,
       "is_cash": false,
-      "key": "US67066G1040"
+      "key": "US67066G1040",
+      "price_usd": 170.76
     },
     {
       "isin": "US0937121079",

@@ -13,7 +13,7 @@
       "weight": 15.2101,
       "shares": 430,
       "amount": 72240000.0,
-      "price": 2650000,
+      "price": 2201000,
       "is_cash": false,
       "key": "KR7000660001"
     },
@@ -25,7 +25,7 @@
       "weight": 8.713,
       "shares": 198,
       "amount": 41382000.0,
-      "price": 495000,
+      "price": 479500,
       "is_cash": false,
       "key": "KR7005380001"
     },
@@ -37,7 +37,7 @@
       "weight": 6.328,
       "shares": 566,
       "amount": 30054600.0,
-      "price": 334000,
+      "price": 296000,
       "is_cash": false,
       "key": "KR7005930003"
     },
@@ -49,7 +49,7 @@
       "weight": 4.3169,
       "shares": 209,
       "amount": 20502900.0,
-      "price": 138000,
+      "price": 153700,
       "is_cash": false,
       "key": "KR7000270009"
     },
@@ -61,7 +61,7 @@
       "weight": 3.5254,
       "shares": 28,
       "amount": 16744000.0,
-      "price": 1119000,
+      "price": 1222000,
       "is_cash": false,
       "key": "KR7003230000"
     },
@@ -73,7 +73,7 @@
       "weight": 3.4556,
       "shares": 133,
       "amount": 16412200.0,
-      "price": 169700,
+      "price": 183400,
       "is_cash": false,
       "key": "KR7033780008"
     },
@@ -85,7 +85,7 @@
       "weight": 3.2367,
       "shares": 43,
       "amount": 15372500.0,
-      "price": 972000,
+      "price": 899000,
       "is_cash": false,
       "key": "KR7267260008"
     },
@@ -97,7 +97,7 @@
       "weight": 3.2366,
       "shares": 84,
       "amount": 15372000.0,
-      "price": 173300,
+      "price": 178200,
       "is_cash": false,
       "key": "KR7068270008"
     },
@@ -109,7 +109,7 @@
       "weight": 2.9891,
       "shares": 111,
       "amount": 14196900.0,
-      "price": 343000,
+      "price": 346000,
       "is_cash": false,
       "key": "KR7039490008"
     },
@@ -121,7 +121,7 @@
       "weight": 2.7797,
       "shares": 187,
       "amount": 13202200.0,
-      "price": 90300,
+      "price": 96800,
       "is_cash": false,
       "key": "KR7021240007"
     },
@@ -133,7 +133,7 @@
       "weight": 2.6514,
       "shares": 132,
       "amount": 12592800.0,
-      "price": 159000,
+      "price": 173200,
       "is_cash": false,
       "key": "KR7105560007"
     },
@@ -145,7 +145,7 @@
       "weight": 2.4729,
       "shares": 58,
       "amount": 11745000.0,
-      "price": 199000,
+      "price": 197200,
       "is_cash": false,
       "key": "KR7035420009"
     },
@@ -157,7 +157,7 @@
       "weight": 2.3566,
       "shares": 136,
       "amount": 11192800.0,
-      "price": 70800,
+      "price": 81900,
       "is_cash": false,
       "key": "KR7041510009"
     },
@@ -169,7 +169,7 @@
       "weight": 2.3174,
       "shares": 251,
       "amount": 11006350.0,
-      "price": 44300,
+      "price": 45500,
       "is_cash": false,
       "key": "KR7051600005"
     },
@@ -181,7 +181,7 @@
       "weight": 2.2557,
       "shares": 201,
       "amount": 10713300.0,
-      "price": 71100,
+      "price": 71800,
       "is_cash": false,
       "key": "KR7017800004"
     },
@@ -193,7 +193,7 @@
       "weight": 2.1897,
       "shares": 622,
       "amount": 10399840.0,
-      "price": 29000,
+      "price": 31550,
       "is_cash": false,
       "key": "KR7316140003"
     },
@@ -205,7 +205,7 @@
       "weight": 2.1001,
       "shares": 96,
       "amount": 9974400.0,
-      "price": 105600,
+      "price": 114400,
       "is_cash": false,
       "key": "KR7138040001"
     },
@@ -217,7 +217,7 @@
       "weight": 2.0555,
       "shares": 125,
       "amount": 9762500.0,
-      "price": 221000,
+      "price": 243500,
       "is_cash": false,
       "key": "KR7071050009"
     },
@@ -229,7 +229,7 @@
       "weight": 1.9844,
       "shares": 204,
       "amount": 9424800.0,
-      "price": 46600,
+      "price": 47750,
       "is_cash": false,
       "key": "KR7214150005"
     },
@@ -241,7 +241,7 @@
       "weight": 1.9756,
       "shares": 505,
       "amount": 9382900.0,
-      "price": 15200,
+      "price": 15720,
       "is_cash": false,
       "key": "KR7069260008"
     },
@@ -253,7 +253,7 @@
       "weight": 1.9751,
       "shares": 178,
       "amount": 9380600.0,
-      "price": 95800,
+      "price": 108600,
       "is_cash": false,
       "key": "KR7055550008"
     },
@@ -265,7 +265,7 @@
       "weight": 1.7127,
       "shares": 170,
       "amount": 8134500.0,
-      "price": 52900,
+      "price": 55500,
       "is_cash": false,
       "key": "KR7030200000"
     },
@@ -277,7 +277,7 @@
       "weight": 1.5807,
       "shares": 286,
       "amount": 7507500.0,
-      "price": 115400,
+      "price": 98000,
       "is_cash": false,
       "key": "KR7007660004"
     },
@@ -289,7 +289,7 @@
       "weight": 1.5185,
       "shares": 60,
       "amount": 7212000.0,
-      "price": 183100,
+      "price": 196100,
       "is_cash": false,
       "key": "KR7086280005"
     },
@@ -301,7 +301,7 @@
       "weight": 1.4915,
       "shares": 115,
       "amount": 7084000.0,
-      "price": 114600,
+      "price": 126900,
       "is_cash": false,
       "key": "KR7086790003"
     },
@@ -313,7 +313,7 @@
       "weight": 1.4621,
       "shares": 32,
       "amount": 6944000.0,
-      "price": 363000,
+      "price": 340500,
       "is_cash": false,
       "key": "KR7214450009"
     },
@@ -325,7 +325,7 @@
       "weight": 1.3547,
       "shares": 106,
       "amount": 6434200.0,
-      "price": 71300,
+      "price": 73300,
       "is_cash": false,
       "key": "KR7012750006"
     },
@@ -337,7 +337,7 @@
       "weight": 1.2706,
       "shares": 149,
       "amount": 6034500.0,
-      "price": 49150,
+      "price": 49700,
       "is_cash": false,
       "key": "KR7047050000"
     },
@@ -349,7 +349,7 @@
       "weight": 1.249,
       "shares": 2193,
       "amount": 5932065.0,
-      "price": 742,
+      "price": 702,
       "is_cash": false,
       "key": "KR7091810002"
     },
@@ -361,7 +361,7 @@
       "weight": 1.235,
       "shares": 237,
       "amount": 5865750.0,
-      "price": 27550,
+      "price": 29150,
       "is_cash": false,
       "key": "KR7003490000"
     },
@@ -373,7 +373,7 @@
       "weight": 1.1496,
       "shares": 449,
       "amount": 5459840.0,
-      "price": 13740,
+      "price": 14040,
       "is_cash": false,
       "key": "KR7030190003"
     },
@@ -385,7 +385,7 @@
       "weight": 1.1119,
       "shares": 2008,
       "amount": 5281040.0,
-      "price": 4075,
+      "price": 4275,
       "is_cash": false,
       "key": "KR7036620003"
     },
@@ -397,7 +397,7 @@
       "weight": 1.0656,
       "shares": 30,
       "amount": 5061000.0,
-      "price": 175600,
+      "price": 158200,
       "is_cash": false,
       "key": "KR7003670007"
     },
@@ -409,7 +409,7 @@
       "weight": 0.9737,
       "shares": 141,
       "amount": 4624800.0,
-      "price": 144200,
+      "price": 111800,
       "is_cash": false,
       "key": "KR7000990002"
     },
@@ -421,7 +421,7 @@
       "weight": 0.9516,
       "shares": 221,
       "amount": 4519450.0,
-      "price": 21100,
+      "price": 21900,
       "is_cash": false,
       "key": "KR7284740008"
     },
@@ -445,7 +445,7 @@
       "weight": 0.7571,
       "shares": 219,
       "amount": 3595980.0,
-      "price": 19170,
+      "price": 19430,
       "is_cash": false,
       "key": "KR7086450004"
     },
@@ -457,7 +457,7 @@
       "weight": 0.6988,
       "shares": 378,
       "amount": 3318840.0,
-      "price": 42750,
+      "price": 42600,
       "is_cash": false,
       "key": "KR7006800007"
     },
@@ -469,7 +469,7 @@
       "weight": 0.5659,
       "shares": 17,
       "amount": 2687700.0,
-      "price": 84000,
+      "price": 71900,
       "is_cash": false,
       "key": "KR7058470006"
     },
@@ -481,7 +481,7 @@
       "weight": 0.5556,
       "shares": 13,
       "amount": 2639000.0,
-      "price": 248500,
+      "price": 271000,
       "is_cash": false,
       "key": "KR7140860008"
     },
@@ -493,7 +493,7 @@
       "weight": 0.3847,
       "shares": 70,
       "amount": 1827000.0,
-      "price": 54000,
+      "price": 41500,
       "is_cash": false,
       "key": "KR7403870009"
     },

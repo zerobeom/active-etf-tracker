@@ -223,7 +223,8 @@
       "amount": 13575114.0,
       "price": null,
       "is_cash": false,
-      "key": "US15643U1043"
+      "key": "US15643U1043",
+      "price_usd": 377.01
     },
     {
       "isin": "US02043Q1076",
