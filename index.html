@@ -100,7 +100,7 @@
   .clist h3 .tag{font-size:11px;padding:1px 7px;border-radius:20px;font-weight:800}
   .tag.in{background:var(--in-dim);color:var(--in)} .tag.out{background:var(--out-dim);color:var(--out)}
   .clist ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px}
-  .clist li{display:grid;grid-template-columns:42px minmax(60px,1fr) 78px 84px 170px;align-items:baseline;column-gap:10px;font-size:13px;padding:5px;border-radius:8px}
+  .clist li{display:grid;grid-template-columns:42px minmax(60px,1fr) 84px 78px 170px;align-items:baseline;column-gap:10px;font-size:13px;padding:5px;border-radius:8px}
   .clist li[data-key]{cursor:pointer}
   .clist li[data-key]:hover{background:var(--panel2)}
   .clist li .tk{font-size:13px;font-weight:800;color:var(--faint);overflow:hidden;text-overflow:clip;white-space:nowrap}
@@ -377,8 +377,8 @@ function renderBand(c){
 function liEntry(x){
   const tk=`<span class="tk">${x.ticker||""}</span>`;
   return `<li data-key="${x.key}" data-ticker="${x.ticker||""}" data-name="${x.name}">${tk}<span class="nm">${x.name}</span>`+
-    `<span class="qty num"><i>수량</i><b>${qty(x.shares)}</b></span>`+
-    `<span class="wt num"><i>비중</i><b>${pct(x.weight)}</b></span></li>`;
+    `<span class="wt num"><i>비중</i><b>${pct(x.weight)}</b></span>`+
+    `<span class="qty num"><i>수량</i><b>${qty(x.shares)}</b></span></li>`;
 }
 function liTrade(x){
   const tk=`<span class="tk">${x.ticker||""}</span>`;
@@ -386,8 +386,8 @@ function liTrade(x){
   const rate=(x.prev_shares?x.share_delta/x.prev_shares*100:null);
   const rateTxt=rate==null?"":` (${fmtRate(rate)})`;
   return `<li data-key="${x.key}" data-ticker="${x.ticker||""}" data-name="${x.name}">${tk}<span class="nm">${x.name}</span>`+
-    `<span class="qty num"><i>수량</i><b>${qty(x.shares)}</b></span>`+
     `<span class="wt num"><i>비중</i><b>${pct(x.weight)}</b></span>`+
+    `<span class="qty num"><i>수량</i><b>${qty(x.shares)}</b></span>`+
     `<span class="d ${cls} num"><i>변화</i><b>${sQty(x.share_delta)}${rateTxt}</b></span></li>`;
 }
 function clist(title,tagcls,items,fn){
