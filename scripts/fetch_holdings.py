@@ -83,6 +83,12 @@ ETFS = [
          {"k": "b1", "label": "나스닥종합", "sym": ["IXIC", "YAHOO:^IXIC"]},
          {"k": "b2", "label": "나스닥100", "sym": ["YAHOO:^NDX", "NDX"]},
      ]},
+    {"slug": "time-sp500", "provider": "time", "fid": "5", "ticker": "426020",
+     "name": "TIME 미국S&P500액티브", "start": "2022-05-11",
+     "usd_price": True,
+     "benchmarks": [
+         {"k": "b1", "label": "S&P500", "sym": ["US500", "YAHOO:^GSPC"]},
+     ]},
 ]
 
 PERF_START = "2025-01-01"   # 수익률 시계열 조회 시작(ETF 상장 이전)

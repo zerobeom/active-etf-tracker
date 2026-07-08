@@ -987,12 +987,13 @@ $("#perf").addEventListener("click",function(e){
     else { document.getElementById("updHint").textContent="GitHub 저장소 Actions 탭에서 ‘Run workflow’를 실행하세요."; }
   };
 })();
-// ── Firebase Authentication 로그인 게이트 ──
-// ⚠️ 임시 비활성화 스위치: SOL 데이터 확인 끝나고 Firebase 설정 마치면 true로 바꾸세요.
-var AUTH_ENABLED = false;
+// ── 로그인 게이트 ──
+// AUTH_MODE: "password"(공유 비밀번호, 지금 사용 중) | "firebase"(계정별 로그인) | "off"(게이트 없음)
+var AUTH_MODE = "password";
+var AUTH_HASH = "3d9cdb2915404a53f63bd31a158685e1ef6e6e9902bc486ba097b897abe83027";   // sha256("carpediem")
 (function(){
   var gate=document.getElementById("authGate");
-  if(!AUTH_ENABLED){
+  if(AUTH_MODE==="off"){
     if(gate) gate.remove();
     document.body.style.overflow="";
     init();
@@ -1001,6 +1002,35 @@ var AUTH_ENABLED = false;
   var form=document.getElementById("authForm"), emailEl=document.getElementById("authEmail"),
       pwEl=document.getElementById("authPw"), err=document.getElementById("authErr"),
       submitBtn=document.getElementById("authSubmit"), logoutBtn=document.getElementById("logoutBtn");
+
+  if(AUTH_MODE==="password"){
+    if(emailEl) emailEl.style.display="none";
+    if(pwEl) pwEl.style.marginTop="20px";
+    var AUTH_KEY="koact_auth";
+    function isAuthed(){ try{ return localStorage.getItem(AUTH_KEY)==="1"; }catch(e){ return false; } }
+    function setAuthed(){ try{ localStorage.setItem(AUTH_KEY,"1"); }catch(e){} }
+    async function sha256Hex(str){
+      var buf=await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,"0"); }).join("");
+    }
+    function boot(){ if(gate) gate.remove(); document.body.style.overflow=""; init(); }
+    if(isAuthed()){ boot(); return; }
+    document.body.style.overflow="hidden";
+    if(!form){ boot(); return; }
+    form.addEventListener("submit", async function(e){
+      e.preventDefault();
+      var h=await sha256Hex(pwEl.value||"");
+      if(h===AUTH_HASH){ setAuthed(); boot(); }
+      else{
+        err.textContent="비밀번호가 올바르지 않아요"; err.classList.add("show");
+        pwEl.value=""; pwEl.focus();
+        form.classList.remove("shake"); void form.offsetWidth; form.classList.add("shake");
+      }
+    });
+    return;
+  }
+
+  // AUTH_MODE === "firebase"
   var booted=false;
   function boot(){
     if(booted) return; booted=true;
