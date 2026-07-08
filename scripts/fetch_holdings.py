@@ -788,7 +788,7 @@ def prune_before_start(snap_dir: Path, start_iso: str):
     return sorted(removed)
 
 
-def process_etf(etf: dict, start: str, debug: bool = False):
+def process_etf(etf: dict, start: str, debug: bool = False, skip_perf: bool = False):
     slug = etf["slug"]
     provider = etf.get("provider", "samsung")
     edir = DATA / slug
@@ -865,10 +865,14 @@ def process_etf(etf: dict, start: str, debug: bool = False):
           f"추가매수 {len(c['bought'])} · 일부매도 {len(c['sold'])}")
 
     # 벤치마크 수익률 (실패해도 보유종목 데이터에는 영향 없음. benchmarks가 없으면 자동 스킵)
-    try:
-        build_perf(etf, date_iso, debug=debug)
-    except Exception as e:
-        print(f"  [perf] 실패(건너뜀): {e}")
+    # ⚠️ build_perf는 매번 상장일~end_iso 전체 기간을 새로 계산한다. 백필처럼 날짜를 수백~수천 번
+    # 반복하는 상황에서 매 날짜마다 부르면 극도로 비효율적이라, skip_perf=True면 건너뛰고
+    # 백필이 다 끝난 뒤 맨 마지막에 딱 한 번만 계산한다(main() 참고).
+    if not skip_perf:
+        try:
+            build_perf(etf, date_iso, debug=debug)
+        except Exception as e:
+            print(f"  [perf] 실패(건너뜀): {e}")
 
 
 def business_days(start_yyyymmdd: str, end_yyyymmdd: str):
@@ -904,8 +908,18 @@ def main():
                 etf_start = etf.get("start", "1900-01-01").replace("-", "")
                 if ds < etf_start:
                     continue  # 상장 전 날짜는 건너뜀
-                process_etf(etf, ds, debug=debug)
+                process_etf(etf, ds, debug=debug, skip_perf=True)
                 time.sleep(1.0)  # 서버 부담 완화
+
+        print(f"\n[backfill] 홀딩스 수집 끝 → 벤치마크 수익률은 ETF당 한 번씩만 계산")
+        end_iso = f"{end_s[:4]}-{end_s[4:6]}-{end_s[6:]}"
+        for etf in ETFS:
+            if not etf.get("benchmarks"):
+                continue
+            try:
+                build_perf(etf, end_iso, debug=debug)
+            except Exception as e:
+                print(f"  [perf] {etf['slug']} 실패(건너뜀): {e}")
         return 0
 
     start = args[0] if args else today_kst()
