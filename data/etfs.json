@@ -28,5 +28,11 @@
     "name": "TIME 미국나스닥100액티브",
     "ticker": "426030",
     "fid": "2"
+  },
+  {
+    "slug": "time-sp500",
+    "name": "TIME 미국S&P500액티브",
+    "ticker": "426020",
+    "fid": "5"
   }
 ]
