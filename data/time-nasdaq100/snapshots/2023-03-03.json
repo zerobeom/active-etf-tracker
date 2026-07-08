@@ -15,8 +15,7 @@
       "amount": 41806084.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY",
-      "price_usd": 23.89
+      "key": "NVDA US EQUITY"
     },
     {
       "isin": "",
@@ -66,8 +65,7 @@
       "amount": 8504959.0,
       "price": null,
       "is_cash": false,
-      "key": "BIDU US EQUITY",
-      "price_usd": 153.46
+      "key": "BIDU US EQUITY"
     },
     {
       "isin": "",
@@ -221,8 +219,7 @@
       "amount": 2967993.0,
       "price": null,
       "is_cash": false,
-      "key": "SOUN US EQUITY",
-      "price_usd": 3.15
+      "key": "SOUN US EQUITY"
     },
     {
       "isin": "",
@@ -260,8 +257,7 @@
       "amount": 2491575.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY",
-      "price_usd": 175.68
+      "key": "TXN US EQUITY"
     },
     {
       "isin": "",
@@ -286,8 +282,7 @@
       "amount": 2111643.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY",
-      "price_usd": 408.52
+      "key": "INTU US EQUITY"
     },
     {
       "isin": "",
@@ -299,8 +294,7 @@
       "amount": 2062071.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY",
-      "price_usd": 31.52
+      "key": "NFLX US EQUITY"
     },
     {
       "isin": "",

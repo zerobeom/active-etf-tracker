@@ -28,8 +28,7 @@
       "amount": 31270955.0,
       "price": null,
       "is_cash": false,
-      "key": "MSFT US EQUITY",
-      "price_usd": 321.18
+      "key": "MSFT US EQUITY"
     },
     {
       "isin": "",
@@ -105,8 +104,7 @@
       "amount": 9718475.0,
       "price": null,
       "is_cash": false,
-      "key": "AMZN US EQUITY",
-      "price_usd": 115.01
+      "key": "AMZN US EQUITY"
     },
     {
       "isin": "",
@@ -118,8 +116,7 @@
       "amount": 9410972.0,
       "price": null,
       "is_cash": false,
-      "key": "INTC US EQUITY",
-      "price_usd": 30.28
+      "key": "INTC US EQUITY"
     },
     {
       "isin": "",
@@ -196,8 +193,7 @@
       "amount": 3597479.0,
       "price": null,
       "is_cash": false,
-      "key": "AVGO US EQUITY",
-      "price_usd": 67.84
+      "key": "AVGO US EQUITY"
     },
     {
       "isin": "",
@@ -209,8 +205,7 @@
       "amount": 3585804.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY",
-      "price_usd": 66.23
+      "key": "MU US EQUITY"
     },
     {
       "isin": "",
@@ -235,8 +230,7 @@
       "amount": 2994826.0,
       "price": null,
       "is_cash": false,
-      "key": "OLED US EQUITY",
-      "price_usd": 151.91
+      "key": "OLED US EQUITY"
     },
     {
       "isin": "",
@@ -248,8 +242,7 @@
       "amount": 2969552.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY",
-      "price_usd": 454.11
+      "key": "INTU US EQUITY"
     },
     {
       "isin": "",
@@ -261,8 +254,7 @@
       "amount": 2869094.0,
       "price": null,
       "is_cash": false,
-      "key": "ADBE US EQUITY",
-      "price_usd": 372.05
+      "key": "ADBE US EQUITY"
     },
     {
       "isin": "",
@@ -287,8 +279,7 @@
       "amount": 2838076.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 105.28
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -300,8 +291,7 @@
       "amount": 2749718.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY",
-      "price_usd": 48.82
+      "key": "CSCO US EQUITY"
     },
     {
       "isin": "",
@@ -377,8 +367,7 @@
       "amount": 1578109.0,
       "price": null,
       "is_cash": false,
-      "key": "HON US EQUITY",
-      "price_usd": 194.66
+      "key": "HON US EQUITY"
     },
     {
       "isin": "",
@@ -390,8 +379,7 @@
       "amount": 1562839.0,
       "price": null,
       "is_cash": false,
-      "key": "SBUX US EQUITY",
-      "price_usd": 102.9
+      "key": "SBUX US EQUITY"
     }
   ]
 }

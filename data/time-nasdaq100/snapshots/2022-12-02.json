@@ -79,8 +79,7 @@
       "amount": 6650071.0,
       "price": null,
       "is_cash": false,
-      "key": "AMZN US EQUITY",
-      "price_usd": 94.13
+      "key": "AMZN US EQUITY"
     },
     {
       "isin": "",
@@ -469,8 +468,7 @@
       "amount": 1712289.0,
       "price": null,
       "is_cash": false,
-      "key": "GILD US EQUITY",
-      "price_usd": 89.03
+      "key": "GILD US EQUITY"
     },
     {
       "isin": "",

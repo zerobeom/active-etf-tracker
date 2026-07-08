@@ -311,8 +311,7 @@
       "amount": 1846056.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 132.27
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -557,8 +556,7 @@
       "amount": 881280.0,
       "price": null,
       "is_cash": false,
-      "key": "CSX US EQUITY",
-      "price_usd": 31.65
+      "key": "CSX US EQUITY"
     },
     {
       "isin": "",
@@ -596,8 +594,7 @@
       "amount": 810821.0,
       "price": null,
       "is_cash": false,
-      "key": "OXY US EQUITY",
-      "price_usd": 71.0
+      "key": "OXY US EQUITY"
     },
     {
       "isin": "",

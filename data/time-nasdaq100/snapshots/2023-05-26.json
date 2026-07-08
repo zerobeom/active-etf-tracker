@@ -28,8 +28,7 @@
       "amount": 30796217.0,
       "price": null,
       "is_cash": false,
-      "key": "MSFT US EQUITY",
-      "price_usd": 332.89
+      "key": "MSFT US EQUITY"
     },
     {
       "isin": "",
@@ -118,8 +117,7 @@
       "amount": 9598251.0,
       "price": null,
       "is_cash": false,
-      "key": "AMZN US EQUITY",
-      "price_usd": 120.11
+      "key": "AMZN US EQUITY"
     },
     {
       "isin": "",
@@ -209,8 +207,7 @@
       "amount": 3604227.0,
       "price": null,
       "is_cash": false,
-      "key": "AVGO US EQUITY",
-      "price_usd": 81.27
+      "key": "AVGO US EQUITY"
     },
     {
       "isin": "",
@@ -390,8 +387,7 @@
       "amount": 1452911.0,
       "price": null,
       "is_cash": false,
-      "key": "SBUX US EQUITY",
-      "price_usd": 98.53
+      "key": "SBUX US EQUITY"
     }
   ]
 }

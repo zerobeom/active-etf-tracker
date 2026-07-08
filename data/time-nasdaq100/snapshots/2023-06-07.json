@@ -15,8 +15,7 @@
       "amount": 43727101.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY",
-      "price_usd": 37.47
+      "key": "NVDA US EQUITY"
     },
     {
       "isin": "",
@@ -66,8 +65,7 @@
       "amount": 11767837.0,
       "price": null,
       "is_cash": false,
-      "key": "META US EQUITY",
-      "price_usd": 263.6
+      "key": "META US EQUITY"
     },
     {
       "isin": "",
@@ -118,8 +116,7 @@
       "amount": 10600253.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY",
-      "price_usd": 122.5
+      "key": "GOOGL US EQUITY"
     },
     {
       "isin": "",
@@ -131,8 +128,7 @@
       "amount": 9788630.0,
       "price": null,
       "is_cash": false,
-      "key": "INTC US EQUITY",
-      "price_usd": 31.28
+      "key": "INTC US EQUITY"
     },
     {
       "isin": "",
@@ -144,8 +140,7 @@
       "amount": 6873673.0,
       "price": null,
       "is_cash": false,
-      "key": "PERI US EQUITY",
-      "price_usd": 31.92
+      "key": "PERI US EQUITY"
     },
     {
       "isin": "",
@@ -183,8 +178,7 @@
       "amount": 4705026.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY",
-      "price_usd": 67.06
+      "key": "MU US EQUITY"
     },
     {
       "isin": "",
@@ -209,8 +203,7 @@
       "amount": 4050283.0,
       "price": null,
       "is_cash": false,
-      "key": "LLY US EQUITY",
-      "price_usd": 436.37
+      "key": "LLY US EQUITY"
     },
     {
       "isin": "",
@@ -222,8 +215,7 @@
       "amount": 3424893.0,
       "price": null,
       "is_cash": false,
-      "key": "ADBE US EQUITY",
-      "price_usd": 418.32
+      "key": "ADBE US EQUITY"
     },
     {
       "isin": "",
@@ -235,8 +227,7 @@
       "amount": 3370764.0,
       "price": null,
       "is_cash": false,
-      "key": "PEP US EQUITY",
-      "price_usd": 180.11
+      "key": "PEP US EQUITY"
     },
     {
       "isin": "",
@@ -248,8 +239,7 @@
       "amount": 3352594.0,
       "price": null,
       "is_cash": false,
-      "key": "COST US EQUITY",
-      "price_usd": 511.23
+      "key": "COST US EQUITY"
     },
     {
       "isin": "",
@@ -261,8 +251,7 @@
       "amount": 3024850.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 115.18
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -274,8 +263,7 @@
       "amount": 2907513.0,
       "price": null,
       "is_cash": false,
-      "key": "OLED US EQUITY",
-      "price_usd": 148.12
+      "key": "OLED US EQUITY"
     },
     {
       "isin": "",
@@ -287,8 +275,7 @@
       "amount": 2815619.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY",
-      "price_usd": 422.36
+      "key": "INTU US EQUITY"
     },
     {
       "isin": "",
@@ -300,8 +287,7 @@
       "amount": 2813539.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY",
-      "price_usd": 49.78
+      "key": "CSCO US EQUITY"
     },
     {
       "isin": "",
@@ -325,8 +311,7 @@
       "amount": 2665750.0,
       "price": null,
       "is_cash": false,
-      "key": "CMCSA US EQUITY",
-      "price_usd": 37.82
+      "key": "CMCSA US EQUITY"
     },
     {
       "isin": "",
@@ -338,8 +323,7 @@
       "amount": 2619274.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY",
-      "price_usd": 39.98
+      "key": "NFLX US EQUITY"
     },
     {
       "isin": "",
@@ -351,8 +335,7 @@
       "amount": 2521401.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY",
-      "price_usd": 172.0
+      "key": "TXN US EQUITY"
     },
     {
       "isin": "",
@@ -364,8 +347,7 @@
       "amount": 2230925.0,
       "price": null,
       "is_cash": false,
-      "key": "TMUS US EQUITY",
-      "price_usd": 126.55
+      "key": "TMUS US EQUITY"
     },
     {
       "isin": "",
@@ -377,8 +359,7 @@
       "amount": 1431715.0,
       "price": null,
       "is_cash": false,
-      "key": "SBUX US EQUITY",
-      "price_usd": 97.92
+      "key": "SBUX US EQUITY"
     }
   ]
 }

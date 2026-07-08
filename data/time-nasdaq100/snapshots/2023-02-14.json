@@ -312,8 +312,7 @@
       "amount": 2306624.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 132.34
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -325,8 +324,7 @@
       "amount": 2218414.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY",
-      "price_usd": 36.0
+      "key": "NFLX US EQUITY"
     },
     {
       "isin": "",

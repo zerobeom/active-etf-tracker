@@ -28,8 +28,7 @@
       "amount": 29355252.0,
       "price": null,
       "is_cash": false,
-      "key": "MSFT US EQUITY",
-      "price_usd": 291.6
+      "key": "MSFT US EQUITY"
     },
     {
       "isin": "",
@@ -105,8 +104,7 @@
       "amount": 8675510.0,
       "price": null,
       "is_cash": false,
-      "key": "INTC US EQUITY",
-      "price_usd": 32.81
+      "key": "INTC US EQUITY"
     },
     {
       "isin": "",
@@ -196,8 +194,7 @@
       "amount": 6565605.0,
       "price": null,
       "is_cash": false,
-      "key": "PLTR US EQUITY",
-      "price_usd": 8.09
+      "key": "PLTR US EQUITY"
     },
     {
       "isin": "",
@@ -287,8 +284,7 @@
       "amount": 2573874.0,
       "price": null,
       "is_cash": false,
-      "key": "CMCSA US EQUITY",
-      "price_usd": 35.32
+      "key": "CMCSA US EQUITY"
     },
     {
       "isin": "",

@@ -66,8 +66,7 @@
       "amount": 10675617.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY",
-      "price_usd": 21.09
+      "key": "NVDA US EQUITY"
     },
     {
       "isin": "",
@@ -79,8 +78,7 @@
       "amount": 10596444.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY",
-      "price_usd": 102.9
+      "key": "GOOGL US EQUITY"
     },
     {
       "isin": "",
@@ -92,8 +90,7 @@
       "amount": 9184540.0,
       "price": null,
       "is_cash": false,
-      "key": "PDD US EQUITY",
-      "price_usd": 93.81
+      "key": "PDD US EQUITY"
     },
     {
       "isin": "",
@@ -131,8 +128,7 @@
       "amount": 7167893.0,
       "price": null,
       "is_cash": false,
-      "key": "TCOM US EQUITY",
-      "price_usd": 36.16
+      "key": "TCOM US EQUITY"
     },
     {
       "isin": "",
@@ -261,8 +257,7 @@
       "amount": 2574019.0,
       "price": null,
       "is_cash": false,
-      "key": "COST US EQUITY",
-      "price_usd": 515.59
+      "key": "COST US EQUITY"
     },
     {
       "isin": "",
@@ -274,8 +269,7 @@
       "amount": 2498042.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY",
-      "price_usd": 181.0
+      "key": "TXN US EQUITY"
     },
     {
       "isin": "",
@@ -287,8 +281,7 @@
       "amount": 2348584.0,
       "price": null,
       "is_cash": false,
-      "key": "TMUS US EQUITY",
-      "price_usd": 141.97
+      "key": "TMUS US EQUITY"
     },
     {
       "isin": "",
@@ -300,8 +293,7 @@
       "amount": 2338195.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 132.93
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -339,8 +331,7 @@
       "amount": 2255272.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY",
-      "price_usd": 36.15
+      "key": "NFLX US EQUITY"
     },
     {
       "isin": "",
@@ -468,8 +459,7 @@
       "amount": 1542405.0,
       "price": null,
       "is_cash": false,
-      "key": "RIG US EQUITY",
-      "price_usd": 6.94
+      "key": "RIG US EQUITY"
     },
     {
       "isin": "",
@@ -533,8 +523,7 @@
       "amount": 1123573.0,
       "price": null,
       "is_cash": false,
-      "key": "CSX US EQUITY",
-      "price_usd": 32.05
+      "key": "CSX US EQUITY"
     },
     {
       "isin": "",
@@ -559,8 +548,7 @@
       "amount": 1058267.0,
       "price": null,
       "is_cash": false,
-      "key": "FISV US EQUITY",
-      "price_usd": 106.4
+      "key": "FISV US EQUITY"
     },
     {
       "isin": "",
@@ -584,8 +572,7 @@
       "amount": 923525.0,
       "price": null,
       "is_cash": false,
-      "key": "REGN US EQUITY",
-      "price_usd": 780.86
+      "key": "REGN US EQUITY"
     },
     {
       "isin": "",
@@ -597,8 +584,7 @@
       "amount": 882782.0,
       "price": null,
       "is_cash": false,
-      "key": "MNST US EQUITY",
-      "price_usd": 51.41
+      "key": "MNST US EQUITY"
     },
     {
       "isin": "",
@@ -610,8 +596,7 @@
       "amount": 813678.0,
       "price": null,
       "is_cash": false,
-      "key": "AEP US EQUITY",
-      "price_usd": 92.5
+      "key": "AEP US EQUITY"
     },
     {
       "isin": "",
@@ -649,8 +634,7 @@
       "amount": 737455.0,
       "price": null,
       "is_cash": false,
-      "key": "KHC US EQUITY",
-      "price_usd": 39.93
+      "key": "KHC US EQUITY"
     },
     {
       "isin": "",
@@ -662,8 +646,7 @@
       "amount": 665154.0,
       "price": null,
       "is_cash": false,
-      "key": "US5128071082",
-      "price_usd": 960.0
+      "key": "US5128071082"
     },
     {
       "isin": "",
@@ -688,8 +671,7 @@
       "amount": 453144.0,
       "price": null,
       "is_cash": false,
-      "key": "SNPS US EQUITY",
-      "price_usd": 359.97
+      "key": "SNPS US EQUITY"
     }
   ]
 }

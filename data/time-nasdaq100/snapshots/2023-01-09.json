@@ -209,8 +209,7 @@
       "amount": 2674031.0,
       "price": null,
       "is_cash": false,
-      "key": "CMCSA US EQUITY",
-      "price_usd": 35.19
+      "key": "CMCSA US EQUITY"
     },
     {
       "isin": "",
@@ -222,8 +221,7 @@
       "amount": 2557294.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY",
-      "price_usd": 48.58
+      "key": "CSCO US EQUITY"
     },
     {
       "isin": "",
@@ -339,8 +337,7 @@
       "amount": 2012748.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY",
-      "price_usd": 56.36
+      "key": "MU US EQUITY"
     },
     {
       "isin": "",
@@ -365,8 +362,7 @@
       "amount": 1942987.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 114.61
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -378,8 +374,7 @@
       "amount": 1906046.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY",
-      "price_usd": 395.34
+      "key": "INTU US EQUITY"
     },
     {
       "isin": "",

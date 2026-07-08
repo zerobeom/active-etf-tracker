@@ -15,8 +15,7 @@
       "amount": 34223964.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY",
-      "price_usd": 31.26
+      "key": "NVDA US EQUITY"
     },
     {
       "isin": "",
@@ -79,8 +78,7 @@
       "amount": 10479607.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY",
-      "price_usd": 122.76
+      "key": "GOOGL US EQUITY"
     },
     {
       "isin": "",
@@ -131,8 +129,7 @@
       "amount": 9205886.0,
       "price": null,
       "is_cash": false,
-      "key": "INTC US EQUITY",
-      "price_usd": 29.93
+      "key": "INTC US EQUITY"
     },
     {
       "isin": "",
@@ -144,8 +141,7 @@
       "amount": 7687393.0,
       "price": null,
       "is_cash": false,
-      "key": "PEP US EQUITY",
-      "price_usd": 191.84
+      "key": "PEP US EQUITY"
     },
     {
       "isin": "",
@@ -157,8 +153,7 @@
       "amount": 7090205.0,
       "price": null,
       "is_cash": false,
-      "key": "PERI US EQUITY",
-      "price_usd": 30.63
+      "key": "PERI US EQUITY"
     },
     {
       "isin": "",
@@ -170,8 +165,7 @@
       "amount": 5896470.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY",
-      "price_usd": 36.54
+      "key": "NFLX US EQUITY"
     },
     {
       "isin": "",
@@ -183,8 +177,7 @@
       "amount": 5470220.0,
       "price": null,
       "is_cash": false,
-      "key": "PLTR US EQUITY",
-      "price_usd": 11.71
+      "key": "PLTR US EQUITY"
     },
     {
       "isin": "",
@@ -196,8 +189,7 @@
       "amount": 3508785.0,
       "price": null,
       "is_cash": false,
-      "key": "AVGO US EQUITY",
-      "price_usd": 68.22
+      "key": "AVGO US EQUITY"
     },
     {
       "isin": "",
@@ -209,8 +201,7 @@
       "amount": 3464650.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY",
-      "price_usd": 68.17
+      "key": "MU US EQUITY"
     },
     {
       "isin": "",
@@ -235,8 +226,7 @@
       "amount": 3048580.0,
       "price": null,
       "is_cash": false,
-      "key": "OLED US EQUITY",
-      "price_usd": 150.49
+      "key": "OLED US EQUITY"
     },
     {
       "isin": "",
@@ -248,8 +238,7 @@
       "amount": 2880938.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY",
-      "price_usd": 446.03
+      "key": "INTU US EQUITY"
     },
     {
       "isin": "",
@@ -261,8 +250,7 @@
       "amount": 2854894.0,
       "price": null,
       "is_cash": false,
-      "key": "ADBE US EQUITY",
-      "price_usd": 371.25
+      "key": "ADBE US EQUITY"
     },
     {
       "isin": "",
@@ -274,8 +262,7 @@
       "amount": 2798617.0,
       "price": null,
       "is_cash": false,
-      "key": "FSLR US EQUITY",
-      "price_usd": 203.53
+      "key": "FSLR US EQUITY"
     },
     {
       "isin": "",
@@ -287,8 +274,7 @@
       "amount": 2796750.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 105.86
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -300,8 +286,7 @@
       "amount": 2795255.0,
       "price": null,
       "is_cash": false,
-      "key": "CMCSA US EQUITY",
-      "price_usd": 38.59
+      "key": "CMCSA US EQUITY"
     },
     {
       "isin": "",
@@ -313,8 +298,7 @@
       "amount": 2732561.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY",
-      "price_usd": 49.13
+      "key": "CSCO US EQUITY"
     },
     {
       "isin": "",
@@ -364,8 +348,7 @@
       "amount": 1801330.0,
       "price": null,
       "is_cash": false,
-      "key": "AMGN US EQUITY",
-      "price_usd": 223.42
+      "key": "AMGN US EQUITY"
     },
     {
       "isin": "",
@@ -377,8 +360,7 @@
       "amount": 1569179.0,
       "price": null,
       "is_cash": false,
-      "key": "HON US EQUITY",
-      "price_usd": 195.07
+      "key": "HON US EQUITY"
     },
     {
       "isin": "",
@@ -390,8 +372,7 @@
       "amount": 1551127.0,
       "price": null,
       "is_cash": false,
-      "key": "SBUX US EQUITY",
-      "price_usd": 105.51
+      "key": "SBUX US EQUITY"
     }
   ]
 }

@@ -339,8 +339,7 @@
       "amount": 1978794.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY",
-      "price_usd": 391.57
+      "key": "INTU US EQUITY"
     },
     {
       "isin": "",
@@ -352,8 +351,7 @@
       "amount": 1956272.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 111.53
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -508,8 +506,7 @@
       "amount": 1102516.0,
       "price": null,
       "is_cash": false,
-      "key": "CSX US EQUITY",
-      "price_usd": 31.28
+      "key": "CSX US EQUITY"
     },
     {
       "isin": "",
@@ -585,8 +582,7 @@
       "amount": 903312.0,
       "price": null,
       "is_cash": false,
-      "key": "MNST US EQUITY",
-      "price_usd": 51.08
+      "key": "MNST US EQUITY"
     },
     {
       "isin": "",

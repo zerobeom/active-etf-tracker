@@ -28,8 +28,7 @@
       "amount": 29479104.0,
       "price": null,
       "is_cash": false,
-      "key": "MSFT US EQUITY",
-      "price_usd": 284.34
+      "key": "MSFT US EQUITY"
     },
     {
       "isin": "",
@@ -144,8 +143,7 @@
       "amount": 8655332.0,
       "price": null,
       "is_cash": false,
-      "key": "INTC US EQUITY",
-      "price_usd": 32.83
+      "key": "INTC US EQUITY"
     },
     {
       "isin": "",
@@ -183,8 +181,7 @@
       "amount": 6615842.0,
       "price": null,
       "is_cash": false,
-      "key": "PLTR US EQUITY",
-      "price_usd": 7.98
+      "key": "PLTR US EQUITY"
     },
     {
       "isin": "",
@@ -209,8 +206,7 @@
       "amount": 3381448.0,
       "price": null,
       "is_cash": false,
-      "key": "AVGO US EQUITY",
-      "price_usd": 62.9
+      "key": "AVGO US EQUITY"
     },
     {
       "isin": "",
@@ -222,8 +218,7 @@
       "amount": 3000655.0,
       "price": null,
       "is_cash": false,
-      "key": "ADBE US EQUITY",
-      "price_usd": 382.02
+      "key": "ADBE US EQUITY"
     },
     {
       "isin": "",
@@ -286,8 +281,7 @@
       "amount": 2600705.0,
       "price": null,
       "is_cash": false,
-      "key": "CMCSA US EQUITY",
-      "price_usd": 35.54
+      "key": "CMCSA US EQUITY"
     },
     {
       "isin": "",

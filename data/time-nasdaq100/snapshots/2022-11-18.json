@@ -611,8 +611,7 @@
       "amount": 1171337.0,
       "price": null,
       "is_cash": false,
-      "key": "CSX US EQUITY",
-      "price_usd": 30.88
+      "key": "CSX US EQUITY"
     },
     {
       "isin": "",
@@ -753,8 +752,7 @@
       "amount": 512647.0,
       "price": null,
       "is_cash": false,
-      "key": "FTNT US EQUITY",
-      "price_usd": 52.15
+      "key": "FTNT US EQUITY"
     },
     {
       "isin": "",

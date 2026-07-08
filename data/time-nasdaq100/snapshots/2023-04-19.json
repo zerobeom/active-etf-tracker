@@ -15,8 +15,7 @@
       "amount": 49490723.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY",
-      "price_usd": 27.93
+      "key": "NVDA US EQUITY"
     },
     {
       "isin": "",
@@ -28,8 +27,7 @@
       "amount": 29703311.0,
       "price": null,
       "is_cash": false,
-      "key": "MSFT US EQUITY",
-      "price_usd": 288.45
+      "key": "MSFT US EQUITY"
     },
     {
       "isin": "",
@@ -53,8 +51,7 @@
       "amount": 9523430.0,
       "price": null,
       "is_cash": false,
-      "key": "META US EQUITY",
-      "price_usd": 215.7
+      "key": "META US EQUITY"
     },
     {
       "isin": "",
@@ -79,8 +76,7 @@
       "amount": 9082582.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY",
-      "price_usd": 104.18
+      "key": "GOOGL US EQUITY"
     },
     {
       "isin": "",
@@ -105,8 +101,7 @@
       "amount": 8475960.0,
       "price": null,
       "is_cash": false,
-      "key": "INTC US EQUITY",
-      "price_usd": 31.15
+      "key": "INTC US EQUITY"
     },
     {
       "isin": "",
@@ -118,8 +113,7 @@
       "amount": 8411454.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY",
-      "price_usd": 60.65
+      "key": "MU US EQUITY"
     },
     {
       "isin": "",
@@ -131,8 +125,7 @@
       "amount": 8399323.0,
       "price": null,
       "is_cash": false,
-      "key": "AMZN US EQUITY",
-      "price_usd": 104.3
+      "key": "AMZN US EQUITY"
     },
     {
       "isin": "",
@@ -157,8 +150,7 @@
       "amount": 7296473.0,
       "price": null,
       "is_cash": false,
-      "key": "PEP US EQUITY",
-      "price_usd": 184.72
+      "key": "PEP US EQUITY"
     },
     {
       "isin": "",
@@ -170,8 +162,7 @@
       "amount": 6962208.0,
       "price": null,
       "is_cash": false,
-      "key": "PLTR US EQUITY",
-      "price_usd": 8.49
+      "key": "PLTR US EQUITY"
     },
     {
       "isin": "",
@@ -183,8 +174,7 @@
       "amount": 5703419.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY",
-      "price_usd": 32.31
+      "key": "NFLX US EQUITY"
     },
     {
       "isin": "",
@@ -196,8 +186,7 @@
       "amount": 3862838.0,
       "price": null,
       "is_cash": false,
-      "key": "PERI US EQUITY",
-      "price_usd": 38.73
+      "key": "PERI US EQUITY"
     },
     {
       "isin": "",
@@ -209,8 +198,7 @@
       "amount": 3308947.0,
       "price": null,
       "is_cash": false,
-      "key": "AVGO US EQUITY",
-      "price_usd": 63.45
+      "key": "AVGO US EQUITY"
     },
     {
       "isin": "",
@@ -222,8 +210,7 @@
       "amount": 3148289.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 118.54
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -235,8 +222,7 @@
       "amount": 2989951.0,
       "price": null,
       "is_cash": false,
-      "key": "ADBE US EQUITY",
-      "price_usd": 380.11
+      "key": "ADBE US EQUITY"
     },
     {
       "isin": "",
@@ -248,8 +234,7 @@
       "amount": 2901513.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY",
-      "price_usd": 445.49
+      "key": "INTU US EQUITY"
     },
     {
       "isin": "",
@@ -261,8 +246,7 @@
       "amount": 2850865.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY",
-      "price_usd": 48.04
+      "key": "CSCO US EQUITY"
     },
     {
       "isin": "",
@@ -274,8 +258,7 @@
       "amount": 2611724.0,
       "price": null,
       "is_cash": false,
-      "key": "CMCSA US EQUITY",
-      "price_usd": 35.85
+      "key": "CMCSA US EQUITY"
     },
     {
       "isin": "",
@@ -287,8 +270,7 @@
       "amount": 2611553.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY",
-      "price_usd": 177.08
+      "key": "TXN US EQUITY"
     },
     {
       "isin": "",
@@ -300,8 +282,7 @@
       "amount": 2579669.0,
       "price": null,
       "is_cash": false,
-      "key": "TMUS US EQUITY",
-      "price_usd": 148.78
+      "key": "TMUS US EQUITY"
     },
     {
       "isin": "",

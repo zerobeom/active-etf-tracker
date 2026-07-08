@@ -79,8 +79,7 @@
       "amount": 10589208.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY",
-      "price_usd": 22.2
+      "key": "NVDA US EQUITY"
     },
     {
       "isin": "",
@@ -92,8 +91,7 @@
       "amount": 10333629.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY",
-      "price_usd": 99.37
+      "key": "GOOGL US EQUITY"
     },
     {
       "isin": "",
@@ -105,8 +103,7 @@
       "amount": 8831976.0,
       "price": null,
       "is_cash": false,
-      "key": "PDD US EQUITY",
-      "price_usd": 92.43
+      "key": "PDD US EQUITY"
     },
     {
       "isin": "",
@@ -118,8 +115,7 @@
       "amount": 7262663.0,
       "price": null,
       "is_cash": false,
-      "key": "TCOM US EQUITY",
-      "price_usd": 37.08
+      "key": "TCOM US EQUITY"
     },
     {
       "isin": "",
@@ -157,8 +153,7 @@
       "amount": 5138344.0,
       "price": null,
       "is_cash": false,
-      "key": "META US EQUITY",
-      "price_usd": 183.43
+      "key": "META US EQUITY"
     },
     {
       "isin": "",
@@ -247,8 +242,7 @@
       "amount": 2588880.0,
       "price": null,
       "is_cash": false,
-      "key": "COST US EQUITY",
-      "price_usd": 503.81
+      "key": "COST US EQUITY"
     },
     {
       "isin": "",
@@ -273,8 +267,7 @@
       "amount": 2499302.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY",
-      "price_usd": 176.5
+      "key": "TXN US EQUITY"
     },
     {
       "isin": "",
@@ -286,8 +279,7 @@
       "amount": 2372542.0,
       "price": null,
       "is_cash": false,
-      "key": "PEP US EQUITY",
-      "price_usd": 171.16
+      "key": "PEP US EQUITY"
     },
     {
       "isin": "",
@@ -299,8 +291,7 @@
       "amount": 2336138.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 132.17
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -312,8 +303,7 @@
       "amount": 2316794.0,
       "price": null,
       "is_cash": false,
-      "key": "TMUS US EQUITY",
-      "price_usd": 143.81
+      "key": "TMUS US EQUITY"
     },
     {
       "isin": "",
@@ -325,8 +315,7 @@
       "amount": 2268829.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY",
-      "price_usd": 36.68
+      "key": "NFLX US EQUITY"
     },
     {
       "isin": "",
@@ -455,8 +444,7 @@
       "amount": 1568120.0,
       "price": null,
       "is_cash": false,
-      "key": "RIG US EQUITY",
-      "price_usd": 7.52
+      "key": "RIG US EQUITY"
     },
     {
       "isin": "",
@@ -533,8 +521,7 @@
       "amount": 1126506.0,
       "price": null,
       "is_cash": false,
-      "key": "CSX US EQUITY",
-      "price_usd": 31.95
+      "key": "CSX US EQUITY"
     },
     {
       "isin": "",
@@ -546,8 +533,7 @@
       "amount": 1068511.0,
       "price": null,
       "is_cash": false,
-      "key": "FISV US EQUITY",
-      "price_usd": 115.9
+      "key": "FISV US EQUITY"
     },
     {
       "isin": "",
@@ -572,8 +558,7 @@
       "amount": 903489.0,
       "price": null,
       "is_cash": false,
-      "key": "MNST US EQUITY",
-      "price_usd": 51.04
+      "key": "MNST US EQUITY"
     },
     {
       "isin": "",
@@ -597,8 +582,7 @@
       "amount": 812806.0,
       "price": null,
       "is_cash": false,
-      "key": "AEP US EQUITY",
-      "price_usd": 90.38
+      "key": "AEP US EQUITY"
     },
     {
       "isin": "",
@@ -636,8 +620,7 @@
       "amount": 751861.0,
       "price": null,
       "is_cash": false,
-      "key": "KHC US EQUITY",
-      "price_usd": 39.07
+      "key": "KHC US EQUITY"
     },
     {
       "isin": "",
@@ -649,8 +632,7 @@
       "amount": 653948.0,
       "price": null,
       "is_cash": false,
-      "key": "US5128071082",
-      "price_usd": 960.0
+      "key": "US5128071082"
     },
     {
       "isin": "",
@@ -675,8 +657,7 @@
       "amount": 451870.0,
       "price": null,
       "is_cash": false,
-      "key": "SNPS US EQUITY",
-      "price_usd": 360.6
+      "key": "SNPS US EQUITY"
     }
   ]
 }

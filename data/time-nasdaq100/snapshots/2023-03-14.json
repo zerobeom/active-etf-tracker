@@ -15,8 +15,7 @@
       "amount": 41854171.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY",
-      "price_usd": 24.06
+      "key": "NVDA US EQUITY"
     },
     {
       "isin": "",
@@ -53,8 +52,7 @@
       "amount": 8880072.0,
       "price": null,
       "is_cash": false,
-      "key": "META US EQUITY",
-      "price_usd": 194.02
+      "key": "META US EQUITY"
     },
     {
       "isin": "",
@@ -105,8 +103,7 @@
       "amount": 7757296.0,
       "price": null,
       "is_cash": false,
-      "key": "BIDU US EQUITY",
-      "price_usd": 136.7
+      "key": "BIDU US EQUITY"
     },
     {
       "isin": "",
@@ -157,8 +154,7 @@
       "amount": 6597991.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 116.55
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -170,8 +166,7 @@
       "amount": 6371035.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY",
-      "price_usd": 93.97
+      "key": "GOOGL US EQUITY"
     },
     {
       "isin": "",
@@ -196,8 +191,7 @@
       "amount": 4015402.0,
       "price": null,
       "is_cash": false,
-      "key": "SOUN US EQUITY",
-      "price_usd": 1.91
+      "key": "SOUN US EQUITY"
     },
     {
       "isin": "",
@@ -247,8 +241,7 @@
       "amount": 2718262.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY",
-      "price_usd": 49.05
+      "key": "CSCO US EQUITY"
     },
     {
       "isin": "",
@@ -260,8 +253,7 @@
       "amount": 2555498.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY",
-      "price_usd": 408.3
+      "key": "INTU US EQUITY"
     },
     {
       "isin": "",
@@ -273,8 +265,7 @@
       "amount": 2457850.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY",
-      "price_usd": 175.73
+      "key": "TXN US EQUITY"
     },
     {
       "isin": "",
@@ -299,8 +290,7 @@
       "amount": 2360983.0,
       "price": null,
       "is_cash": false,
-      "key": "TMUS US EQUITY",
-      "price_usd": 143.01
+      "key": "TMUS US EQUITY"
     },
     {
       "isin": "",

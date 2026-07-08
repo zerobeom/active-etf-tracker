@@ -234,8 +234,7 @@
       "amount": 2536660.0,
       "price": null,
       "is_cash": false,
-      "key": "CMCSA US EQUITY",
-      "price_usd": 33.34
+      "key": "CMCSA US EQUITY"
     },
     {
       "isin": "",
@@ -520,8 +519,7 @@
       "amount": 1103904.0,
       "price": null,
       "is_cash": false,
-      "key": "CSX US EQUITY",
-      "price_usd": 30.88
+      "key": "CSX US EQUITY"
     },
     {
       "isin": "",
@@ -597,8 +595,7 @@
       "amount": 904449.0,
       "price": null,
       "is_cash": false,
-      "key": "MNST US EQUITY",
-      "price_usd": 50.66
+      "key": "MNST US EQUITY"
     },
     {
       "isin": "",

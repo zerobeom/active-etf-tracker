@@ -377,8 +377,7 @@
       "amount": 1241186.0,
       "price": null,
       "is_cash": false,
-      "key": "PYPL US EQUITY",
-      "price_usd": 89.63
+      "key": "PYPL US EQUITY"
     },
     {
       "isin": "",
@@ -416,8 +415,7 @@
       "amount": 1126916.0,
       "price": null,
       "is_cash": false,
-      "key": "CHTR US EQUITY",
-      "price_usd": 437.65
+      "key": "CHTR US EQUITY"
     },
     {
       "isin": "",
@@ -429,8 +427,7 @@
       "amount": 1121179.0,
       "price": null,
       "is_cash": false,
-      "key": "ADI US EQUITY",
-      "price_usd": 170.77
+      "key": "ADI US EQUITY"
     },
     {
       "isin": "",
@@ -455,8 +452,7 @@
       "amount": 1085606.0,
       "price": null,
       "is_cash": false,
-      "key": "MDLZ US EQUITY",
-      "price_usd": 64.76
+      "key": "MDLZ US EQUITY"
     },
     {
       "isin": "",
@@ -468,8 +464,7 @@
       "amount": 1069866.0,
       "price": null,
       "is_cash": false,
-      "key": "MRNA US EQUITY",
-      "price_usd": 160.81
+      "key": "MRNA US EQUITY"
     },
     {
       "isin": "",
@@ -507,8 +502,7 @@
       "amount": 843166.0,
       "price": null,
       "is_cash": false,
-      "key": "CSX US EQUITY",
-      "price_usd": 32.15
+      "key": "CSX US EQUITY"
     },
     {
       "isin": "",
@@ -571,8 +565,7 @@
       "amount": 733891.0,
       "price": null,
       "is_cash": false,
-      "key": "UBER US EQUITY",
-      "price_usd": 29.25
+      "key": "UBER US EQUITY"
     },
     {
       "isin": "",
@@ -622,8 +615,7 @@
       "amount": 685904.0,
       "price": null,
       "is_cash": false,
-      "key": "OXY US EQUITY",
-      "price_usd": 65.06
+      "key": "OXY US EQUITY"
     },
     {
       "isin": "",

@@ -15,8 +15,7 @@
       "amount": 39060252.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY",
-      "price_usd": 42.69
+      "key": "NVDA US EQUITY"
     },
     {
       "isin": "",
@@ -118,8 +117,7 @@
       "amount": 10341628.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY",
-      "price_usd": 123.53
+      "key": "GOOGL US EQUITY"
     },
     {
       "isin": "",
@@ -157,8 +155,7 @@
       "amount": 7460952.0,
       "price": null,
       "is_cash": false,
-      "key": "PERI US EQUITY",
-      "price_usd": 33.64
+      "key": "PERI US EQUITY"
     },
     {
       "isin": "",
@@ -235,8 +232,7 @@
       "amount": 3144391.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 122.68
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -274,8 +270,7 @@
       "amount": 2831694.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY",
-      "price_usd": 43.2
+      "key": "NFLX US EQUITY"
     },
     {
       "isin": "",
@@ -287,8 +282,7 @@
       "amount": 2774090.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY",
-      "price_usd": 52.07
+      "key": "CSCO US EQUITY"
     },
     {
       "isin": "",
@@ -300,8 +294,7 @@
       "amount": 2742776.0,
       "price": null,
       "is_cash": false,
-      "key": "CMCSA US EQUITY",
-      "price_usd": 38.61
+      "key": "CMCSA US EQUITY"
     },
     {
       "isin": "",
@@ -338,8 +331,7 @@
       "amount": 2491639.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY",
-      "price_usd": 176.76
+      "key": "TXN US EQUITY"
     },
     {
       "isin": "",
@@ -351,8 +343,7 @@
       "amount": 2321522.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY",
-      "price_usd": 455.03
+      "key": "INTU US EQUITY"
     },
     {
       "isin": "",
@@ -377,8 +368,7 @@
       "amount": 1838175.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY",
-      "price_usd": 67.66
+      "key": "MU US EQUITY"
     },
     {
       "isin": "",
