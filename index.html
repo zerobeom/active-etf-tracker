@@ -608,14 +608,17 @@ function comboChartSVG(pts,mode){
   const rs=pts.map(p=>p.rate).filter(v=>v!=null&&isFinite(v));
   const hasRate=rs.length>0;
   const anyNeg=rs.some(v=>v<0), anyPos=rs.some(v=>v>0);
-  const rTop=niceCeil(Math.max(1,...rs.map(v=>Math.abs(v))));
+  // 편입(0%)·편출(-100%)처럼 규칙상 고정된 극단값은 축 크기 계산에서 빼서, 실제 변동폭이
+  // 축을 꽉 채우게 함 — 편출점은 아래에서 축 하단으로 clamp해서 그려줌(태그로 이미 표시되니 문제없음)
+  const rsScale=pts.filter(p=>!p.isEntry&&!p.isExit).map(p=>p.rate).filter(v=>v!=null&&isFinite(v));
+  const rTop=niceCeil(Math.max(1,...(rsScale.length?rsScale:rs).map(v=>Math.abs(v))));
   let rMin = !hasRate ? -1 : (anyNeg? -rTop : 0);
   let rMax = !hasRate ?  1 : (anyPos?  rTop : 0);
   if(rMin===rMax){ rMin-=1; rMax+=1; }
   const slot=plotW/n, cx=i=> padL + i*slot + slot/2;
   const yW=v=> yB-(v/wTop)*innerH;
   const yQ=v=> yB-(qTop?v/qTop:0)*innerH;
-  const yR=v=> padT+(1-(v-rMin)/(rMax-rMin))*innerH;
+  const yR=v=> padT+(1-(Math.min(rMax,Math.max(rMin,v))-rMin)/(rMax-rMin))*innerH;
   const bw=Math.max(6,Math.min(15,slot*0.27));
   const lblEvery=n>16?Math.ceil(n/12):1;
   let g="";
