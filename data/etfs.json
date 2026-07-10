@@ -3,36 +3,42 @@
     "slug": "us-nasdaq",
     "name": "KoAct 미국나스닥성장기업액티브",
     "ticker": "0015B0",
-    "fid": "2ETFQ1"
+    "fid": "2ETFQ1",
+    "start": "2025-02-25"
   },
   {
     "slug": "kr-valueup",
     "name": "KoAct 코리아밸류업액티브",
     "ticker": "495230",
-    "fid": "2ETFP3"
+    "fid": "2ETFP3",
+    "start": "2024-11-04"
   },
   {
     "slug": "sol-nexttech",
     "name": "SOL 미국넥스트테크TOP10액티브",
     "ticker": "0118S0",
-    "fid": "211099"
+    "fid": "211099",
+    "start": "2025-10-28"
   },
   {
     "slug": "sol-megatech",
     "name": "SOL 코리아메가테크액티브",
     "ticker": "444200",
-    "fid": "210940"
+    "fid": "210940",
+    "start": "2022-10-18"
   },
   {
     "slug": "time-nasdaq100",
     "name": "TIME 미국나스닥100액티브",
     "ticker": "426030",
-    "fid": "2"
+    "fid": "2",
+    "start": "2022-05-11"
   },
   {
     "slug": "time-sp500",
     "name": "TIME 미국S&P500액티브",
     "ticker": "426020",
-    "fid": "5"
+    "fid": "5",
+    "start": "2022-05-11"
   }
 ]
