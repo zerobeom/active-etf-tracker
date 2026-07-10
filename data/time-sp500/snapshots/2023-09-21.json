@@ -247,7 +247,8 @@
       "amount": 2591673.0,
       "price": null,
       "is_cash": false,
-      "key": "V US EQUITY"
+      "key": "V US EQUITY",
+      "price_usd": 236.61
     },
     {
       "isin": "",
@@ -272,7 +273,8 @@
       "amount": 2510776.0,
       "price": null,
       "is_cash": false,
-      "key": "HD US EQUITY"
+      "key": "HD US EQUITY",
+      "price_usd": 306.76
     },
     {
       "isin": "",
@@ -582,7 +584,8 @@
       "amount": 1071209.0,
       "price": null,
       "is_cash": false,
-      "key": "ABT US EQUITY"
+      "key": "ABT US EQUITY",
+      "price_usd": 98.93
     },
     {
       "isin": "",

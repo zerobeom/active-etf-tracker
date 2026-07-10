@@ -15,7 +15,8 @@
       "amount": 35752530.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY"
+      "key": "NVDA US EQUITY",
+      "price_usd": 46.51
     },
     {
       "isin": "",
@@ -91,7 +92,8 @@
       "amount": 11615990.0,
       "price": null,
       "is_cash": false,
-      "key": "META US EQUITY"
+      "key": "META US EQUITY",
+      "price_usd": 322.71
     },
     {
       "isin": "",
@@ -129,7 +131,8 @@
       "amount": 10815133.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY"
+      "key": "GOOGL US EQUITY",
+      "price_usd": 131.55
     },
     {
       "isin": "",
@@ -180,7 +183,8 @@
       "amount": 5727555.0,
       "price": null,
       "is_cash": false,
-      "key": "U US EQUITY"
+      "key": "U US EQUITY",
+      "price_usd": 45.3
     },
     {
       "isin": "",
@@ -218,7 +222,8 @@
       "amount": 4884292.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY"
+      "key": "NFLX US EQUITY",
+      "price_usd": 43.86
     },
     {
       "isin": "",
@@ -243,7 +248,8 @@
       "amount": 3590038.0,
       "price": null,
       "is_cash": false,
-      "key": "COST US EQUITY"
+      "key": "COST US EQUITY",
+      "price_usd": 555.47
     },
     {
       "isin": "",
@@ -267,7 +273,8 @@
       "amount": 3153398.0,
       "price": null,
       "is_cash": false,
-      "key": "PEP US EQUITY"
+      "key": "PEP US EQUITY",
+      "price_usd": 186.82
     },
     {
       "isin": "",
@@ -279,7 +286,8 @@
       "amount": 3135668.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY"
+      "key": "QCOM US EQUITY",
+      "price_usd": 132.08
     },
     {
       "isin": "",
@@ -291,7 +299,8 @@
       "amount": 2940158.0,
       "price": null,
       "is_cash": false,
-      "key": "CMCSA US EQUITY"
+      "key": "CMCSA US EQUITY",
+      "price_usd": 42.46
     },
     {
       "isin": "",
@@ -303,7 +312,8 @@
       "amount": 2788544.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY"
+      "key": "CSCO US EQUITY",
+      "price_usd": 52.66
     },
     {
       "isin": "",
@@ -315,7 +325,8 @@
       "amount": 2722545.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY"
+      "key": "MU US EQUITY",
+      "price_usd": 70.76
     },
     {
       "isin": "",
@@ -327,7 +338,8 @@
       "amount": 2521158.0,
       "price": null,
       "is_cash": false,
-      "key": "TCOM US EQUITY"
+      "key": "TCOM US EQUITY",
+      "price_usd": 40.36
     },
     {
       "isin": "",
@@ -339,7 +351,8 @@
       "amount": 2273504.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY"
+      "key": "TXN US EQUITY",
+      "price_usd": 178.37
     },
     {
       "isin": "",
@@ -351,7 +364,8 @@
       "amount": 2154634.0,
       "price": null,
       "is_cash": false,
-      "key": "TMUS US EQUITY"
+      "key": "TMUS US EQUITY",
+      "price_usd": 137.26
     },
     {
       "isin": "",
@@ -376,7 +390,8 @@
       "amount": 1957173.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY"
+      "key": "INTU US EQUITY",
+      "price_usd": 508.5
     },
     {
       "isin": "",

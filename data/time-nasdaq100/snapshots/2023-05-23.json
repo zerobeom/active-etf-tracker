@@ -28,7 +28,8 @@
       "amount": 31050692.0,
       "price": null,
       "is_cash": false,
-      "key": "MSFT US EQUITY"
+      "key": "MSFT US EQUITY",
+      "price_usd": 315.26
     },
     {
       "isin": "",
@@ -299,8 +300,7 @@
       "amount": 2784604.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY",
-      "price_usd": 48.91
+      "key": "CSCO US EQUITY"
     },
     {
       "isin": "",

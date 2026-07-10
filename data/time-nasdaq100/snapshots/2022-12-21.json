@@ -196,8 +196,7 @@
       "amount": 2835211.0,
       "price": null,
       "is_cash": false,
-      "key": "AVGO US EQUITY",
-      "price_usd": 56.12
+      "key": "AVGO US EQUITY"
     },
     {
       "isin": "",
@@ -235,8 +234,7 @@
       "amount": 2572416.0,
       "price": null,
       "is_cash": false,
-      "key": "PEP US EQUITY",
-      "price_usd": 182.5
+      "key": "PEP US EQUITY"
     },
     {
       "isin": "",
@@ -378,7 +376,8 @@
       "amount": 1978349.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY"
+      "key": "INTU US EQUITY",
+      "price_usd": 393.33
     },
     {
       "isin": "",
@@ -661,8 +660,7 @@
       "amount": 776442.0,
       "price": null,
       "is_cash": false,
-      "key": "PANW US EQUITY",
-      "price_usd": 73.71
+      "key": "PANW US EQUITY"
     },
     {
       "isin": "",

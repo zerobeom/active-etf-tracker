@@ -104,8 +104,7 @@
       "amount": 4300348.0,
       "price": null,
       "is_cash": false,
-      "key": "MRVL US EQUITY",
-      "price_usd": 40.09
+      "key": "MRVL US EQUITY"
     },
     {
       "isin": "",
@@ -117,8 +116,7 @@
       "amount": 4173208.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY",
-      "price_usd": 63.57
+      "key": "MU US EQUITY"
     },
     {
       "isin": "",
@@ -169,7 +167,8 @@
       "amount": 3877621.0,
       "price": null,
       "is_cash": false,
-      "key": "ON US EQUITY"
+      "key": "ON US EQUITY",
+      "price_usd": 77.22
     },
     {
       "isin": "",
@@ -478,8 +477,7 @@
       "amount": 1423956.0,
       "price": null,
       "is_cash": false,
-      "key": "PFE US EQUITY",
-      "price_usd": 41.79
+      "key": "PFE US EQUITY"
     },
     {
       "isin": "",
@@ -504,8 +502,7 @@
       "amount": 1303652.0,
       "price": null,
       "is_cash": false,
-      "key": "DHR US EQUITY",
-      "price_usd": 221.52
+      "key": "DHR US EQUITY"
     },
     {
       "isin": "",
@@ -595,8 +592,7 @@
       "amount": 1055443.0,
       "price": null,
       "is_cash": false,
-      "key": "DIS US EQUITY",
-      "price_usd": 100.42
+      "key": "DIS US EQUITY"
     },
     {
       "isin": "",
@@ -712,8 +708,7 @@
       "amount": 973938.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 123.57
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -1374,8 +1369,7 @@
       "amount": 58634.0,
       "price": null,
       "is_cash": false,
-      "key": "MO US EQUITY",
-      "price_usd": 45.09
+      "key": "MO US EQUITY"
     },
     {
       "isin": "",

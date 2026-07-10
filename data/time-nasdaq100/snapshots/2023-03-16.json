@@ -15,7 +15,8 @@
       "amount": 43919306.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY"
+      "key": "NVDA US EQUITY",
+      "price_usd": 25.54
     },
     {
       "isin": "",
@@ -78,8 +79,7 @@
       "amount": 8554058.0,
       "price": null,
       "is_cash": false,
-      "key": "AAPL US EQUITY",
-      "price_usd": 155.85
+      "key": "AAPL US EQUITY"
     },
     {
       "isin": "",
@@ -91,7 +91,8 @@
       "amount": 8019710.0,
       "price": null,
       "is_cash": false,
-      "key": "BIDU US EQUITY"
+      "key": "BIDU US EQUITY",
+      "price_usd": 138.16
     },
     {
       "isin": "",
@@ -103,8 +104,7 @@
       "amount": 7894816.0,
       "price": null,
       "is_cash": false,
-      "key": "AI US EQUITY",
-      "price_usd": 22.07
+      "key": "AI US EQUITY"
     },
     {
       "isin": "",
@@ -129,8 +129,7 @@
       "amount": 7645313.0,
       "price": null,
       "is_cash": false,
-      "key": "TSLA US EQUITY",
-      "price_usd": 184.13
+      "key": "TSLA US EQUITY"
     },
     {
       "isin": "",
@@ -142,8 +141,7 @@
       "amount": 7047019.0,
       "price": null,
       "is_cash": false,
-      "key": "MRVL US EQUITY",
-      "price_usd": 40.36
+      "key": "MRVL US EQUITY"
     },
     {
       "isin": "",
@@ -167,7 +165,8 @@
       "amount": 6615469.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY"
+      "key": "GOOGL US EQUITY",
+      "price_usd": 100.32
     },
     {
       "isin": "",
@@ -243,7 +242,8 @@
       "amount": 2520091.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY"
+      "key": "TXN US EQUITY",
+      "price_usd": 177.13
     },
     {
       "isin": "",
@@ -255,8 +255,7 @@
       "amount": 2437919.0,
       "price": null,
       "is_cash": false,
-      "key": "BBAI US EQUITY",
-      "price_usd": 1.64
+      "key": "BBAI US EQUITY"
     },
     {
       "isin": "",
@@ -268,8 +267,7 @@
       "amount": 2423747.0,
       "price": null,
       "is_cash": false,
-      "key": "TMUS US EQUITY",
-      "price_usd": 141.51
+      "key": "TMUS US EQUITY"
     },
     {
       "isin": "",

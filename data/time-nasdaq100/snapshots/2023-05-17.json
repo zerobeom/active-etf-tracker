@@ -41,8 +41,7 @@
       "amount": 18426632.0,
       "price": null,
       "is_cash": false,
-      "key": "AAPL US EQUITY",
-      "price_usd": 172.69
+      "key": "AAPL US EQUITY"
     },
     {
       "isin": "",
@@ -144,8 +143,7 @@
       "amount": 8907044.0,
       "price": null,
       "is_cash": false,
-      "key": "TSLA US EQUITY",
-      "price_usd": 173.86
+      "key": "TSLA US EQUITY"
     },
     {
       "isin": "",
@@ -157,8 +155,7 @@
       "amount": 7801494.0,
       "price": null,
       "is_cash": false,
-      "key": "PEP US EQUITY",
-      "price_usd": 192.06
+      "key": "PEP US EQUITY"
     },
     {
       "isin": "",
@@ -196,8 +193,7 @@
       "amount": 3425745.0,
       "price": null,
       "is_cash": false,
-      "key": "AVGO US EQUITY",
-      "price_usd": 65.75
+      "key": "AVGO US EQUITY"
     },
     {
       "isin": "",
@@ -222,8 +218,7 @@
       "amount": 2966203.0,
       "price": null,
       "is_cash": false,
-      "key": "FSLR US EQUITY",
-      "price_usd": 209.76
+      "key": "FSLR US EQUITY"
     },
     {
       "isin": "",
@@ -248,8 +243,7 @@
       "amount": 2845328.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 104.81
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -300,8 +294,7 @@
       "amount": 2516648.0,
       "price": null,
       "is_cash": false,
-      "key": "TMUS US EQUITY",
-      "price_usd": 141.58
+      "key": "TMUS US EQUITY"
     },
     {
       "isin": "",

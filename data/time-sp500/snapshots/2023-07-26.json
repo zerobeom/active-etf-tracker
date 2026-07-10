@@ -157,7 +157,8 @@
       "amount": 4599551.0,
       "price": null,
       "is_cash": false,
-      "key": "AVGO US EQUITY"
+      "key": "AVGO US EQUITY",
+      "price_usd": 89.31
     },
     {
       "isin": "",
@@ -324,7 +325,8 @@
       "amount": 2073226.0,
       "price": null,
       "is_cash": false,
-      "key": "HD US EQUITY"
+      "key": "HD US EQUITY",
+      "price_usd": 329.59
     },
     {
       "isin": "",
@@ -530,7 +532,8 @@
       "amount": 1219027.0,
       "price": null,
       "is_cash": false,
-      "key": "WMT US EQUITY"
+      "key": "WMT US EQUITY",
+      "price_usd": 53.25
     },
     {
       "isin": "",
@@ -711,7 +714,8 @@
       "amount": 823423.0,
       "price": null,
       "is_cash": false,
-      "key": "VZ US EQUITY"
+      "key": "VZ US EQUITY",
+      "price_usd": 34.34
     },
     {
       "isin": "",
@@ -1061,7 +1065,8 @@
       "amount": 131085.0,
       "price": null,
       "is_cash": false,
-      "key": "SBUX US EQUITY"
+      "key": "SBUX US EQUITY",
+      "price_usd": 101.73
     },
     {
       "isin": "",

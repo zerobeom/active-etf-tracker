@@ -53,7 +53,8 @@
       "amount": 9934181.0,
       "price": null,
       "is_cash": false,
-      "key": "META US EQUITY"
+      "key": "META US EQUITY",
+      "price_usd": 207.84
     },
     {
       "isin": "",
@@ -65,7 +66,8 @@
       "amount": 9348240.0,
       "price": null,
       "is_cash": false,
-      "key": "INTC US EQUITY"
+      "key": "INTC US EQUITY",
+      "price_usd": 32.09
     },
     {
       "isin": "",
@@ -77,8 +79,7 @@
       "amount": 9118808.0,
       "price": null,
       "is_cash": false,
-      "key": "AI US EQUITY",
-      "price_usd": 27.63
+      "key": "AI US EQUITY"
     },
     {
       "isin": "",
@@ -90,8 +91,7 @@
       "amount": 8872481.0,
       "price": null,
       "is_cash": false,
-      "key": "TSLA US EQUITY",
-      "price_usd": 195.28
+      "key": "TSLA US EQUITY"
     },
     {
       "isin": "",
@@ -103,8 +103,7 @@
       "amount": 8830938.0,
       "price": null,
       "is_cash": false,
-      "key": "AAPL US EQUITY",
-      "price_usd": 162.36
+      "key": "AAPL US EQUITY"
     },
     {
       "isin": "",
@@ -116,7 +115,8 @@
       "amount": 8554765.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY"
+      "key": "GOOGL US EQUITY",
+      "price_usd": 100.89
     },
     {
       "isin": "",
@@ -179,8 +179,7 @@
       "amount": 3255186.0,
       "price": null,
       "is_cash": false,
-      "key": "AVGO US EQUITY",
-      "price_usd": 63.38
+      "key": "AVGO US EQUITY"
     },
     {
       "isin": "",
@@ -204,7 +203,8 @@
       "amount": 3126480.0,
       "price": null,
       "is_cash": false,
-      "key": "PLTR US EQUITY"
+      "key": "PLTR US EQUITY",
+      "price_usd": 8.15
     },
     {
       "isin": "",
@@ -216,7 +216,8 @@
       "amount": 2950146.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY"
+      "key": "NFLX US EQUITY",
+      "price_usd": 33.84
     },
     {
       "isin": "",
@@ -228,7 +229,8 @@
       "amount": 2918569.0,
       "price": null,
       "is_cash": false,
-      "key": "ADBE US EQUITY"
+      "key": "ADBE US EQUITY",
+      "price_usd": 381.9
     },
     {
       "isin": "",
@@ -266,7 +268,8 @@
       "amount": 2543378.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY"
+      "key": "TXN US EQUITY",
+      "price_usd": 184.24
     },
     {
       "isin": "",

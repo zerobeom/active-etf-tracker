@@ -15,7 +15,8 @@
       "amount": 33204080.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY"
+      "key": "NVDA US EQUITY",
+      "price_usd": 31.68
     },
     {
       "isin": "",
@@ -27,7 +28,8 @@
       "amount": 30847545.0,
       "price": null,
       "is_cash": false,
-      "key": "MSFT US EQUITY"
+      "key": "MSFT US EQUITY",
+      "price_usd": 318.52
     },
     {
       "isin": "",
@@ -39,8 +41,7 @@
       "amount": 18407360.0,
       "price": null,
       "is_cash": false,
-      "key": "AAPL US EQUITY",
-      "price_usd": 175.05
+      "key": "AAPL US EQUITY"
     },
     {
       "isin": "",
@@ -64,7 +65,8 @@
       "amount": 10538553.0,
       "price": null,
       "is_cash": false,
-      "key": "META US EQUITY"
+      "key": "META US EQUITY",
+      "price_usd": 246.85
     },
     {
       "isin": "",
@@ -76,7 +78,8 @@
       "amount": 10387570.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY"
+      "key": "GOOGL US EQUITY",
+      "price_usd": 122.83
     },
     {
       "isin": "",
@@ -88,7 +91,8 @@
       "amount": 9401585.0,
       "price": null,
       "is_cash": false,
-      "key": "AMZN US EQUITY"
+      "key": "AMZN US EQUITY",
+      "price_usd": 118.15
     },
     {
       "isin": "",
@@ -113,7 +117,8 @@
       "amount": 9338443.0,
       "price": null,
       "is_cash": false,
-      "key": "INTC US EQUITY"
+      "key": "INTC US EQUITY",
+      "price_usd": 29.68
     },
     {
       "isin": "",
@@ -125,8 +130,7 @@
       "amount": 8906821.0,
       "price": null,
       "is_cash": false,
-      "key": "TSLA US EQUITY",
-      "price_usd": 176.89
+      "key": "TSLA US EQUITY"
     },
     {
       "isin": "",
@@ -150,7 +154,8 @@
       "amount": 7451680.0,
       "price": null,
       "is_cash": false,
-      "key": "PERI US EQUITY"
+      "key": "PERI US EQUITY",
+      "price_usd": 31.38
     },
     {
       "isin": "",
@@ -162,7 +167,8 @@
       "amount": 5801776.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY"
+      "key": "NFLX US EQUITY",
+      "price_usd": 37.13
     },
     {
       "isin": "",
@@ -174,7 +180,8 @@
       "amount": 5065313.0,
       "price": null,
       "is_cash": false,
-      "key": "PLTR US EQUITY"
+      "key": "PLTR US EQUITY",
+      "price_usd": 11.74
     },
     {
       "isin": "",
@@ -198,7 +205,8 @@
       "amount": 3408790.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY"
+      "key": "MU US EQUITY",
+      "price_usd": 67.57
     },
     {
       "isin": "",
@@ -210,7 +218,8 @@
       "amount": 3317258.0,
       "price": null,
       "is_cash": false,
-      "key": "COST US EQUITY"
+      "key": "COST US EQUITY",
+      "price_usd": 498.1
     },
     {
       "isin": "",
@@ -222,7 +231,8 @@
       "amount": 2981220.0,
       "price": null,
       "is_cash": false,
-      "key": "OLED US EQUITY"
+      "key": "OLED US EQUITY",
+      "price_usd": 150.49
     },
     {
       "isin": "",
@@ -246,7 +256,8 @@
       "amount": 2817547.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY"
+      "key": "INTU US EQUITY",
+      "price_usd": 447.66
     },
     {
       "isin": "",
@@ -270,7 +281,8 @@
       "amount": 2768886.0,
       "price": null,
       "is_cash": false,
-      "key": "ADBE US EQUITY"
+      "key": "ADBE US EQUITY",
+      "price_usd": 360.43
     },
     {
       "isin": "",
@@ -282,7 +294,8 @@
       "amount": 2763297.0,
       "price": null,
       "is_cash": false,
-      "key": "CMCSA US EQUITY"
+      "key": "CMCSA US EQUITY",
+      "price_usd": 38.72
     },
     {
       "isin": "",
@@ -294,7 +307,8 @@
       "amount": 2697881.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY"
+      "key": "CSCO US EQUITY",
+      "price_usd": 48.2
     },
     {
       "isin": "",
@@ -355,7 +369,8 @@
       "amount": 1548584.0,
       "price": null,
       "is_cash": false,
-      "key": "SBUX US EQUITY"
+      "key": "SBUX US EQUITY",
+      "price_usd": 107.09
     },
     {
       "isin": "",

@@ -157,7 +157,8 @@
       "amount": 4707070.0,
       "price": null,
       "is_cash": false,
-      "key": "AMZN US EQUITY"
+      "key": "AMZN US EQUITY",
+      "price_usd": 129.96
     },
     {
       "isin": "",
@@ -362,7 +363,8 @@
       "amount": 2004457.0,
       "price": null,
       "is_cash": false,
-      "key": "HD US EQUITY"
+      "key": "HD US EQUITY",
+      "price_usd": 319.09
     },
     {
       "isin": "",
@@ -738,7 +740,8 @@
       "amount": 775977.0,
       "price": null,
       "is_cash": false,
-      "key": "VZ US EQUITY"
+      "key": "VZ US EQUITY",
+      "price_usd": 33.64
     },
     {
       "isin": "",
@@ -893,7 +896,8 @@
       "amount": 269091.0,
       "price": null,
       "is_cash": false,
-      "key": "UNP US EQUITY"
+      "key": "UNP US EQUITY",
+      "price_usd": 216.78
     },
     {
       "isin": "",
@@ -983,7 +987,8 @@
       "amount": 225327.0,
       "price": null,
       "is_cash": false,
-      "key": "AXP US EQUITY"
+      "key": "AXP US EQUITY",
+      "price_usd": 177.11
     },
     {
       "isin": "",

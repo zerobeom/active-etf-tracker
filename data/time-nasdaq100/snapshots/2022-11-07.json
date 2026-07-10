@@ -27,8 +27,7 @@
       "amount": 18133061.0,
       "price": null,
       "is_cash": false,
-      "key": "AAPL US EQUITY",
-      "price_usd": 138.92
+      "key": "AAPL US EQUITY"
     },
     {
       "isin": "",
@@ -52,7 +51,8 @@
       "amount": 13682862.0,
       "price": null,
       "is_cash": false,
-      "key": "MSFT US EQUITY"
+      "key": "MSFT US EQUITY",
+      "price_usd": 227.87
     },
     {
       "isin": "",
@@ -64,8 +64,7 @@
       "amount": 9167038.0,
       "price": null,
       "is_cash": false,
-      "key": "TSLA US EQUITY",
-      "price_usd": 197.08
+      "key": "TSLA US EQUITY"
     },
     {
       "isin": "",
@@ -137,7 +136,8 @@
       "amount": 3450713.0,
       "price": null,
       "is_cash": false,
-      "key": "COST US EQUITY"
+      "key": "COST US EQUITY",
+      "price_usd": 488.55
     },
     {
       "isin": "",
@@ -293,7 +293,8 @@
       "amount": 2028959.0,
       "price": null,
       "is_cash": false,
-      "key": "ADBE US EQUITY"
+      "key": "ADBE US EQUITY",
+      "price_usd": 299.54
     },
     {
       "isin": "",
@@ -353,8 +354,7 @@
       "amount": 1707169.0,
       "price": null,
       "is_cash": false,
-      "key": "STEM US EQUITY",
-      "price_usd": 226.4
+      "key": "STEM US EQUITY"
     },
     {
       "isin": "",
@@ -378,7 +378,8 @@
       "amount": 1611501.0,
       "price": null,
       "is_cash": false,
-      "key": "LVS US EQUITY"
+      "key": "LVS US EQUITY",
+      "price_usd": 40.7
     },
     {
       "isin": "",
@@ -414,8 +415,7 @@
       "amount": 1535546.0,
       "price": null,
       "is_cash": false,
-      "key": "AMD US EQUITY",
-      "price_usd": 63.08
+      "key": "AMD US EQUITY"
     },
     {
       "isin": "",
@@ -439,7 +439,8 @@
       "amount": 1466005.0,
       "price": null,
       "is_cash": false,
-      "key": "GILD US EQUITY"
+      "key": "GILD US EQUITY",
+      "price_usd": 81.46
     },
     {
       "isin": "",
@@ -547,7 +548,8 @@
       "amount": 1008029.0,
       "price": null,
       "is_cash": false,
-      "key": "ON US EQUITY"
+      "key": "ON US EQUITY",
+      "price_usd": 65.47
     },
     {
       "isin": "",
@@ -583,7 +585,8 @@
       "amount": 939496.0,
       "price": null,
       "is_cash": false,
-      "key": "FISV US EQUITY"
+      "key": "FISV US EQUITY",
+      "price_usd": 96.39
     },
     {
       "isin": "",
@@ -655,8 +658,7 @@
       "amount": 772541.0,
       "price": null,
       "is_cash": false,
-      "key": "KDP US EQUITY",
-      "price_usd": 37.46
+      "key": "KDP US EQUITY"
     },
     {
       "isin": "",

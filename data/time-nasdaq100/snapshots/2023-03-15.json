@@ -15,7 +15,8 @@
       "amount": 42155011.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY"
+      "key": "NVDA US EQUITY",
+      "price_usd": 24.23
     },
     {
       "isin": "",
@@ -52,7 +53,8 @@
       "amount": 9012763.0,
       "price": null,
       "is_cash": false,
-      "key": "META US EQUITY"
+      "key": "META US EQUITY",
+      "price_usd": 197.75
     },
     {
       "isin": "",
@@ -103,7 +105,8 @@
       "amount": 7885283.0,
       "price": null,
       "is_cash": false,
-      "key": "BIDU US EQUITY"
+      "key": "BIDU US EQUITY",
+      "price_usd": 133.1
     },
     {
       "isin": "",
@@ -154,7 +157,8 @@
       "amount": 6601283.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY"
+      "key": "QCOM US EQUITY",
+      "price_usd": 115.49
     },
     {
       "isin": "",
@@ -166,7 +170,8 @@
       "amount": 6450533.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY"
+      "key": "GOOGL US EQUITY",
+      "price_usd": 96.11
     },
     {
       "isin": "",
@@ -191,7 +196,8 @@
       "amount": 4226986.0,
       "price": null,
       "is_cash": false,
-      "key": "SOUN US EQUITY"
+      "key": "SOUN US EQUITY",
+      "price_usd": 1.85
     },
     {
       "isin": "",
@@ -242,7 +248,8 @@
       "amount": 2566871.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY"
+      "key": "INTU US EQUITY",
+      "price_usd": 406.32
     },
     {
       "isin": "",
@@ -254,7 +261,8 @@
       "amount": 2507858.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY"
+      "key": "TXN US EQUITY",
+      "price_usd": 174.39
     },
     {
       "isin": "",
@@ -279,7 +287,8 @@
       "amount": 2381600.0,
       "price": null,
       "is_cash": false,
-      "key": "TMUS US EQUITY"
+      "key": "TMUS US EQUITY",
+      "price_usd": 144.42
     },
     {
       "isin": "",

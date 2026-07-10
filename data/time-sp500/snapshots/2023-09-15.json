@@ -234,7 +234,8 @@
       "amount": 2544495.0,
       "price": null,
       "is_cash": false,
-      "key": "UNH US EQUITY"
+      "key": "UNH US EQUITY",
+      "price_usd": 486.7
     },
     {
       "isin": "",
@@ -246,7 +247,8 @@
       "amount": 2536488.0,
       "price": null,
       "is_cash": false,
-      "key": "PERI US EQUITY"
+      "key": "PERI US EQUITY",
+      "price_usd": 29.97
     },
     {
       "isin": "",
@@ -284,7 +286,8 @@
       "amount": 2299837.0,
       "price": null,
       "is_cash": false,
-      "key": "V US EQUITY"
+      "key": "V US EQUITY",
+      "price_usd": 241.07
     },
     {
       "isin": "",
@@ -296,7 +299,8 @@
       "amount": 2232465.0,
       "price": null,
       "is_cash": false,
-      "key": "PG US EQUITY"
+      "key": "PG US EQUITY",
+      "price_usd": 153.47
     },
     {
       "isin": "",
@@ -308,7 +312,8 @@
       "amount": 2207555.0,
       "price": null,
       "is_cash": false,
-      "key": "MA US EQUITY"
+      "key": "MA US EQUITY",
+      "price_usd": 414.31
     },
     {
       "isin": "",
@@ -436,7 +441,8 @@
       "amount": 1402749.0,
       "price": null,
       "is_cash": false,
-      "key": "ABBV US EQUITY"
+      "key": "ABBV US EQUITY",
+      "price_usd": 152.12
     },
     {
       "isin": "",
@@ -448,7 +454,8 @@
       "amount": 1354600.0,
       "price": null,
       "is_cash": false,
-      "key": "TMO US EQUITY"
+      "key": "TMO US EQUITY",
+      "price_usd": 515.53
     },
     {
       "isin": "",
@@ -473,7 +480,8 @@
       "amount": 1338691.0,
       "price": null,
       "is_cash": false,
-      "key": "DHR US EQUITY"
+      "key": "DHR US EQUITY",
+      "price_usd": 226.29
     },
     {
       "isin": "",
@@ -498,7 +506,8 @@
       "amount": 1308943.0,
       "price": null,
       "is_cash": false,
-      "key": "WMT US EQUITY"
+      "key": "WMT US EQUITY",
+      "price_usd": 54.88
     },
     {
       "isin": "",
@@ -562,7 +571,8 @@
       "amount": 1089089.0,
       "price": null,
       "is_cash": false,
-      "key": "ABT US EQUITY"
+      "key": "ABT US EQUITY",
+      "price_usd": 101.74
     },
     {
       "isin": "",
@@ -678,7 +688,8 @@
       "amount": 852875.0,
       "price": null,
       "is_cash": false,
-      "key": "VZ US EQUITY"
+      "key": "VZ US EQUITY",
+      "price_usd": 33.79
     },
     {
       "isin": "",
@@ -703,7 +714,8 @@
       "amount": 580126.0,
       "price": null,
       "is_cash": false,
-      "key": "CRM US EQUITY"
+      "key": "CRM US EQUITY",
+      "price_usd": 214.61
     },
     {
       "isin": "",
@@ -754,7 +766,8 @@
       "amount": 281220.0,
       "price": null,
       "is_cash": false,
-      "key": "UNP US EQUITY"
+      "key": "UNP US EQUITY",
+      "price_usd": 213.32
     },
     {
       "isin": "",
@@ -766,7 +779,8 @@
       "amount": 276275.0,
       "price": null,
       "is_cash": false,
-      "key": "BA US EQUITY"
+      "key": "BA US EQUITY",
+      "price_usd": 208.11
     },
     {
       "isin": "",

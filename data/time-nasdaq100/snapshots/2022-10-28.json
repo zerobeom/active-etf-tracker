@@ -300,7 +300,8 @@
       "amount": 2008342.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY"
+      "key": "QCOM US EQUITY",
+      "price_usd": 119.21
     },
     {
       "isin": "",
@@ -506,7 +507,8 @@
       "amount": 1275937.0,
       "price": null,
       "is_cash": false,
-      "key": "DINO US EQUITY"
+      "key": "DINO US EQUITY",
+      "price_usd": 61.5
     },
     {
       "isin": "",
@@ -609,7 +611,8 @@
       "amount": 978410.0,
       "price": null,
       "is_cash": false,
-      "key": "CSX US EQUITY"
+      "key": "CSX US EQUITY",
+      "price_usd": 29.22
     },
     {
       "isin": "",
@@ -698,7 +701,8 @@
       "amount": 782269.0,
       "price": null,
       "is_cash": false,
-      "key": "MNST US EQUITY"
+      "key": "MNST US EQUITY",
+      "price_usd": 46.77
     },
     {
       "isin": "",

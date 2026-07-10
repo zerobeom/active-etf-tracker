@@ -118,7 +118,8 @@
       "amount": 10456983.0,
       "price": null,
       "is_cash": false,
-      "key": "INTC US EQUITY"
+      "key": "INTC US EQUITY",
+      "price_usd": 32.51
     },
     {
       "isin": "",
@@ -195,8 +196,7 @@
       "amount": 4877647.0,
       "price": null,
       "is_cash": false,
-      "key": "AI US EQUITY",
-      "price_usd": 40.12
+      "key": "AI US EQUITY"
     },
     {
       "isin": "",
@@ -247,7 +247,8 @@
       "amount": 3218752.0,
       "price": null,
       "is_cash": false,
-      "key": "CAT US EQUITY"
+      "key": "CAT US EQUITY",
+      "price_usd": 244.83
     },
     {
       "isin": "",
@@ -259,8 +260,7 @@
       "amount": 3140017.0,
       "price": null,
       "is_cash": false,
-      "key": "PEP US EQUITY",
-      "price_usd": 186.58
+      "key": "PEP US EQUITY"
     },
     {
       "isin": "",

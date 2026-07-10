@@ -66,8 +66,7 @@
       "amount": 8627030.0,
       "price": null,
       "is_cash": false,
-      "key": "AI US EQUITY",
-      "price_usd": 21.76
+      "key": "AI US EQUITY"
     },
     {
       "isin": "",
@@ -170,7 +169,8 @@
       "amount": 6601507.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY"
+      "key": "GOOGL US EQUITY",
+      "price_usd": 91.11
     },
     {
       "isin": "",
@@ -259,7 +259,8 @@
       "amount": 2678724.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY"
+      "key": "INTU US EQUITY",
+      "price_usd": 391.56
     },
     {
       "isin": "",
@@ -271,7 +272,8 @@
       "amount": 2526361.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY"
+      "key": "TXN US EQUITY",
+      "price_usd": 173.89
     },
     {
       "isin": "",
@@ -309,7 +311,8 @@
       "amount": 1971601.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY"
+      "key": "NFLX US EQUITY",
+      "price_usd": 29.35
     }
   ]
 }

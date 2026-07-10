@@ -27,8 +27,7 @@
       "amount": 15609850.0,
       "price": null,
       "is_cash": false,
-      "key": "AAPL US EQUITY",
-      "price_usd": 145.47
+      "key": "AAPL US EQUITY"
     },
     {
       "isin": "",
@@ -52,7 +51,8 @@
       "amount": 12832520.0,
       "price": null,
       "is_cash": false,
-      "key": "MSFT US EQUITY"
+      "key": "MSFT US EQUITY",
+      "price_usd": 256.92
     },
     {
       "isin": "",
@@ -124,8 +124,7 @@
       "amount": 3744866.0,
       "price": null,
       "is_cash": false,
-      "key": "TSLA US EQUITY",
-      "price_usd": 160.95
+      "key": "TSLA US EQUITY"
     },
     {
       "isin": "",
@@ -185,7 +184,8 @@
       "amount": 3092181.0,
       "price": null,
       "is_cash": false,
-      "key": "LVS US EQUITY"
+      "key": "LVS US EQUITY",
+      "price_usd": 48.67
     },
     {
       "isin": "",
@@ -473,7 +473,8 @@
       "amount": 1543463.0,
       "price": null,
       "is_cash": false,
-      "key": "AMAT US EQUITY"
+      "key": "AMAT US EQUITY",
+      "price_usd": 111.87
     },
     {
       "isin": "",
@@ -557,7 +558,8 @@
       "amount": 1052452.0,
       "price": null,
       "is_cash": false,
-      "key": "FISV US EQUITY"
+      "key": "FISV US EQUITY",
+      "price_usd": 101.56
     },
     {
       "isin": "",
@@ -605,8 +607,7 @@
       "amount": 892477.0,
       "price": null,
       "is_cash": false,
-      "key": "KDP US EQUITY",
-      "price_usd": 37.64
+      "key": "KDP US EQUITY"
     },
     {
       "isin": "",

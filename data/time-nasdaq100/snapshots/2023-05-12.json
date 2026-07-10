@@ -66,8 +66,7 @@
       "amount": 9897997.0,
       "price": null,
       "is_cash": false,
-      "key": "AAPL US EQUITY",
-      "price_usd": 172.57
+      "key": "AAPL US EQUITY"
     },
     {
       "isin": "",
@@ -118,8 +117,7 @@
       "amount": 8941384.0,
       "price": null,
       "is_cash": false,
-      "key": "TSLA US EQUITY",
-      "price_usd": 167.98
+      "key": "TSLA US EQUITY"
     },
     {
       "isin": "",
@@ -157,8 +155,7 @@
       "amount": 7729809.0,
       "price": null,
       "is_cash": false,
-      "key": "PEP US EQUITY",
-      "price_usd": 196.12
+      "key": "PEP US EQUITY"
     },
     {
       "isin": "",
@@ -196,8 +193,7 @@
       "amount": 3322487.0,
       "price": null,
       "is_cash": false,
-      "key": "AVGO US EQUITY",
-      "price_usd": 63.12
+      "key": "AVGO US EQUITY"
     },
     {
       "isin": "",
@@ -222,8 +218,7 @@
       "amount": 3211768.0,
       "price": null,
       "is_cash": false,
-      "key": "AI US EQUITY",
-      "price_usd": 19.42
+      "key": "AI US EQUITY"
     },
     {
       "isin": "",
@@ -248,8 +243,7 @@
       "amount": 2823957.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY",
-      "price_usd": 103.62
+      "key": "QCOM US EQUITY"
     },
     {
       "isin": "",
@@ -300,8 +294,7 @@
       "amount": 2448867.0,
       "price": null,
       "is_cash": false,
-      "key": "TMUS US EQUITY",
-      "price_usd": 144.12
+      "key": "TMUS US EQUITY"
     },
     {
       "isin": "",
@@ -325,8 +318,7 @@
       "amount": 2397154.0,
       "price": null,
       "is_cash": false,
-      "key": "FSLR US EQUITY",
-      "price_usd": 231.69
+      "key": "FSLR US EQUITY"
     },
     {
       "isin": "",
@@ -338,8 +330,7 @@
       "amount": 2378785.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY",
-      "price_usd": 161.88
+      "key": "TXN US EQUITY"
     },
     {
       "isin": "",
@@ -351,8 +342,7 @@
       "amount": 1989118.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY",
-      "price_usd": 60.92
+      "key": "MU US EQUITY"
     },
     {
       "isin": "",
@@ -377,8 +367,7 @@
       "amount": 1570392.0,
       "price": null,
       "is_cash": false,
-      "key": "HON US EQUITY",
-      "price_usd": 191.39
+      "key": "HON US EQUITY"
     },
     {
       "isin": "",

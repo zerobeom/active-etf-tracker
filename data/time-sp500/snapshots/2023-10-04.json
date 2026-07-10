@@ -195,7 +195,8 @@
       "amount": 4092022.0,
       "price": null,
       "is_cash": false,
-      "key": "UNH US EQUITY"
+      "key": "UNH US EQUITY",
+      "price_usd": 510.62
     },
     {
       "isin": "",
@@ -272,7 +273,8 @@
       "amount": 2449303.0,
       "price": null,
       "is_cash": false,
-      "key": "HD US EQUITY"
+      "key": "HD US EQUITY",
+      "price_usd": 292.39
     },
     {
       "isin": "",
@@ -284,7 +286,8 @@
       "amount": 2417729.0,
       "price": null,
       "is_cash": false,
-      "key": "PG US EQUITY"
+      "key": "PG US EQUITY",
+      "price_usd": 145.97
     },
     {
       "isin": "",
@@ -309,7 +312,8 @@
       "amount": 2133944.0,
       "price": null,
       "is_cash": false,
-      "key": "MA US EQUITY"
+      "key": "MA US EQUITY",
+      "price_usd": 393.76
     },
     {
       "isin": "",
@@ -385,7 +389,8 @@
       "amount": 1661366.0,
       "price": null,
       "is_cash": false,
-      "key": "ABBV US EQUITY"
+      "key": "ABBV US EQUITY",
+      "price_usd": 147.69
     },
     {
       "isin": "",
@@ -397,7 +402,8 @@
       "amount": 1639318.0,
       "price": null,
       "is_cash": false,
-      "key": "CRM US EQUITY"
+      "key": "CRM US EQUITY",
+      "price_usd": 201.87
     },
     {
       "isin": "",
@@ -461,7 +467,8 @@
       "amount": 1353590.0,
       "price": null,
       "is_cash": false,
-      "key": "TMO US EQUITY"
+      "key": "TMO US EQUITY",
+      "price_usd": 502.45
     },
     {
       "isin": "",
@@ -486,7 +493,8 @@
       "amount": 1334457.0,
       "price": null,
       "is_cash": false,
-      "key": "DHR US EQUITY"
+      "key": "DHR US EQUITY",
+      "price_usd": 216.07
     },
     {
       "isin": "",
@@ -498,7 +506,8 @@
       "amount": 1315567.0,
       "price": null,
       "is_cash": false,
-      "key": "WMT US EQUITY"
+      "key": "WMT US EQUITY",
+      "price_usd": 53.67
     },
     {
       "isin": "",
@@ -614,7 +623,8 @@
       "amount": 983046.0,
       "price": null,
       "is_cash": false,
-      "key": "PM US EQUITY"
+      "key": "PM US EQUITY",
+      "price_usd": 91.33
     },
     {
       "isin": "",

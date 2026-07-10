@@ -92,8 +92,7 @@
       "amount": 8301560.0,
       "price": null,
       "is_cash": false,
-      "key": "AI US EQUITY",
-      "price_usd": 22.58
+      "key": "AI US EQUITY"
     },
     {
       "isin": "",
@@ -208,8 +207,7 @@
       "amount": 3057453.0,
       "price": null,
       "is_cash": false,
-      "key": "AVGO US EQUITY",
-      "price_usd": 59.43
+      "key": "AVGO US EQUITY"
     },
     {
       "isin": "",
@@ -221,8 +219,7 @@
       "amount": 2900677.0,
       "price": null,
       "is_cash": false,
-      "key": "MRVL US EQUITY",
-      "price_usd": 45.15
+      "key": "MRVL US EQUITY"
     },
     {
       "isin": "",

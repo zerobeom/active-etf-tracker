@@ -15,7 +15,8 @@
       "amount": 51636860.0,
       "price": null,
       "is_cash": false,
-      "key": "NVDA US EQUITY"
+      "key": "NVDA US EQUITY",
+      "price_usd": 47.06
     },
     {
       "isin": "",
@@ -91,7 +92,8 @@
       "amount": 11552588.0,
       "price": null,
       "is_cash": false,
-      "key": "GOOGL US EQUITY"
+      "key": "GOOGL US EQUITY",
+      "price_usd": 134.46
     },
     {
       "isin": "",
@@ -116,7 +118,8 @@
       "amount": 10253443.0,
       "price": null,
       "is_cash": false,
-      "key": "META US EQUITY"
+      "key": "META US EQUITY",
+      "price_usd": 299.17
     },
     {
       "isin": "",
@@ -128,7 +131,8 @@
       "amount": 8895486.0,
       "price": null,
       "is_cash": false,
-      "key": "LLY US EQUITY"
+      "key": "LLY US EQUITY",
+      "price_usd": 559.95
     },
     {
       "isin": "",
@@ -166,7 +170,8 @@
       "amount": 5853043.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY"
+      "key": "NFLX US EQUITY",
+      "price_usd": 44.58
     },
     {
       "isin": "",
@@ -204,7 +209,8 @@
       "amount": 5305102.0,
       "price": null,
       "is_cash": false,
-      "key": "VRT US EQUITY"
+      "key": "VRT US EQUITY",
+      "price_usd": 38.44
     },
     {
       "isin": "",
@@ -216,7 +222,8 @@
       "amount": 5037917.0,
       "price": null,
       "is_cash": false,
-      "key": "NVO US EQUITY"
+      "key": "NVO US EQUITY",
+      "price_usd": 95.62
     },
     {
       "isin": "",
@@ -254,7 +261,8 @@
       "amount": 3620895.0,
       "price": null,
       "is_cash": false,
-      "key": "COST US EQUITY"
+      "key": "COST US EQUITY",
+      "price_usd": 546.69
     },
     {
       "isin": "",
@@ -266,7 +274,8 @@
       "amount": 3232399.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY"
+      "key": "CSCO US EQUITY",
+      "price_usd": 57.16
     },
     {
       "isin": "",
@@ -278,7 +287,8 @@
       "amount": 3103265.0,
       "price": null,
       "is_cash": false,
-      "key": "CMCSA US EQUITY"
+      "key": "CMCSA US EQUITY",
+      "price_usd": 42.11
     },
     {
       "isin": "",
@@ -290,7 +300,8 @@
       "amount": 3070625.0,
       "price": null,
       "is_cash": false,
-      "key": "QCOM US EQUITY"
+      "key": "QCOM US EQUITY",
+      "price_usd": 114.68
     },
     {
       "isin": "",
@@ -302,7 +313,8 @@
       "amount": 3068935.0,
       "price": null,
       "is_cash": false,
-      "key": "INTC US EQUITY"
+      "key": "INTC US EQUITY",
+      "price_usd": 36.98
     },
     {
       "isin": "",
@@ -314,7 +326,8 @@
       "amount": 3032650.0,
       "price": null,
       "is_cash": false,
-      "key": "PEP US EQUITY"
+      "key": "PEP US EQUITY",
+      "price_usd": 174.73
     },
     {
       "isin": "",
@@ -326,7 +339,8 @@
       "amount": 2925191.0,
       "price": null,
       "is_cash": false,
-      "key": "INTU US EQUITY"
+      "key": "INTU US EQUITY",
+      "price_usd": 550.95
     },
     {
       "isin": "",
@@ -338,7 +352,8 @@
       "amount": 2809828.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY"
+      "key": "MU US EQUITY",
+      "price_usd": 70.41
     },
     {
       "isin": "",
@@ -350,7 +365,8 @@
       "amount": 2632751.0,
       "price": null,
       "is_cash": false,
-      "key": "TCOM US EQUITY"
+      "key": "TCOM US EQUITY",
+      "price_usd": 37.89
     },
     {
       "isin": "",
@@ -362,7 +378,8 @@
       "amount": 2467597.0,
       "price": null,
       "is_cash": false,
-      "key": "U US EQUITY"
+      "key": "U US EQUITY",
+      "price_usd": 39.29
     },
     {
       "isin": "",
@@ -374,7 +391,8 @@
       "amount": 2259757.0,
       "price": null,
       "is_cash": false,
-      "key": "TXN US EQUITY"
+      "key": "TXN US EQUITY",
+      "price_usd": 168.05
     },
     {
       "isin": "",
@@ -386,7 +404,8 @@
       "amount": 2192775.0,
       "price": null,
       "is_cash": false,
-      "key": "TMUS US EQUITY"
+      "key": "TMUS US EQUITY",
+      "price_usd": 134.13
     },
     {
       "isin": "",

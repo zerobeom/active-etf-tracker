@@ -27,8 +27,7 @@
       "amount": 18395173.0,
       "price": null,
       "is_cash": false,
-      "key": "AAPL US EQUITY",
-      "price_usd": 148.28
+      "key": "AAPL US EQUITY"
     },
     {
       "isin": "",
@@ -52,7 +51,8 @@
       "amount": 14735862.0,
       "price": null,
       "is_cash": false,
-      "key": "MSFT US EQUITY"
+      "key": "MSFT US EQUITY",
+      "price_usd": 241.55
     },
     {
       "isin": "",
@@ -76,8 +76,7 @@
       "amount": 6537576.0,
       "price": null,
       "is_cash": false,
-      "key": "TSLA US EQUITY",
-      "price_usd": 190.95
+      "key": "TSLA US EQUITY"
     },
     {
       "isin": "",
@@ -149,8 +148,7 @@
       "amount": 2854006.0,
       "price": null,
       "is_cash": false,
-      "key": "ENPH US EQUITY",
-      "price_usd": 297.94
+      "key": "ENPH US EQUITY"
     },
     {
       "isin": "",
@@ -342,8 +340,7 @@
       "amount": 2068530.0,
       "price": null,
       "is_cash": false,
-      "key": "STEM US EQUITY",
-      "price_usd": 274.6
+      "key": "STEM US EQUITY"
     },
     {
       "isin": "",
@@ -379,8 +376,7 @@
       "amount": 1895687.0,
       "price": null,
       "is_cash": false,
-      "key": "AMD US EQUITY",
-      "price_usd": 73.53
+      "key": "AMD US EQUITY"
     },
     {
       "isin": "",
@@ -392,7 +388,8 @@
       "amount": 1894211.0,
       "price": null,
       "is_cash": false,
-      "key": "LVS US EQUITY"
+      "key": "LVS US EQUITY",
+      "price_usd": 43.0
     },
     {
       "isin": "",
@@ -404,8 +401,7 @@
       "amount": 1887289.0,
       "price": null,
       "is_cash": false,
-      "key": "VET US EQUITY",
-      "price_usd": 20.06
+      "key": "VET US EQUITY"
     },
     {
       "isin": "",
@@ -597,7 +593,8 @@
       "amount": 1065267.0,
       "price": null,
       "is_cash": false,
-      "key": "FISV US EQUITY"
+      "key": "FISV US EQUITY",
+      "price_usd": 100.01
     },
     {
       "isin": "",
@@ -657,8 +654,7 @@
       "amount": 900361.0,
       "price": null,
       "is_cash": false,
-      "key": "KDP US EQUITY",
-      "price_usd": 36.54
+      "key": "KDP US EQUITY"
     },
     {
       "isin": "",

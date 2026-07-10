@@ -79,7 +79,8 @@
       "amount": 11753468.0,
       "price": null,
       "is_cash": false,
-      "key": "LLY US EQUITY"
+      "key": "LLY US EQUITY",
+      "price_usd": 553.36
     },
     {
       "isin": "",
@@ -195,7 +196,8 @@
       "amount": 5452712.0,
       "price": null,
       "is_cash": false,
-      "key": "NFLX US EQUITY"
+      "key": "NFLX US EQUITY",
+      "price_usd": 42.76
     },
     {
       "isin": "",
@@ -259,7 +261,8 @@
       "amount": 3109685.0,
       "price": null,
       "is_cash": false,
-      "key": "CSCO US EQUITY"
+      "key": "CSCO US EQUITY",
+      "price_usd": 55.98
     },
     {
       "isin": "",
@@ -271,7 +274,8 @@
       "amount": 3073853.0,
       "price": null,
       "is_cash": false,
-      "key": "PEP US EQUITY"
+      "key": "PEP US EQUITY",
+      "price_usd": 178.12
     },
     {
       "isin": "",
@@ -334,7 +338,8 @@
       "amount": 2562557.0,
       "price": null,
       "is_cash": false,
-      "key": "MU US EQUITY"
+      "key": "MU US EQUITY",
+      "price_usd": 65.19
     },
     {
       "isin": "",
