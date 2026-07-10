@@ -409,17 +409,29 @@ def nasdaq_us_ticker_map():
     return m
 
 
-def download_sol(internal_id: str, work_dt: str) -> list:
-    """work_dt('YYYYMMDD')는 실제로 그 날짜의 데이터를 준다(확인됨) — 과거 조회 가능."""
-    import requests
-    r = requests.get(
-        SOL_API_URL,
-        params={"fund_cd": internal_id, "work_dt": work_dt},
-        timeout=30,
-        headers={"User-Agent": "Mozilla/5.0", "Referer": "https://www.soletf.com/"},
-    )
-    r.raise_for_status()
-    return r.json()
+def download_sol(internal_id: str, work_dt: str, retries: int = 3) -> list:
+    """work_dt('YYYYMMDD')는 실제로 그 날짜의 데이터를 준다(확인됨) — 과거 조회 가능.
+    짧은 시간에 요청이 몰리면(백필) SOL 쪽에서 일시적으로 막을 수 있어서, 실패하면
+    점점 더 오래 기다렸다가 재시도한다(2초 → 6초 → 18초)."""
+    import requests, time as _time
+    last_err = None
+    for attempt in range(retries):
+        try:
+            r = requests.get(
+                SOL_API_URL,
+                params={"fund_cd": internal_id, "work_dt": work_dt},
+                timeout=30,
+                headers={"User-Agent": "Mozilla/5.0", "Referer": "https://www.soletf.com/"},
+            )
+            r.raise_for_status()
+            return r.json()
+        except Exception as e:
+            last_err = e
+            if attempt < retries - 1:
+                wait = 2 * (3 ** attempt)   # 2s, 6s, 18s
+                print(f"    [retry] SOL 요청 실패({e}), {wait}초 후 재시도 ({attempt+1}/{retries})")
+                _time.sleep(wait)
+    raise last_err
 
 
 def normalize_sol(rows: list, is_us: bool, work_dt: str, debug: bool = False):
@@ -808,7 +820,7 @@ def process_etf(etf: dict, start: str, debug: bool = False, skip_perf: bool = Fa
             date_iso, holdings = normalize_sol(rows, is_us=bool(etf.get("usd_price")), work_dt=start, debug=debug)
         except Exception as e:
             print(f"  [skip] SOL API 요청/파싱 실패: {e}")
-            return
+            return False
     elif provider == "time":
         pdf_date = f"{start[:4]}-{start[4:6]}-{start[6:]}"
         try:
@@ -816,7 +828,7 @@ def process_etf(etf: dict, start: str, debug: bool = False, skip_perf: bool = Fa
             date_iso, holdings = normalize_time(read_time_table(content), debug=debug)
         except Exception as e:
             print(f"  [skip] TIME 엑셀 요청/파싱 실패: {e}")
-            return
+            return False
         if holdings and not date_iso:
             date_iso = pdf_date
     else:
@@ -824,7 +836,7 @@ def process_etf(etf: dict, start: str, debug: bool = False, skip_perf: bool = Fa
 
     if not holdings:
         print(f"  [skip] 최근 영업일 데이터를 찾지 못함.")
-        return
+        return None   # 실패가 아니라 "그날 데이터 없음"일 수 있어 연속실패 카운트엔 안 넣음
 
     # 미국 종목 현재가(달러) — 표에 현재가가 없는 종목만
     if etf.get("usd_price"):
@@ -873,6 +885,7 @@ def process_etf(etf: dict, start: str, debug: bool = False, skip_perf: bool = Fa
             build_perf(etf, date_iso, debug=debug)
         except Exception as e:
             print(f"  [perf] 실패(건너뜀): {e}")
+    return True
 
 
 def business_days(start_yyyymmdd: str, end_yyyymmdd: str):
@@ -887,8 +900,22 @@ def business_days(start_yyyymmdd: str, end_yyyymmdd: str):
 def main():
     import time
 
-    args = [a for a in sys.argv[1:] if a != "--debug"]
+    only_arg = None
+    args = []
+    for a in sys.argv[1:]:
+        if a == "--debug":
+            continue
+        if a.startswith("--only="):
+            only_arg = a.split("=", 1)[1]
+            continue
+        args.append(a)
     debug = "--debug" in sys.argv
+
+    def wanted(etf):
+        if not only_arg:
+            return True
+        keys = [k.strip() for k in only_arg.split(",") if k.strip()]
+        return etf.get("provider") in keys or etf["slug"] in keys
 
     DATA.mkdir(parents=True, exist_ok=True)
     # 사이트가 읽는 ETF 목록
@@ -899,21 +926,37 @@ def main():
     if args and ":" in args[0]:
         # 기간 채우기: "20250201:20260629" — 영업일만, 과거→최근 순서로 처리
         # samsung/sol/time 전부 실제 과거 날짜 조회가 되므로 세 provider 다 정상 백필됨.
+        # --only=sol 처럼 provider명(samsung/sol/time) 또는 slug를 콤마로 넘기면 그것만 처리.
         start_s, end_s = args[0].split(":", 1)
         days = list(business_days(start_s, end_s))
-        print(f"[backfill] {start_s} ~ {end_s} · 영업일 {len(days)}일 처리 시작")
+        targets = [e for e in ETFS if wanted(e)]
+        print(f"[backfill] {start_s} ~ {end_s} · 영업일 {len(days)}일 · 대상 ETF: "
+              f"{', '.join(e['slug'] for e in targets) or '(없음)'}")
+        # provider별 요청 간 딜레이(SOL이 유독 차단에 민감해서 더 여유있게)
+        DELAY = {"sol": 2.5, "time": 1.5, "samsung": 1.0}
+        fail_streak = {}   # slug -> 연속 실패 횟수
         for i, ds in enumerate(days, 1):
             print(f"\n--- ({i}/{len(days)}) {ds} ---")
-            for etf in ETFS:
+            for etf in targets:
                 etf_start = etf.get("start", "1900-01-01").replace("-", "")
                 if ds < etf_start:
                     continue  # 상장 전 날짜는 건너뜀
-                process_etf(etf, ds, debug=debug, skip_perf=True)
-                time.sleep(1.0)  # 서버 부담 완화
+                ok = process_etf(etf, ds, debug=debug, skip_perf=True)
+                if ok is False:
+                    fail_streak[etf["slug"]] = fail_streak.get(etf["slug"], 0) + 1
+                    if fail_streak[etf["slug"]] >= 5:
+                        cooldown = 90
+                        print(f"  [cooldown] {etf['slug']} 5회 연속 실패 — 차단/제한 가능성, "
+                              f"{cooldown}초 쉬었다가 계속")
+                        time.sleep(cooldown)
+                        fail_streak[etf["slug"]] = 0
+                else:
+                    fail_streak[etf["slug"]] = 0
+                time.sleep(DELAY.get(etf.get("provider"), 1.0))  # 서버 부담 완화
 
         print(f"\n[backfill] 홀딩스 수집 끝 → 벤치마크 수익률은 ETF당 한 번씩만 계산")
         end_iso = f"{end_s[:4]}-{end_s[4:6]}-{end_s[6:]}"
-        for etf in ETFS:
+        for etf in targets:
             if not etf.get("benchmarks"):
                 continue
             try:
@@ -924,6 +967,8 @@ def main():
 
     start = args[0] if args else today_kst()
     for etf in ETFS:
+        if not wanted(etf):
+            continue
         process_etf(etf, start, debug=debug)
     return 0
 
