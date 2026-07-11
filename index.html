@@ -620,8 +620,10 @@ function comboChartSVG(pts,mode){
   // 위아래 빈 공간이 안 생기게 함(값 자체를 자르는 게 아니라 낭비되는 여백만 없앰).
   const posVals=scaleSrc.filter(v=>v>0);
   const negVals=scaleSrc.filter(v=>v<0).map(v=>-v);
-  let rMax = hasRate && posVals.length ? niceCeil(Math.max(...posVals)) : 0;
-  let rMin = hasRate && negVals.length ? -niceCeil(Math.max(...negVals)) : 0;
+  // niceCeil에 넘기기 전 실제 최댓값에 15% 여유를 얹어서, 그 최댓값 점이 축 맨 가장자리에
+  // 딱 붙지 않게 함(안 그러면 편출(-100%, 축 하단 clamp)이랑 헷갈릴 수 있어서 위아래 여백 확보)
+  let rMax = hasRate && posVals.length ? niceCeil(Math.max(...posVals)*1.15) : 0;
+  let rMin = hasRate && negVals.length ? -niceCeil(Math.max(...negVals)*1.15) : 0;
   if(rMin===rMax){ rMin-=1; rMax+=1; }
   const slot=plotW/n, cx=i=> padL + i*slot + slot/2;
   const yW=v=> yB-(v/wTop)*innerH;
