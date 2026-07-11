@@ -285,7 +285,7 @@
     <b>데모 데이터입니다.</b> 실제 데이터가 아직 없어요 — 저장소에서 <b>Actions → Run workflow</b>를 한 번 실행하면 진짜 구성기업으로 채워집니다.
   </div>
 
-  <div class="tablehead"><h2>구성기업 변동 내역</h2><button type="button" id="csvBtn" class="upd">⬇ CSV 다운로드</button></div>
+  <div class="tablehead"><h2>구성기업 변동 내역</h2><button type="button" id="csvBtn" class="upd">⬇ 엑셀 다운로드</button></div>
   <p class="ctx" id="ctx"></p>
   <p class="note"><b>수량</b>(주식 수)은 매니저가 실제로 매매해야만 바뀌고, <b>비중</b>은 주가 등락만으로도 바뀔 수 있어요. 아래 변동 내역은 위에서 고른 <b>기준일</b>과 <b>비교 대상일</b>, 두 시점의 구성을 비교해서 만들어집니다.</p>
 
@@ -308,6 +308,7 @@
 
 <script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.15.0/firebase-auth-compat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 // ⚠️ 아래 firebaseConfig를 Firebase 콘솔에서 복사한 본인 프로젝트 설정으로 교체하세요.
 // (프로젝트 설정 → 일반 → 내 앱 → SDK 설정 및 구성 → config 객체 그대로 복사)
@@ -996,47 +997,56 @@ function loadDemo(){
   render({date:"2026-06-26",holdings:cur},"2026-06-25",computeDiff(cur,prev));
 }
 
-function changesToCSV(){
-  const rows=[["구분","티커","기업명","수량","비중(%)","변화수량","변화율(%)"]];
-  const esc=(v)=>{
-    v = v==null ? "" : String(v);
-    return /[",\n]/.test(v) ? `"${v.replace(/"/g,'""')}"` : v;
-  };
-  const addRows=(label,items,hasDelta)=>{
-    (items||[]).forEach(x=>{
-      const rate = hasDelta && x.prev_shares ? (x.share_delta/x.prev_shares*100) : "";
-      rows.push([
-        label, x.ticker||"", x.name,
-        x.shares!=null?Math.round(x.shares):"",
-        x.weight!=null?x.weight.toFixed(2):"",
-        hasDelta && x.share_delta!=null ? Math.round(x.share_delta) : "",
-        hasDelta && rate!=="" ? rate.toFixed(1) : "",
-      ]);
-    });
-  };
-  const c=CURCHANGES||{added:[],removed:[],bought:[],sold:[]};
-  addRows("편입",c.added,false);
-  addRows("편출",c.removed,false);
-  addRows("추가매수",c.bought,true);
-  addRows("일부매도",c.sold,true);
-  return rows.map(r=>r.map(esc).join(",")).join("\r\n");
+// 한 카테고리(편입/편출/추가매수/일부매도)의 행들을 [티커,기업명,비중(%),수량,(변화수량,변화율(%))] 순서로.
+function categoryRows(items,hasDelta){
+  return (items||[]).map(x=>{
+    const rate = hasDelta && x.prev_shares ? (x.share_delta/x.prev_shares*100) : null;
+    const row = [
+      x.ticker||"", x.name,
+      x.weight!=null?+x.weight.toFixed(2):"",
+      x.shares!=null?Math.round(x.shares):"",
+    ];
+    if(hasDelta){
+      row.push(x.share_delta!=null?Math.round(x.share_delta):"");
+      row.push(rate!=null?+rate.toFixed(1):"");
+    }
+    return row;
+  });
 }
 
-function downloadChangesCSV(){
-  const csv="\uFEFF"+changesToCSV();   // BOM 붙여서 엑셀에서 한글 깨짐 방지
-  const blob=new Blob([csv],{type:"text/csv;charset=utf-8"});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
+function downloadChangesXLSX(){
+  const c=CURCHANGES||{added:[],removed:[],bought:[],sold:[]};
+  const headerNoDelta=["티커","기업명","비중(%)","수량"];
+  const headerDelta=["티커","기업명","비중(%)","수량","변화수량","변화율(%)"];
+  const headerAll=["구분","티커","기업명","비중(%)","수량","변화수량","변화율(%)"];
+
+  // Sheet1: 종합 (편입/편출/추가매수/일부매도 다 합쳐서, 맨 앞에 구분 컬럼)
+  const allRows=[headerAll];
+  const addAll=(label,items,hasDelta)=>{
+    categoryRows(items,hasDelta).forEach(r=>{
+      allRows.push(hasDelta ? [label,...r] : [label,...r,"",""]);
+    });
+  };
+  addAll("편입",c.added,false);
+  addAll("편출",c.removed,false);
+  addAll("추가매수",c.bought,true);
+  addAll("일부매도",c.sold,true);
+
+  const wb=XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(allRows), "종합");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([headerNoDelta,...categoryRows(c.added,false)]), "편입");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([headerNoDelta,...categoryRows(c.removed,false)]), "편출");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([headerDelta,...categoryRows(c.bought,true)]), "추가매수");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([headerDelta,...categoryRows(c.sold,true)]), "일부매도");
+
   const slug=curEtf?curEtf.slug:"etf";
   const tag=CURDATE && CURBASE ? `${CURDATE}_vs_${CURBASE}` : (CURDATE||"latest");
-  a.href=url; a.download=`변동내역_${slug}_${tag}.csv`;
-  document.body.appendChild(a); a.click(); document.body.removeChild(a);
-  URL.revokeObjectURL(url);
+  XLSX.writeFile(wb, `변동내역_${slug}_${tag}.xlsx`);
 }
 
 $("#table").addEventListener("click",onRowClick);
 $("#changeLists").addEventListener("click",onChangeListClick);
-$("#csvBtn").addEventListener("click",downloadChangesCSV);
+$("#csvBtn").addEventListener("click",downloadChangesXLSX);
 $("#perf").addEventListener("click",function(e){
   var b=e.target.closest(".seg button"); if(!b) return;
   PERFMODE=b.getAttribute("data-m"); renderPerf();
