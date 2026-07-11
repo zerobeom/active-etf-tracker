@@ -614,16 +614,7 @@ function comboChartSVG(pts,mode){
   // 편입(0%)·편출(-100%)처럼 규칙상 고정된 극단값은 축 크기 계산에서 빼서, 실제 변동폭이
   // 축을 꽉 채우게 함 — 편출점은 아래에서 축 하단으로 clamp해서 그려줌(태그로 이미 표시되니 문제없음)
   const rsScale=pts.filter(p=>!p.isEntry&&!p.isExit).map(p=>p.rate).filter(v=>v!=null&&isFinite(v));
-  // 진짜 데이터라도 한두 개가 유독 튀면(예: 한 번에 몇 배 증가) 그 값 때문에 축 전체가 늘어져서
-  // 나머지 변동폭이 안 보이게 됨 — 점이 충분히 많으면(6개 이상) 상위 15% 극단값은 축 크기
-  // 계산에서 빼고(대신 아래 yR()에서 축 가장자리로 clamp해서 그림 — 정확한 값은 툴팁에 그대로 나옴)
-  const scaleAbs=(rsScale.length?rsScale:rs).map(v=>Math.abs(v)).sort((a,b)=>a-b);
-  let capBase = scaleAbs.length ? scaleAbs[scaleAbs.length-1] : 0;
-  if(scaleAbs.length>=6){
-    const capped=scaleAbs[Math.min(scaleAbs.length-1, Math.floor(scaleAbs.length*0.85))];
-    if(capped>0) capBase=capped;
-  }
-  const rTop=niceCeil(Math.max(1,capBase));
+  const rTop=niceCeil(Math.max(1,...(rsScale.length?rsScale:rs).map(v=>Math.abs(v))));
   let rMin = !hasRate ? -1 : (anyNeg? -rTop : 0);
   let rMax = !hasRate ?  1 : (anyPos?  rTop : 0);
   if(rMin===rMax){ rMin-=1; rMax+=1; }
