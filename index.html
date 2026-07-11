@@ -934,10 +934,25 @@ async function init(){
     if(!isAdminUser()) list=list.filter(e=>e.slug!=="time-nasdaq100");   // TIME은 관리자만 보임
     if(!list.length) throw new Error("empty-after-filter");
     ETFS=list;
-    $("#etf").innerHTML=ETFS.map(e=>`<option value="${e.slug}">${stripBrand(e.name)}</option>`).join("");
+    $("#etf").innerHTML=buildEtfOptionsHTML(ETFS);
     $("#etf").onchange=()=>selectEtf($("#etf").value);
     await selectEtf(ETFS[0].slug);
   }catch(e){ loadDemo(); }
+}
+
+// 지역(미국/국내)별로 묶어서 <optgroup>으로 렌더. 순서는 US -> KR -> 그 외, 각 그룹 안에서는
+// ETFS 목록 순서 그대로.
+function buildEtfOptionsHTML(list){
+  const REGION_LABEL={US:"미국",KR:"국내"};
+  const REGION_ORDER=["US","KR"];
+  const groups=new Map();
+  list.forEach(e=>{ const r=e.region||"기타"; if(!groups.has(r)) groups.set(r,[]); groups.get(r).push(e); });
+  const keys=[...REGION_ORDER.filter(k=>groups.has(k)), ...[...groups.keys()].filter(k=>!REGION_ORDER.includes(k))];
+  return keys.map(k=>
+    `<optgroup label="${REGION_LABEL[k]||k}">`+
+    groups.get(k).map(e=>`<option value="${e.slug}">${stripBrand(e.name)}</option>`).join("")+
+    `</optgroup>`
+  ).join("");
 }
 
 function loadDemo(){

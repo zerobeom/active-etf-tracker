@@ -53,38 +53,38 @@ from pathlib import Path
 # ticker: 거래소 단축코드(표시용)
 ETFS = [
     {"slug": "us-nasdaq", "provider": "samsung", "fid": "2ETFQ1", "ticker": "0015B0",
-     "name": "KoAct 미국나스닥성장기업액티브", "start": "2025-02-25",
+     "name": "KoAct 미국나스닥성장기업액티브", "start": "2025-02-25", "region": "US",
      "usd_price": True,
      "benchmarks": [
          {"k": "b1", "label": "나스닥종합", "sym": ["IXIC", "YAHOO:^IXIC"]},
          {"k": "b2", "label": "나스닥100", "sym": ["YAHOO:^NDX", "NDX"]},
      ]},
     {"slug": "kr-valueup", "provider": "samsung", "fid": "2ETFP3", "ticker": "495230",
-     "name": "KoAct 코리아밸류업액티브", "start": "2024-11-04",
+     "name": "KoAct 코리아밸류업액티브", "start": "2024-11-04", "region": "KR",
      "benchmarks": [
          {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
      ]},
     {"slug": "sol-nexttech", "provider": "sol", "fid": "211099", "ticker": "0118S0",
-     "name": "SOL 미국넥스트테크TOP10액티브", "start": "2025-10-28",
+     "name": "SOL 미국넥스트테크TOP10액티브", "start": "2025-10-28", "region": "US",
      "usd_price": True,
      "benchmarks": [
          {"k": "b1", "label": "나스닥종합", "sym": ["IXIC", "YAHOO:^IXIC"]},
          {"k": "b2", "label": "나스닥100", "sym": ["YAHOO:^NDX", "NDX"]},
      ]},
     {"slug": "sol-megatech", "provider": "sol", "fid": "210940", "ticker": "444200",
-     "name": "SOL 코리아메가테크액티브", "start": "2022-10-18",
+     "name": "SOL 코리아메가테크액티브", "start": "2022-10-18", "region": "KR",
      "benchmarks": [
          {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
      ]},
     {"slug": "time-nasdaq100", "provider": "time", "fid": "2", "ticker": "426030",
-     "name": "TIME 미국나스닥100액티브", "start": "2022-05-11",
+     "name": "TIME 미국나스닥100액티브", "start": "2022-05-11", "region": "US",
      "usd_price": True,
      "benchmarks": [
          {"k": "b1", "label": "나스닥종합", "sym": ["IXIC", "YAHOO:^IXIC"]},
          {"k": "b2", "label": "나스닥100", "sym": ["YAHOO:^NDX", "NDX"]},
      ]},
     {"slug": "time-sp500", "provider": "time", "fid": "5", "ticker": "426020",
-     "name": "TIME 미국S&P500액티브", "start": "2022-05-11",
+     "name": "TIME 미국S&P500액티브", "start": "2022-05-11", "region": "US",
      "usd_price": True,
      "benchmarks": [
          {"k": "b1", "label": "S&P500", "sym": ["US500", "YAHOO:^GSPC"]},
@@ -920,7 +920,7 @@ def main():
     DATA.mkdir(parents=True, exist_ok=True)
     # 사이트가 읽는 ETF 목록
     (DATA / "etfs.json").write_text(
-        json.dumps([{k: e[k] for k in ("slug", "name", "ticker", "fid", "start")} for e in ETFS],
+        json.dumps([{k: e[k] for k in ("slug", "name", "ticker", "fid", "start", "region")} for e in ETFS],
                    ensure_ascii=False, indent=2), encoding="utf-8")
 
     if args and ":" in args[0]:
