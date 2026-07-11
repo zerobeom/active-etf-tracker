@@ -733,6 +733,8 @@ async function renderDetail(det,key,heldNow){
     const view=await buildSeries(key,STOCKMODE);
     det.innerHTML=detailInner(view,STOCKMODE,heldNow);
     wireTooltip(det,view,STOCKMODE);
+    const scrollEl=det.querySelector(".combo-scroll");
+    if(scrollEl) scrollEl.scrollLeft=scrollEl.scrollWidth;   // 최신 날짜(오른쪽)부터 보이게
   }catch(err){ det.innerHTML=`<div class="detail-load">데이터를 불러오지 못했어요.</div>`; }
 }
 
