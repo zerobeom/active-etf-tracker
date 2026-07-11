@@ -610,13 +610,18 @@ function comboChartSVG(pts,mode){
   const qTop=niceCeil(Math.max(0,...pts.map(p=>p.shares)));
   const rs=pts.map(p=>p.rate).filter(v=>v!=null&&isFinite(v));
   const hasRate=rs.length>0;
-  const anyNeg=rs.some(v=>v<0), anyPos=rs.some(v=>v>0);
-  // 편입(0%)·편출(-100%)처럼 규칙상 고정된 극단값은 축 크기 계산에서 빼서, 실제 변동폭이
-  // 축을 꽉 채우게 함 — 편출점은 아래에서 축 하단으로 clamp해서 그려줌(태그로 이미 표시되니 문제없음)
+  // 편입(0%)·편출(-100%)처럼 규칙상 고정된 값은 축 크기 계산에서 빼서, 실제 변동폭이
+  // 축을 꽉 채우게 함 — 편출점은 아래에서 축 하단으로 clamp해서 그려줌(태그로 이미 표시되니 문제없음).
+  // 그 외 진짜 데이터(아무리 크게 튄 값이라도)는 절대 안 잘림 — 위/아래 각각 실제 최댓값 그대로 씀.
   const rsScale=pts.filter(p=>!p.isEntry&&!p.isExit).map(p=>p.rate).filter(v=>v!=null&&isFinite(v));
-  const rTop=niceCeil(Math.max(1,...(rsScale.length?rsScale:rs).map(v=>Math.abs(v))));
-  let rMin = !hasRate ? -1 : (anyNeg? -rTop : 0);
-  let rMax = !hasRate ?  1 : (anyPos?  rTop : 0);
+  const scaleSrc=rsScale.length?rsScale:rs;
+  // 양수/음수 축을 좌우대칭으로 억지로 맞추지 않고 각자 실제 범위에 맞게 따로 잡음 —
+  // 예: 위로는 +800%까지 튀고 아래로는 -60%밖에 안 내려가면, 축도 그 비율 그대로 잡아서
+  // 위아래 빈 공간이 안 생기게 함(값 자체를 자르는 게 아니라 낭비되는 여백만 없앰).
+  const posVals=scaleSrc.filter(v=>v>0);
+  const negVals=scaleSrc.filter(v=>v<0).map(v=>-v);
+  let rMax = hasRate && posVals.length ? niceCeil(Math.max(...posVals)) : 0;
+  let rMin = hasRate && negVals.length ? -niceCeil(Math.max(...negVals)) : 0;
   if(rMin===rMax){ rMin-=1; rMax+=1; }
   const slot=plotW/n, cx=i=> padL + i*slot + slot/2;
   const yW=v=> yB-(v/wTop)*innerH;
