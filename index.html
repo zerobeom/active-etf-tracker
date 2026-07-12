@@ -100,6 +100,7 @@
   .clist h3{margin:0 0 10px;font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:7px}
   .clist h3 .tag{font-size:11px;padding:1px 7px;border-radius:20px;font-weight:800}
   .tag.in{background:var(--in-dim);color:var(--in)} .tag.out{background:var(--out-dim);color:var(--out)}
+  .tag.hold{background:var(--panel2);color:var(--muted)}
   .clist ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px}
   .clist li{display:grid;grid-template-columns:42px minmax(60px,1fr) 84px 78px 170px;align-items:baseline;column-gap:10px;font-size:13px;padding:5px;border-radius:8px}
   .clist li[data-key]{cursor:pointer}
@@ -344,15 +345,15 @@ const priceCell=(h)=> h.price!=null?won(h.price):(h.price_usd!=null?usd(h.price_
 function cashRank(h){ const n=h.name||""; if(n.includes("원화")) return 0; if(n.includes("설정")) return 2; return 1; }
 
 function computeDiff(cur,prev){
-  if(!prev||!prev.length){ return {added:[],removed:[],bought:[],sold:[],changeOf:new Map()}; }
+  if(!prev||!prev.length){ return {added:[],removed:[],bought:[],sold:[],unchanged:[],changeOf:new Map()}; }
   const stock=(arr)=>(arr||[]).filter(h=>!h.is_cash);
   const pmap=new Map(stock(prev).map(h=>[keyOf(h),h]));
   const cmap=new Map(stock(cur).map(h=>[keyOf(h),h]));
-  const added=[],removed=[],bought=[],sold=[];
+  const added=[],removed=[],bought=[],sold=[],unchanged=[];
   for(const [k,h] of cmap){
     if(!pmap.has(k)){ added.push({key:k,name:h.name,ticker:h.ticker,weight:h.weight,shares:h.shares}); continue; }
     const cs=h.shares||0, ps=pmap.get(k).shares||0, ds=+(cs-ps).toFixed(4);
-    if(ds===0) continue;
+    if(ds===0){ unchanged.push({key:k,name:h.name,ticker:h.ticker,weight:h.weight,shares:cs}); continue; }
     const rec={key:k,name:h.name,ticker:h.ticker,shares:cs,prev_shares:ps,share_delta:ds,weight:h.weight};
     (ds>0?bought:sold).push(rec);
   }
@@ -361,11 +362,12 @@ function computeDiff(cur,prev){
   removed.sort((a,b)=>(b.weight||0)-(a.weight||0));
   bought.sort((a,b)=>(b.weight||0)-(a.weight||0));
   sold.sort((a,b)=>(b.weight||0)-(a.weight||0));
+  unchanged.sort((a,b)=>(b.weight||0)-(a.weight||0));
   const changeOf=new Map();
   added.forEach(x=>changeOf.set(x.ticker||x.name,{type:"new"}));
   bought.forEach(x=>changeOf.set(x.ticker||x.name,{type:"buy",ds:x.share_delta}));
   sold.forEach(x=>changeOf.set(x.ticker||x.name,{type:"sell",ds:x.share_delta}));
-  return {added,removed,bought,sold,changeOf};
+  return {added,removed,bought,sold,unchanged,changeOf};
 }
 
 function renderBand(c){
@@ -405,7 +407,8 @@ function renderChangeLists(c){
     clist("편입 (신규 매수)","in",c.added,liEntry)+
     clist("추가매수 (수량↑)","in",c.bought,liTrade)+
     clist("편출 (전량 매도)","out",c.removed,liEntry)+
-    clist("일부매도 (수량↓)","out",c.sold,liTrade);
+    clist("일부매도 (수량↓)","out",c.sold,liTrade)+
+    clist("수량유지","hold",c.unchanged||[],liEntry);
 }
 
 function renderTable(holdings,c){
@@ -1029,12 +1032,12 @@ function categoryRows(items,hasDelta){
 }
 
 function downloadChangesXLSX(){
-  const c=CURCHANGES||{added:[],removed:[],bought:[],sold:[]};
+  const c=CURCHANGES||{added:[],removed:[],bought:[],sold:[],unchanged:[]};
   const headerNoDelta=["티커","기업명","비중(%)","수량"];
   const headerDelta=["티커","기업명","비중(%)","수량","변화수량","변화율(%)"];
   const headerAll=["구분","티커","기업명","비중(%)","수량","변화수량","변화율(%)"];
 
-  // Sheet1: 종합 (편입/편출/추가매수/일부매도 다 합쳐서, 맨 앞에 구분 컬럼)
+  // Sheet1: 종합 (편입/편출/추가매수/일부매도 다 합쳐서, 맨 앞에 구분 컬럼 — 실제 '변동'만)
   const allRows=[headerAll];
   const addAll=(label,items,hasDelta)=>{
     categoryRows(items,hasDelta).forEach(r=>{
@@ -1052,6 +1055,7 @@ function downloadChangesXLSX(){
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([headerNoDelta,...categoryRows(c.removed,false)]), "편출");
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([headerDelta,...categoryRows(c.bought,true)]), "추가매수");
   XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([headerDelta,...categoryRows(c.sold,true)]), "일부매도");
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet([headerNoDelta,...categoryRows(c.unchanged,false)]), "수량유지");
 
   const slug=curEtf?curEtf.slug:"etf";
   const tag=CURDATE && CURBASE ? `${CURDATE}_vs_${CURBASE}` : (CURDATE||"latest");
