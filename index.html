@@ -263,7 +263,7 @@
 <div class="wrap">
   <header>
     <div class="brand">
-      <span class="eyebrow">Active ETF · 일별 구성기업 추적</span>
+      <span class="eyebrow">Active ETF · 일별 포트폴리오 추적</span>
       <h1 id="etfTitle">미국나스닥성장기업액티브<span class="code num">0015B0</span></h1>
       <div class="listdate" id="listDate"></div>
       <div class="updwrap" id="updWrap"><button id="updateBtn" class="upd" type="button">🔄 데이터 업데이트</button><span id="updHint" class="updhint"></span></div>
@@ -284,10 +284,10 @@
   </header>
 
   <div class="demo-banner" id="demoBanner">
-    <b>데모 데이터입니다.</b> 실제 데이터가 아직 없어요 — 저장소에서 <b>Actions → Run workflow</b>를 한 번 실행하면 진짜 구성기업으로 채워집니다.
+    <b>데모 데이터입니다.</b> 실제 데이터가 아직 없어요 — 저장소에서 <b>Actions → Run workflow</b>를 한 번 실행하면 진짜 포트폴리오로 채워집니다.
   </div>
 
-  <div class="tablehead"><h2>구성기업 변동 내역</h2><button type="button" id="csvBtn" class="upd">⬇ 엑셀 다운로드</button></div>
+  <div class="tablehead"><h2>포트폴리오 변동 내역</h2><button type="button" id="csvBtn" class="upd">⬇ 다운로드</button></div>
   <p class="ctx" id="ctx"></p>
   <p class="note"><b>수량</b>(주식 수)은 매니저가 실제로 매매해야만 바뀌고, <b>비중</b>은 주가 등락만으로도 바뀔 수 있어요. 아래 변동 내역은 위에서 고른 <b>기준일</b>과 <b>비교 대상일</b>, 두 시점의 구성을 비교해서 만들어집니다.</p>
 
@@ -295,7 +295,7 @@
   <section class="changes" id="changeLists"></section>
 
   <div class="tablehead">
-    <h2>전체 구성기업</h2>
+    <h2>전체 포트폴리오</h2>
     <span class="count num" id="count"></span>
   </div>
   <div class="table" id="table"></div>
@@ -602,6 +602,17 @@ function niceCeil(max){
 }
 const fmtAxisPct=v=> (Number.isInteger(v)?v:(+v.toFixed(2)))+"%";
 
+// 변화율(오른쪽) 축 전용: 5개 구간(SEG)으로 나눴을 때 눈금 하나하나가 5 또는 10 단위로
+// 딱 떨어지게. niceCeil처럼 1.1·1.3·2.8 같은 애매한 배수는 안 씀.
+function niceRateCeil(max,seg){
+  seg = seg||5;
+  if(!(max>0)) return seg*5;
+  const steps=[5,10,15,20,25,30,40,50,60,75,80,100,125,150,200,250,300,400,500,600,800,1000,
+               1250,1500,2000,2500,3000,4000,5000,6000,8000,10000];
+  for(const s of steps){ if(s*seg>=max) return s*seg; }
+  return Math.ceil(max/seg/5)*5*seg;   // 아주 드물게 표를 넘어서면 5의 배수로 대충 맞춤
+}
+
 // 비중(막대·왼쪽축) + 보유수량(막대·참고용, 축 라벨 없음) + 주식수 변화율(선·오른쪽축)
 function comboChartSVG(pts,mode){
   const n=pts.length||1, SEG=5;
@@ -625,8 +636,8 @@ function comboChartSVG(pts,mode){
   const negVals=scaleSrc.filter(v=>v<0).map(v=>-v);
   // niceCeil에 넘기기 전 실제 최댓값에 15% 여유를 얹어서, 그 최댓값 점이 축 맨 가장자리에
   // 딱 붙지 않게 함(안 그러면 편출(-100%, 축 하단 clamp)이랑 헷갈릴 수 있어서 위아래 여백 확보)
-  let rMax = hasRate && posVals.length ? niceCeil(Math.max(...posVals)*1.15) : 0;
-  let rMin = hasRate && negVals.length ? -niceCeil(Math.max(...negVals)*1.15) : 0;
+  let rMax = hasRate && posVals.length ? niceRateCeil(Math.max(...posVals)*1.15,SEG) : 0;
+  let rMin = hasRate && negVals.length ? -niceRateCeil(Math.max(...negVals)*1.15,SEG) : 0;
   if(rMin===rMax){ rMin-=1; rMax+=1; }
   const slot=plotW/n, cx=i=> padL + i*slot + slot/2;
   const yW=v=> yB-(v/wTop)*innerH;
@@ -786,7 +797,7 @@ async function onRowClick(e){
   await openDetailFor(row.getAttribute("data-key"),row.getAttribute("data-ticker"),row.getAttribute("data-name"));
 }
 
-// 구성기업 변동내역에서 기업을 클릭하면 아래 "전체 구성기업"으로 이동해 같은 상세 차트를 연다.
+// 포트폴리오 변동내역에서 기업을 클릭하면 아래 "전체 포트폴리오"로 이동해 같은 상세 차트를 연다.
 async function onChangeListClick(e){
   const li=e.target.closest("li[data-key]");
   if(!li) return;
