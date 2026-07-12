@@ -116,6 +116,7 @@
   .empty{color:var(--faint);font-size:13px}
 
   .tablehead{margin:30px 0 12px;display:flex;align-items:baseline;justify-content:space-between}
+  .tablehead.tight{justify-content:flex-start;gap:10px}
   .tablehead h2{margin:0;font-size:15px;font-weight:700;letter-spacing:-.01em}
   .tablehead .count{font-size:13px;color:var(--muted)}
   .table{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
@@ -287,7 +288,7 @@
     <b>데모 데이터입니다.</b> 실제 데이터가 아직 없어요 — 저장소에서 <b>Actions → Run workflow</b>를 한 번 실행하면 진짜 포트폴리오로 채워집니다.
   </div>
 
-  <div class="tablehead"><h2>포트폴리오 변동 내역</h2><button type="button" id="csvBtn" class="upd">⬇ 다운로드</button></div>
+  <div class="tablehead tight"><h2>포트폴리오 변동 내역</h2><button type="button" id="csvBtn" class="upd">⬇ 다운로드</button></div>
   <p class="ctx" id="ctx"></p>
   <p class="note"><b>수량</b>(주식 수)은 매니저가 실제로 매매해야만 바뀌고, <b>비중</b>은 주가 등락만으로도 바뀔 수 있어요. 아래 변동 내역은 위에서 고른 <b>기준일</b>과 <b>비교 대상일</b>, 두 시점의 구성을 비교해서 만들어집니다.</p>
 
