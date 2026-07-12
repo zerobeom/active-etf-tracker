@@ -84,7 +84,7 @@
   .note{margin-top:6px;font-size:12px;color:var(--faint)}
   .note b{color:var(--muted);font-weight:600}
 
-  .band{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .band{margin-top:20px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
   .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px}
   .stat .k{font-size:12px;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:7px}
   .stat .dot{width:7px;height:7px;border-radius:50%}
@@ -93,6 +93,7 @@
   .stat.out .v{color:var(--out)} .stat.out .dot{background:var(--out)}
   .stat.buy .v{color:var(--in)} .stat.buy .dot{background:var(--in)}
   .stat.sell .v{color:var(--out)} .stat.sell .dot{background:var(--out)}
+  .stat.hold .v{color:var(--muted)} .stat.hold .dot{background:var(--faint)}
   .stat .sub{font-size:11px;color:var(--faint);margin-top:2px}
 
   .changes{margin-top:14px;display:grid;grid-template-columns:1fr;gap:10px;align-items:start}
@@ -376,6 +377,7 @@ function renderBand(c){
     {cls:"out",k:"편출",v:c.removed.length,sub:"전량 매도"},
     {cls:"buy",k:"추가매수",v:c.bought.length,sub:"수량 증가"},
     {cls:"sell",k:"일부매도",v:c.sold.length,sub:"수량 감소"},
+    {cls:"hold",k:"수량유지",v:(c.unchanged||[]).length,sub:"변동 없음"},
   ];
   $("#band").innerHTML=cells.map(s=>`
     <div class="stat ${s.cls}"><div class="k"><span class="dot"></span>${s.k}</div>
