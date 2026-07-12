@@ -408,9 +408,9 @@ function renderChangeLists(c){
   $("#changeLists").innerHTML=
     clist("편입 (신규 매수)","in",c.added,liEntry)+
     clist("추가매수 (수량↑)","in",c.bought,liTrade)+
-    clist("편출 (전량 매도)","out",c.removed,liEntry)+
+    clist("수량유지","hold",c.unchanged||[],liEntry)+
     clist("일부매도 (수량↓)","out",c.sold,liTrade)+
-    clist("수량유지","hold",c.unchanged||[],liEntry);
+    clist("편출 (전량 매도)","out",c.removed,liEntry);
 }
 
 function renderTable(holdings,c){
