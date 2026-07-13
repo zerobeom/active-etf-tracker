@@ -88,7 +88,7 @@
   .band{margin-top:20px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
   .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
   .stat:hover{border-color:var(--faint);box-shadow:0 2px 10px rgba(20,24,30,.06)}
-  .stat .k{font-size:12px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:6px}
+  .stat .k{font-size:14px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:6px}
   .stat .icn{font-size:13px;line-height:1;font-weight:900}
   .stat .v{font-size:30px;font-weight:800;margin-top:8px;letter-spacing:-.02em;color:var(--text)}
   .stat .sub{font-size:11px;color:var(--faint);margin-top:2px}
@@ -105,7 +105,9 @@
 
   .changes{margin-top:14px;display:grid;grid-template-columns:1fr;gap:10px;align-items:start}
   .clist{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
-  .clist h3{margin:0 0 10px;font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:7px}
+  .clist h3{margin:0 0 10px;font-size:14px;letter-spacing:.02em;color:var(--muted);font-weight:800;display:flex;align-items:center;gap:7px}
+  .clist h3.buy{color:var(--in)} .clist h3.sell{color:var(--out)}
+  .clist h3.instrong{color:var(--in-strong)} .clist h3.outstrong{color:var(--out-strong)}
   .clist h3 .tag{font-size:11px;padding:1px 7px;border-radius:20px;font-weight:800}
   .tag.buy{background:var(--in-dim);color:var(--in)} .tag.sell{background:var(--out-dim);color:var(--out)}
   .tag.hold{background:var(--panel2);color:var(--muted)}
@@ -409,7 +411,7 @@ function liTrade(x){
 }
 function clist(id,title,tagcls,items,fn){
   const body=items.length?`<ul>${items.map(fn).join("")}</ul>`:`<div class="empty">변동 없음</div>`;
-  return `<div class="clist" id="${id}"><h3>${title}<span class="tag ${tagcls}">${items.length}</span></h3>${body}</div>`;
+  return `<div class="clist" id="${id}"><h3 class="${tagcls}">${title}<span class="tag ${tagcls}">${items.length}</span></h3>${body}</div>`;
 }
 function renderChangeLists(c){
   $("#changeLists").innerHTML=
