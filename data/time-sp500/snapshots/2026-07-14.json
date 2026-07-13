@@ -743,24 +743,5 @@
       "key": "TER US EQUITY",
       "price_usd": 341.11
     }
-  ],
-  "prev_date": "2026-07-13",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [],
-    "sold": [
-      {
-        "name": "NextEra Energy Inc",
-        "ticker": "NEE",
-        "shares": 77.0,
-        "prev_shares": 78.0,
-        "share_delta": -1.0,
-        "weight": 1.44,
-        "prev_weight": 1.45,
-        "weight_delta": -0.01
-      }
-    ]
-  },
-  "updated_at": "2026-07-14 08:08"
+  ]
 }
