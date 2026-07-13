@@ -88,8 +88,8 @@
   .band{margin-top:20px;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
   .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
   .stat:hover{border-color:var(--faint);box-shadow:0 2px 10px rgba(20,24,30,.06)}
-  .stat .k{font-size:17px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:6px}
-  .stat .icn{font-size:16px;line-height:1;font-weight:900}
+  .stat .k{font-size:15px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:6px}
+  .stat .icn{font-size:14px;line-height:1;font-weight:900}
   .stat .v{font-size:30px;font-weight:800;margin-top:8px;letter-spacing:-.02em;color:var(--text)}
   .stat .sub{font-size:11px;color:var(--faint);margin-top:2px}
   .stat.buy .icn,.stat.buy .k{color:var(--in)}
@@ -384,7 +384,7 @@ function renderBand(c){
   const cells=[
     {cls:"instrong",icn:"▶",k:"편입",v:c.added.length,sub:"신규 매수",target:"clist-added"},
     {cls:"buy",icn:"▲",k:"매수",v:c.bought.length,sub:"수량 증가",target:"clist-bought"},
-    {cls:"hold",icn:"∥",k:"유지",v:(c.unchanged||[]).length,sub:"변동 없음",target:"clist-hold"},
+    {cls:"hold",icn:"⏸",k:"유지",v:(c.unchanged||[]).length,sub:"변동 없음",target:"clist-hold"},
     {cls:"sell",icn:"▼",k:"매도",v:c.sold.length,sub:"수량 감소",target:"clist-sold"},
     {cls:"outstrong",icn:"■",k:"편출",v:c.removed.length,sub:"전량 매도",target:"clist-removed"},
   ];
@@ -417,7 +417,7 @@ function renderChangeLists(c){
   $("#changeLists").innerHTML=
     clist("clist-added","▶ 편입","instrong",c.added,liEntry)+
     clist("clist-bought","▲ 매수","buy",c.bought,liTrade)+
-    clist("clist-hold","∥ 유지","hold",c.unchanged||[],liEntry)+
+    clist("clist-hold","⏸ 유지","hold",c.unchanged||[],liEntry)+
     clist("clist-sold","▼ 매도","sell",c.sold,liTrade)+
     clist("clist-removed","■ 편출","outstrong",c.removed,liEntry);
 }
