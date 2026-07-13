@@ -92,16 +92,16 @@
   .stat .icn{font-size:13px;line-height:1;font-weight:900}
   .stat .v{font-size:30px;font-weight:800;margin-top:8px;letter-spacing:-.02em;color:var(--text)}
   .stat .sub{font-size:11px;color:var(--faint);margin-top:2px}
-  .stat.buy .v,.stat.buy .icn{color:var(--in)}
-  .stat.sell .v,.stat.sell .icn{color:var(--out)}
-  .stat.hold .v,.stat.hold .icn{color:var(--muted)}
-  /* 편입/편출은 배경까지 진하게 채워서 매수/매도보다 확실히 눈에 띄게 */
+  .stat.buy .icn{color:var(--in)}
+  .stat.sell .icn{color:var(--out)}
+  .stat.hold .icn{color:var(--muted)}
+  /* 편입/편출은 상단 강조선 + 아이콘·제목 색으로 매수/매도보다 확실히 구분(큰 숫자는 색 안 넣음) */
   .stat.instrong{border-top:3px solid var(--in-strong)}
   .stat.instrong .k,.stat.instrong .icn{color:var(--in-strong)}
-  .stat.instrong .v{color:var(--in-strong);font-weight:900}
+  .stat.instrong .v{font-weight:900}
   .stat.outstrong{border-top:3px solid var(--out-strong)}
   .stat.outstrong .k,.stat.outstrong .icn{color:var(--out-strong)}
-  .stat.outstrong .v{color:var(--out-strong);font-weight:900}
+  .stat.outstrong .v{font-weight:900}
 
   .changes{margin-top:14px;display:grid;grid-template-columns:1fr;gap:10px;align-items:start}
   .clist{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
@@ -157,9 +157,9 @@
   .r-w{text-align:right;font-weight:600;color:var(--muted)}
   .r-bar{height:6px;border-radius:4px;background:var(--panel2);overflow:hidden;border:1px solid var(--line)}
   .r-bar i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,var(--bar1),var(--bar2))}
-  .row.is-new .r-bar i{background:linear-gradient(90deg,#047857,var(--in))}
-  .row.is-buy .r-bar i{background:linear-gradient(90deg,var(--in),#5FD3A6)}
-  .row.is-sell .r-bar i{background:linear-gradient(90deg,var(--out),#F0A0A0)}
+  .row.is-new .r-bar i{background:var(--in-strong)}
+  .row.is-buy .r-bar i{background:linear-gradient(90deg,#7DDCB5,#C9F2E1)}
+  .row.is-sell .r-bar i{background:linear-gradient(90deg,#F0A0A0,#FBD9D9)}
 
   .row.clickable{cursor:pointer}
   .row.clickable:hover{background:#FAFBFC}
@@ -380,11 +380,11 @@ function computeDiff(cur,prev){
 
 function renderBand(c){
   const cells=[
-    {cls:"instrong",icn:"●",k:"편입",v:c.added.length,sub:"신규 매수",target:"clist-added"},
+    {cls:"instrong",icn:"▶",k:"편입",v:c.added.length,sub:"신규 매수",target:"clist-added"},
     {cls:"buy",icn:"▲",k:"매수",v:c.bought.length,sub:"수량 증가",target:"clist-bought"},
     {cls:"hold",icn:"∥",k:"유지",v:(c.unchanged||[]).length,sub:"변동 없음",target:"clist-hold"},
     {cls:"sell",icn:"▼",k:"매도",v:c.sold.length,sub:"수량 감소",target:"clist-sold"},
-    {cls:"outstrong",icn:"○",k:"편출",v:c.removed.length,sub:"전량 매도",target:"clist-removed"},
+    {cls:"outstrong",icn:"■",k:"편출",v:c.removed.length,sub:"전량 매도",target:"clist-removed"},
   ];
   $("#band").innerHTML=cells.map(s=>`
     <div class="stat ${s.cls}" data-target="${s.target}"><div class="k"><span class="icn">${s.icn}</span>${s.k}</div>
@@ -413,11 +413,11 @@ function clist(id,title,tagcls,items,fn){
 }
 function renderChangeLists(c){
   $("#changeLists").innerHTML=
-    clist("clist-added","● 편입","instrong",c.added,liEntry)+
+    clist("clist-added","▶ 편입","instrong",c.added,liEntry)+
     clist("clist-bought","▲ 매수","buy",c.bought,liTrade)+
     clist("clist-hold","∥ 유지","hold",c.unchanged||[],liEntry)+
     clist("clist-sold","▼ 매도","sell",c.sold,liTrade)+
-    clist("clist-removed","○ 편출","outstrong",c.removed,liEntry);
+    clist("clist-removed","■ 편출","outstrong",c.removed,liEntry);
 }
 
 function renderTable(holdings,c){
