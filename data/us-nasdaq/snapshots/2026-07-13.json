@@ -444,7 +444,8 @@
       "amount": 10262227.0,
       "price": null,
       "is_cash": false,
-      "key": "US4824801009"
+      "key": "US4824801009",
+      "price_usd": 231.52
     },
     {
       "isin": "US17275R1023",
