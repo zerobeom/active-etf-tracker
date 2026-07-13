@@ -96,10 +96,10 @@
   .stat.sell .icn{color:var(--out)}
   .stat.hold .icn{color:var(--muted)}
   /* 편입/편출은 상단 강조선 + 아이콘·제목 색으로 매수/매도보다 확실히 구분(큰 숫자는 색 안 넣음) */
-  .stat.instrong{border-top:3px solid var(--in-strong)}
+  .stat.instrong{}
   .stat.instrong .k,.stat.instrong .icn{color:var(--in-strong)}
   .stat.instrong .v{font-weight:900}
-  .stat.outstrong{border-top:3px solid var(--out-strong)}
+  .stat.outstrong{}
   .stat.outstrong .k,.stat.outstrong .icn{color:var(--out-strong)}
   .stat.outstrong .v{font-weight:900}
 
@@ -107,9 +107,7 @@
   .clist{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
   .clist h3{margin:0 0 10px;font-size:12px;letter-spacing:.04em;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:7px}
   .clist h3 .tag{font-size:11px;padding:1px 7px;border-radius:20px;font-weight:800}
-  .tag.buy{background:var(--in-dim);color:var(--in)} .tag.sell{background:var(--out-dim);color:var(--out)}
-  .tag.hold{background:var(--panel2);color:var(--muted)}
-  .tag.instrong{background:var(--in-strong);color:#fff} .tag.outstrong{background:var(--out-strong);color:#fff}
+  .tag.buy,.tag.sell,.tag.instrong,.tag.outstrong,.tag.hold{background:var(--panel2);color:var(--muted)}
   .clist ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px}
   .clist li{display:grid;grid-template-columns:42px minmax(60px,1fr) 84px 78px 170px;align-items:baseline;column-gap:10px;font-size:13px;padding:5px;border-radius:8px}
   .clist li[data-key]{cursor:pointer}
