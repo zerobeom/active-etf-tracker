@@ -11,6 +11,7 @@
     --bg:#FFFFFF; --panel:#FFFFFF; --panel2:#F5F7F9; --line:#E4E8ED;
     --text:#16191F; --muted:#5B6573; --faint:#98A1AD;
     --in:#0E9E6E; --out:#DC2A2A; --accent:#1F2937;
+    --in-strong:#04724D; --out-strong:#A81D1D;
     --in-dim:#E6F6EF; --out-dim:#FBE9E9;
     --bar1:#8893A6; --bar2:#AEB7C6;
   }
@@ -95,12 +96,12 @@
   .stat.sell .v,.stat.sell .icn{color:var(--out)}
   .stat.hold .v,.stat.hold .icn{color:var(--muted)}
   /* 편입/편출은 배경까지 진하게 채워서 매수/매도보다 확실히 눈에 띄게 */
-  .stat.instrong{background:var(--in-dim);border-color:var(--in)}
-  .stat.instrong .k,.stat.instrong .v,.stat.instrong .icn{color:var(--in)}
-  .stat.instrong .v{font-weight:900}
-  .stat.outstrong{background:var(--out-dim);border-color:var(--out)}
-  .stat.outstrong .k,.stat.outstrong .v,.stat.outstrong .icn{color:var(--out)}
-  .stat.outstrong .v{font-weight:900}
+  .stat.instrong{border-top:3px solid var(--in-strong)}
+  .stat.instrong .k,.stat.instrong .icn{color:var(--in-strong)}
+  .stat.instrong .v{color:var(--in-strong);font-weight:900}
+  .stat.outstrong{border-top:3px solid var(--out-strong)}
+  .stat.outstrong .k,.stat.outstrong .icn{color:var(--out-strong)}
+  .stat.outstrong .v{color:var(--out-strong);font-weight:900}
 
   .changes{margin-top:14px;display:grid;grid-template-columns:1fr;gap:10px;align-items:start}
   .clist{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
@@ -108,7 +109,7 @@
   .clist h3 .tag{font-size:11px;padding:1px 7px;border-radius:20px;font-weight:800}
   .tag.buy{background:var(--in-dim);color:var(--in)} .tag.sell{background:var(--out-dim);color:var(--out)}
   .tag.hold{background:var(--panel2);color:var(--muted)}
-  .tag.instrong{background:var(--in);color:#fff} .tag.outstrong{background:var(--out);color:#fff}
+  .tag.instrong{background:var(--in-strong);color:#fff} .tag.outstrong{background:var(--out-strong);color:#fff}
   .clist ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:2px}
   .clist li{display:grid;grid-template-columns:42px minmax(60px,1fr) 84px 78px 170px;align-items:baseline;column-gap:10px;font-size:13px;padding:5px;border-radius:8px}
   .clist li[data-key]{cursor:pointer}
@@ -379,11 +380,11 @@ function computeDiff(cur,prev){
 
 function renderBand(c){
   const cells=[
-    {cls:"instrong",icn:"⊕",k:"편입",v:c.added.length,sub:"신규 매수",target:"clist-added"},
+    {cls:"instrong",icn:"●",k:"편입",v:c.added.length,sub:"신규 매수",target:"clist-added"},
     {cls:"buy",icn:"▲",k:"매수",v:c.bought.length,sub:"수량 증가",target:"clist-bought"},
     {cls:"hold",icn:"∥",k:"유지",v:(c.unchanged||[]).length,sub:"변동 없음",target:"clist-hold"},
     {cls:"sell",icn:"▼",k:"매도",v:c.sold.length,sub:"수량 감소",target:"clist-sold"},
-    {cls:"outstrong",icn:"⊖",k:"편출",v:c.removed.length,sub:"전량 매도",target:"clist-removed"},
+    {cls:"outstrong",icn:"○",k:"편출",v:c.removed.length,sub:"전량 매도",target:"clist-removed"},
   ];
   $("#band").innerHTML=cells.map(s=>`
     <div class="stat ${s.cls}" data-target="${s.target}"><div class="k"><span class="icn">${s.icn}</span>${s.k}</div>
@@ -412,11 +413,11 @@ function clist(id,title,tagcls,items,fn){
 }
 function renderChangeLists(c){
   $("#changeLists").innerHTML=
-    clist("clist-added","⊕ 편입","instrong",c.added,liEntry)+
+    clist("clist-added","● 편입","instrong",c.added,liEntry)+
     clist("clist-bought","▲ 매수","buy",c.bought,liTrade)+
     clist("clist-hold","∥ 유지","hold",c.unchanged||[],liEntry)+
     clist("clist-sold","▼ 매도","sell",c.sold,liTrade)+
-    clist("clist-removed","⊖ 편출","outstrong",c.removed,liEntry);
+    clist("clist-removed","○ 편출","outstrong",c.removed,liEntry);
 }
 
 function renderTable(holdings,c){
