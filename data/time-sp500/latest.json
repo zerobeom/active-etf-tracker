@@ -591,14 +591,14 @@
     {
       "isin": "",
       "name": "SK HYNIX INC-ADR W/I",
-      "code": "SKHYV US EQUITY",
-      "ticker": "SKHYV",
+      "code": "SKHY US EQUITY",
+      "ticker": "SKHY",
       "weight": 0.7,
       "shares": 22.0,
       "amount": 4921589.0,
       "price": null,
       "is_cash": false,
-      "key": "SKHYV US EQUITY",
+      "key": "SKHY US EQUITY",
       "price_usd": 168.01
     },
     {
@@ -749,7 +749,7 @@
     "added": [
       {
         "name": "SK HYNIX INC-ADR W/I",
-        "ticker": "SKHYV",
+        "ticker": "SKHY",
         "weight": 0.7,
         "shares": 22.0
       }
@@ -877,5 +877,5 @@
       }
     ]
   },
-  "updated_at": "2026-07-13 08:42"
+  "updated_at": "2026-07-13 18:41"
 }
