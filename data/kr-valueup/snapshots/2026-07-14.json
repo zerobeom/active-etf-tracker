@@ -713,55 +713,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-07-13",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "신한지주",
-        "ticker": "055550",
-        "shares": 503,
-        "prev_shares": 457,
-        "share_delta": 46,
-        "weight": 3.4175,
-        "prev_weight": 2.8687,
-        "weight_delta": 0.5488
-      },
-      {
-        "name": "DB손해보험",
-        "ticker": "005830",
-        "shares": 85,
-        "prev_shares": 43,
-        "share_delta": 42,
-        "weight": 0.846,
-        "prev_weight": 0.3851,
-        "weight_delta": 0.4609
-      },
-      {
-        "name": "NH투자증권",
-        "ticker": "005940",
-        "shares": 273,
-        "prev_shares": 116,
-        "share_delta": 157,
-        "weight": 0.532,
-        "prev_weight": 0.2107,
-        "weight_delta": 0.3213
-      }
-    ],
-    "sold": [
-      {
-        "name": "SK",
-        "ticker": "034730",
-        "shares": 86,
-        "prev_shares": 114,
-        "share_delta": -28,
-        "weight": 3.1367,
-        "prev_weight": 4.3055,
-        "weight_delta": -1.1688
-      }
-    ]
-  },
-  "updated_at": "2026-07-14 21:55"
+  ]
 }
