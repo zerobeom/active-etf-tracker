@@ -16,7 +16,7 @@
       "price": null,
       "is_cash": false,
       "key": "VSAT",
-      "price_usd": 69.84
+      "price_usd": 69.54
     },
     {
       "isin": "US80004C2008",
@@ -68,7 +68,7 @@
       "price": null,
       "is_cash": false,
       "key": "MU",
-      "price_usd": 983.12
+      "price_usd": 937.0
     },
     {
       "isin": "US77926X3200",
@@ -94,7 +94,7 @@
       "price": null,
       "is_cash": false,
       "key": "MRVL",
-      "price_usd": 222.44
+      "price_usd": 217.53
     },
     {
       "isin": "US46222L1089",
@@ -172,7 +172,7 @@
       "price": null,
       "is_cash": false,
       "key": "COHR",
-      "price_usd": 310.77
+      "price_usd": 307.39
     },
     {
       "isin": "US5128073062",
@@ -185,7 +185,7 @@
       "price": null,
       "is_cash": false,
       "key": "LRCX",
-      "price_usd": 346.1
+      "price_usd": 329.92
     },
     {
       "isin": "US36828A1016",
