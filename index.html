@@ -89,18 +89,18 @@
   .stat{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
   .stat:hover{border-color:var(--faint);box-shadow:0 2px 10px rgba(20,24,30,.06)}
   .stat .k{font-size:15px;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:6px}
-  .stat .icn{font-size:14px;line-height:1;font-weight:900}
+  .stat .icn{font-size:11px;line-height:1;font-weight:800;padding:3px 6px;border-radius:6px;display:inline-flex;align-items:center}
   .stat .v{font-size:30px;font-weight:800;margin-top:8px;letter-spacing:-.02em;color:var(--text)}
   .stat .sub{font-size:11px;color:var(--faint);margin-top:2px}
-  .stat.buy .icn,.stat.buy .k{color:var(--in)}
-  .stat.sell .icn,.stat.sell .k{color:var(--out)}
-  .stat.hold .icn,.stat.hold .k{color:var(--muted)}
+  .stat.buy .k{color:var(--in)} .stat.buy .icn{background:var(--in-dim);color:var(--in)}
+  .stat.sell .k{color:var(--out)} .stat.sell .icn{background:var(--out-dim);color:var(--out)}
+  .stat.hold .k{color:var(--muted)} .stat.hold .icn{background:var(--panel2);color:var(--muted)}
   /* 편입/편출은 상단 강조선 + 아이콘·제목 색으로 매수/매도보다 확실히 구분(큰 숫자는 색 안 넣음) */
   .stat.instrong{}
-  .stat.instrong .k,.stat.instrong .icn{color:var(--in-strong)}
+  .stat.instrong .k{color:var(--in-strong)} .stat.instrong .icn{background:var(--in-dim);color:var(--in-strong)}
   .stat.instrong .v{font-weight:900}
   .stat.outstrong{}
-  .stat.outstrong .k,.stat.outstrong .icn{color:var(--out-strong)}
+  .stat.outstrong .k{color:var(--out-strong)} .stat.outstrong .icn{background:var(--out-dim);color:var(--out-strong)}
   .stat.outstrong .v{font-weight:900}
 
   .changes{margin-top:14px;display:grid;grid-template-columns:1fr;gap:10px;align-items:start}
