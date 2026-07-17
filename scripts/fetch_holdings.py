@@ -504,6 +504,25 @@ def normalize_sol(rows: list, is_us: bool, work_dt: str, debug: bool = False):
     return base_date, holdings
 
 
+def fetch_latest_available_sol(fid: str, start_yyyymmdd: str, is_us: bool, debug: bool = False):
+    """오늘자 SOL 데이터가 아직 안 올라왔을 수 있어서(공시 지연 등), 실패/빈 응답이면
+    하루씩 거슬러 올라가며 최근 영업일 데이터를 찾는다(samsung의 fetch_latest_available과 동일한
+    발상). 매일 자동 갱신 경로에서만 쓰고, 백필(특정 날짜를 정확히 원하는 경우)에는 안 씀."""
+    d = datetime.strptime(start_yyyymmdd, "%Y%m%d")
+    for _ in range(LOOKBACK_DAYS + 1):
+        ds = d.strftime("%Y%m%d")
+        try:
+            rows = download_sol(fid, work_dt=ds)
+            date_iso, holdings = normalize_sol(rows, is_us=is_us, work_dt=ds, debug=debug)
+            if holdings:
+                return date_iso, holdings
+            print(f"    - {ds}: 유효 데이터 없음, 하루 전으로")
+        except Exception as e:
+            print(f"    - {ds}: 다운로드/파싱 실패 ({e})")
+        d -= timedelta(days=1)
+    return None, None
+
+
 # ── 다운로드 + 파싱 (타임폴리오 TIME · xlsx 직접 다운로드) ───────────────
 def download_time(internal_id: str, pdf_date: str = None) -> bytes:
     """pdf_date('YYYY-MM-DD')를 주면 그 날짜의 구성종목을, 안 주면 최신을 받는다.
@@ -800,7 +819,7 @@ def prune_before_start(snap_dir: Path, start_iso: str):
     return sorted(removed)
 
 
-def process_etf(etf: dict, start: str, debug: bool = False, skip_perf: bool = False):
+def process_etf(etf: dict, start: str, debug: bool = False, skip_perf: bool = False, allow_lookback: bool = True):
     slug = etf["slug"]
     provider = etf.get("provider", "samsung")
     edir = DATA / slug
@@ -816,8 +835,15 @@ def process_etf(etf: dict, start: str, debug: bool = False, skip_perf: bool = Fa
 
     if provider == "sol":
         try:
-            rows = download_sol(etf["fid"], work_dt=start)
-            date_iso, holdings = normalize_sol(rows, is_us=bool(etf.get("usd_price")), work_dt=start, debug=debug)
+            if allow_lookback:
+                # 매일 자동 갱신: 오늘자가 아직 안 올라왔으면 하루씩 거슬러 올라가며 찾음
+                date_iso, holdings = fetch_latest_available_sol(
+                    etf["fid"], start, is_us=bool(etf.get("usd_price")), debug=debug)
+            else:
+                # 백필: 요청한 그 날짜만 정확히(후퇴하면 날짜가 어긋나므로)
+                rows = download_sol(etf["fid"], work_dt=start)
+                date_iso, holdings = normalize_sol(
+                    rows, is_us=bool(etf.get("usd_price")), work_dt=start, debug=debug)
         except Exception as e:
             print(f"  [skip] SOL API 요청/파싱 실패: {e}")
             return False
@@ -941,7 +967,7 @@ def main():
                 etf_start = etf.get("start", "1900-01-01").replace("-", "")
                 if ds < etf_start:
                     continue  # 상장 전 날짜는 건너뜀
-                ok = process_etf(etf, ds, debug=debug, skip_perf=True)
+                ok = process_etf(etf, ds, debug=debug, skip_perf=True, allow_lookback=False)
                 if ok is False:
                     fail_streak[etf["slug"]] = fail_streak.get(etf["slug"], 0) + 1
                     if fail_streak[etf["slug"]] >= 5:
