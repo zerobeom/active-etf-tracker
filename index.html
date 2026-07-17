@@ -106,8 +106,11 @@
   .changes{margin-top:14px;display:grid;grid-template-columns:1fr;gap:10px;align-items:start}
   .clist{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
   .clist h3{margin:0 0 10px;font-size:14px;letter-spacing:.02em;color:var(--muted);font-weight:800;display:flex;align-items:center;gap:7px}
-  .clist h3.buy{color:var(--in)} .clist h3.sell{color:var(--out)}
-  .clist h3.instrong{color:var(--in-strong)} .clist h3.outstrong{color:var(--out-strong)}
+  .clist h3 .icn{font-size:11px;line-height:1;font-weight:800;padding:3px 6px;border-radius:6px;display:inline-flex;align-items:center;background:var(--panel2);color:var(--muted)}
+  .clist h3.buy{color:var(--in)} .clist h3.buy .icn{background:var(--in-dim);color:var(--in)}
+  .clist h3.sell{color:var(--out)} .clist h3.sell .icn{background:var(--out-dim);color:var(--out)}
+  .clist h3.instrong{color:var(--in-strong)} .clist h3.instrong .icn{background:var(--in-dim);color:var(--in-strong)}
+  .clist h3.outstrong{color:var(--out-strong)} .clist h3.outstrong .icn{background:var(--out-dim);color:var(--out-strong)}
   .clist h3 .tag{font-size:11px;padding:1px 7px;border-radius:20px;font-weight:800}
   .tag.buy{background:var(--in-dim);color:var(--in)} .tag.sell{background:var(--out-dim);color:var(--out)}
   .tag.hold{background:var(--panel2);color:var(--muted)}
@@ -409,17 +412,17 @@ function liTrade(x){
     `<span class="qty num"><i>수량</i><b>${qty(x.shares)}</b></span>`+
     `<span class="d ${cls} num"><i>변화</i><b>${sQty(x.share_delta)}${rateTxt}</b></span></li>`;
 }
-function clist(id,title,tagcls,items,fn){
+function clist(id,icn,label,tagcls,items,fn){
   const body=items.length?`<ul>${items.map(fn).join("")}</ul>`:`<div class="empty">변동 없음</div>`;
-  return `<div class="clist" id="${id}"><h3 class="${tagcls}">${title}<span class="tag ${tagcls}">${items.length}</span></h3>${body}</div>`;
+  return `<div class="clist" id="${id}"><h3 class="${tagcls}"><span class="icn">${icn}</span>${label}<span class="tag ${tagcls}">${items.length}</span></h3>${body}</div>`;
 }
 function renderChangeLists(c){
   $("#changeLists").innerHTML=
-    clist("clist-added","▶ 편입","instrong",c.added,liEntry)+
-    clist("clist-bought","▲ 매수","buy",c.bought,liTrade)+
-    clist("clist-hold","⏸ 유지","hold",c.unchanged||[],liEntry)+
-    clist("clist-sold","▼ 매도","sell",c.sold,liTrade)+
-    clist("clist-removed","■ 편출","outstrong",c.removed,liEntry);
+    clist("clist-added","▶","편입","instrong",c.added,liEntry)+
+    clist("clist-bought","▲","매수","buy",c.bought,liTrade)+
+    clist("clist-hold","⏸","유지","hold",c.unchanged||[],liEntry)+
+    clist("clist-sold","▼","매도","sell",c.sold,liTrade)+
+    clist("clist-removed","■","편출","outstrong",c.removed,liEntry);
 }
 
 function renderTable(holdings,c){
