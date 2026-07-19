@@ -717,55 +717,5 @@
       "key": "MCD US EQUITY",
       "price_usd": 267.71
     }
-  ],
-  "prev_date": "2026-07-16",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "Alphabet Inc",
-        "ticker": "GOOGL",
-        "shares": 76.0,
-        "prev_shares": 73.0,
-        "share_delta": 3.0,
-        "weight": 6.06,
-        "prev_weight": 5.62,
-        "weight_delta": 0.44
-      },
-      {
-        "name": "Meta Platforms Inc",
-        "ticker": "META",
-        "shares": 15.0,
-        "prev_shares": 13.0,
-        "share_delta": 2.0,
-        "weight": 2.2,
-        "prev_weight": 1.84,
-        "weight_delta": 0.36
-      }
-    ],
-    "sold": [
-      {
-        "name": "Apple Inc",
-        "ticker": "AAPL",
-        "shares": 77.0,
-        "prev_shares": 78.0,
-        "share_delta": -1.0,
-        "weight": 5.42,
-        "prev_weight": 5.26,
-        "weight_delta": 0.16
-      },
-      {
-        "name": "Amazon.com Inc",
-        "ticker": "AMZN",
-        "shares": 62.0,
-        "prev_shares": 63.0,
-        "share_delta": -1.0,
-        "weight": 3.4,
-        "prev_weight": 3.34,
-        "weight_delta": 0.06
-      }
-    ]
-  },
-  "updated_at": "2026-07-20 08:34"
+  ]
 }
