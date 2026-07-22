@@ -757,34 +757,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-07-21",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [],
-    "sold": [
-      {
-        "name": "TESLA MOTORS",
-        "ticker": "TSLA",
-        "shares": 63,
-        "prev_shares": 64,
-        "share_delta": -1,
-        "weight": 3.4827,
-        "prev_weight": 3.602,
-        "weight_delta": -0.1193
-      },
-      {
-        "name": "SK hynix Inc",
-        "ticker": "SKHY",
-        "shares": 64,
-        "prev_shares": 65,
-        "share_delta": -1,
-        "weight": 1.4458,
-        "prev_weight": 1.4788,
-        "weight_delta": -0.033
-      }
-    ]
-  },
-  "updated_at": "2026-07-22 09:05"
+  ]
 }

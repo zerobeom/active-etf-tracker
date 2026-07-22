@@ -627,44 +627,5 @@
       "key": "PANW US EQUITY",
       "price_usd": 342.15
     }
-  ],
-  "prev_date": "2026-07-21",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [],
-    "sold": [
-      {
-        "name": "Micron Technology Inc",
-        "ticker": "MU",
-        "shares": 35.0,
-        "prev_shares": 36.0,
-        "share_delta": -1.0,
-        "weight": 4.75,
-        "prev_weight": 4.81,
-        "weight_delta": -0.06
-      },
-      {
-        "name": "Applied Optoelectronics Inc",
-        "ticker": "AAOI",
-        "shares": 94.0,
-        "prev_shares": 95.0,
-        "share_delta": -1.0,
-        "weight": 1.52,
-        "prev_weight": 1.53,
-        "weight_delta": -0.01
-      },
-      {
-        "name": "KLA Corp",
-        "ticker": "KLAC",
-        "shares": 44.0,
-        "prev_shares": 45.0,
-        "share_delta": -1.0,
-        "weight": 1.43,
-        "prev_weight": 1.51,
-        "weight_delta": -0.08
-      }
-    ]
-  },
-  "updated_at": "2026-07-22 09:31"
+  ]
 }
