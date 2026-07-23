@@ -756,24 +756,5 @@
       "is_cash": true,
       "key": "현금"
     }
-  ],
-  "prev_date": "2026-07-22",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "Texas Instruments Inc",
-        "ticker": "TXN",
-        "shares": 13.0,
-        "prev_shares": 9.0,
-        "share_delta": 4.0,
-        "weight": 0.82,
-        "prev_weight": 0.57,
-        "weight_delta": 0.25
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-07-23 09:16"
+  ]
 }
