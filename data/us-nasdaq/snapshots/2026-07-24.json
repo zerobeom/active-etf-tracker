@@ -653,44 +653,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-07-23",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "Robinhood Markets Inc",
-        "ticker": "HOOD",
-        "shares": 233,
-        "prev_shares": 232,
-        "share_delta": 1,
-        "weight": 3.4362,
-        "prev_weight": 3.4662,
-        "weight_delta": -0.03
-      },
-      {
-        "name": "APPLE Inc",
-        "ticker": "AAPL",
-        "shares": 63,
-        "prev_shares": 62,
-        "share_delta": 1,
-        "weight": 2.8782,
-        "prev_weight": 2.8682,
-        "weight_delta": 0.01
-      },
-      {
-        "name": "Palantir Technologies Inc -A",
-        "ticker": "PLTR",
-        "shares": 34,
-        "prev_shares": 33,
-        "share_delta": 1,
-        "weight": 0.59,
-        "prev_weight": 0.6226,
-        "weight_delta": -0.0326
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-07-24 09:13"
+  ]
 }
