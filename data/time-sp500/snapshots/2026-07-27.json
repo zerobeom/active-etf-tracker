@@ -782,41 +782,5 @@
       "key": "TXN US EQUITY",
       "price_usd": 279.58
     }
-  ],
-  "prev_date": "2026-07-24",
-  "changes": {
-    "added": [
-      {
-        "name": "Howmet Aerospace Inc",
-        "ticker": "HWM",
-        "weight": 0.51,
-        "shares": 8.0
-      }
-    ],
-    "removed": [],
-    "bought": [],
-    "sold": [
-      {
-        "name": "Microsoft Corp",
-        "ticker": "MSFT",
-        "shares": 36.0,
-        "prev_shares": 40.0,
-        "share_delta": -4.0,
-        "weight": 3.02,
-        "prev_weight": 3.39,
-        "weight_delta": -0.37
-      },
-      {
-        "name": "Tesla Inc",
-        "ticker": "TSLA",
-        "shares": 14.0,
-        "prev_shares": 18.0,
-        "share_delta": -4.0,
-        "weight": 0.99,
-        "prev_weight": 1.46,
-        "weight_delta": -0.47
-      }
-    ]
-  },
-  "updated_at": "2026-07-27 18:26"
+  ]
 }
