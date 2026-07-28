@@ -653,54 +653,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-07-27",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [],
-    "sold": [
-      {
-        "name": "INTEL Corp",
-        "ticker": "INTC",
-        "shares": 355,
-        "prev_shares": 356,
-        "share_delta": -1,
-        "weight": 4.9241,
-        "prev_weight": 5.1103,
-        "weight_delta": -0.1862
-      },
-      {
-        "name": "LAM RESEARCH",
-        "ticker": "LRCX",
-        "shares": 63,
-        "prev_shares": 64,
-        "share_delta": -1,
-        "weight": 2.9066,
-        "prev_weight": 2.9112,
-        "weight_delta": -0.0046
-      },
-      {
-        "name": "Interactive Brokers Group Inc",
-        "ticker": "IBKR",
-        "shares": 112,
-        "prev_shares": 113,
-        "share_delta": -1,
-        "weight": 1.5481,
-        "prev_weight": 1.4803,
-        "weight_delta": 0.0678
-      },
-      {
-        "name": "GILEAD SCIENCES INC",
-        "ticker": "GILD",
-        "shares": 21,
-        "prev_shares": 22,
-        "share_delta": -1,
-        "weight": 0.417,
-        "prev_weight": 0.4034,
-        "weight_delta": 0.0136
-      }
-    ]
-  },
-  "updated_at": "2026-07-28 09:12"
+  ]
 }
