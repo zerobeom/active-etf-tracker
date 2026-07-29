@@ -701,33 +701,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-07-28",
-  "changes": {
-    "added": [
-      {
-        "name": "HD현대",
-        "ticker": "267250",
-        "weight": 0.2991,
-        "shares": 21
-      }
-    ],
-    "removed": [
-      {
-        "name": "코미코",
-        "ticker": "183300",
-        "weight": 0.6003,
-        "shares": 146
-      },
-      {
-        "name": "한솔케미칼",
-        "ticker": "014680",
-        "weight": 0.3066,
-        "shares": 21
-      }
-    ],
-    "bought": [],
-    "sold": []
-  },
-  "updated_at": "2026-07-29 09:10"
+  ]
 }
