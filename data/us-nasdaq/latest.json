@@ -29,7 +29,7 @@
       "price": null,
       "is_cash": false,
       "key": "US4581401001",
-      "price_usd": 86.3
+      "price_usd": 91.67
     },
     {
       "isin": "US8334451098",
@@ -42,7 +42,7 @@
       "price": null,
       "is_cash": false,
       "key": "US8334451098",
-      "price_usd": 270.36
+      "price_usd": 272.92
     },
     {
       "isin": "US02079K3059",
@@ -198,7 +198,7 @@
       "price": null,
       "is_cash": false,
       "key": "US0382221051",
-      "price_usd": 476.46
+      "price_usd": 516.89
     },
     {
       "isin": "US5128073062",
@@ -211,7 +211,7 @@
       "price": null,
       "is_cash": false,
       "key": "US5128073062",
-      "price_usd": 269.61
+      "price_usd": 291.61
     },
     {
       "isin": "US23804L1035",
@@ -224,7 +224,7 @@
       "price": null,
       "is_cash": false,
       "key": "US23804L1035",
-      "price_usd": 250.88
+      "price_usd": 251.86
     },
     {
       "isin": "US5738741041",
@@ -302,7 +302,7 @@
       "price": null,
       "is_cash": false,
       "key": "US45841N1072",
-      "price_usd": 90.91
+      "price_usd": 92.27
     },
     {
       "isin": "US36828A1016",
@@ -315,7 +315,7 @@
       "price": null,
       "is_cash": false,
       "key": "US36828A1016",
-      "price_usd": 943.38
+      "price_usd": 996.57
     },
     {
       "isin": "US11135F1012",
@@ -328,7 +328,7 @@
       "price": null,
       "is_cash": false,
       "key": "US11135F1012",
-      "price_usd": 380.91
+      "price_usd": 383.22
     },
     {
       "isin": "US78392B2060",
@@ -341,7 +341,7 @@
       "price": null,
       "is_cash": false,
       "key": "US78392B2060",
-      "price_usd": 130.17
+      "price_usd": 143.02
     },
     {
       "isin": "US88160R1014",
@@ -354,7 +354,7 @@
       "price": null,
       "is_cash": false,
       "key": "US88160R1014",
-      "price_usd": 307.44
+      "price_usd": 309.22
     },
     {
       "isin": "US5949181045",
@@ -367,7 +367,7 @@
       "price": null,
       "is_cash": false,
       "key": "US5949181045",
-      "price_usd": 393.35
+      "price_usd": 389.1
     },
     {
       "isin": "US2193501051",
@@ -393,7 +393,7 @@
       "price": null,
       "is_cash": false,
       "key": "US1442851036",
-      "price_usd": 560.43
+      "price_usd": 580.25
     },
     {
       "isin": "US6323071042",
@@ -406,7 +406,7 @@
       "price": null,
       "is_cash": false,
       "key": "US6323071042",
-      "price_usd": 252.22
+      "price_usd": 258.03
     },
     {
       "isin": "US01609W1027",
@@ -419,7 +419,7 @@
       "price": null,
       "is_cash": false,
       "key": "US01609W1027",
-      "price_usd": 115.19
+      "price_usd": 115.0
     },
     {
       "isin": "US30303M1027",
@@ -445,7 +445,7 @@
       "price": null,
       "is_cash": false,
       "key": "US17275R1023",
-      "price_usd": 115.58
+      "price_usd": 114.57
     },
     {
       "isin": "US4824801009",
@@ -484,7 +484,7 @@
       "price": null,
       "is_cash": false,
       "key": "KYG254571055",
-      "price_usd": 192.28
+      "price_usd": 208.14
     },
     {
       "isin": "USN070592100",
@@ -562,7 +562,7 @@
       "price": null,
       "is_cash": false,
       "key": "US92537N1081",
-      "price_usd": 269.56
+      "price_usd": 287.6
     },
     {
       "isin": "US3755581036",
@@ -627,7 +627,7 @@
       "price": null,
       "is_cash": false,
       "key": "US21873S1087",
-      "price_usd": 67.3
+      "price_usd": 70.79
     },
     {
       "isin": "CASH00000001",
@@ -802,5 +802,5 @@
     ],
     "sold": []
   },
-  "updated_at": "2026-07-29 09:10"
+  "updated_at": "2026-07-29 20:14"
 }

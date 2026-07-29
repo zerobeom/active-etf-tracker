@@ -106,7 +106,7 @@
       "price": null,
       "is_cash": false,
       "key": "DELL US EQUITY",
-      "price_usd": 392.1
+      "price_usd": 426.91
     },
     {
       "isin": "",
@@ -132,7 +132,7 @@
       "price": null,
       "is_cash": false,
       "key": "AVGO US EQUITY",
-      "price_usd": 380.91
+      "price_usd": 383.22
     },
     {
       "isin": "",
@@ -210,7 +210,7 @@
       "price": null,
       "is_cash": false,
       "key": "HOOD US EQUITY",
-      "price_usd": 92.76
+      "price_usd": 95.65
     },
     {
       "isin": "",
@@ -274,7 +274,7 @@
       "price": null,
       "is_cash": false,
       "key": "LRCX US EQUITY",
-      "price_usd": 269.61
+      "price_usd": 291.61
     },
     {
       "isin": "",
@@ -391,7 +391,7 @@
       "price": null,
       "is_cash": false,
       "key": "LLY US EQUITY",
-      "price_usd": 1220.66
+      "price_usd": 1197.53
     },
     {
       "isin": "",
@@ -404,7 +404,7 @@
       "price": null,
       "is_cash": false,
       "key": "KLAC US EQUITY",
-      "price_usd": 190.8
+      "price_usd": 203.36
     },
     {
       "isin": "",
@@ -599,7 +599,7 @@
       "price": null,
       "is_cash": false,
       "key": "ORCL US EQUITY",
-      "price_usd": 119.96
+      "price_usd": 119.9
     },
     {
       "isin": "",
@@ -766,5 +766,5 @@
       }
     ]
   },
-  "updated_at": "2026-07-29 09:11"
+  "updated_at": "2026-07-29 20:14"
 }

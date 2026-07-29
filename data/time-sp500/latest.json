@@ -54,7 +54,7 @@
       "price": null,
       "is_cash": false,
       "key": "GOOGL US EQUITY",
-      "price_usd": 333.71
+      "price_usd": 326.56
     },
     {
       "isin": "",
@@ -144,7 +144,7 @@
       "price": null,
       "is_cash": false,
       "key": "JPM US EQUITY",
-      "price_usd": 357.31
+      "price_usd": 356.2
     },
     {
       "isin": "",
@@ -209,7 +209,7 @@
       "price": null,
       "is_cash": false,
       "key": "META US EQUITY",
-      "price_usd": 593.41
+      "price_usd": 593.87
     },
     {
       "isin": "",
@@ -299,7 +299,7 @@
       "price": null,
       "is_cash": false,
       "key": "KO US EQUITY",
-      "price_usd": 88.27
+      "price_usd": 84.07
     },
     {
       "isin": "",
@@ -312,7 +312,7 @@
       "price": null,
       "is_cash": false,
       "key": "V US EQUITY",
-      "price_usd": 366.59
+      "price_usd": 362.53
     },
     {
       "isin": "",
@@ -338,7 +338,7 @@
       "price": null,
       "is_cash": false,
       "key": "MRVL US EQUITY",
-      "price_usd": 174.47
+      "price_usd": 189.17
     },
     {
       "isin": "",
@@ -351,7 +351,7 @@
       "price": null,
       "is_cash": false,
       "key": "TSM US EQUITY",
-      "price_usd": 392.31
+      "price_usd": 399.09
     },
     {
       "isin": "",
@@ -403,7 +403,7 @@
       "price": null,
       "is_cash": false,
       "key": "HOOD US EQUITY",
-      "price_usd": 92.76
+      "price_usd": 95.65
     },
     {
       "isin": "",
@@ -416,7 +416,7 @@
       "price": null,
       "is_cash": false,
       "key": "PEP US EQUITY",
-      "price_usd": 142.86
+      "price_usd": 139.79
     },
     {
       "isin": "",
@@ -429,7 +429,7 @@
       "price": null,
       "is_cash": false,
       "key": "LRCX US EQUITY",
-      "price_usd": 269.61
+      "price_usd": 291.61
     },
     {
       "isin": "",
@@ -624,7 +624,7 @@
       "price": null,
       "is_cash": false,
       "key": "INTC US EQUITY",
-      "price_usd": 86.3
+      "price_usd": 91.67
     },
     {
       "isin": "",
@@ -872,5 +872,5 @@
       }
     ]
   },
-  "updated_at": "2026-07-29 09:11"
+  "updated_at": "2026-07-29 20:14"
 }
