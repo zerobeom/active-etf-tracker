@@ -769,45 +769,5 @@
       "key": "TXN US EQUITY",
       "price_usd": 271.3
     }
-  ],
-  "prev_date": "2026-07-29",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "State Street SPDR S&P 500 ETF Trust",
-        "ticker": "SPY",
-        "shares": 28.0,
-        "prev_shares": 22.0,
-        "share_delta": 6.0,
-        "weight": 4.67,
-        "prev_weight": 3.63,
-        "weight_delta": 1.04
-      }
-    ],
-    "sold": [
-      {
-        "name": "Applied Materials Inc",
-        "ticker": "AMAT",
-        "shares": 9.0,
-        "prev_shares": 18.0,
-        "share_delta": -9.0,
-        "weight": 0.97,
-        "prev_weight": 2.08,
-        "weight_delta": -1.11
-      },
-      {
-        "name": "Cisco Systems Inc",
-        "ticker": "CSCO",
-        "shares": 29.0,
-        "prev_shares": 30.0,
-        "share_delta": -1.0,
-        "weight": 0.76,
-        "prev_weight": 0.77,
-        "weight_delta": -0.01
-      }
-    ]
-  },
-  "updated_at": "2026-07-30 19:59"
+  ]
 }

@@ -713,31 +713,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-07-29",
-  "changes": {
-    "added": [
-      {
-        "name": "코스맥스",
-        "ticker": "192820",
-        "weight": 0.994,
-        "shares": 69
-      }
-    ],
-    "removed": [],
-    "bought": [],
-    "sold": [
-      {
-        "name": "SK",
-        "ticker": "034730",
-        "shares": 60,
-        "prev_shares": 86,
-        "share_delta": -26,
-        "weight": 2.2884,
-        "prev_weight": 3.4049,
-        "weight_delta": -1.1165
-      }
-    ]
-  },
-  "updated_at": "2026-07-30 19:59"
+  ]
 }
