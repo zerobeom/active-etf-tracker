@@ -614,54 +614,5 @@
       "key": "ASML US EQUITY",
       "price_usd": 1629.0
     }
-  ],
-  "prev_date": "2026-07-31",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "SK hynix Inc",
-        "ticker": "SKHY",
-        "shares": 103.0,
-        "prev_shares": 83.0,
-        "share_delta": 20.0,
-        "weight": 2.48,
-        "prev_weight": 1.85,
-        "weight_delta": 0.63
-      },
-      {
-        "name": "Nebius Group NV",
-        "ticker": "NBIS",
-        "shares": 68.0,
-        "prev_shares": 51.0,
-        "share_delta": 17.0,
-        "weight": 2.07,
-        "prev_weight": 1.33,
-        "weight_delta": 0.74
-      },
-      {
-        "name": "CoreWeave Inc",
-        "ticker": "CRWV",
-        "shares": 92.0,
-        "prev_shares": 50.0,
-        "share_delta": 42.0,
-        "weight": 1.1,
-        "prev_weight": 0.54,
-        "weight_delta": 0.56
-      },
-      {
-        "name": "Walmart Inc",
-        "ticker": "WMT",
-        "shares": 35.0,
-        "prev_shares": 34.0,
-        "share_delta": 1.0,
-        "weight": 0.63,
-        "prev_weight": 0.68,
-        "weight_delta": -0.05
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-08-03 21:13"
+  ]
 }

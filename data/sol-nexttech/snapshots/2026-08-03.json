@@ -263,38 +263,5 @@
       "is_cash": true,
       "key": "100%현금설정액"
     }
-  ],
-  "prev_date": "2026-07-31",
-  "changes": {
-    "added": [
-      {
-        "name": "Cloudflare Inc",
-        "ticker": "NET",
-        "weight": 5.24,
-        "shares": 66.25
-      }
-    ],
-    "removed": [
-      {
-        "name": "Space Exploration Technologies Corp",
-        "ticker": "SPCX",
-        "weight": 3.42,
-        "shares": 97.15
-      }
-    ],
-    "bought": [],
-    "sold": [
-      {
-        "name": "Viasat Inc",
-        "ticker": "VSAT",
-        "shares": 363.92,
-        "prev_shares": 465.82,
-        "share_delta": -101.9,
-        "weight": 7.88,
-        "prev_weight": 10.23,
-        "weight_delta": -2.35
-      }
-    ]
-  },
-  "updated_at": "2026-08-03 21:13"
+  ]
 }
