@@ -534,7 +534,8 @@
       "amount": 5302955.0,
       "price": null,
       "is_cash": false,
-      "key": "US6876041087"
+      "key": "US6876041087",
+      "price_usd": 96.51
     },
     {
       "isin": "US22788C1053",
