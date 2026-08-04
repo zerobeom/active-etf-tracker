@@ -263,39 +263,5 @@
       "is_cash": true,
       "key": "100%현금설정액"
     }
-  ],
-  "prev_date": "2026-08-03",
-  "changes": {
-    "added": [
-      {
-        "name": "MongoDB Inc",
-        "ticker": "MDB",
-        "weight": 4.03,
-        "shares": 42.36
-      },
-      {
-        "name": "Guardant Health Inc",
-        "ticker": "GH",
-        "weight": 3.98,
-        "shares": 87.11
-      }
-    ],
-    "removed": [
-      {
-        "name": "GE Vernova Inc",
-        "ticker": "GEV",
-        "weight": 3.95,
-        "shares": 14.43
-      },
-      {
-        "name": "Coherent Corp",
-        "ticker": "COHR",
-        "weight": 3.73,
-        "shares": 53.67
-      }
-    ],
-    "bought": [],
-    "sold": []
-  },
-  "updated_at": "2026-08-04 19:01"
+  ]
 }

@@ -46,5 +46,13 @@
     "fid": "5",
     "start": "2022-05-11",
     "region": "US"
+  },
+  {
+    "slug": "tiger-koreatech",
+    "name": "TIGER 코리아테크액티브",
+    "ticker": "471780",
+    "fid": "KR7471780007",
+    "start": "2023-11-28",
+    "region": "KR"
   }
 ]
