@@ -541,16 +541,39 @@ def download_tiger(fund_cd: str, fix_date: str, retries: int = 3) -> list:
     """fixDate('YYYYMMDD')를 넘겨서 그 날짜의 구성종목을 요청한다. SOL과 같은 형태의 재시도
     백오프(2s/6s/18s)를 넣어둠. ⚠️ fixDate가 실제로 과거 날짜를 돌려주는지는 아직 확인 전 —
     normalize_tiger가 응답에 찍힌 실제 wkdate를 돌려주므로, 호출부에서 요청한 날짜와 비교해서
-    처리한다."""
+    처리한다.
+
+    미래에셋 사이트가 헤더 부실한 요청(User-Agent+Referer만)을 403으로 차단하는 걸 확인해서,
+    ① 상품 상세페이지를 먼저 한 번 GET해서 세션 쿠키(JSESSIONID)를 받고
+    ② 실제 브라우저가 이 ajax를 부를 때 붙이는 헤더(X-Requested-With, Accept 등)를 갖춘 뒤
+    같은 세션으로 API를 호출한다."""
     import requests, time as _time
+    detail_url = "https://investments.miraeasset.com/tigeretf/ko/product/search/detail/index.do"
+    common_headers = {
+        "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"),
+        "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
+    }
+    ajax_headers = {
+        **common_headers,
+        "Accept": "application/json, text/javascript, */*; q=0.01",
+        "X-Requested-With": "XMLHttpRequest",
+        "Referer": f"{detail_url}?ksdFund={fund_cd}",
+    }
     last_err = None
     for attempt in range(retries):
         try:
-            r = requests.get(
+            sess = requests.Session()
+            # 세션 쿠키 확보 (실패해도 쿠키 없이 계속 시도는 함)
+            try:
+                sess.get(detail_url, params={"ksdFund": fund_cd}, headers=common_headers, timeout=20)
+            except Exception:
+                pass
+            r = sess.get(
                 TIGER_API_URL,
                 params={"ksdFund": fund_cd, "fixDate": fix_date, "listCnt": 200},
                 timeout=30,
-                headers={"User-Agent": "Mozilla/5.0", "Referer": "https://investments.miraeasset.com/"},
+                headers=ajax_headers,
             )
             r.raise_for_status()
             return (r.json() or {}).get("rtnData") or []
