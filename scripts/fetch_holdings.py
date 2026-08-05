@@ -1067,7 +1067,7 @@ def main():
     DATA.mkdir(parents=True, exist_ok=True)
     # 사이트가 읽는 ETF 목록
     (DATA / "etfs.json").write_text(
-        json.dumps([{k: e[k] for k in ("slug", "name", "ticker", "fid", "start", "region")} for e in ETFS],
+        json.dumps([{k: e[k] for k in ("slug", "name", "ticker", "fid", "start", "region", "provider")} for e in ETFS],
                    ensure_ascii=False, indent=2), encoding="utf-8")
 
     if args and ":" in args[0]:
