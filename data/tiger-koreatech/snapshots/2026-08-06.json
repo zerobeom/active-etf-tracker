@@ -281,24 +281,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-08-05",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "SK스퀘어",
-        "ticker": "402340",
-        "shares": 5,
-        "prev_shares": 4,
-        "share_delta": 1,
-        "weight": 1.6911,
-        "prev_weight": 1.3433,
-        "weight_delta": 0.3478
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-08-06 07:30"
+  ]
 }
