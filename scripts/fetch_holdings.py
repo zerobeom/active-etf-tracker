@@ -20,16 +20,19 @@ Active ETF 일별 전체 구성종목 수집기 (다중 운용사·다중 ETF �
         https://timeetf.co.kr/pdf_excel.php?idx={내부ID}&cate=&pdfDate=YYYY-MM-DD
       (provider: "time"). `pdfDate` 파라미터 실제로 작동 → 과거 기간 채우기 됨. 종목코드가
       이미 'SNDK US EQUITY'식으로 와서 티커 매핑 불필요.
-    - 미래에셋자산운용(TIGER) JSON API
-        https://investments.miraeasset.com/tigeretf/ko/product/chart/prdct-item-list.ajax
-            ?ksdFund={내부ID}&fixDate=YYYYMMDD&listCnt=50
-      (provider: "tiger"). 응답이 바로 JSON이라 엑셀 파싱 불필요. memItemcode가 이미 KRX 6자리
-      코드라 SOL 코리아메가테크처럼 그대로 티커로 씀. ⚠️ `fixDate`로 과거 날짜 조회가 실제로
-      되는지는 아직 미검증 — 응답에 찍힌 실제 wkdate를 신뢰하고, 백필 중 요청 날짜와 다르면
-      건너뛰도록 방어적으로 짜놨음(fetch_latest_available_tiger/normalize_tiger 주석 참고).
+    - TIGER 코리아테크액티브(미래에셋) — funetf.co.kr 공개 API
+        https://www.funetf.co.kr/api/public/product/view/etfpdf
+            ?itemId={내부ID}&etfPdfYmd=YYYYMMDD
+      (provider: "tiger"). 원래 미래에셋 공식 ajax를 썼는데 GitHub Actions에서 403으로 막혀서
+      (로컬/브라우저 헤더를 갖춰도, 헤드리스 크롬으로도 막힘 — 순수 requests 요청 자체를 IP
+      대역 기준으로 차단하는 걸로 추정) 이 API로 전면 교체함. 헤더 없이 바로 되고 응답도 더
+      친절함(현재가·비중이 이미 숫자). ⚠️ `etfPdfYmd`로 과거 조회가 실제로 되는지는 응답에
+      날짜 필드가 없어 검증을 못 했음 — 요청한 날짜를 그대로 기준일로 신뢰함(samsung/time과
+      동일 방식). 백필 돌려서 날짜별 실제 값 변화로 확인 필요.
 
-추적 대상은 아래 ETFS 목록에 추가만 하면 늘어납니다. 세 provider(samsung/sol/time) 모두
-날짜 파라미터가 실제로 작동해 과거 기간 채우기(backfill)가 정상적으로 됩니다.
+추적 대상은 아래 ETFS 목록에 추가만 하면 늘어납니다. samsung/sol/time 3개 provider는
+날짜 파라미터가 실제로 작동해 과거 기간 채우기(backfill)가 정상적으로 됩니다. tiger는 위
+참고 — 과거 조회 지원 여부 미검증.
 
 산출물(ETF별로 분리):
     data/etfs.json                      : 사이트가 읽는 ETF 목록
@@ -328,7 +331,7 @@ def fetch_latest_available(start_yyyymmdd: str, fid: str, debug: bool = False):
 _SEC_TICKER_MAP = None
 _NASDAQ_TICKER_MAP = None
 SOL_API_URL = "https://www.soletf.com/api/fund/pdfList"
-TIGER_API_URL = "https://investments.miraeasset.com/tigeretf/ko/product/chart/prdct-item-list.ajax"
+TIGER_API_URL = "https://www.funetf.co.kr/api/public/product/view/etfpdf"
 
 
 def _norm_us_name(n: str) -> str:
@@ -536,47 +539,25 @@ def fetch_latest_available_sol(fid: str, start_yyyymmdd: str, is_us: bool, debug
     return None, None
 
 
-# ── 다운로드 + 파싱 (미래에셋 TIGER · JSON API) ──────────────────────────
-def download_tiger(fund_cd: str, fix_date: str, retries: int = 3) -> list:
-    """fixDate('YYYYMMDD')를 넘겨서 그 날짜의 구성종목을 요청한다. SOL과 같은 형태의 재시도
-    백오프(2s/6s/18s)를 넣어둠. ⚠️ fixDate가 실제로 과거 날짜를 돌려주는지는 아직 확인 전 —
-    normalize_tiger가 응답에 찍힌 실제 wkdate를 돌려주므로, 호출부에서 요청한 날짜와 비교해서
-    처리한다.
-
-    미래에셋 사이트가 헤더 부실한 요청(User-Agent+Referer만)을 403으로 차단하는 걸 확인해서,
-    ① 상품 상세페이지를 먼저 한 번 GET해서 세션 쿠키(JSESSIONID)를 받고
-    ② 실제 브라우저가 이 ajax를 부를 때 붙이는 헤더(X-Requested-With, Accept 등)를 갖춘 뒤
-    같은 세션으로 API를 호출한다."""
+# ── 다운로드 + 파싱 (funetf.co.kr 공개 API) ──────────────────────────────
+def download_tiger(fund_cd: str, pdf_ymd: str, retries: int = 3) -> list:
+    """funetf.co.kr의 공개 API로 구성종목을 가져온다.
+    원래는 미래에셋 공식 ajax(investments.miraeasset.com/.../prdct-item-list.ajax)를 썼는데
+    GitHub Actions 실행 서버에서 계속 403(브라우저 헤더/세션을 갖춰도, 헤드리스 크롬으로도
+    막힘)이 나서 이 API로 전면 교체함. 헤더 없이 바로 됨."""
     import requests, time as _time
-    detail_url = "https://investments.miraeasset.com/tigeretf/ko/product/search/detail/index.do"
-    common_headers = {
-        "User-Agent": ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-                        "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"),
-        "Accept-Language": "ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7",
-    }
-    ajax_headers = {
-        **common_headers,
-        "Accept": "application/json, text/javascript, */*; q=0.01",
-        "X-Requested-With": "XMLHttpRequest",
-        "Referer": f"{detail_url}?ksdFund={fund_cd}",
-    }
     last_err = None
     for attempt in range(retries):
         try:
-            sess = requests.Session()
-            # 세션 쿠키 확보 (실패해도 쿠키 없이 계속 시도는 함)
-            try:
-                sess.get(detail_url, params={"ksdFund": fund_cd}, headers=common_headers, timeout=20)
-            except Exception:
-                pass
-            r = sess.get(
+            r = requests.get(
                 TIGER_API_URL,
-                params={"ksdFund": fund_cd, "fixDate": fix_date, "listCnt": 200},
+                params={"itemId": fund_cd, "etfPdfYmd": pdf_ymd},
                 timeout=30,
-                headers=ajax_headers,
+                headers={"User-Agent": "Mozilla/5.0"},
             )
             r.raise_for_status()
-            return (r.json() or {}).get("rtnData") or []
+            data = r.json()
+            return data if isinstance(data, list) else []
         except Exception as e:
             last_err = e
             if attempt < retries - 1:
@@ -586,33 +567,30 @@ def download_tiger(fund_cd: str, fix_date: str, retries: int = 3) -> list:
     raise last_err
 
 
-def normalize_tiger(rows: list, debug: bool = False):
-    """TIGER API 응답(JSON 리스트) -> (기준일, holdings).
-    memItemcode가 이미 KRX 6자리 코드라 SOL 코리아메가테크와 동일하게 그대로 티커로 씀.
-    stockRate는 SOL의 WT_DISP("15.45%")와 달리 이미 숫자(15.45)로 와서 문자열 파싱 불필요.
-    기준일은 요청 파라미터가 아니라 응답에 실제로 찍힌 wkdate를 그대로 씀(더 신뢰할 수 있어서)."""
+def normalize_tiger(rows: list, pdf_ymd: str, debug: bool = False):
+    """funetf 응답(JSON 리스트) -> (기준일, holdings).
+    ticker 필드가 이미 KRX 6자리 코드라 그대로 씀. evP(비중)·curp(현재가)가 이미 숫자라 문자열
+    파싱 불필요 — price를 amount/shares로 역산할 필요 없이 curp를 바로 씀.
+    ⚠️ 응답 자체엔 날짜 필드가 없어서, 요청한 pdf_ymd를 기준일로 그대로 신뢰한다(samsung/time과
+    같은 방식). etfPdfYmd가 실제로 과거 조회를 지원하는지는 백필 후 값 변화로 확인할 것."""
     if not rows:
         return None, None
     if debug:
         print(rows[:3])
 
-    wkdate = clean(rows[0].get("wkdate"))
-
     holdings = []
     for row in rows:
-        name = clean(row.get("memItemname"))
+        name = clean(row.get("citmNm"))
         if not name:
             continue
-        code = clean(row.get("memItemcode"))
-        isin = clean(row.get("code"))
-        is_cash = "예금" in name or isin.startswith("KRD")
-        ticker = "" if is_cash else code
-        weight = to_num(row.get("stockRate"))
-        shares = to_num(row.get("stockQty"))
-        amount = to_num(row.get("stockPrc"))
-        price = None
-        if not is_cash and shares:
-            price = int(round(amount / shares)) if amount else None
+        isin = clean(row.get("grpItmNo"))
+        ticker = clean(row.get("ticker"))
+        is_cash = "현금" in name or isin.startswith("KRD")
+        ticker = "" if is_cash else ticker
+        weight = to_num(row.get("evP"))
+        shares = to_num(row.get("icuStkc"))
+        amount = to_num(row.get("evAmt"))
+        price = to_num(row.get("curp"))
 
         holdings.append({
             "isin": isin, "name": name, "code": ticker, "ticker": ticker,
@@ -627,9 +605,11 @@ def normalize_tiger(rows: list, debug: bool = False):
             h["weight"] = round(h["weight"], 4)
         if h["shares"] is not None:
             h["shares"] = int(round(h["shares"]))
+        if h["price"] is not None:
+            h["price"] = int(round(h["price"]))
 
     holdings.sort(key=lambda z: (z["weight"] or 0), reverse=True)
-    base_date = f"{wkdate[:4]}-{wkdate[4:6]}-{wkdate[6:]}" if wkdate and len(wkdate) == 8 else None
+    base_date = f"{pdf_ymd[:4]}-{pdf_ymd[4:6]}-{pdf_ymd[6:]}" if pdf_ymd and len(pdf_ymd) == 8 else None
     return base_date, holdings
 
 
@@ -640,8 +620,8 @@ def fetch_latest_available_tiger(fid: str, start_yyyymmdd: str, debug: bool = Fa
     for _ in range(LOOKBACK_DAYS + 1):
         ds = d.strftime("%Y%m%d")
         try:
-            rows = download_tiger(fid, fix_date=ds)
-            date_iso, holdings = normalize_tiger(rows, debug=debug)
+            rows = download_tiger(fid, ds)
+            date_iso, holdings = normalize_tiger(rows, ds, debug=debug)
             if holdings:
                 return date_iso, holdings
             print(f"    - {ds}: 유효 데이터 없음, 하루 전으로")
@@ -980,15 +960,11 @@ def process_etf(etf: dict, start: str, debug: bool = False, skip_perf: bool = Fa
             if allow_lookback:
                 date_iso, holdings = fetch_latest_available_tiger(etf["fid"], start, debug=debug)
             else:
-                # 백필: fixDate로 특정 날짜를 요청하되, 실제로 과거 조회가 되는지 미검증이라
-                # 응답에 찍힌 실제 wkdate가 요청한 날짜와 다르면(=fixDate 무시되고 최신만 오는
-                # 경우) 잘못된 날짜에 중복 저장되지 않게 건너뛴다.
-                rows = download_tiger(etf["fid"], fix_date=start)
-                date_iso, holdings = normalize_tiger(rows, debug=debug)
-                if holdings and date_iso and date_iso.replace("-", "") != start:
-                    print(f"  [skip] TIGER: 요청한 날짜({start})와 실제 응답 기준일({date_iso})이 "
-                          f"달라 건너뜀 — fixDate 과거 조회 지원 여부 미검증 상태.")
-                    return None
+                # 백필: etfPdfYmd로 특정 날짜를 요청. 응답에 날짜 필드가 없어서 요청한 날짜를
+                # 그대로 기준일로 씀(samsung/time과 동일 방식) — 실제 과거 조회 지원 여부는
+                # 백필 결과의 날짜별 값 변화로 확인할 것.
+                rows = download_tiger(etf["fid"], start)
+                date_iso, holdings = normalize_tiger(rows, start, debug=debug)
         except Exception as e:
             print(f"  [skip] TIGER API 요청/파싱 실패: {e}")
             return False
