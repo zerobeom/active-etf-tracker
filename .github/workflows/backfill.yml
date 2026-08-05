@@ -10,9 +10,23 @@ on:
         description: "종료일 (YYYY-MM-DD, 예: 2026-06-26)"
         required: true
       providers:
-        description: "특정 운용사/ETF만 (선택, 비워두면 전체) — 예: sol  또는 samsung,time  또는 sol-megatech"
-        required: false
-        default: ""
+        description: "대상 선택 (운용사 단위 또는 ETF 하나만 콕 집어서)"
+        required: true
+        type: choice
+        default: "전체"
+        options:
+          - 전체
+          - samsung (삼성 2종 전체)
+          - sol (SOL 2종 전체)
+          - time (TIME 2종 전체)
+          - tiger (TIGER 1종)
+          - us-nasdaq (KoAct 미국나스닥성장기업액티브)
+          - kr-valueup (KoAct 코리아밸류업액티브)
+          - sol-nexttech (SOL 미국넥스트테크TOP10액티브)
+          - sol-megatech (SOL 코리아메가테크액티브)
+          - time-nasdaq100 (TIME 미국나스닥100액티브)
+          - time-sp500 (TIME 미국S&P500액티브)
+          - tiger-koreatech (TIGER 코리아테크액티브)
 
 permissions:
   contents: write
@@ -39,11 +53,12 @@ jobs:
         run: |
           START="${{ github.event.inputs.start_date }}"
           END="${{ github.event.inputs.end_date }}"
-          ONLY="${{ github.event.inputs.providers }}"
-          if [ -n "$ONLY" ]; then
-            python scripts/fetch_holdings.py "${START//-/}:${END//-/}" "--only=$ONLY"
-          else
+          RAW="${{ github.event.inputs.providers }}"
+          ONLY="${RAW%% *}"   # "sol (SOL 2종 전체)" -> "sol" / "전체" -> "전체" 그대로
+          if [ "$ONLY" = "전체" ]; then
             python scripts/fetch_holdings.py "${START//-/}:${END//-/}"
+          else
+            python scripts/fetch_holdings.py "${START//-/}:${END//-/}" "--only=$ONLY"
           fi
 
       - name: Commit & push if changed
@@ -54,6 +69,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "변동 없음 — 커밋 생략"
           else
-            git commit -m "data: backfill ${{ github.event.inputs.start_date }} ~ ${{ github.event.inputs.end_date }}${{ github.event.inputs.providers && format(' ({0})', github.event.inputs.providers) || '' }}"
+            git commit -m "data: backfill ${{ github.event.inputs.start_date }} ~ ${{ github.event.inputs.end_date }}${{ github.event.inputs.providers != '전체' && format(' ({0})', github.event.inputs.providers) || '' }}"
             git push
           fi
