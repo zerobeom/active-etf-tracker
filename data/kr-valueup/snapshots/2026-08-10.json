@@ -665,52 +665,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-08-07",
-  "changes": {
-    "added": [],
-    "removed": [
-      {
-        "name": "현대백화점",
-        "ticker": "069960",
-        "weight": 0.696,
-        "shares": 93
-      }
-    ],
-    "bought": [
-      {
-        "name": "파마리서치",
-        "ticker": "214450",
-        "shares": 46,
-        "prev_shares": 29,
-        "share_delta": 17,
-        "weight": 1.2381,
-        "prev_weight": 0.8047,
-        "weight_delta": 0.4334
-      },
-      {
-        "name": "삼양식품",
-        "ticker": "003230",
-        "shares": 11,
-        "prev_shares": 6,
-        "share_delta": 5,
-        "weight": 1.0216,
-        "prev_weight": 0.5204,
-        "weight_delta": 0.5012
-      }
-    ],
-    "sold": [
-      {
-        "name": "LIG디펜스앤에어로스페이스",
-        "ticker": "079550",
-        "shares": 14,
-        "prev_shares": 20,
-        "share_delta": -6,
-        "weight": 0.7377,
-        "prev_weight": 0.9876,
-        "weight_delta": -0.2499
-      }
-    ]
-  },
-  "updated_at": "2026-08-10 06:20"
+  ]
 }
