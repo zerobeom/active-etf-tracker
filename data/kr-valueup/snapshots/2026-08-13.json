@@ -665,38 +665,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-08-12",
-  "changes": {
-    "added": [
-      {
-        "name": "에스엘",
-        "ticker": "005850",
-        "weight": 0.608,
-        "shares": 156
-      }
-    ],
-    "removed": [
-      {
-        "name": "DB하이텍",
-        "ticker": "000990",
-        "weight": 0.2096,
-        "shares": 32
-      }
-    ],
-    "bought": [],
-    "sold": [
-      {
-        "name": "삼성E&A",
-        "ticker": "028050",
-        "shares": 119,
-        "prev_shares": 230,
-        "share_delta": -111,
-        "weight": 0.3983,
-        "prev_weight": 0.7911,
-        "weight_delta": -0.3928
-      }
-    ]
-  },
-  "updated_at": "2026-08-13 18:54"
+  ]
 }
