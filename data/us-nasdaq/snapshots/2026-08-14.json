@@ -601,44 +601,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-08-13",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "Applied Optoelectronics Inc",
-        "ticker": "AAOI",
-        "shares": 186,
-        "prev_shares": 185,
-        "share_delta": 1,
-        "weight": 3.7095,
-        "prev_weight": 3.6971,
-        "weight_delta": 0.0124
-      },
-      {
-        "name": "DYNATRACE INC",
-        "ticker": "DT",
-        "shares": 275,
-        "prev_shares": 274,
-        "share_delta": 1,
-        "weight": 1.9683,
-        "prev_weight": 2.0205,
-        "weight_delta": -0.0522
-      },
-      {
-        "name": "BeOne Medicines Ltd",
-        "ticker": "ONC",
-        "shares": 21,
-        "prev_shares": 20,
-        "share_delta": 1,
-        "weight": 1.0662,
-        "prev_weight": 1.0925,
-        "weight_delta": -0.0263
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-08-14 18:52"
+  ]
 }
