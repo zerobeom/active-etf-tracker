@@ -593,42 +593,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-08-14",
-  "changes": {
-    "added": [],
-    "removed": [
-      {
-        "name": "아이에스동서",
-        "ticker": "010780",
-        "weight": 0.199,
-        "shares": 169
-      }
-    ],
-    "bought": [
-      {
-        "name": "OCI홀딩스",
-        "ticker": "010060",
-        "shares": 35,
-        "prev_shares": 17,
-        "share_delta": 18,
-        "weight": 0.6237,
-        "prev_weight": 0.3092,
-        "weight_delta": 0.3145
-      }
-    ],
-    "sold": [
-      {
-        "name": "자화전자",
-        "ticker": "033240",
-        "shares": 163,
-        "prev_shares": 324,
-        "share_delta": -161,
-        "weight": 0.3207,
-        "prev_weight": 0.6413,
-        "weight_delta": -0.3206
-      }
-    ]
-  },
-  "updated_at": "2026-08-18 06:14"
+  ]
 }
