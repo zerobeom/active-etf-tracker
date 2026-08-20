@@ -269,52 +269,5 @@
       "is_cash": false,
       "key": "083450"
     }
-  ],
-  "prev_date": "2026-08-19",
-  "changes": {
-    "added": [],
-    "removed": [
-      {
-        "name": "SK스퀘어",
-        "ticker": "402340",
-        "weight": 1.6111,
-        "shares": 5
-      }
-    ],
-    "bought": [
-      {
-        "name": "삼성SDI",
-        "ticker": "006400",
-        "shares": 12,
-        "prev_shares": 11,
-        "share_delta": 1,
-        "weight": 1.7605,
-        "prev_weight": 1.5239,
-        "weight_delta": 0.2366
-      },
-      {
-        "name": "이수페타시스",
-        "ticker": "007660",
-        "shares": 55,
-        "prev_shares": 39,
-        "share_delta": 16,
-        "weight": 1.7297,
-        "prev_weight": 1.1393,
-        "weight_delta": 0.5904
-      }
-    ],
-    "sold": [
-      {
-        "name": "GST",
-        "ticker": "083450",
-        "shares": 73,
-        "prev_shares": 94,
-        "share_delta": -21,
-        "weight": 1.0105,
-        "prev_weight": 1.2569,
-        "weight_delta": -0.2464
-      }
-    ]
-  },
-  "updated_at": "2026-08-20 18:24"
+  ]
 }
