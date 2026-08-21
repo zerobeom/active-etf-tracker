@@ -617,20 +617,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-08-20",
-  "changes": {
-    "added": [
-      {
-        "name": "코미코",
-        "ticker": "183300",
-        "weight": 0.5389,
-        "shares": 381
-      }
-    ],
-    "removed": [],
-    "bought": [],
-    "sold": []
-  },
-  "updated_at": "2026-08-21 18:26"
+  ]
 }
