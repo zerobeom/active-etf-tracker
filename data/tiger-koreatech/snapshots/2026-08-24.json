@@ -269,41 +269,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-08-21",
-  "changes": {
-    "added": [],
-    "removed": [
-      {
-        "name": "두산",
-        "ticker": "000150",
-        "weight": 1.0088,
-        "shares": 3
-      }
-    ],
-    "bought": [
-      {
-        "name": "삼성SDI",
-        "ticker": "006400",
-        "shares": 18,
-        "prev_shares": 13,
-        "share_delta": 5,
-        "weight": 2.4978,
-        "prev_weight": 1.8537,
-        "weight_delta": 0.6441
-      },
-      {
-        "name": "엘앤에프",
-        "ticker": "066970",
-        "shares": 49,
-        "prev_shares": 33,
-        "share_delta": 16,
-        "weight": 1.4865,
-        "prev_weight": 1.0174,
-        "weight_delta": 0.4691
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-08-24 19:03"
+  ]
 }
