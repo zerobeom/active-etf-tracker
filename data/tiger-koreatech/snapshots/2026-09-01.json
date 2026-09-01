@@ -269,45 +269,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-08-31",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "ISC",
-        "ticker": "095340",
-        "shares": 30,
-        "prev_shares": 21,
-        "share_delta": 9,
-        "weight": 1.4396,
-        "prev_weight": 1.047,
-        "weight_delta": 0.3926
-      }
-    ],
-    "sold": [
-      {
-        "name": "티에스이",
-        "ticker": "131290",
-        "shares": 45,
-        "prev_shares": 51,
-        "share_delta": -6,
-        "weight": 3.0194,
-        "prev_weight": 3.4973,
-        "weight_delta": -0.4779
-      },
-      {
-        "name": "넥스틴",
-        "ticker": "348210",
-        "shares": 109,
-        "prev_shares": 120,
-        "share_delta": -11,
-        "weight": 0.9721,
-        "prev_weight": 1.1144,
-        "weight_delta": -0.1423
-      }
-    ]
-  },
-  "updated_at": "2026-09-01 09:36"
+  ]
 }
