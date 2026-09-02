@@ -250,27 +250,5 @@
       "is_cash": true,
       "key": "100%현금설정액"
     }
-  ],
-  "prev_date": "2026-09-01",
-  "changes": {
-    "added": [
-      {
-        "name": "Circle Internet Group Inc",
-        "ticker": "CRCL",
-        "weight": 3.96,
-        "shares": 156.21
-      }
-    ],
-    "removed": [
-      {
-        "name": "LAM RESEARCH CORP",
-        "ticker": "LRCX",
-        "weight": 3.98,
-        "shares": 49.5
-      }
-    ],
-    "bought": [],
-    "sold": []
-  },
-  "updated_at": "2026-09-02 22:06"
+  ]
 }
