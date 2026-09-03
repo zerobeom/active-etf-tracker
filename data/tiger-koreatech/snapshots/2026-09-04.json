@@ -269,45 +269,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-09-03",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "이오테크닉스",
-        "ticker": "039030",
-        "shares": 20,
-        "prev_shares": 17,
-        "share_delta": 3,
-        "weight": 2.4956,
-        "prev_weight": 2.0071,
-        "weight_delta": 0.4885
-      },
-      {
-        "name": "ISC",
-        "ticker": "095340",
-        "shares": 43,
-        "prev_shares": 33,
-        "share_delta": 10,
-        "weight": 2.204,
-        "prev_weight": 1.6525,
-        "weight_delta": 0.5515
-      }
-    ],
-    "sold": [
-      {
-        "name": "티에스이",
-        "ticker": "131290",
-        "shares": 31,
-        "prev_shares": 45,
-        "share_delta": -14,
-        "weight": 2.0729,
-        "prev_weight": 3.0926,
-        "weight_delta": -1.0197
-      }
-    ]
-  },
-  "updated_at": "2026-09-04 07:53"
+  ]
 }
