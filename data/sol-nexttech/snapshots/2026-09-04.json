@@ -263,31 +263,5 @@
       "is_cash": true,
       "key": "100%현금설정액"
     }
-  ],
-  "prev_date": "2026-09-03",
-  "changes": {
-    "added": [
-      {
-        "name": "Freeport-McMoRan Inc",
-        "ticker": "FCX",
-        "weight": 3.38,
-        "shares": 167.89
-      }
-    ],
-    "removed": [],
-    "bought": [],
-    "sold": [
-      {
-        "name": "Roundhill Memory ETF",
-        "ticker": "DRAM",
-        "shares": 220.82,
-        "prev_shares": 441.67,
-        "share_delta": -220.85,
-        "weight": 3.38,
-        "prev_weight": 6.63,
-        "weight_delta": -3.25
-      }
-    ]
-  },
-  "updated_at": "2026-09-04 22:01"
+  ]
 }

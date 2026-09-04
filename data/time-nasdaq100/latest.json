@@ -93,7 +93,7 @@
       "price": null,
       "is_cash": false,
       "key": "TSLA US EQUITY",
-      "price_usd": 376.36
+      "price_usd": 376.37
     },
     {
       "isin": "",
@@ -622,5 +622,5 @@
       }
     ]
   },
-  "updated_at": "2026-09-04 07:53"
+  "updated_at": "2026-09-04 22:01"
 }
