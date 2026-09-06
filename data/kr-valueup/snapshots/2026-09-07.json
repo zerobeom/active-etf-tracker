@@ -641,41 +641,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-09-04",
-  "changes": {
-    "added": [],
-    "removed": [
-      {
-        "name": "대덕전자",
-        "ticker": "353200",
-        "weight": 0.7327,
-        "shares": 107
-      }
-    ],
-    "bought": [
-      {
-        "name": "신세계",
-        "ticker": "004170",
-        "shares": 44,
-        "prev_shares": 31,
-        "share_delta": 13,
-        "weight": 1.1186,
-        "prev_weight": 0.7929,
-        "weight_delta": 0.3257
-      },
-      {
-        "name": "가온전선",
-        "ticker": "000500",
-        "shares": 67,
-        "prev_shares": 43,
-        "share_delta": 24,
-        "weight": 0.944,
-        "prev_weight": 0.6043,
-        "weight_delta": 0.3397
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-09-07 07:31"
+  ]
 }

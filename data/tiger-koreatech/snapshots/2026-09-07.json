@@ -269,45 +269,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-09-04",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "이수페타시스",
-        "ticker": "007660",
-        "shares": 95,
-        "prev_shares": 79,
-        "share_delta": 16,
-        "weight": 3.0455,
-        "prev_weight": 2.4998,
-        "weight_delta": 0.5457
-      },
-      {
-        "name": "ISC",
-        "ticker": "095340",
-        "shares": 48,
-        "prev_shares": 43,
-        "share_delta": 5,
-        "weight": 2.5208,
-        "prev_weight": 2.204,
-        "weight_delta": 0.3168
-      }
-    ],
-    "sold": [
-      {
-        "name": "대덕전자",
-        "ticker": "353200",
-        "shares": 70,
-        "prev_shares": 96,
-        "share_delta": -26,
-        "weight": 2.0098,
-        "prev_weight": 2.9116,
-        "weight_delta": -0.9018
-      }
-    ]
-  },
-  "updated_at": "2026-09-07 07:57"
+  ]
 }
