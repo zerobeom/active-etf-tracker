@@ -257,24 +257,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-09-08",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "이수페타시스",
-        "ticker": "007660",
-        "shares": 112,
-        "prev_shares": 95,
-        "share_delta": 17,
-        "weight": 3.4404,
-        "prev_weight": 2.9211,
-        "weight_delta": 0.5193
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-09-09 08:29"
+  ]
 }
