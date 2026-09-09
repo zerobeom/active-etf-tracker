@@ -782,20 +782,5 @@
       "key": "T US EQUITY",
       "price_usd": 25.15
     }
-  ],
-  "prev_date": "2026-09-09",
-  "changes": {
-    "added": [],
-    "removed": [
-      {
-        "name": "Gilead Sciences Inc",
-        "ticker": "GILD",
-        "weight": 0.49,
-        "shares": 15.0
-      }
-    ],
-    "bought": [],
-    "sold": []
-  },
-  "updated_at": "2026-09-10 07:49"
+  ]
 }
