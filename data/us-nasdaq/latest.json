@@ -146,7 +146,7 @@
       "price": null,
       "is_cash": false,
       "key": "US0079031078",
-      "price_usd": 521.09
+      "price_usd": 521.1
     },
     {
       "isin": "NL0009805522",
@@ -910,5 +910,5 @@
       }
     ]
   },
-  "updated_at": "2026-09-10 07:49"
+  "updated_at": "2026-09-10 22:13"
 }

@@ -275,7 +275,7 @@
       "price": null,
       "is_cash": false,
       "key": "AMD US EQUITY",
-      "price_usd": 521.09
+      "price_usd": 521.1
     },
     {
       "isin": "",
@@ -742,5 +742,5 @@
       }
     ]
   },
-  "updated_at": "2026-09-10 07:49"
+  "updated_at": "2026-09-10 22:13"
 }
