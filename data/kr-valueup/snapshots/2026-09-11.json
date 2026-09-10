@@ -641,50 +641,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-09-10",
-  "changes": {
-    "added": [
-      {
-        "name": "HD건설기계",
-        "ticker": "267270",
-        "weight": 0.5009,
-        "shares": 56
-      },
-      {
-        "name": "SFA반도체",
-        "ticker": "036540",
-        "weight": 0.4995,
-        "shares": 1109
-      }
-    ],
-    "removed": [
-      {
-        "name": "에스엘",
-        "ticker": "005850",
-        "weight": 0.3175,
-        "shares": 98
-      },
-      {
-        "name": "코스맥스",
-        "ticker": "192820",
-        "weight": 0.1521,
-        "shares": 9
-      }
-    ],
-    "bought": [],
-    "sold": [
-      {
-        "name": "현대모비스",
-        "ticker": "012330",
-        "shares": 69,
-        "prev_shares": 80,
-        "share_delta": -11,
-        "weight": 1.8162,
-        "prev_weight": 2.1178,
-        "weight_delta": -0.3016
-      }
-    ]
-  },
-  "updated_at": "2026-09-11 07:50"
+  ]
 }
