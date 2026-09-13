@@ -795,24 +795,5 @@
       "key": "ORCL US EQUITY",
       "price_usd": 150.28
     }
-  ],
-  "prev_date": "2026-09-11",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "Palo Alto Networks Inc",
-        "ticker": "PANW",
-        "shares": 13.0,
-        "prev_shares": 9.0,
-        "share_delta": 4.0,
-        "weight": 0.96,
-        "prev_weight": 0.65,
-        "weight_delta": 0.31
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-09-14 07:42"
+  ]
 }

@@ -640,34 +640,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-09-11",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [],
-    "sold": [
-      {
-        "name": "Palantir Technologies Inc -A",
-        "ticker": "PLTR",
-        "shares": 325,
-        "prev_shares": 326,
-        "share_delta": -1,
-        "weight": 8.1736,
-        "prev_weight": 8.141,
-        "weight_delta": 0.0326
-      },
-      {
-        "name": "DYNATRACE INC",
-        "ticker": "DT",
-        "shares": 277,
-        "prev_shares": 278,
-        "share_delta": -1,
-        "weight": 2.1585,
-        "prev_weight": 2.0698,
-        "weight_delta": 0.0887
-      }
-    ]
-  },
-  "updated_at": "2026-09-14 07:42"
+  ]
 }
