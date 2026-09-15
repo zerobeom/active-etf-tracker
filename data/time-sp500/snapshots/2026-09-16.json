@@ -769,24 +769,5 @@
       "key": "T US EQUITY",
       "price_usd": 26.72
     }
-  ],
-  "prev_date": "2026-09-15",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "Meta Platforms Inc",
-        "ticker": "META",
-        "shares": 13.0,
-        "prev_shares": 11.0,
-        "share_delta": 2.0,
-        "weight": 1.89,
-        "prev_weight": 1.54,
-        "weight_delta": 0.35
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-09-16 08:16"
+  ]
 }

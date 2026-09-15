@@ -257,24 +257,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-09-15",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "SFA반도체",
-        "ticker": "036540",
-        "shares": 611,
-        "prev_shares": 557,
-        "share_delta": 54,
-        "weight": 1.504,
-        "prev_weight": 1.2059,
-        "weight_delta": 0.2981
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-09-16 08:16"
+  ]
 }
