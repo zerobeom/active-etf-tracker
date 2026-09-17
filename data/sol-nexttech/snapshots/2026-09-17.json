@@ -263,27 +263,5 @@
       "is_cash": true,
       "key": "100%현금설정액"
     }
-  ],
-  "prev_date": "2026-09-16",
-  "changes": {
-    "added": [
-      {
-        "name": "DELL TECHNOLOGIES - C",
-        "ticker": "DELL",
-        "weight": 3.56,
-        "shares": 24.8
-      }
-    ],
-    "removed": [
-      {
-        "name": "Circle Internet Group Inc",
-        "ticker": "CRCL",
-        "weight": 4.01,
-        "shares": 156.21
-      }
-    ],
-    "bought": [],
-    "sold": []
-  },
-  "updated_at": "2026-09-17 22:57"
+  ]
 }
