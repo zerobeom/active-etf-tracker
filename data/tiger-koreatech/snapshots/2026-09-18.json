@@ -257,45 +257,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-09-17",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "삼화콘덴서",
-        "ticker": "001820",
-        "shares": 134,
-        "prev_shares": 126,
-        "share_delta": 8,
-        "weight": 5.1628,
-        "prev_weight": 5.0205,
-        "weight_delta": 0.1423
-      },
-      {
-        "name": "두산",
-        "ticker": "000150",
-        "shares": 8,
-        "prev_shares": 7,
-        "share_delta": 1,
-        "weight": 3.1472,
-        "prev_weight": 2.6884,
-        "weight_delta": 0.4588
-      }
-    ],
-    "sold": [
-      {
-        "name": "삼성전자",
-        "ticker": "005930",
-        "shares": 334,
-        "prev_shares": 339,
-        "share_delta": -5,
-        "weight": 23.6139,
-        "prev_weight": 23.7952,
-        "weight_delta": -0.1813
-      }
-    ]
-  },
-  "updated_at": "2026-09-18 08:12"
+  ]
 }
