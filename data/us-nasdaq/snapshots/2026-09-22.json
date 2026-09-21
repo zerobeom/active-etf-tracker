@@ -640,44 +640,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-09-21",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [],
-    "sold": [
-      {
-        "name": "MONGODB INC",
-        "ticker": "MDB",
-        "shares": 50,
-        "prev_shares": 51,
-        "share_delta": -1,
-        "weight": 2.802,
-        "prev_weight": 2.9096,
-        "weight_delta": -0.1076
-      },
-      {
-        "name": "INTEL Corp",
-        "ticker": "INTC",
-        "shares": 150,
-        "prev_shares": 151,
-        "share_delta": -1,
-        "weight": 2.3639,
-        "prev_weight": 2.3974,
-        "weight_delta": -0.0335
-      },
-      {
-        "name": "Circle Internet Group Inc",
-        "ticker": "CRCL",
-        "shares": 163,
-        "prev_shares": 164,
-        "share_delta": -1,
-        "weight": 2.1691,
-        "prev_weight": 2.0359,
-        "weight_delta": 0.1332
-      }
-    ]
-  },
-  "updated_at": "2026-09-22 08:42"
+  ]
 }
