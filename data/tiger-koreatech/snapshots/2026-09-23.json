@@ -257,35 +257,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-09-22",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "GST",
-        "ticker": "083450",
-        "shares": 183,
-        "prev_shares": 160,
-        "share_delta": 23,
-        "weight": 2.3372,
-        "prev_weight": 2.0277,
-        "weight_delta": 0.3095
-      }
-    ],
-    "sold": [
-      {
-        "name": "SFA반도체",
-        "ticker": "036540",
-        "shares": 405,
-        "prev_shares": 607,
-        "share_delta": -202,
-        "weight": 1.1199,
-        "prev_weight": 1.6802,
-        "weight_delta": -0.5603
-      }
-    ]
-  },
-  "updated_at": "2026-09-23 08:21"
+  ]
 }
