@@ -245,34 +245,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-09-28",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "HPSP",
-        "ticker": "403870",
-        "shares": 236,
-        "prev_shares": 225,
-        "share_delta": 11,
-        "weight": 3.4564,
-        "prev_weight": 3.173,
-        "weight_delta": 0.2834
-      },
-      {
-        "name": "이오테크닉스",
-        "ticker": "039030",
-        "shares": 26,
-        "prev_shares": 25,
-        "share_delta": 1,
-        "weight": 3.1857,
-        "prev_weight": 3.0586,
-        "weight_delta": 0.1271
-      }
-    ],
-    "sold": []
-  },
-  "updated_at": "2026-09-29 09:42"
+  ]
 }
