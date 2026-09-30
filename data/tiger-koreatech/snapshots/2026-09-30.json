@@ -245,35 +245,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-09-29",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "GST",
-        "ticker": "083450",
-        "shares": 204,
-        "prev_shares": 183,
-        "share_delta": 21,
-        "weight": 2.75,
-        "prev_weight": 2.3643,
-        "weight_delta": 0.3857
-      }
-    ],
-    "sold": [
-      {
-        "name": "삼성전자",
-        "ticker": "005930",
-        "shares": 331,
-        "prev_shares": 334,
-        "share_delta": -3,
-        "weight": 22.9844,
-        "prev_weight": 23.5851,
-        "weight_delta": -0.6007
-      }
-    ]
-  },
-  "updated_at": "2026-09-30 09:25"
+  ]
 }

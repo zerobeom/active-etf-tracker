@@ -769,45 +769,5 @@
       "key": "T US EQUITY",
       "price_usd": 24.9
     }
-  ],
-  "prev_date": "2026-09-29",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "Palo Alto Networks Inc",
-        "ticker": "PANW",
-        "shares": 17.0,
-        "prev_shares": 13.0,
-        "share_delta": 4.0,
-        "weight": 1.43,
-        "prev_weight": 1.03,
-        "weight_delta": 0.4
-      }
-    ],
-    "sold": [
-      {
-        "name": "Johnson & Johnson",
-        "ticker": "JNJ",
-        "shares": 50.0,
-        "prev_shares": 51.0,
-        "share_delta": -1.0,
-        "weight": 2.92,
-        "prev_weight": 2.93,
-        "weight_delta": -0.01
-      },
-      {
-        "name": "Dell Technologies Inc",
-        "ticker": "DELL",
-        "shares": 17.0,
-        "prev_shares": 18.0,
-        "share_delta": -1.0,
-        "weight": 1.98,
-        "prev_weight": 2.15,
-        "weight_delta": -0.17
-      }
-    ]
-  },
-  "updated_at": "2026-09-30 09:25"
+  ]
 }
