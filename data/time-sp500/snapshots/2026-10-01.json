@@ -769,58 +769,5 @@
       "key": "T US EQUITY",
       "price_usd": 24.48
     }
-  ],
-  "prev_date": "2026-09-30",
-  "changes": {
-    "added": [
-      {
-        "name": "Twist Bioscience Corp",
-        "ticker": "TWST",
-        "weight": 0.4,
-        "shares": 10.0
-      }
-    ],
-    "removed": [
-      {
-        "name": "Freeport-McMoRan Inc",
-        "ticker": "FCX",
-        "weight": 0.45,
-        "shares": 29.0
-      }
-    ],
-    "bought": [],
-    "sold": [
-      {
-        "name": "Alphabet Inc",
-        "ticker": "GOOGL",
-        "shares": 67.0,
-        "prev_shares": 68.0,
-        "share_delta": -1.0,
-        "weight": 4.89,
-        "prev_weight": 5.0,
-        "weight_delta": -0.11
-      },
-      {
-        "name": "JPMorgan Chase & Co",
-        "ticker": "JPM",
-        "shares": 20.0,
-        "prev_shares": 21.0,
-        "share_delta": -1.0,
-        "weight": 1.43,
-        "prev_weight": 1.52,
-        "weight_delta": -0.09
-      },
-      {
-        "name": "AT&T Inc",
-        "ticker": "T",
-        "shares": 69.0,
-        "prev_shares": 70.0,
-        "share_delta": -1.0,
-        "weight": 0.36,
-        "prev_weight": 0.37,
-        "weight_delta": -0.01
-      }
-    ]
-  },
-  "updated_at": "2026-10-01 09:40"
+  ]
 }

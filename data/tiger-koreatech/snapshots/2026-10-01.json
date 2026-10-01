@@ -245,35 +245,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-09-30",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "이오테크닉스",
-        "ticker": "039030",
-        "shares": 27,
-        "prev_shares": 26,
-        "share_delta": 1,
-        "weight": 3.5998,
-        "prev_weight": 3.2829,
-        "weight_delta": 0.3169
-      }
-    ],
-    "sold": [
-      {
-        "name": "GST",
-        "ticker": "083450",
-        "shares": 203,
-        "prev_shares": 204,
-        "share_delta": -1,
-        "weight": 2.6544,
-        "prev_weight": 2.75,
-        "weight_delta": -0.0956
-      }
-    ]
-  },
-  "updated_at": "2026-10-01 09:40"
+  ]
 }
