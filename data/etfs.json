@@ -6,16 +6,8 @@
     "fid": "2ETFQ1",
     "start": "2025-02-25",
     "region": "US",
-    "provider": "samsung"
-  },
-  {
-    "slug": "kr-valueup",
-    "name": "KoAct 코리아밸류업액티브",
-    "ticker": "495230",
-    "fid": "2ETFP3",
-    "start": "2024-11-04",
-    "region": "KR",
-    "provider": "samsung"
+    "provider": "samsung",
+    "issuer": "삼성액티브자산운용"
   },
   {
     "slug": "sol-nexttech",
@@ -24,16 +16,8 @@
     "fid": "211099",
     "start": "2025-10-28",
     "region": "US",
-    "provider": "sol"
-  },
-  {
-    "slug": "sol-megatech",
-    "name": "SOL 코리아메가테크액티브",
-    "ticker": "444200",
-    "fid": "210940",
-    "start": "2022-10-18",
-    "region": "KR",
-    "provider": "sol"
+    "provider": "sol",
+    "issuer": "신한자산운용"
   },
   {
     "slug": "time-nasdaq100",
@@ -42,7 +26,8 @@
     "fid": "2",
     "start": "2022-05-11",
     "region": "US",
-    "provider": "time"
+    "provider": "time",
+    "issuer": "타임폴리오자산운용"
   },
   {
     "slug": "time-sp500",
@@ -51,7 +36,8 @@
     "fid": "5",
     "start": "2022-05-11",
     "region": "US",
-    "provider": "time"
+    "provider": "time",
+    "issuer": "타임폴리오자산운용"
   },
   {
     "slug": "tiger-koreatech",
@@ -60,6 +46,27 @@
     "fid": "KR7471780007",
     "start": "2023-11-28",
     "region": "KR",
-    "provider": "tiger"
+    "provider": "funetf",
+    "issuer": "미래에셋자산운용"
+  },
+  {
+    "slug": "rise-strategy",
+    "name": "RISE 코리아전략산업액티브",
+    "ticker": "0151P0",
+    "fid": "KR70151P0002",
+    "start": "2026-01-20",
+    "region": "KR",
+    "provider": "funetf",
+    "issuer": "KB자산운용"
+  },
+  {
+    "slug": "kr-valueup",
+    "name": "KoAct 코리아밸류업액티브",
+    "ticker": "495230",
+    "fid": "2ETFP3",
+    "start": "2024-11-04",
+    "region": "KR",
+    "provider": "samsung",
+    "issuer": "삼성액티브자산운용"
   }
 ]
