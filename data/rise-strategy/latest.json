@@ -198,12 +198,54 @@
       "key": "원화현금"
     }
   ],
-  "prev_date": null,
+  "prev_date": "2026-10-01",
   "changes": {
     "added": [],
     "removed": [],
-    "bought": [],
-    "sold": []
+    "bought": [
+      {
+        "name": "테스",
+        "ticker": "095610",
+        "shares": 306,
+        "prev_shares": 284,
+        "share_delta": 22,
+        "weight": 7.2987,
+        "prev_weight": 6.3709,
+        "weight_delta": 0.9278
+      },
+      {
+        "name": "피에스케이",
+        "ticker": "319660",
+        "shares": 264,
+        "prev_shares": 224,
+        "share_delta": 40,
+        "weight": 5.5437,
+        "prev_weight": 4.4496,
+        "weight_delta": 1.0941
+      }
+    ],
+    "sold": [
+      {
+        "name": "삼성전기",
+        "ticker": "009150",
+        "shares": 27,
+        "prev_shares": 29,
+        "share_delta": -2,
+        "weight": 5.4665,
+        "prev_weight": 5.8693,
+        "weight_delta": -0.4028
+      },
+      {
+        "name": "LS",
+        "ticker": "006260",
+        "shares": 85,
+        "prev_shares": 97,
+        "share_delta": -12,
+        "weight": 3.2853,
+        "prev_weight": 4.0029,
+        "weight_delta": -0.7176
+      }
+    ]
   },
-  "updated_at": "2026-10-04 13:14"
+  "updated_at": "2026-10-04 13:36"
 }
