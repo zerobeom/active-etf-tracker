@@ -17,16 +17,16 @@ on:
         options:
           - 전체
           - samsung (삼성 2종 전체)
-          - sol (SOL 2종 전체)
+          - sol (SOL 1종)
           - time (TIME 2종 전체)
-          - tiger (TIGER 1종)
+          - funetf (TIGER+RISE 2종 전체)
           - us-nasdaq (KoAct 미국나스닥성장기업액티브)
-          - kr-valueup (KoAct 코리아밸류업액티브)
           - sol-nexttech (SOL 미국넥스트테크TOP10액티브)
-          - sol-megatech (SOL 코리아메가테크액티브)
           - time-nasdaq100 (TIME 미국나스닥100액티브)
           - time-sp500 (TIME 미국S&P500액티브)
           - tiger-koreatech (TIGER 코리아테크액티브)
+          - rise-strategy (RISE 코리아전략산업액티브)
+          - kr-valueup (KoAct 코리아밸류업액티브)
 
 permissions:
   contents: write
