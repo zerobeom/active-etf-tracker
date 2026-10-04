@@ -11,7 +11,9 @@ Active ETF 일별 전체 구성종목 수집기 (다중 운용사·다중 ETF �
       (provider: "sol"). `work_dt` 파라미터 실제로 작동 확인됨(과거 날짜 그대로 반환) →
       과거 기간 채우기 됨. 응답에 종목명(SEC_NM)·수량(QTY)·평가금액(PRICE)·비중(WT_DISP)·
       종목코드(STOCK_CODE)가 옴.
-        · 한국 종목(SOL 코리아메가테크액티브): STOCK_CODE가 이미 KRX 6자리 코드라 그대로 티커로 씀.
+        · 한국 종목: STOCK_CODE가 이미 KRX 6자리 코드라 그대로 티커로 씀(현재 추적 중인 SOL
+          종목은 미국 쪽 1개뿐이라 이 분기는 당장 안 쓰이지만, 한국 SOL ETF가 다시 추가되면
+          그대로 작동함).
         · 미국 종목(SOL 미국넥스트테크TOP10액티브): STOCK_CODE가 ISIN이라(티커 아님), 실제 거래
           티커는 이름 매칭으로 찾음 — SOL_US_TICKERS 수동 매핑 → KoAct 나스닥 참조 → 나스닥
           심볼 목록 → SEC 티커 목록 순. 리밸런싱으로 새 종목이 들어오면 실행 로그의
@@ -20,18 +22,19 @@ Active ETF 일별 전체 구성종목 수집기 (다중 운용사·다중 ETF �
         https://timeetf.co.kr/pdf_excel.php?idx={내부ID}&cate=&pdfDate=YYYY-MM-DD
       (provider: "time"). `pdfDate` 파라미터 실제로 작동 → 과거 기간 채우기 됨. 종목코드가
       이미 'SNDK US EQUITY'식으로 와서 티커 매핑 불필요.
-    - TIGER 코리아테크액티브(미래에셋) — funetf.co.kr 공개 API
+    - funetf.co.kr 공개 API — 운용사 상관없이 공용(지금은 TIGER(미래에셋)·RISE(KB) 2곳)
         https://www.funetf.co.kr/api/public/product/view/etfpdf
             ?itemId={내부ID}&etfPdfYmd=YYYYMMDD
-      (provider: "tiger"). 원래 미래에셋 공식 ajax를 썼는데 GitHub Actions에서 403으로 막혀서
-      (로컬/브라우저 헤더를 갖춰도, 헤드리스 크롬으로도 막힘 — 순수 requests 요청 자체를 IP
-      대역 기준으로 차단하는 걸로 추정) 이 API로 전면 교체함. 헤더 없이 바로 되고 응답도 더
-      친절함(현재가·비중이 이미 숫자). ⚠️ `etfPdfYmd`로 과거 조회가 실제로 되는지는 응답에
-      날짜 필드가 없어 검증을 못 했음 — 요청한 날짜를 그대로 기준일로 신뢰함(samsung/time과
-      동일 방식). 백필 돌려서 날짜별 실제 값 변화로 확인 필요.
+      (provider: "funetf"). 처음엔 TIGER 전용으로 미래에셋 공식 ajax를 썼는데 GitHub Actions에서
+      403으로 막혀서(로컬/브라우저 헤더를 갖춰도, 헤드리스 크롬으로도 막힘 — 순수 requests 요청
+      자체를 IP 대역 기준으로 차단하는 걸로 추정) 이 API로 전면 교체함. 헤더 없이 바로 되고
+      응답도 더 친절함(현재가·비중이 이미 숫자). `itemId`가 바로 펀드 ISIN이라 어느 운용사
+      펀드든 이 API 하나로 다 됨 — RISE 코리아전략산업액티브도 이렇게 추가함. ⚠️ `etfPdfYmd`로
+      과거 조회가 실제로 되는지는 응답에 날짜 필드가 없어 검증을 못 했음 — 요청한 날짜를 그대로
+      기준일로 신뢰함(samsung/time과 동일 방식). 백필 돌려서 날짜별 실제 값 변화로 확인 필요.
 
 추적 대상은 아래 ETFS 목록에 추가만 하면 늘어납니다. samsung/sol/time 3개 provider는
-날짜 파라미터가 실제로 작동해 과거 기간 채우기(backfill)가 정상적으로 됩니다. tiger는 위
+날짜 파라미터가 실제로 작동해 과거 기간 채우기(backfill)가 정상적으로 됩니다. funetf는 위
 참고 — 과거 조회 지원 여부 미검증.
 
 산출물(ETF별로 분리):
@@ -58,49 +61,61 @@ from pathlib import Path
 
 # ── 추적할 ETF 목록 ──────────────────────────────────────────────────────
 # slug: 폴더/URL용 영문 식별자
-# provider: "samsung"(삼성 KoAct, 엑셀) / "sol"(신한 SOL, 웹페이지 표)
-# fid: provider="samsung"이면 운용사 펀드ID / provider="sol"이면 soletf.com 내부 상품ID
+# provider: 데이터 "가져오는 방식" 구분자 — "samsung"(삼성액티브 엑셀) / "sol"(SOL 공식 API) /
+#   "time"(타임폴리오 xlsx) / "funetf"(funetf.co.kr 공개 API — 운용사 여럿이 이 한 소스를 공유함,
+#   TIGER·RISE 둘 다 여기 해당. provider가 운용사를 뜻하지 않으니 화면 표시용 회사명은 각 항목의
+#   "issuer" 필드를 따로 둠)
+# fid: provider="samsung"이면 운용사 펀드ID / provider="sol"이면 soletf.com 내부 상품ID /
+#   provider="funetf"면 funetf.co.kr의 itemId(=ISIN)
 # ticker: 거래소 단축코드(표시용)
+# issuer: 화면 하단 "데이터 출처" 문구에 쓰이는 운용사명
 ETFS = [
     {"slug": "us-nasdaq", "provider": "samsung", "fid": "2ETFQ1", "ticker": "0015B0",
-     "name": "KoAct 미국나스닥성장기업액티브", "start": "2025-02-25", "region": "US",
+     "name": "KoAct 미국나스닥성장기업액티브", "issuer": "삼성액티브자산운용",
+     "start": "2025-02-25", "region": "US",
      "usd_price": True,
      "benchmarks": [
          {"k": "b1", "label": "나스닥종합", "sym": ["IXIC", "YAHOO:^IXIC"]},
          {"k": "b2", "label": "나스닥100", "sym": ["YAHOO:^NDX", "NDX"]},
-     ]},
-    {"slug": "kr-valueup", "provider": "samsung", "fid": "2ETFP3", "ticker": "495230",
-     "name": "KoAct 코리아밸류업액티브", "start": "2024-11-04", "region": "KR",
-     "benchmarks": [
-         {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
      ]},
     {"slug": "sol-nexttech", "provider": "sol", "fid": "211099", "ticker": "0118S0",
-     "name": "SOL 미국넥스트테크TOP10액티브", "start": "2025-10-28", "region": "US",
+     "name": "SOL 미국넥스트테크TOP10액티브", "issuer": "신한자산운용",
+     "start": "2025-10-28", "region": "US",
      "usd_price": True,
      "benchmarks": [
          {"k": "b1", "label": "나스닥종합", "sym": ["IXIC", "YAHOO:^IXIC"]},
          {"k": "b2", "label": "나스닥100", "sym": ["YAHOO:^NDX", "NDX"]},
      ]},
-    {"slug": "sol-megatech", "provider": "sol", "fid": "210940", "ticker": "444200",
-     "name": "SOL 코리아메가테크액티브", "start": "2022-10-18", "region": "KR",
-     "benchmarks": [
-         {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
-     ]},
     {"slug": "time-nasdaq100", "provider": "time", "fid": "2", "ticker": "426030",
-     "name": "TIME 미국나스닥100액티브", "start": "2022-05-11", "region": "US",
+     "name": "TIME 미국나스닥100액티브", "issuer": "타임폴리오자산운용",
+     "start": "2022-05-11", "region": "US",
      "usd_price": True,
      "benchmarks": [
          {"k": "b1", "label": "나스닥종합", "sym": ["IXIC", "YAHOO:^IXIC"]},
          {"k": "b2", "label": "나스닥100", "sym": ["YAHOO:^NDX", "NDX"]},
      ]},
     {"slug": "time-sp500", "provider": "time", "fid": "5", "ticker": "426020",
-     "name": "TIME 미국S&P500액티브", "start": "2022-05-11", "region": "US",
+     "name": "TIME 미국S&P500액티브", "issuer": "타임폴리오자산운용",
+     "start": "2022-05-11", "region": "US",
      "usd_price": True,
      "benchmarks": [
          {"k": "b1", "label": "S&P500", "sym": ["US500", "YAHOO:^GSPC"]},
      ]},
-    {"slug": "tiger-koreatech", "provider": "tiger", "fid": "KR7471780007", "ticker": "471780",
-     "name": "TIGER 코리아테크액티브", "start": "2023-11-28", "region": "KR",
+    {"slug": "tiger-koreatech", "provider": "funetf", "fid": "KR7471780007", "ticker": "471780",
+     "name": "TIGER 코리아테크액티브", "issuer": "미래에셋자산운용",
+     "start": "2023-11-28", "region": "KR",
+     "benchmarks": [
+         {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
+     ]},
+    {"slug": "rise-strategy", "provider": "funetf", "fid": "KR70151P0002", "ticker": "0151P0",
+     "name": "RISE 코리아전략산업액티브", "issuer": "KB자산운용",
+     "start": "2026-01-20", "region": "KR",
+     "benchmarks": [
+         {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
+     ]},
+    {"slug": "kr-valueup", "provider": "samsung", "fid": "2ETFP3", "ticker": "495230",
+     "name": "KoAct 코리아밸류업액티브", "issuer": "삼성액티브자산운용",
+     "start": "2024-11-04", "region": "KR",
      "benchmarks": [
          {"k": "b1", "label": "코스피", "sym": ["KS11", "KOSPI"]},
      ]},
@@ -955,7 +970,9 @@ def process_etf(etf: dict, start: str, debug: bool = False, skip_perf: bool = Fa
         except Exception as e:
             print(f"  [skip] SOL API 요청/파싱 실패: {e}")
             return False
-    elif provider == "tiger":
+    elif provider == "funetf":
+        # funetf.co.kr 공개 API — TIGER(미래에셋)·RISE(KB) 등 여러 운용사 펀드가 이 한 소스를
+        # 공유함. 함수 이름은 처음 추가했던 TIGER 때 이름(download_tiger 등) 그대로 둠.
         try:
             if allow_lookback:
                 date_iso, holdings = fetch_latest_available_tiger(etf["fid"], start, debug=debug)
@@ -966,7 +983,7 @@ def process_etf(etf: dict, start: str, debug: bool = False, skip_perf: bool = Fa
                 rows = download_tiger(etf["fid"], start)
                 date_iso, holdings = normalize_tiger(rows, start, debug=debug)
         except Exception as e:
-            print(f"  [skip] TIGER API 요청/파싱 실패: {e}")
+            print(f"  [skip] funetf API 요청/파싱 실패: {e}")
             return False
     elif provider == "time":
         pdf_date = f"{start[:4]}-{start[4:6]}-{start[6:]}"
@@ -1067,7 +1084,7 @@ def main():
     DATA.mkdir(parents=True, exist_ok=True)
     # 사이트가 읽는 ETF 목록
     (DATA / "etfs.json").write_text(
-        json.dumps([{k: e[k] for k in ("slug", "name", "ticker", "fid", "start", "region", "provider")} for e in ETFS],
+        json.dumps([{k: e[k] for k in ("slug", "name", "ticker", "fid", "start", "region", "provider", "issuer")} for e in ETFS],
                    ensure_ascii=False, indent=2), encoding="utf-8")
 
     if args and ":" in args[0]:

@@ -902,17 +902,10 @@ function bindCalPicker(which){
 document.addEventListener("click",(e)=>{ if(!e.target.closest(".datefield")) closeCalAll(); });
 document.addEventListener("keydown",(e)=>{ if(e.key==="Escape") closeCalAll(); });
 
-const SOURCE_LABELS={
-  samsung: "삼성액티브자산운용",
-  sol: "신한자산운용",
-  time: "타임폴리오자산운용",
-  tiger: "미래에셋자산운용",
-};
 function setTitle(etf){
   $("#etfTitle").innerHTML=`${stripBrand(etf.name)}<span class="code num">${etf.ticker}</span>`;
   $("#listDate").textContent = etf.start ? `상장일 ${fmtDate(etf.start)}` : "";
-  const src=SOURCE_LABELS[etf.provider]||"운용사";
-  $("#sourceFooter").textContent = `데이터 출처: ${src} · 매 영업일 자동 갱신.`;
+  $("#sourceFooter").textContent = `데이터 출처: ${etf.issuer||"운용사"} · 매 영업일 자동 갱신.`;
 }
 
 function showEmpty(){
