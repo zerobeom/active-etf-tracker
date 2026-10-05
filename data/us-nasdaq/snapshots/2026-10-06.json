@@ -601,34 +601,5 @@
       "is_cash": true,
       "key": "KRD010010001"
     }
-  ],
-  "prev_date": "2026-10-02",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [],
-    "sold": [
-      {
-        "name": "Palantir Technologies Inc -A",
-        "ticker": "PLTR",
-        "shares": 303,
-        "prev_shares": 304,
-        "share_delta": -1,
-        "weight": 7.9887,
-        "prev_weight": 7.9832,
-        "weight_delta": 0.0055
-      },
-      {
-        "name": "TESLA MOTORS",
-        "ticker": "TSLA",
-        "shares": 33,
-        "prev_shares": 35,
-        "share_delta": -2,
-        "weight": 1.6086,
-        "prev_weight": 1.7487,
-        "weight_delta": -0.1401
-      }
-    ]
-  },
-  "updated_at": "2026-10-06 02:36"
+  ]
 }

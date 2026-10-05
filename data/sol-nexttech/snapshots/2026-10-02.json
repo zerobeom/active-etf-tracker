@@ -275,49 +275,5 @@
       "is_cash": true,
       "key": "100%현금설정액"
     }
-  ],
-  "prev_date": "2026-10-01",
-  "changes": {
-    "added": [
-      {
-        "name": "Advanced Micro Devices Inc",
-        "ticker": "AMD",
-        "weight": 1.98,
-        "shares": 12.8
-      }
-    ],
-    "removed": [
-      {
-        "name": "Freeport-McMoRan Inc",
-        "ticker": "FCX",
-        "weight": 3.0,
-        "shares": 167.89
-      }
-    ],
-    "bought": [
-      {
-        "name": "Lumentum Holdings Inc",
-        "ticker": "LITE",
-        "shares": 15.07,
-        "prev_shares": 8.31,
-        "share_delta": 6.76,
-        "weight": 3.7,
-        "prev_weight": 2.04,
-        "weight_delta": 1.66
-      }
-    ],
-    "sold": [
-      {
-        "name": "Bloom Energy Corp",
-        "ticker": "BE",
-        "shares": 98.95,
-        "prev_shares": 108.46,
-        "share_delta": -9.51,
-        "weight": 6.93,
-        "prev_weight": 7.97,
-        "weight_delta": -1.04
-      }
-    ]
-  },
-  "updated_at": "2026-10-06 02:36"
+  ]
 }
