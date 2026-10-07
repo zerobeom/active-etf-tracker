@@ -257,45 +257,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-10-06",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "삼성전자",
-        "ticker": "005930",
-        "shares": 366,
-        "prev_shares": 362,
-        "share_delta": 4,
-        "weight": 24.4081,
-        "prev_weight": 24.6817,
-        "weight_delta": -0.2736
-      },
-      {
-        "name": "에프에스티",
-        "ticker": "036810",
-        "shares": 113,
-        "prev_shares": 59,
-        "share_delta": 54,
-        "weight": 0.9932,
-        "prev_weight": 0.5203,
-        "weight_delta": 0.4729
-      }
-    ],
-    "sold": [
-      {
-        "name": "넥스틴",
-        "ticker": "348210",
-        "shares": 108,
-        "prev_shares": 109,
-        "share_delta": -1,
-        "weight": 1.0724,
-        "prev_weight": 1.0259,
-        "weight_delta": 0.0465
-      }
-    ]
-  },
-  "updated_at": "2026-10-07 09:13"
+  ]
 }

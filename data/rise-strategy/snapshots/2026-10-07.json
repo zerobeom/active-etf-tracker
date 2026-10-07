@@ -197,55 +197,5 @@
       "is_cash": true,
       "key": "원화현금"
     }
-  ],
-  "prev_date": "2026-10-06",
-  "changes": {
-    "added": [],
-    "removed": [],
-    "bought": [
-      {
-        "name": "삼성전기",
-        "ticker": "009150",
-        "shares": 29,
-        "prev_shares": 27,
-        "share_delta": 2,
-        "weight": 6.3597,
-        "prev_weight": 5.564,
-        "weight_delta": 0.7957
-      },
-      {
-        "name": "SK스퀘어",
-        "ticker": "402340",
-        "shares": 41,
-        "prev_shares": 38,
-        "share_delta": 3,
-        "weight": 6.2322,
-        "prev_weight": 5.7456,
-        "weight_delta": 0.4866
-      }
-    ],
-    "sold": [
-      {
-        "name": "LS ELECTRIC",
-        "ticker": "010120",
-        "shares": 116,
-        "prev_shares": 134,
-        "share_delta": -18,
-        "weight": 3.3032,
-        "prev_weight": 3.6592,
-        "weight_delta": -0.356
-      },
-      {
-        "name": "LS",
-        "ticker": "006260",
-        "shares": 72,
-        "prev_shares": 85,
-        "share_delta": -13,
-        "weight": 2.8233,
-        "prev_weight": 3.3072,
-        "weight_delta": -0.4839
-      }
-    ]
-  },
-  "updated_at": "2026-10-07 09:13"
+  ]
 }
