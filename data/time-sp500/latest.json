@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-16",
+  "date": "2026-10-19",
   "ticker": "426020",
   "fund_id": "5",
   "name": "TIME 미국S&P500액티브",
@@ -10,9 +10,9 @@
       "name": "S&P500 EMINI FUT DEC 2026",
       "code": "ESZ6 INDEX",
       "ticker": "ESZ6",
-      "weight": 8.48,
+      "weight": 8.52,
       "shares": 0.0,
-      "amount": 52239390.0,
+      "amount": 51864687.0,
       "price": null,
       "is_cash": false,
       "key": "ESZ6 INDEX"
@@ -22,13 +22,26 @@
       "name": "NVIDIA Corp",
       "code": "NVDA US EQUITY",
       "ticker": "NVDA",
-      "weight": 7.15,
+      "weight": 7.03,
       "shares": 148.0,
-      "amount": 44038877.0,
+      "amount": 42804563.0,
       "price": null,
       "is_cash": false,
       "key": "NVDA US EQUITY",
-      "price_usd": 216.1
+      "price_usd": 214.13
+    },
+    {
+      "isin": "",
+      "name": "State Street SPDR S&P 500 ETF Trust",
+      "code": "SPY US EQUITY",
+      "ticker": "SPY",
+      "weight": 6.08,
+      "shares": 36.0,
+      "amount": 36992203.0,
+      "price": null,
+      "is_cash": false,
+      "key": "SPY US EQUITY",
+      "price_usd": 763.25
     },
     {
       "isin": "",
@@ -37,63 +50,50 @@
       "ticker": "AAPL",
       "weight": 6.06,
       "shares": 81.0,
-      "amount": 37352665.0,
+      "amount": 36882442.0,
       "price": null,
       "is_cash": false,
       "key": "AAPL US EQUITY",
-      "price_usd": 343.49
-    },
-    {
-      "isin": "",
-      "name": "State Street SPDR S&P 500 ETF Trust",
-      "code": "SPY US EQUITY",
-      "ticker": "SPY",
-      "weight": 6.05,
-      "shares": 36.0,
-      "amount": 37252949.0,
-      "price": null,
-      "is_cash": false,
-      "key": "SPY US EQUITY",
-      "price_usd": 771.96
+      "price_usd": 343.46
     },
     {
       "isin": "",
       "name": "Microsoft Corp",
       "code": "MSFT US EQUITY",
       "ticker": "MSFT",
-      "weight": 5.24,
+      "weight": 5.31,
       "shares": 45.0,
-      "amount": 32291980.0,
+      "amount": 32319468.0,
       "price": null,
       "is_cash": false,
       "key": "MSFT US EQUITY",
-      "price_usd": 537.27
+      "price_usd": 529.05
     },
     {
       "isin": "",
       "name": "Alphabet Inc",
       "code": "GOOGL US EQUITY",
       "ticker": "GOOGL",
-      "weight": 4.86,
+      "weight": 4.89,
       "shares": 64.0,
-      "amount": 29915951.0,
+      "amount": 29756896.0,
       "price": null,
       "is_cash": false,
       "key": "GOOGL US EQUITY",
-      "price_usd": 348.9
+      "price_usd": 340.59
     },
     {
       "isin": "",
       "name": "Chevron Corp",
       "code": "CVX US EQUITY",
       "ticker": "CVX",
-      "weight": 3.15,
+      "weight": 3.12,
       "shares": 65.0,
-      "amount": 19406073.0,
+      "amount": 18980172.0,
       "price": null,
       "is_cash": false,
       "key": "CVX US EQUITY",
-      "price_usd": 223.12
+      "price_usd": 224.99
     },
     {
       "isin": "",
@@ -102,7 +102,7 @@
       "ticker": "BRK/B",
       "weight": 2.99,
       "shares": 26.0,
-      "amount": 18400985.0,
+      "amount": 18197149.0,
       "price": null,
       "is_cash": false,
       "key": "BRK/B US EQUITY"
@@ -114,37 +114,37 @@
       "ticker": "META",
       "weight": 2.9,
       "shares": 18.0,
-      "amount": 17850533.0,
+      "amount": 17655642.0,
       "price": null,
       "is_cash": false,
       "key": "META US EQUITY",
-      "price_usd": 730.91
+      "price_usd": 709.33
     },
     {
       "isin": "",
       "name": "Amazon.com Inc",
       "code": "AMZN US EQUITY",
       "ticker": "AMZN",
-      "weight": 2.77,
+      "weight": 2.79,
       "shares": 50.0,
-      "amount": 17081798.0,
+      "amount": 16959373.0,
       "price": null,
       "is_cash": false,
       "key": "AMZN US EQUITY",
-      "price_usd": 253.92
+      "price_usd": 250.0
     },
     {
       "isin": "",
       "name": "Broadcom Inc",
       "code": "AVGO US EQUITY",
       "ticker": "AVGO",
-      "weight": 2.57,
+      "weight": 2.56,
       "shares": 34.0,
-      "amount": 15829303.0,
+      "amount": 15586992.0,
       "price": null,
       "is_cash": false,
       "key": "AVGO US EQUITY",
-      "price_usd": 337.42
+      "price_usd": 328.75
     },
     {
       "isin": "",
@@ -153,128 +153,128 @@
       "ticker": "JNJ",
       "weight": 2.55,
       "shares": 46.0,
-      "amount": 15704739.0,
+      "amount": 15511981.0,
       "price": null,
       "is_cash": false,
       "key": "JNJ US EQUITY",
-      "price_usd": 256.03
+      "price_usd": 255.56
     },
     {
       "isin": "",
       "name": "Taiwan Semiconductor Manufacturing Co Ltd",
       "code": "TSM US EQUITY",
       "ticker": "TSM",
-      "weight": 2.25,
+      "weight": 2.22,
       "shares": 24.0,
-      "amount": 13876272.0,
+      "amount": 13492407.0,
       "price": null,
       "is_cash": false,
       "key": "TSM US EQUITY",
-      "price_usd": 413.31
+      "price_usd": 412.61
     },
     {
       "isin": "",
       "name": "Advanced Micro Devices Inc",
       "code": "AMD US EQUITY",
       "ticker": "AMD",
-      "weight": 1.99,
+      "weight": 1.97,
       "shares": 16.0,
-      "amount": 12280393.0,
+      "amount": 11976848.0,
       "price": null,
       "is_cash": false,
       "key": "AMD US EQUITY",
-      "price_usd": 542.78
+      "price_usd": 528.75
     },
     {
       "isin": "",
       "name": "Eli Lilly & Co",
       "code": "LLY US EQUITY",
       "ticker": "LLY",
-      "weight": 1.85,
+      "weight": 1.92,
       "shares": 7.0,
-      "amount": 11376902.0,
+      "amount": 11664754.0,
       "price": null,
       "is_cash": false,
       "key": "LLY US EQUITY",
-      "price_usd": 1263.35
+      "price_usd": 1257.03
     },
     {
       "isin": "",
       "name": "JPMorgan Chase & Co",
       "code": "JPM US EQUITY",
       "ticker": "JPM",
-      "weight": 1.46,
+      "weight": 1.47,
       "shares": 20.0,
-      "amount": 9016349.0,
+      "amount": 8934492.0,
       "price": null,
       "is_cash": false,
       "key": "JPM US EQUITY",
-      "price_usd": 343.57
+      "price_usd": 339.72
     },
     {
       "isin": "",
       "name": "Palo Alto Networks Inc",
       "code": "PANW US EQUITY",
       "ticker": "PANW",
-      "weight": 1.39,
+      "weight": 1.38,
       "shares": 17.0,
-      "amount": 8572739.0,
+      "amount": 8380617.0,
       "price": null,
       "is_cash": false,
       "key": "PANW US EQUITY",
-      "price_usd": 359.46
+      "price_usd": 342.0
     },
     {
       "isin": "",
       "name": "Tesla Inc",
       "code": "TSLA US EQUITY",
       "ticker": "TSLA",
-      "weight": 1.36,
+      "weight": 1.35,
       "shares": 17.0,
-      "amount": 8392616.0,
+      "amount": 8203394.0,
       "price": null,
       "is_cash": false,
       "key": "TSLA US EQUITY",
-      "price_usd": 367.55
+      "price_usd": 354.72
     },
     {
       "isin": "",
       "name": "Coca-Cola Co/The",
       "code": "KO US EQUITY",
       "ticker": "KO",
-      "weight": 1.32,
+      "weight": 1.33,
       "shares": 66.0,
-      "amount": 8144887.0,
+      "amount": 8084260.0,
       "price": null,
       "is_cash": false,
       "key": "KO US EQUITY",
-      "price_usd": 93.31
-    },
-    {
-      "isin": "",
-      "name": "Costco Wholesale Corp",
-      "code": "COST US EQUITY",
-      "ticker": "COST",
-      "weight": 1.29,
-      "shares": 6.0,
-      "amount": 7922383.0,
-      "price": null,
-      "is_cash": false,
-      "key": "COST US EQUITY",
-      "price_usd": 984.19
+      "price_usd": 93.9
     },
     {
       "isin": "",
       "name": "Visa Inc",
       "code": "V US EQUITY",
       "ticker": "V",
-      "weight": 1.28,
+      "weight": 1.31,
       "shares": 15.0,
-      "amount": 7894751.0,
+      "amount": 7983407.0,
       "price": null,
       "is_cash": false,
       "key": "V US EQUITY",
-      "price_usd": 403.22
+      "price_usd": 402.61
+    },
+    {
+      "isin": "",
+      "name": "Costco Wholesale Corp",
+      "code": "COST US EQUITY",
+      "ticker": "COST",
+      "weight": 1.28,
+      "shares": 6.0,
+      "amount": 7812735.0,
+      "price": null,
+      "is_cash": false,
+      "key": "COST US EQUITY",
+      "price_usd": 989.11
     },
     {
       "isin": "",
@@ -283,63 +283,76 @@
       "ticker": "PLTR",
       "weight": 1.23,
       "shares": 28.0,
-      "amount": 7566279.0,
+      "amount": 7474479.0,
       "price": null,
       "is_cash": false,
       "key": "PLTR US EQUITY",
-      "price_usd": 197.7
+      "price_usd": 186.03
     },
     {
       "isin": "",
       "name": "Micron Technology Inc",
       "code": "MU US EQUITY",
       "ticker": "MU",
-      "weight": 1.2,
+      "weight": 1.22,
       "shares": 6.0,
-      "amount": 7374835.0,
+      "amount": 7439117.0,
       "price": null,
       "is_cash": false,
       "key": "MU US EQUITY",
-      "price_usd": 900.31
+      "price_usd": 878.84
     },
     {
       "isin": "",
       "name": "Walmart Inc",
       "code": "WMT US EQUITY",
       "ticker": "WMT",
-      "weight": 1.19,
+      "weight": 1.21,
       "shares": 47.0,
-      "amount": 7340870.0,
+      "amount": 7375809.0,
       "price": null,
       "is_cash": false,
       "key": "WMT US EQUITY",
-      "price_usd": 119.22
+      "price_usd": 118.81
     },
     {
       "isin": "",
       "name": "Caterpillar Inc",
       "code": "CAT US EQUITY",
       "ticker": "CAT",
-      "weight": 1.14,
+      "weight": 1.13,
       "shares": 7.0,
-      "amount": 7049549.0,
+      "amount": 6856017.0,
       "price": null,
       "is_cash": false,
       "key": "CAT US EQUITY",
-      "price_usd": 735.83
+      "price_usd": 730.76
     },
     {
       "isin": "",
       "name": "Eaton Corp PLC",
       "code": "ETN US EQUITY",
       "ticker": "ETN",
-      "weight": 1.07,
+      "weight": 1.06,
       "shares": 12.0,
-      "amount": 6596876.0,
+      "amount": 6430342.0,
       "price": null,
       "is_cash": false,
       "key": "ETN US EQUITY",
-      "price_usd": 399.06
+      "price_usd": 391.25
+    },
+    {
+      "isin": "",
+      "name": "State Street Health Care Select Sector SPDR ETF",
+      "code": "XLV US EQUITY",
+      "ticker": "XLV",
+      "weight": 1.01,
+      "shares": 26.0,
+      "amount": 6133679.0,
+      "price": null,
+      "is_cash": false,
+      "key": "XLV US EQUITY",
+      "price_usd": 176.71
     },
     {
       "isin": "",
@@ -348,50 +361,24 @@
       "ticker": "XLP",
       "weight": 1.0,
       "shares": 53.0,
-      "amount": 6132962.0,
+      "amount": 6116504.0,
       "price": null,
       "is_cash": false,
       "key": "XLP US EQUITY",
-      "price_usd": 87.69
+      "price_usd": 87.62
     },
     {
       "isin": "",
-      "name": "State Street Health Care Select Sector SPDR ETF",
-      "code": "XLV US EQUITY",
-      "ticker": "XLV",
-      "weight": 0.99,
-      "shares": 26.0,
-      "amount": 6081572.0,
-      "price": null,
-      "is_cash": false,
-      "key": "XLV US EQUITY",
-      "price_usd": 178.05
-    },
-    {
-      "isin": "",
-      "name": "Crowdstrike Holdings Inc",
-      "code": "CRWD US EQUITY",
-      "ticker": "CRWD",
+      "name": "Robinhood Markets Inc",
+      "code": "HOOD US EQUITY",
+      "ticker": "HOOD",
       "weight": 0.98,
-      "shares": 18.0,
-      "amount": 6033516.0,
+      "shares": 43.0,
+      "amount": 5953448.0,
       "price": null,
       "is_cash": false,
-      "key": "CRWD US EQUITY",
-      "price_usd": 235.91
-    },
-    {
-      "isin": "",
-      "name": "Lumentum Holdings Inc",
-      "code": "LITE US EQUITY",
-      "ticker": "LITE",
-      "weight": 0.98,
-      "shares": 5.0,
-      "amount": 6026026.0,
-      "price": null,
-      "is_cash": false,
-      "key": "LITE US EQUITY",
-      "price_usd": 855.78
+      "key": "HOOD US EQUITY",
+      "price_usd": 98.87
     },
     {
       "isin": "",
@@ -400,37 +387,50 @@
       "ticker": "LIN",
       "weight": 0.97,
       "shares": 9.0,
-      "amount": 5962359.0,
+      "amount": 5910057.0,
       "price": null,
       "is_cash": false,
       "key": "LIN US EQUITY",
-      "price_usd": 496.61
+      "price_usd": 498.43
     },
     {
       "isin": "",
       "name": "NextEra Energy Inc",
       "code": "NEE US EQUITY",
       "ticker": "NEE",
-      "weight": 0.96,
+      "weight": 0.97,
       "shares": 56.0,
-      "amount": 5901072.0,
+      "amount": 5887131.0,
       "price": null,
       "is_cash": false,
       "key": "NEE US EQUITY",
-      "price_usd": 79.56
+      "price_usd": 79.8
     },
     {
       "isin": "",
-      "name": "Robinhood Markets Inc",
-      "code": "HOOD US EQUITY",
-      "ticker": "HOOD",
-      "weight": 0.95,
-      "shares": 43.0,
-      "amount": 5844223.0,
+      "name": "Crowdstrike Holdings Inc",
+      "code": "CRWD US EQUITY",
+      "ticker": "CRWD",
+      "weight": 0.96,
+      "shares": 18.0,
+      "amount": 5861168.0,
       "price": null,
       "is_cash": false,
-      "key": "HOOD US EQUITY",
-      "price_usd": 103.31
+      "key": "CRWD US EQUITY",
+      "price_usd": 227.39
+    },
+    {
+      "isin": "",
+      "name": "Lumentum Holdings Inc",
+      "code": "LITE US EQUITY",
+      "ticker": "LITE",
+      "weight": 0.95,
+      "shares": 5.0,
+      "amount": 5788527.0,
+      "price": null,
+      "is_cash": false,
+      "key": "LITE US EQUITY",
+      "price_usd": 824.13
     },
     {
       "isin": "",
@@ -439,206 +439,206 @@
       "ticker": "PEP",
       "weight": 0.93,
       "shares": 33.0,
-      "amount": 5735942.0,
+      "amount": 5640529.0,
       "price": null,
       "is_cash": false,
       "key": "PEP US EQUITY",
-      "price_usd": 130.1
-    },
-    {
-      "isin": "",
-      "name": "Bloom Energy Corp",
-      "code": "BE US EQUITY",
-      "ticker": "BE",
-      "weight": 0.89,
-      "shares": 17.0,
-      "amount": 5470881.0,
-      "price": null,
-      "is_cash": false,
-      "key": "BE US EQUITY",
-      "price_usd": 229.87
-    },
-    {
-      "isin": "",
-      "name": "Dell Technologies Inc",
-      "code": "DELL US EQUITY",
-      "ticker": "DELL",
-      "weight": 0.89,
-      "shares": 8.0,
-      "amount": 5463701.0,
-      "price": null,
-      "is_cash": false,
-      "key": "DELL US EQUITY",
-      "price_usd": 456.45
+      "price_usd": 131.49
     },
     {
       "isin": "",
       "name": "Starbucks Corp",
       "code": "SBUX US EQUITY",
       "ticker": "SBUX",
-      "weight": 0.86,
+      "weight": 0.89,
       "shares": 42.0,
-      "amount": 5266125.0,
+      "amount": 5417413.0,
       "price": null,
       "is_cash": false,
       "key": "SBUX US EQUITY",
-      "price_usd": 97.58
+      "price_usd": 97.52
+    },
+    {
+      "isin": "",
+      "name": "Bloom Energy Corp",
+      "code": "BE US EQUITY",
+      "ticker": "BE",
+      "weight": 0.88,
+      "shares": 17.0,
+      "amount": 5348366.0,
+      "price": null,
+      "is_cash": false,
+      "key": "BE US EQUITY",
+      "price_usd": 221.31
     },
     {
       "isin": "",
       "name": "Procter & Gamble Co/The",
       "code": "PG US EQUITY",
       "ticker": "PG",
-      "weight": 0.85,
+      "weight": 0.86,
       "shares": 25.0,
-      "amount": 5261755.0,
+      "amount": 5228407.0,
       "price": null,
       "is_cash": false,
       "key": "PG US EQUITY",
-      "price_usd": 158.7
+      "price_usd": 159.35
     },
     {
       "isin": "",
-      "name": "Merck & Co Inc",
-      "code": "MRK US EQUITY",
-      "ticker": "MRK",
-      "weight": 0.8,
-      "shares": 25.0,
-      "amount": 4953842.0,
+      "name": "Dell Technologies Inc",
+      "code": "DELL US EQUITY",
+      "ticker": "DELL",
+      "weight": 0.83,
+      "shares": 8.0,
+      "amount": 5042171.0,
       "price": null,
       "is_cash": false,
-      "key": "MRK US EQUITY",
-      "price_usd": 147.22
-    },
-    {
-      "isin": "",
-      "name": "Snowflake Inc",
-      "code": "SNOW US EQUITY",
-      "ticker": "SNOW",
-      "weight": 0.8,
-      "shares": 11.0,
-      "amount": 4956034.0,
-      "price": null,
-      "is_cash": false,
-      "key": "SNOW US EQUITY",
-      "price_usd": 325.45
+      "key": "DELL US EQUITY",
+      "price_usd": 451.71
     },
     {
       "isin": "",
       "name": "Mastercard Inc",
       "code": "MA US EQUITY",
       "ticker": "MA",
-      "weight": 0.79,
+      "weight": 0.81,
       "shares": 6.0,
-      "amount": 4866699.0,
+      "amount": 4923410.0,
       "price": null,
       "is_cash": false,
       "key": "MA US EQUITY",
-      "price_usd": 621.27
+      "price_usd": 617.42
+    },
+    {
+      "isin": "",
+      "name": "Snowflake Inc",
+      "code": "SNOW US EQUITY",
+      "ticker": "SNOW",
+      "weight": 0.81,
+      "shares": 11.0,
+      "amount": 4907234.0,
+      "price": null,
+      "is_cash": false,
+      "key": "SNOW US EQUITY",
+      "price_usd": 306.84
     },
     {
       "isin": "",
       "name": "UnitedHealth Group Inc",
       "code": "UNH US EQUITY",
       "ticker": "UNH",
-      "weight": 0.78,
+      "weight": 0.8,
       "shares": 9.0,
-      "amount": 4787555.0,
+      "amount": 4872963.0,
       "price": null,
       "is_cash": false,
       "key": "UNH US EQUITY",
-      "price_usd": 400.24
+      "price_usd": 401.43
+    },
+    {
+      "isin": "",
+      "name": "Merck & Co Inc",
+      "code": "MRK US EQUITY",
+      "ticker": "MRK",
+      "weight": 0.79,
+      "shares": 25.0,
+      "amount": 4832649.0,
+      "price": null,
+      "is_cash": false,
+      "key": "MRK US EQUITY",
+      "price_usd": 145.95
     },
     {
       "isin": "",
       "name": "Marvell Technology Inc",
       "code": "MRVL US EQUITY",
       "ticker": "MRVL",
-      "weight": 0.75,
+      "weight": 0.74,
       "shares": 14.0,
-      "amount": 4617248.0,
+      "amount": 4496617.0,
       "price": null,
       "is_cash": false,
       "key": "MRVL US EQUITY",
-      "price_usd": 232.0
-    },
-    {
-      "isin": "",
-      "name": "Morgan Stanley",
-      "code": "MS US EQUITY",
-      "ticker": "MS",
-      "weight": 0.71,
-      "shares": 18.0,
-      "amount": 4393050.0,
-      "price": null,
-      "is_cash": false,
-      "key": "MS US EQUITY",
-      "price_usd": 184.8
-    },
-    {
-      "isin": "",
-      "name": "Intel Corp",
-      "code": "INTC US EQUITY",
-      "ticker": "INTC",
-      "weight": 0.71,
-      "shares": 33.0,
-      "amount": 4353761.0,
-      "price": null,
-      "is_cash": false,
-      "key": "INTC US EQUITY",
-      "price_usd": 93.14
-    },
-    {
-      "isin": "",
-      "name": "ExxonMobil Holdings Corp",
-      "code": "XOM US EQUITY",
-      "ticker": "XOM",
-      "weight": 0.7,
-      "shares": 18.0,
-      "amount": 4284137.0,
-      "price": null,
-      "is_cash": false,
-      "key": "XOM US EQUITY",
-      "price_usd": 176.68
-    },
-    {
-      "isin": "",
-      "name": "Cisco Systems Inc",
-      "code": "CSCO US EQUITY",
-      "ticker": "CSCO",
-      "weight": 0.69,
-      "shares": 28.0,
-      "amount": 4278409.0,
-      "price": null,
-      "is_cash": false,
-      "key": "CSCO US EQUITY",
-      "price_usd": 107.93
+      "price_usd": 227.83
     },
     {
       "isin": "",
       "name": "Moderna Inc",
       "code": "MRNA US EQUITY",
       "ticker": "MRNA",
-      "weight": 0.69,
+      "weight": 0.72,
       "shares": 14.0,
-      "amount": 4259961.0,
+      "amount": 4408265.0,
       "price": null,
       "is_cash": false,
       "key": "MRNA US EQUITY",
-      "price_usd": 229.55
+      "price_usd": 218.01
+    },
+    {
+      "isin": "",
+      "name": "Morgan Stanley",
+      "code": "MS US EQUITY",
+      "ticker": "MS",
+      "weight": 0.72,
+      "shares": 18.0,
+      "amount": 4364062.0,
+      "price": null,
+      "is_cash": false,
+      "key": "MS US EQUITY",
+      "price_usd": 180.57
     },
     {
       "isin": "",
       "name": "Natera Inc",
       "code": "NTRA US EQUITY",
       "ticker": "NTRA",
-      "weight": 0.69,
+      "weight": 0.71,
       "shares": 8.0,
-      "amount": 4246246.0,
+      "amount": 4311499.0,
       "price": null,
       "is_cash": false,
       "key": "NTRA US EQUITY",
-      "price_usd": 400.95
+      "price_usd": 393.44
+    },
+    {
+      "isin": "",
+      "name": "Intel Corp",
+      "code": "INTC US EQUITY",
+      "ticker": "INTC",
+      "weight": 0.69,
+      "shares": 33.0,
+      "amount": 4190195.0,
+      "price": null,
+      "is_cash": false,
+      "key": "INTC US EQUITY",
+      "price_usd": 89.85
+    },
+    {
+      "isin": "",
+      "name": "ExxonMobil Holdings Corp",
+      "code": "XOM US EQUITY",
+      "ticker": "XOM",
+      "weight": 0.69,
+      "shares": 18.0,
+      "amount": 4186241.0,
+      "price": null,
+      "is_cash": false,
+      "key": "XOM US EQUITY",
+      "price_usd": 178.98
+    },
+    {
+      "isin": "",
+      "name": "Newmont Corp",
+      "code": "NEM US EQUITY",
+      "ticker": "NEM",
+      "weight": 0.68,
+      "shares": 27.0,
+      "amount": 4162395.0,
+      "price": null,
+      "is_cash": false,
+      "key": "NEM US EQUITY",
+      "price_usd": 118.6
     },
     {
       "isin": "",
@@ -647,50 +647,50 @@
       "ticker": "ABBV",
       "weight": 0.68,
       "shares": 11.0,
-      "amount": 4192839.0,
+      "amount": 4150506.0,
       "price": null,
       "is_cash": false,
       "key": "ABBV US EQUITY",
-      "price_usd": 284.15
+      "price_usd": 285.42
     },
     {
       "isin": "",
-      "name": "Newmont Corp",
-      "code": "NEM US EQUITY",
-      "ticker": "NEM",
-      "weight": 0.66,
-      "shares": 27.0,
-      "amount": 4050096.0,
+      "name": "Cisco Systems Inc",
+      "code": "CSCO US EQUITY",
+      "ticker": "CSCO",
+      "weight": 0.67,
+      "shares": 28.0,
+      "amount": 4095120.0,
       "price": null,
       "is_cash": false,
-      "key": "NEM US EQUITY",
-      "price_usd": 116.25
-    },
-    {
-      "isin": "",
-      "name": "GE Vernova Inc",
-      "code": "GEV US EQUITY",
-      "ticker": "GEV",
-      "weight": 0.62,
-      "shares": 3.0,
-      "amount": 3798952.0,
-      "price": null,
-      "is_cash": false,
-      "key": "GEV US EQUITY",
-      "price_usd": 929.25
+      "key": "CSCO US EQUITY",
+      "price_usd": 107.39
     },
     {
       "isin": "",
       "name": "AT&T Inc",
       "code": "T US EQUITY",
       "ticker": "T",
-      "weight": 0.6,
+      "weight": 0.62,
       "shares": 120.0,
-      "amount": 3719163.0,
+      "amount": 3754548.0,
       "price": null,
       "is_cash": false,
       "key": "T US EQUITY",
-      "price_usd": 23.51
+      "price_usd": 23.44
+    },
+    {
+      "isin": "",
+      "name": "GE Vernova Inc",
+      "code": "GEV US EQUITY",
+      "ticker": "GEV",
+      "weight": 0.61,
+      "shares": 3.0,
+      "amount": 3700386.0,
+      "price": null,
+      "is_cash": false,
+      "key": "GEV US EQUITY",
+      "price_usd": 921.2
     },
     {
       "isin": "",
@@ -699,37 +699,37 @@
       "ticker": "VZ",
       "weight": 0.6,
       "shares": 62.0,
-      "amount": 3703082.0,
+      "amount": 3665077.0,
       "price": null,
       "is_cash": false,
       "key": "VZ US EQUITY",
-      "price_usd": 44.75
+      "price_usd": 44.79
     },
     {
       "isin": "",
       "name": "QUALCOMM Inc",
       "code": "QCOM US EQUITY",
       "ticker": "QCOM",
-      "weight": 0.57,
+      "weight": 0.59,
       "shares": 15.0,
-      "amount": 3481572.0,
+      "amount": 3562826.0,
       "price": null,
       "is_cash": false,
       "key": "QCOM US EQUITY",
-      "price_usd": 175.74
+      "price_usd": 172.11
     },
     {
       "isin": "",
       "name": "Abbott Laboratories",
       "code": "ABT US EQUITY",
       "ticker": "ABT",
-      "weight": 0.52,
+      "weight": 0.53,
       "shares": 23.0,
-      "amount": 3184429.0,
+      "amount": 3205531.0,
       "price": null,
       "is_cash": false,
       "key": "ABT US EQUITY",
-      "price_usd": 105.76
+      "price_usd": 104.89
     },
     {
       "isin": "",
@@ -738,36 +738,36 @@
       "ticker": "OKTA",
       "weight": 0.46,
       "shares": 10.0,
-      "amount": 2849409.0,
+      "amount": 2776235.0,
       "price": null,
       "is_cash": false,
       "key": "OKTA US EQUITY",
-      "price_usd": 201.74
-    },
-    {
-      "isin": "",
-      "name": "현금",
-      "code": "",
-      "ticker": "",
-      "weight": 0.45,
-      "shares": 2785054.0,
-      "amount": 2785054.0,
-      "price": null,
-      "is_cash": true,
-      "key": "현금"
+      "price_usd": 187.26
     },
     {
       "isin": "",
       "name": "Wells Fargo & Co",
       "code": "WFC US EQUITY",
       "ticker": "WFC",
-      "weight": 0.42,
+      "weight": 0.43,
       "shares": 24.0,
-      "amount": 2610675.0,
+      "amount": 2644160.0,
       "price": null,
       "is_cash": false,
       "key": "WFC US EQUITY",
-      "price_usd": 84.58
+      "price_usd": 83.87
+    },
+    {
+      "isin": "",
+      "name": "현금",
+      "code": "",
+      "ticker": "",
+      "weight": 0.32,
+      "shares": 1957077.0,
+      "amount": 1957077.0,
+      "price": null,
+      "is_cash": true,
+      "key": "현금"
     },
     {
       "isin": "",
@@ -776,203 +776,19 @@
       "ticker": "SNDK",
       "weight": 0.31,
       "shares": 1.0,
-      "amount": 1886930.0,
+      "amount": 1857076.0,
       "price": null,
       "is_cash": false,
       "key": "SNDK US EQUITY",
-      "price_usd": 1353.02
+      "price_usd": 1299.3
     }
   ],
-  "prev_date": "2026-10-15",
+  "prev_date": "2026-10-16",
   "changes": {
-    "added": [
-      {
-        "name": "State Street Consumer Staples Select Sector SPDR ETF",
-        "ticker": "XLP",
-        "weight": 1.0,
-        "shares": 53.0
-      },
-      {
-        "name": "State Street Health Care Select Sector SPDR ETF",
-        "ticker": "XLV",
-        "weight": 0.99,
-        "shares": 26.0
-      },
-      {
-        "name": "ExxonMobil Holdings Corp",
-        "ticker": "XOM",
-        "weight": 0.7,
-        "shares": 18.0
-      },
-      {
-        "name": "AbbVie Inc",
-        "ticker": "ABBV",
-        "weight": 0.68,
-        "shares": 11.0
-      },
-      {
-        "name": "AT&T Inc",
-        "ticker": "T",
-        "weight": 0.6,
-        "shares": 120.0
-      },
-      {
-        "name": "Verizon Communications Inc",
-        "ticker": "VZ",
-        "weight": 0.6,
-        "shares": 62.0
-      }
-    ],
-    "removed": [
-      {
-        "name": "Lam Research Corp",
-        "ticker": "LRCX",
-        "weight": 0.84,
-        "shares": 13.0
-      },
-      {
-        "name": "ARM Holdings PLC",
-        "ticker": "ARM",
-        "weight": 0.82,
-        "shares": 15.0
-      },
-      {
-        "name": "Nebius Group NV",
-        "ticker": "NBIS",
-        "weight": 0.53,
-        "shares": 12.0
-      },
-      {
-        "name": "ASML Holding NV",
-        "ticker": "ASML",
-        "weight": 0.37,
-        "shares": 1.0
-      }
-    ],
-    "bought": [
-      {
-        "name": "NVIDIA Corp",
-        "ticker": "NVDA",
-        "shares": 148.0,
-        "prev_shares": 147.0,
-        "share_delta": 1.0,
-        "weight": 7.15,
-        "prev_weight": 7.17,
-        "weight_delta": -0.02
-      },
-      {
-        "name": "Apple Inc",
-        "ticker": "AAPL",
-        "shares": 81.0,
-        "prev_shares": 62.0,
-        "share_delta": 19.0,
-        "weight": 6.06,
-        "prev_weight": 4.52,
-        "weight_delta": 1.54
-      },
-      {
-        "name": "State Street SPDR S&P 500 ETF Trust",
-        "ticker": "SPY",
-        "shares": 36.0,
-        "prev_shares": 35.0,
-        "share_delta": 1.0,
-        "weight": 6.05,
-        "prev_weight": 5.82,
-        "weight_delta": 0.23
-      },
-      {
-        "name": "Meta Platforms Inc",
-        "ticker": "META",
-        "shares": 18.0,
-        "prev_shares": 17.0,
-        "share_delta": 1.0,
-        "weight": 2.9,
-        "prev_weight": 2.77,
-        "weight_delta": 0.13
-      },
-      {
-        "name": "Johnson & Johnson",
-        "ticker": "JNJ",
-        "shares": 46.0,
-        "prev_shares": 41.0,
-        "share_delta": 5.0,
-        "weight": 2.55,
-        "prev_weight": 2.18,
-        "weight_delta": 0.37
-      },
-      {
-        "name": "Starbucks Corp",
-        "ticker": "SBUX",
-        "shares": 42.0,
-        "prev_shares": 41.0,
-        "share_delta": 1.0,
-        "weight": 0.86,
-        "prev_weight": 0.81,
-        "weight_delta": 0.05
-      },
-      {
-        "name": "Newmont Corp",
-        "ticker": "NEM",
-        "shares": 27.0,
-        "prev_shares": 26.0,
-        "share_delta": 1.0,
-        "weight": 0.66,
-        "prev_weight": 0.64,
-        "weight_delta": 0.02
-      }
-    ],
-    "sold": [
-      {
-        "name": "Caterpillar Inc",
-        "ticker": "CAT",
-        "shares": 7.0,
-        "prev_shares": 13.0,
-        "share_delta": -6.0,
-        "weight": 1.14,
-        "prev_weight": 2.15,
-        "weight_delta": -1.01
-      },
-      {
-        "name": "Lumentum Holdings Inc",
-        "ticker": "LITE",
-        "shares": 5.0,
-        "prev_shares": 9.0,
-        "share_delta": -4.0,
-        "weight": 0.98,
-        "prev_weight": 1.9,
-        "weight_delta": -0.92
-      },
-      {
-        "name": "Bloom Energy Corp",
-        "ticker": "BE",
-        "shares": 17.0,
-        "prev_shares": 36.0,
-        "share_delta": -19.0,
-        "weight": 0.89,
-        "prev_weight": 2.03,
-        "weight_delta": -1.14
-      },
-      {
-        "name": "Dell Technologies Inc",
-        "ticker": "DELL",
-        "shares": 8.0,
-        "prev_shares": 17.0,
-        "share_delta": -9.0,
-        "weight": 0.89,
-        "prev_weight": 2.08,
-        "weight_delta": -1.19
-      },
-      {
-        "name": "Marvell Technology Inc",
-        "ticker": "MRVL",
-        "shares": 14.0,
-        "prev_shares": 27.0,
-        "share_delta": -13.0,
-        "weight": 0.75,
-        "prev_weight": 1.55,
-        "weight_delta": -0.8
-      }
-    ]
+    "added": [],
+    "removed": [],
+    "bought": [],
+    "sold": []
   },
-  "updated_at": "2026-10-16 22:38"
+  "updated_at": "2026-10-19 07:39"
 }
