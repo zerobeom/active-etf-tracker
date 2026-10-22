@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-22",
+  "date": "2026-10-23",
   "ticker": "426030",
   "fund_id": "2",
   "name": "TIME 미국나스닥100액티브",
@@ -10,298 +10,298 @@
       "name": "NVIDIA Corp",
       "code": "NVDA US EQUITY",
       "ticker": "NVDA",
-      "weight": 8.29,
+      "weight": 8.31,
       "shares": 239.0,
-      "amount": 68560984.0,
+      "amount": 70249909.0,
       "price": null,
       "is_cash": false,
       "key": "NVDA US EQUITY",
-      "price_usd": 215.94
+      "price_usd": 212.21
     },
     {
       "isin": "",
       "name": "Microsoft Corp",
       "code": "MSFT US EQUITY",
       "ticker": "MSFT",
-      "weight": 5.97,
+      "weight": 5.84,
       "shares": 70.0,
-      "amount": 49338388.0,
+      "amount": 49401267.0,
       "price": null,
       "is_cash": false,
       "key": "MSFT US EQUITY",
-      "price_usd": 524.92
+      "price_usd": 521.08
     },
     {
       "isin": "",
       "name": "Alphabet Inc",
       "code": "GOOGL US EQUITY",
       "ticker": "GOOGL",
-      "weight": 5.83,
+      "weight": 5.61,
       "shares": 107.0,
-      "amount": 48249770.0,
+      "amount": 47431943.0,
       "price": null,
       "is_cash": false,
       "key": "GOOGL US EQUITY",
-      "price_usd": 327.92
+      "price_usd": 324.22
     },
     {
       "isin": "",
       "name": "Apple Inc",
       "code": "AAPL US EQUITY",
       "ticker": "AAPL",
-      "weight": 5.06,
+      "weight": 5.01,
       "shares": 93.0,
-      "amount": 41841202.0,
+      "amount": 42362574.0,
       "price": null,
       "is_cash": false,
       "key": "AAPL US EQUITY",
-      "price_usd": 344.58
+      "price_usd": 348.22
     },
     {
       "isin": "",
       "name": "Micron Technology Inc",
       "code": "MU US EQUITY",
       "ticker": "MU",
-      "weight": 4.16,
+      "weight": 4.15,
       "shares": 29.0,
-      "amount": 34436686.0,
+      "amount": 35086572.0,
       "price": null,
       "is_cash": false,
       "key": "MU US EQUITY",
-      "price_usd": 898.09
-    },
-    {
-      "isin": "",
-      "name": "Amazon.com Inc",
-      "code": "AMZN US EQUITY",
-      "ticker": "AMZN",
-      "weight": 3.83,
-      "shares": 91.0,
-      "amount": 31671392.0,
-      "price": null,
-      "is_cash": false,
-      "key": "AMZN US EQUITY",
-      "price_usd": 253.75
-    },
-    {
-      "isin": "",
-      "name": "NASDAQ 100 E-MINI INDEX DEC 2026",
-      "code": "NQZ6 INDEX",
-      "ticker": "NQZ6",
-      "weight": 3.8,
-      "shares": 0.0,
-      "amount": 31460513.0,
-      "price": null,
-      "is_cash": false,
-      "key": "NQZ6 INDEX"
+      "price_usd": 856.49
     },
     {
       "isin": "",
       "name": "Dell Technologies Inc",
       "code": "DELL US EQUITY",
       "ticker": "DELL",
-      "weight": 3.7,
+      "weight": 3.8,
       "shares": 50.0,
-      "amount": 30582965.0,
+      "amount": 32170114.0,
       "price": null,
       "is_cash": false,
       "key": "DELL US EQUITY",
-      "price_usd": 462.04
+      "price_usd": 452.95
+    },
+    {
+      "isin": "",
+      "name": "NASDAQ 100 E-MINI INDEX DEC 2026",
+      "code": "NQZ6 INDEX",
+      "ticker": "NQZ6",
+      "weight": 3.76,
+      "shares": 0.0,
+      "amount": 31788215.0,
+      "price": null,
+      "is_cash": false,
+      "key": "NQZ6 INDEX"
+    },
+    {
+      "isin": "",
+      "name": "Amazon.com Inc",
+      "code": "AMZN US EQUITY",
+      "ticker": "AMZN",
+      "weight": 3.74,
+      "shares": 91.0,
+      "amount": 31616162.0,
+      "price": null,
+      "is_cash": false,
+      "key": "AMZN US EQUITY",
+      "price_usd": 250.38
     },
     {
       "isin": "",
       "name": "Advanced Micro Devices Inc",
       "code": "AMD US EQUITY",
       "ticker": "AMD",
-      "weight": 3.51,
+      "weight": 3.55,
       "shares": 41.0,
-      "amount": 29054135.0,
+      "amount": 30008384.0,
       "price": null,
       "is_cash": false,
       "key": "AMD US EQUITY",
-      "price_usd": 520.6
-    },
-    {
-      "isin": "",
-      "name": "Intel Corp",
-      "code": "INTC US EQUITY",
-      "ticker": "INTC",
-      "weight": 3.5,
-      "shares": 238.0,
-      "amount": 28918805.0,
-      "price": null,
-      "is_cash": false,
-      "key": "INTC US EQUITY",
-      "price_usd": 88.16
+      "price_usd": 507.93
     },
     {
       "isin": "",
       "name": "Bloom Energy Corp",
       "code": "BE US EQUITY",
       "ticker": "BE",
-      "weight": 3.39,
+      "weight": 3.55,
       "shares": 95.0,
-      "amount": 28030299.0,
+      "amount": 30006835.0,
       "price": null,
       "is_cash": false,
       "key": "BE US EQUITY",
-      "price_usd": 225.7
+      "price_usd": 217.77
+    },
+    {
+      "isin": "",
+      "name": "Intel Corp",
+      "code": "INTC US EQUITY",
+      "ticker": "INTC",
+      "weight": 3.46,
+      "shares": 238.0,
+      "amount": 29297236.0,
+      "price": null,
+      "is_cash": false,
+      "key": "INTC US EQUITY",
+      "price_usd": 85.49
     },
     {
       "isin": "",
       "name": "Palantir Technologies Inc",
       "code": "PLTR US EQUITY",
       "ticker": "PLTR",
-      "weight": 3.3,
+      "weight": 3.38,
       "shares": 107.0,
-      "amount": 27309986.0,
+      "amount": 28581585.0,
       "price": null,
       "is_cash": false,
       "key": "PLTR US EQUITY",
-      "price_usd": 201.63
+      "price_usd": 196.19
     },
     {
       "isin": "",
       "name": "Space Exploration Technologies Corp",
       "code": "SPCX US EQUITY",
       "ticker": "SPCX",
-      "weight": 3.17,
+      "weight": 3.34,
       "shares": 134.0,
-      "amount": 26244075.0,
+      "amount": 28268412.0,
       "price": null,
       "is_cash": false,
       "key": "SPCX US EQUITY",
-      "price_usd": 151.58
+      "price_usd": 144.75
     },
     {
       "isin": "",
       "name": "Meta Platforms Inc",
       "code": "META US EQUITY",
       "ticker": "META",
-      "weight": 3.11,
+      "weight": 3.06,
       "shares": 28.0,
-      "amount": 25760562.0,
+      "amount": 25862367.0,
       "price": null,
       "is_cash": false,
       "key": "META US EQUITY",
-      "price_usd": 655.74
+      "price_usd": 648.85
     },
     {
       "isin": "",
       "name": "Sandisk Corp",
       "code": "SNDK US EQUITY",
       "ticker": "SNDK",
-      "weight": 2.41,
+      "weight": 2.37,
       "shares": 11.0,
-      "amount": 19903417.0,
+      "amount": 20075428.0,
       "price": null,
       "is_cash": false,
       "key": "SNDK US EQUITY",
-      "price_usd": 1332.02
+      "price_usd": 1260.93
     },
     {
       "isin": "",
       "name": "Tesla Inc",
       "code": "TSLA US EQUITY",
       "ticker": "TSLA",
-      "weight": 2.28,
+      "weight": 2.3,
       "shares": 38.0,
-      "amount": 18819138.0,
+      "amount": 19447015.0,
       "price": null,
       "is_cash": false,
       "key": "TSLA US EQUITY",
-      "price_usd": 387.8
+      "price_usd": 374.58
     },
     {
       "isin": "",
       "name": "Marvell Technology Inc",
       "code": "MRVL US EQUITY",
       "ticker": "MRVL",
-      "weight": 2.27,
+      "weight": 2.26,
       "shares": 59.0,
-      "amount": 18797670.0,
+      "amount": 19122560.0,
       "price": null,
       "is_cash": false,
       "key": "MRVL US EQUITY",
-      "price_usd": 232.13
+      "price_usd": 223.47
     },
     {
       "isin": "",
       "name": "Broadcom Inc",
       "code": "AVGO US EQUITY",
       "ticker": "AVGO",
-      "weight": 1.98,
+      "weight": 1.96,
       "shares": 37.0,
-      "amount": 16394963.0,
+      "amount": 16550646.0,
       "price": null,
       "is_cash": false,
       "key": "AVGO US EQUITY",
-      "price_usd": 329.03
+      "price_usd": 323.24
     },
     {
       "isin": "",
       "name": "Palo Alto Networks Inc",
       "code": "PANW US EQUITY",
       "ticker": "PANW",
-      "weight": 1.91,
+      "weight": 1.9,
       "shares": 35.0,
-      "amount": 15782866.0,
+      "amount": 16093995.0,
       "price": null,
       "is_cash": false,
       "key": "PANW US EQUITY",
-      "price_usd": 360.88
+      "price_usd": 354.92
     },
     {
       "isin": "",
       "name": "Taiwan Semiconductor Manufacturing Co Ltd",
       "code": "TSM US EQUITY",
       "ticker": "TSM",
-      "weight": 1.91,
+      "weight": 1.89,
       "shares": 28.0,
-      "amount": 15772848.0,
+      "amount": 16013444.0,
       "price": null,
       "is_cash": false,
       "key": "TSM US EQUITY",
-      "price_usd": 417.86
+      "price_usd": 412.35
     },
     {
       "isin": "",
       "name": "Snowflake Inc",
       "code": "SNOW US EQUITY",
       "ticker": "SNOW",
-      "weight": 1.9,
+      "weight": 1.87,
       "shares": 37.0,
-      "amount": 15671245.0,
+      "amount": 15812285.0,
       "price": null,
       "is_cash": false,
       "key": "SNOW US EQUITY",
-      "price_usd": 311.53
+      "price_usd": 313.96
     },
     {
       "isin": "",
       "name": "QUALCOMM Inc",
       "code": "QCOM US EQUITY",
       "ticker": "QCOM",
-      "weight": 1.89,
+      "weight": 1.87,
       "shares": 67.0,
-      "amount": 15601009.0,
+      "amount": 15788860.0,
       "price": null,
       "is_cash": false,
       "key": "QCOM US EQUITY",
-      "price_usd": 177.49
+      "price_usd": 172.83
     },
     {
       "isin": "",
       "name": "Lumentum Holdings Inc",
       "code": "LITE US EQUITY",
       "ticker": "LITE",
-      "weight": 1.85,
+      "weight": 1.87,
       "shares": 14.0,
-      "amount": 15259863.0,
+      "amount": 15770957.0,
       "price": null,
       "is_cash": false,
       "key": "LITE US EQUITY",
-      "price_usd": 791.14
+      "price_usd": 752.54
     },
     {
       "isin": "",
@@ -310,11 +310,11 @@
       "ticker": "SKHY",
       "weight": 1.73,
       "shares": 77.0,
-      "amount": 14264227.0,
+      "amount": 14606257.0,
       "price": null,
       "is_cash": false,
       "key": "SKHY US EQUITY",
-      "price_usd": 137.68
+      "price_usd": 131.69
     },
     {
       "isin": "",
@@ -322,8 +322,8 @@
       "code": "",
       "ticker": "",
       "weight": 1.51,
-      "shares": 12482998.0,
-      "amount": 12482998.0,
+      "shares": 12764102.0,
+      "amount": 12764102.0,
       "price": null,
       "is_cash": true,
       "key": "현금"
@@ -333,52 +333,65 @@
       "name": "Strategy Inc",
       "code": "MSTR US EQUITY",
       "ticker": "MSTR",
-      "weight": 1.35,
+      "weight": 1.42,
       "shares": 59.0,
-      "amount": 11158820.0,
+      "amount": 11991054.0,
       "price": null,
       "is_cash": false,
       "key": "MSTR US EQUITY",
-      "price_usd": 147.8
+      "price_usd": 145.8
     },
     {
       "isin": "",
       "name": "Coinbase Global Inc",
       "code": "COIN US EQUITY",
       "ticker": "COIN",
-      "weight": 1.34,
+      "weight": 1.36,
       "shares": 49.0,
-      "amount": 11094110.0,
+      "amount": 11489977.0,
       "price": null,
       "is_cash": false,
       "key": "COIN US EQUITY",
-      "price_usd": 172.4
+      "price_usd": 169.09
     },
     {
       "isin": "",
       "name": "Nebius Group NV",
       "code": "NBIS US EQUITY",
       "ticker": "NBIS",
-      "weight": 1.21,
+      "weight": 1.18,
       "shares": 44.0,
-      "amount": 9997043.0,
+      "amount": 9996491.0,
       "price": null,
       "is_cash": false,
       "key": "NBIS US EQUITY",
-      "price_usd": 161.74
+      "price_usd": 159.17
     },
     {
       "isin": "",
       "name": "Western Digital Corp",
       "code": "WDC US EQUITY",
       "ticker": "WDC",
-      "weight": 1.05,
+      "weight": 1.07,
       "shares": 18.0,
-      "amount": 8690343.0,
+      "amount": 9022012.0,
       "price": null,
       "is_cash": false,
       "key": "WDC US EQUITY",
-      "price_usd": 360.79
+      "price_usd": 354.19
+    },
+    {
+      "isin": "",
+      "name": "Robinhood Markets Inc",
+      "code": "HOOD US EQUITY",
+      "ticker": "HOOD",
+      "weight": 1.04,
+      "shares": 65.0,
+      "amount": 8773420.0,
+      "price": null,
+      "is_cash": false,
+      "key": "HOOD US EQUITY",
+      "price_usd": 96.58
     },
     {
       "isin": "",
@@ -387,63 +400,50 @@
       "ticker": "NTRA",
       "weight": 1.04,
       "shares": 16.0,
-      "amount": 8606802.0,
+      "amount": 8758364.0,
       "price": null,
       "is_cash": false,
       "key": "NTRA US EQUITY",
-      "price_usd": 401.09
-    },
-    {
-      "isin": "",
-      "name": "Eli Lilly & Co",
-      "code": "LLY US EQUITY",
-      "ticker": "LLY",
-      "weight": 1.03,
-      "shares": 5.0,
-      "amount": 8505531.0,
-      "price": null,
-      "is_cash": false,
-      "key": "LLY US EQUITY",
-      "price_usd": 1305.8
-    },
-    {
-      "isin": "",
-      "name": "Robinhood Markets Inc",
-      "code": "HOOD US EQUITY",
-      "ticker": "HOOD",
-      "weight": 1.02,
-      "shares": 65.0,
-      "amount": 8459612.0,
-      "price": null,
-      "is_cash": false,
-      "key": "HOOD US EQUITY",
-      "price_usd": 100.38
-    },
-    {
-      "isin": "",
-      "name": "Cisco Systems Inc",
-      "code": "CSCO US EQUITY",
-      "ticker": "CSCO",
-      "weight": 0.99,
-      "shares": 58.0,
-      "amount": 8201901.0,
-      "price": null,
-      "is_cash": false,
-      "key": "CSCO US EQUITY",
-      "price_usd": 104.84
+      "price_usd": 401.37
     },
     {
       "isin": "",
       "name": "Datadog Inc",
       "code": "DDOG US EQUITY",
       "ticker": "DDOG",
-      "weight": 0.99,
+      "weight": 1.03,
       "shares": 24.0,
-      "amount": 8155704.0,
+      "amount": 8679018.0,
       "price": null,
       "is_cash": false,
       "key": "DDOG US EQUITY",
-      "price_usd": 263.68
+      "price_usd": 257.75
+    },
+    {
+      "isin": "",
+      "name": "Eli Lilly & Co",
+      "code": "LLY US EQUITY",
+      "ticker": "LLY",
+      "weight": 1.0,
+      "shares": 5.0,
+      "amount": 8413635.0,
+      "price": null,
+      "is_cash": false,
+      "key": "LLY US EQUITY",
+      "price_usd": 1306.69
+    },
+    {
+      "isin": "",
+      "name": "Okta Inc",
+      "code": "OKTA US EQUITY",
+      "ticker": "OKTA",
+      "weight": 0.98,
+      "shares": 30.0,
+      "amount": 8288432.0,
+      "price": null,
+      "is_cash": false,
+      "key": "OKTA US EQUITY",
+      "price_usd": 201.33
     },
     {
       "isin": "",
@@ -452,24 +452,37 @@
       "ticker": "TXN",
       "weight": 0.98,
       "shares": 22.0,
-      "amount": 8098509.0,
+      "amount": 8292537.0,
       "price": null,
       "is_cash": false,
       "key": "TXN US EQUITY",
-      "price_usd": 282.41
+      "price_usd": 279.5
     },
     {
       "isin": "",
-      "name": "Okta Inc",
-      "code": "OKTA US EQUITY",
-      "ticker": "OKTA",
-      "weight": 0.93,
-      "shares": 30.0,
-      "amount": 7713459.0,
+      "name": "Cisco Systems Inc",
+      "code": "CSCO US EQUITY",
+      "ticker": "CSCO",
+      "weight": 0.97,
+      "shares": 58.0,
+      "amount": 8237954.0,
       "price": null,
       "is_cash": false,
-      "key": "OKTA US EQUITY",
-      "price_usd": 205.45
+      "key": "CSCO US EQUITY",
+      "price_usd": 104.89
+    },
+    {
+      "isin": "",
+      "name": "Crowdstrike Holdings Inc",
+      "code": "CRWD US EQUITY",
+      "ticker": "CRWD",
+      "weight": 0.94,
+      "shares": 25.0,
+      "amount": 7923350.0,
+      "price": null,
+      "is_cash": false,
+      "key": "CRWD US EQUITY",
+      "price_usd": 237.94
     },
     {
       "isin": "",
@@ -478,11 +491,11 @@
       "ticker": "TER",
       "weight": 0.92,
       "shares": 17.0,
-      "amount": 7582834.0,
+      "amount": 7777463.0,
       "price": null,
       "is_cash": false,
       "key": "TER US EQUITY",
-      "price_usd": 317.28
+      "price_usd": 308.75
     },
     {
       "isin": "",
@@ -491,63 +504,50 @@
       "ticker": "ALAB",
       "weight": 0.91,
       "shares": 20.0,
-      "amount": 7548339.0,
+      "amount": 7681949.0,
       "price": null,
       "is_cash": false,
       "key": "ALAB US EQUITY",
-      "price_usd": 275.71
-    },
-    {
-      "isin": "",
-      "name": "Crowdstrike Holdings Inc",
-      "code": "CRWD US EQUITY",
-      "ticker": "CRWD",
-      "weight": 0.91,
-      "shares": 25.0,
-      "amount": 7532768.0,
-      "price": null,
-      "is_cash": false,
-      "key": "CRWD US EQUITY",
-      "price_usd": 239.05
+      "price_usd": 257.82
     },
     {
       "isin": "",
       "name": "GE Vernova Inc",
       "code": "GEV US EQUITY",
       "ticker": "GEV",
-      "weight": 0.86,
+      "weight": 0.87,
       "shares": 6.0,
-      "amount": 7079191.0,
+      "amount": 7356619.0,
       "price": null,
       "is_cash": false,
       "key": "GEV US EQUITY",
-      "price_usd": 849.14
+      "price_usd": 827.42
     },
     {
       "isin": "",
       "name": "Seagate Technology Holdings PLC",
       "code": "STX US EQUITY",
       "ticker": "STX",
-      "weight": 0.65,
+      "weight": 0.66,
       "shares": 6.0,
-      "amount": 5368093.0,
+      "amount": 5536930.0,
       "price": null,
       "is_cash": false,
       "key": "STX US EQUITY",
-      "price_usd": 662.46
+      "price_usd": 642.14
     },
     {
       "isin": "",
       "name": "CoreWeave Inc",
       "code": "CRWV US EQUITY",
       "ticker": "CRWV",
-      "weight": 0.62,
+      "weight": 0.6,
       "shares": 62.0,
-      "amount": 5104749.0,
+      "amount": 5075446.0,
       "price": null,
       "is_cash": false,
       "key": "CRWV US EQUITY",
-      "price_usd": 58.79
+      "price_usd": 55.6
     },
     {
       "isin": "",
@@ -556,186 +556,32 @@
       "ticker": "TSEM",
       "weight": 0.53,
       "shares": 18.0,
-      "amount": 4383814.0,
+      "amount": 4518037.0,
       "price": null,
       "is_cash": false,
       "key": "TSEM US EQUITY",
-      "price_usd": 177.95
+      "price_usd": 167.71
     },
     {
       "isin": "",
       "name": "Credo Technology Group Holding Ltd",
       "code": "CRDO US EQUITY",
       "ticker": "CRDO",
-      "weight": 0.44,
+      "weight": 0.46,
       "shares": 16.0,
-      "amount": 3636560.0,
+      "amount": 3862002.0,
       "price": null,
       "is_cash": false,
       "key": "CRDO US EQUITY",
-      "price_usd": 171.0
+      "price_usd": 162.77
     }
   ],
-  "prev_date": "2026-10-21",
+  "prev_date": "2026-10-22",
   "changes": {
-    "added": [
-      {
-        "name": "Cisco Systems Inc",
-        "ticker": "CSCO",
-        "weight": 0.99,
-        "shares": 58.0
-      },
-      {
-        "name": "Texas Instruments Inc",
-        "ticker": "TXN",
-        "weight": 0.98,
-        "shares": 22.0
-      }
-    ],
-    "removed": [
-      {
-        "name": "Applied Optoelectronics Inc",
-        "ticker": "AAOI",
-        "weight": 0.89,
-        "shares": 71.0
-      },
-      {
-        "name": "Everpure Inc",
-        "ticker": "P",
-        "weight": 0.45,
-        "shares": 22.0
-      },
-      {
-        "name": "ServiceNow Inc",
-        "ticker": "NOW",
-        "weight": 0.42,
-        "shares": 18.0
-      }
-    ],
-    "bought": [
-      {
-        "name": "Alphabet Inc",
-        "ticker": "GOOGL",
-        "shares": 107.0,
-        "prev_shares": 89.0,
-        "share_delta": 18.0,
-        "weight": 5.83,
-        "prev_weight": 4.9,
-        "weight_delta": 0.93
-      },
-      {
-        "name": "Bloom Energy Corp",
-        "ticker": "BE",
-        "shares": 95.0,
-        "prev_shares": 81.0,
-        "share_delta": 14.0,
-        "weight": 3.39,
-        "prev_weight": 2.93,
-        "weight_delta": 0.46
-      },
-      {
-        "name": "Space Exploration Technologies Corp",
-        "ticker": "SPCX",
-        "shares": 134.0,
-        "prev_shares": 113.0,
-        "share_delta": 21.0,
-        "weight": 3.17,
-        "prev_weight": 2.67,
-        "weight_delta": 0.5
-      },
-      {
-        "name": "Meta Platforms Inc",
-        "ticker": "META",
-        "shares": 28.0,
-        "prev_shares": 19.0,
-        "share_delta": 9.0,
-        "weight": 3.11,
-        "prev_weight": 2.14,
-        "weight_delta": 0.97
-      }
-    ],
-    "sold": [
-      {
-        "name": "NVIDIA Corp",
-        "ticker": "NVDA",
-        "shares": 239.0,
-        "prev_shares": 240.0,
-        "share_delta": -1.0,
-        "weight": 8.29,
-        "prev_weight": 8.33,
-        "weight_delta": -0.04
-      },
-      {
-        "name": "Sandisk Corp",
-        "ticker": "SNDK",
-        "shares": 11.0,
-        "prev_shares": 13.0,
-        "share_delta": -2.0,
-        "weight": 2.41,
-        "prev_weight": 2.85,
-        "weight_delta": -0.44
-      },
-      {
-        "name": "Snowflake Inc",
-        "ticker": "SNOW",
-        "shares": 37.0,
-        "prev_shares": 47.0,
-        "share_delta": -10.0,
-        "weight": 1.9,
-        "prev_weight": 2.37,
-        "weight_delta": -0.47
-      },
-      {
-        "name": "QUALCOMM Inc",
-        "ticker": "QCOM",
-        "shares": 67.0,
-        "prev_shares": 68.0,
-        "share_delta": -1.0,
-        "weight": 1.89,
-        "prev_weight": 1.89,
-        "weight_delta": 0.0
-      },
-      {
-        "name": "Lumentum Holdings Inc",
-        "ticker": "LITE",
-        "shares": 14.0,
-        "prev_shares": 18.0,
-        "share_delta": -4.0,
-        "weight": 1.85,
-        "prev_weight": 2.4,
-        "weight_delta": -0.55
-      },
-      {
-        "name": "Natera Inc",
-        "ticker": "NTRA",
-        "shares": 16.0,
-        "prev_shares": 25.0,
-        "share_delta": -9.0,
-        "weight": 1.04,
-        "prev_weight": 1.6,
-        "weight_delta": -0.56
-      },
-      {
-        "name": "Tower Semiconductor Ltd",
-        "ticker": "TSEM",
-        "shares": 18.0,
-        "prev_shares": 35.0,
-        "share_delta": -17.0,
-        "weight": 0.53,
-        "prev_weight": 1.12,
-        "weight_delta": -0.59
-      },
-      {
-        "name": "Credo Technology Group Holding Ltd",
-        "ticker": "CRDO",
-        "shares": 16.0,
-        "prev_shares": 35.0,
-        "share_delta": -19.0,
-        "weight": 0.44,
-        "prev_weight": 0.97,
-        "weight_delta": -0.53
-      }
-    ]
+    "added": [],
+    "removed": [],
+    "bought": [],
+    "sold": []
   },
-  "updated_at": "2026-10-22 23:14"
+  "updated_at": "2026-10-23 08:44"
 }
