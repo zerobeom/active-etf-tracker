@@ -1,18 +1,18 @@
 {
-  "date": "2026-10-27",
+  "date": "2026-10-28",
   "ticker": "0151P0",
   "fund_id": "KR70151P0002",
   "name": "RISE 코리아전략산업액티브",
-  "count": 16,
+  "count": 15,
   "holdings": [
     {
       "isin": "KR7005930003",
       "name": "삼성전자",
       "code": "005930",
       "ticker": "005930",
-      "weight": 33.2079,
+      "weight": 33.1764,
       "shares": 857,
-      "amount": 182541000.0,
+      "amount": 190254000.0,
       "price": 213000,
       "is_cash": false,
       "key": "005930"
@@ -22,57 +22,69 @@
       "name": "SK하이닉스",
       "code": "000660",
       "ticker": "000660",
-      "weight": 21.1073,
+      "weight": 21.2797,
       "shares": 91,
-      "amount": 116025000.0,
+      "amount": 122031000.0,
       "price": 1275000,
       "is_cash": false,
       "key": "000660"
-    },
-    {
-      "isin": "KR7009150004",
-      "name": "삼성전기",
-      "code": "009150",
-      "ticker": "009150",
-      "weight": 5.8982,
-      "shares": 29,
-      "amount": 32422000.0,
-      "price": 1118000,
-      "is_cash": false,
-      "key": "009150"
     },
     {
       "isin": "KR7095610002",
       "name": "테스",
       "code": "095610",
       "ticker": "095610",
-      "weight": 5.3586,
-      "shares": 280,
-      "amount": 29456000.0,
+      "weight": 6.432,
+      "shares": 332,
+      "amount": 36885200.0,
       "price": 105200,
       "is_cash": false,
       "key": "095610"
+    },
+    {
+      "isin": "KR7009150004",
+      "name": "삼성전기",
+      "code": "009150",
+      "ticker": "009150",
+      "weight": 6.0735,
+      "shares": 29,
+      "amount": 34829000.0,
+      "price": 1118000,
+      "is_cash": false,
+      "key": "009150"
     },
     {
       "isin": "KR7319660007",
       "name": "피에스케이",
       "code": "319660",
       "ticker": "319660",
-      "weight": 5.2746,
+      "weight": 5.3389,
       "shares": 266,
-      "amount": 28994000.0,
+      "amount": 30616600.0,
       "price": 109000,
       "is_cash": false,
       "key": "319660"
+    },
+    {
+      "isin": "KR7402340004",
+      "name": "SK스퀘어",
+      "code": "402340",
+      "ticker": "402340",
+      "weight": 4.6204,
+      "shares": 32,
+      "amount": 26496000.0,
+      "price": 769000,
+      "is_cash": false,
+      "key": "402340"
     },
     {
       "isin": "KR7034020008",
       "name": "두산에너빌리티",
       "code": "034020",
       "ticker": "034020",
-      "weight": 4.2438,
-      "shares": 405,
-      "amount": 23328000.0,
+      "weight": 3.6667,
+      "shares": 357,
+      "amount": 21027300.0,
       "price": 57600,
       "is_cash": false,
       "key": "034020"
@@ -82,9 +94,9 @@
       "name": "네이버/NAVER",
       "code": "035420",
       "ticker": "035420",
-      "weight": 3.581,
+      "weight": 3.4346,
       "shares": 113,
-      "amount": 19684600.0,
+      "amount": 19695900.0,
       "price": 174200,
       "is_cash": false,
       "key": "035420"
@@ -94,9 +106,9 @@
       "name": "LS ELECTRIC",
       "code": "010120",
       "ticker": "010120",
-      "weight": 3.2266,
+      "weight": 3.198,
       "shares": 116,
-      "amount": 17736400.0,
+      "amount": 18339600.0,
       "price": 152900,
       "is_cash": false,
       "key": "010120"
@@ -106,45 +118,21 @@
       "name": "효성중공업",
       "code": "298040",
       "ticker": "298040",
-      "weight": 2.6968,
+      "weight": 2.6701,
       "shares": 8,
-      "amount": 14824000.0,
+      "amount": 15312000.0,
       "price": 1853000,
       "is_cash": false,
       "key": "298040"
-    },
-    {
-      "isin": "KR7402340004",
-      "name": "SK스퀘어",
-      "code": "402340",
-      "ticker": "402340",
-      "weight": 2.658,
-      "shares": 19,
-      "amount": 14611000.0,
-      "price": 769000,
-      "is_cash": false,
-      "key": "402340"
-    },
-    {
-      "isin": "KR7012450003",
-      "name": "한화에어로스페이스",
-      "code": "012450",
-      "ticker": "012450",
-      "weight": 2.4887,
-      "shares": 18,
-      "amount": 13680000.0,
-      "price": 760000,
-      "is_cash": false,
-      "key": "012450"
     },
     {
       "isin": "KR7000150003",
       "name": "두산",
       "code": "000150",
       "ticker": "000150",
-      "weight": 2.2947,
+      "weight": 2.3241,
       "shares": 14,
-      "amount": 12614000.0,
+      "amount": 13328000.0,
       "price": 901000,
       "is_cash": false,
       "key": "000150"
@@ -154,33 +142,33 @@
       "name": "LS",
       "code": "006260",
       "ticker": "006260",
-      "weight": 2.2486,
+      "weight": 2.2223,
       "shares": 59,
-      "amount": 12360500.0,
+      "amount": 12744000.0,
       "price": 209500,
       "is_cash": false,
       "key": "006260"
     },
     {
-      "isin": "KR7028670008",
-      "name": "팬오션",
-      "code": "028670",
-      "ticker": "028670",
-      "weight": 2.0881,
-      "shares": 1913,
-      "amount": 11478000.0,
-      "price": 6000,
+      "isin": "KR7012450003",
+      "name": "한화에어로스페이스",
+      "code": "012450",
+      "ticker": "012450",
+      "weight": 1.741,
+      "shares": 13,
+      "amount": 9984000.0,
+      "price": 760000,
       "is_cash": false,
-      "key": "028670"
+      "key": "012450"
     },
     {
       "isin": "KR7007660004",
       "name": "이수페타시스",
       "code": "007660",
       "ticker": "007660",
-      "weight": 1.6254,
+      "weight": 1.6606,
       "shares": 107,
-      "amount": 8934500.0,
+      "amount": 9523000.0,
       "price": 83500,
       "is_cash": false,
       "key": "007660"
@@ -190,9 +178,9 @@
       "name": "현대모비스",
       "code": "012330",
       "ticker": "012330",
-      "weight": 1.4827,
+      "weight": 1.4495,
       "shares": 25,
-      "amount": 8150000.0,
+      "amount": 8312500.0,
       "price": 326000,
       "is_cash": false,
       "key": "012330"
@@ -202,20 +190,69 @@
       "name": "원화현금",
       "code": "",
       "ticker": "",
-      "weight": 0.5188,
-      "shares": 2852019,
-      "amount": 2852019.0,
+      "weight": 0.7122,
+      "shares": 4084018,
+      "amount": 4084018.0,
       "price": 1,
       "is_cash": true,
       "key": "원화현금"
     }
   ],
-  "prev_date": "2026-10-26",
+  "prev_date": "2026-10-27",
   "changes": {
     "added": [],
-    "removed": [],
-    "bought": [],
-    "sold": []
+    "removed": [
+      {
+        "name": "팬오션",
+        "ticker": "028670",
+        "weight": 2.0881,
+        "shares": 1913
+      }
+    ],
+    "bought": [
+      {
+        "name": "테스",
+        "ticker": "095610",
+        "shares": 332,
+        "prev_shares": 280,
+        "share_delta": 52,
+        "weight": 6.432,
+        "prev_weight": 5.3586,
+        "weight_delta": 1.0734
+      },
+      {
+        "name": "SK스퀘어",
+        "ticker": "402340",
+        "shares": 32,
+        "prev_shares": 19,
+        "share_delta": 13,
+        "weight": 4.6204,
+        "prev_weight": 2.658,
+        "weight_delta": 1.9624
+      }
+    ],
+    "sold": [
+      {
+        "name": "두산에너빌리티",
+        "ticker": "034020",
+        "shares": 357,
+        "prev_shares": 405,
+        "share_delta": -48,
+        "weight": 3.6667,
+        "prev_weight": 4.2438,
+        "weight_delta": -0.5771
+      },
+      {
+        "name": "한화에어로스페이스",
+        "ticker": "012450",
+        "shares": 13,
+        "prev_shares": 18,
+        "share_delta": -5,
+        "weight": 1.741,
+        "prev_weight": 2.4887,
+        "weight_delta": -0.7477
+      }
+    ]
   },
-  "updated_at": "2026-10-28 00:02"
+  "updated_at": "2026-10-28 09:07"
 }
