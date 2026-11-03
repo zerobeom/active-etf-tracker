@@ -203,15 +203,15 @@
     {
       "isin": "US0517741072",
       "name": "Aurora Innovation Inc",
-      "code": "AUROW",
-      "ticker": "AUROW",
+      "code": "AUR",
+      "ticker": "AUR",
       "weight": 3.43,
       "shares": 2754.64,
       "amount": 16190648.0,
       "price": null,
       "is_cash": false,
-      "key": "AUROW",
-      "price_usd": 0.0
+      "key": "AUR",
+      "price_usd": 4.23
     },
     {
       "isin": "US24703L2025",
@@ -292,8 +292,22 @@
   ],
   "prev_date": "2026-10-30",
   "changes": {
-    "added": [],
-    "removed": [],
+    "added": [
+      {
+        "name": "Aurora Innovation Inc",
+        "ticker": "AUR",
+        "weight": 3.43,
+        "shares": 2754.64
+      }
+    ],
+    "removed": [
+      {
+        "name": "Aurora Innovation Inc",
+        "ticker": "AUROW",
+        "weight": 3.86,
+        "shares": 2754.64
+      }
+    ],
     "bought": [],
     "sold": [
       {
@@ -308,5 +322,5 @@
       }
     ]
   },
-  "updated_at": "2026-11-03 11:42"
+  "updated_at": "2026-11-04 01:44"
 }
