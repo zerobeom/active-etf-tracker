@@ -235,8 +235,7 @@
       "amount": 6309520.0,
       "price": null,
       "is_cash": false,
-      "key": "ADI",
-      "price_usd": 333.11
+      "key": "ADI"
     },
     {
       "isin": "",
@@ -258,5 +257,5 @@
     "bought": [],
     "sold": []
   },
-  "updated_at": "2026-11-26 12:15"
+  "updated_at": "2026-11-27 03:43"
 }
