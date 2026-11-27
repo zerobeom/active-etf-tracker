@@ -16,7 +16,7 @@
       "price": null,
       "is_cash": false,
       "key": "EXLS",
-      "price_usd": 45.1
+      "price_usd": 45.76
     },
     {
       "isin": "US18915M1071",
@@ -28,8 +28,7 @@
       "amount": 25387022.0,
       "price": null,
       "is_cash": false,
-      "key": "NET",
-      "price_usd": 283.3
+      "key": "NET"
     },
     {
       "isin": "US92552V1008",
@@ -42,7 +41,7 @@
       "price": null,
       "is_cash": false,
       "key": "VSAT",
-      "price_usd": 61.01
+      "price_usd": 64.6
     },
     {
       "isin": "US22788C1053",
@@ -55,7 +54,7 @@
       "price": null,
       "is_cash": false,
       "key": "CRWD",
-      "price_usd": 209.3
+      "price_usd": 217.2
     },
     {
       "isin": "US5951121038",
@@ -68,7 +67,7 @@
       "price": null,
       "is_cash": false,
       "key": "MU",
-      "price_usd": 601.25
+      "price_usd": 646.95
     },
     {
       "isin": "US0079031078",
@@ -81,7 +80,7 @@
       "price": null,
       "is_cash": false,
       "key": "AMD",
-      "price_usd": 406.03
+      "price_usd": 424.54
     },
     {
       "isin": "US0937121079",
@@ -94,7 +93,7 @@
       "price": null,
       "is_cash": false,
       "key": "BE",
-      "price_usd": 152.89
+      "price_usd": 161.4
     },
     {
       "isin": "US7731211089",
@@ -107,7 +106,7 @@
       "price": null,
       "is_cash": false,
       "key": "RKLB",
-      "price_usd": 47.02
+      "price_usd": 50.88
     },
     {
       "isin": "US46222L1089",
@@ -120,7 +119,7 @@
       "price": null,
       "is_cash": false,
       "key": "IONQ",
-      "price_usd": 23.54
+      "price_usd": 24.82
     },
     {
       "isin": "US60937P1066",
@@ -133,7 +132,7 @@
       "price": null,
       "is_cash": false,
       "key": "MDB",
-      "price_usd": 313.53
+      "price_usd": 320.12
     },
     {
       "isin": "US55024U1097",
@@ -146,7 +145,7 @@
       "price": null,
       "is_cash": false,
       "key": "LITE",
-      "price_usd": 476.58
+      "price_usd": 514.63
     },
     {
       "isin": "US4859241048",
@@ -159,7 +158,7 @@
       "price": null,
       "is_cash": false,
       "key": "KRMN",
-      "price_usd": 29.27
+      "price_usd": 30.8
     },
     {
       "isin": "US0517741072",
@@ -172,7 +171,7 @@
       "price": null,
       "is_cash": false,
       "key": "AUR",
-      "price_usd": 3.74
+      "price_usd": 4.02
     },
     {
       "isin": "US00217D1000",
@@ -185,7 +184,7 @@
       "price": null,
       "is_cash": false,
       "key": "ASTS",
-      "price_usd": 26.02
+      "price_usd": 26.85
     },
     {
       "isin": "US26740W1099",
@@ -198,7 +197,7 @@
       "price": null,
       "is_cash": false,
       "key": "QBTS",
-      "price_usd": 7.0
+      "price_usd": 7.58
     },
     {
       "isin": "US80004C2008",
@@ -211,7 +210,7 @@
       "price": null,
       "is_cash": false,
       "key": "SNDK",
-      "price_usd": 94.39
+      "price_usd": 85.36
     },
     {
       "isin": "",
@@ -236,7 +235,7 @@
       "price": null,
       "is_cash": false,
       "key": "ADI",
-      "price_usd": 333.11
+      "price_usd": 346.0
     },
     {
       "isin": "",
@@ -258,5 +257,5 @@
     "bought": [],
     "sold": []
   },
-  "updated_at": "2026-11-27 12:21"
+  "updated_at": "2026-11-28 03:35"
 }
